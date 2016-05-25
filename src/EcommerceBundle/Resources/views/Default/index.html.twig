@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Page d'acceuil -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1">
+                {% for bague in bagues %}
+                    <div class="col-md-4 mrgtop">
+                        <img class="bague_img img-responsive center-block" src="{{ asset('/uploads/img/bague/') }}{{ bague.photo }}" >
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p>{{ bague.nom }}</p>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <p>{{ bague.prixttc }}</p>
+                            </div>
+                            <div class="col-md-offset-2 col-md-4">
+                                <p>{{ bague.garantie }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>{{ bague.sexe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <footer style="height: 100px;">
+
+    </footer>
+{% endblock %}

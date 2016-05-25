@@ -1,0 +1,40 @@
+site\BagueBundle\Entity\Bague:
+    type: entity
+    table: null
+    repositoryClass: site\BagueBundle\Repository\BagueRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prixttc:
+            type: string
+            length: 255
+        metaux:
+            type: string
+            length: 255
+        sexe:
+            type: array
+        garantie:
+            type: array
+        largeur:
+            type: string
+            length: 255
+        photo:
+            type: string
+            length: 255
+        reference:
+            type: string
+            length: '20'
+            unique: true
+    lifecycleCallbacks:
+        prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+        preUpdate: [ preUpload, setUpdatedAtValue ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]
