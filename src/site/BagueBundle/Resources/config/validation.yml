@@ -1,6 +1,0 @@
-# src/site/BagueBundle/Resources/config/validation.yml
-site\BagueBundle\Entity\Bague:
-    properties:
-        # ...
-        file:
-            - Image: ~

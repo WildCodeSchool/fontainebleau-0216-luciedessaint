@@ -1,7 +1,0 @@
-bague_bague:
-    resource: "@BagueBundle/Resources/config/routing/bague.yml"
-    prefix:   /bague
-
-bague_homepage:
-    path:     /
-    defaults: { _controller: BagueBundle:Default:home }

@@ -1,7 +1,3 @@
-bague:
-    resource: "@BagueBundle/Resources/config/routing.yml"
-    prefix:   /site
-
 ecommerce:
     resource: "@EcommerceBundle/Resources/config/routing.yml"
     prefix:   /
