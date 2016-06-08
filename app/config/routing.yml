@@ -1,6 +1,10 @@
+appun:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ecommerce:
     resource: "@EcommerceBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /produits
 
 app:
     resource: "@AppBundle/Controller/"

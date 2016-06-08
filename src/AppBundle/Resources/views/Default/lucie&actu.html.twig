@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header>
+        <div class="container-fluid"><!-- Top Bar noir -->
+            <div class="row">
+                <div class="col-md-6 rowblack text-center textwhite"><h1>Lucie DE SAINT</h1></div>
+            </div>
+        </div><!-- Fin top bar noir -->
+    </header>
+    <div class="space"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-2 img-responsive"><img class="img_presentation" src="{{ asset('bundles/app/img/homepage/righthp.png') }}" alt="image lucie">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="#"><p class="text-center rowblack textwhite bouton">Suivre</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p class="text_presentation">Every man who has lotted here over the centuries,
+                                    has looked up to the light and imagined climbing to freedom.
+                                    So easy, so simple! And like shipwrecked men turning to seawater foregoing uncontrollable thirst,
+                                    many have died trying. And then here there can be no true despair without hope. So as I terrorize Gotham,
+                                    I will feed its people hope to poison their souls.
+                                    I will let them believe that they can survive so that you can watch them climbing over each other to stay in the sun.
+                                    You can watch me torture an entire city. And then when you've truly understood the depth of your failure, we will fulfill Ra's Al Ghul's destiny.
+                                    We will destroy Gotham. And then, when that is done, and Gotham is... ashes Then you have my permission to die.
+                </p>
+            </div>
+            <div class="col-md-offset-1 col-md-3">
+                <div class="col-md-12">
+                    <p>Exposition:</p>
+                </div>
+                <div class="col-md-12 img-responsive">
+                    <img src={{ asset('bundles/app/img/homepage/lefthp.png') }}>
+                </div>
+                <div class="col-md-12">
+                    <p>Sur la route de l'art contemporain en alsace</p>
+                </div>
+                <div class="col-md-12">
+                    <a href="#"><p class="text-center rowblack textwhite bouton">Lire l'article</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

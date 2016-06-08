@@ -1,0 +1,53 @@
+/*
+1/ Nav bar
+2/ HomePage
+3/ Lucie Actu
+4/ Bijoux
+*/
+
+.minspace {
+    height: 25px;
+}
+.space {
+    height: 50px;
+}
+/* Nav bar */
+.navbar {
+    margin-bottom: 0px;
+}
+/* HomePage */
+.container-fluid {
+    margin: auto;
+    padding: 0px;
+}
+.row {
+    margin: 0;
+}
+.rowblack {
+    background-color: black;
+}
+.textwhite {
+    color: white;
+}
+.imgnav {
+    margin-top: 75px;
+}
+.imghp {
+    width: 100%;
+    height: 300px;
+}
+/* Lucie Actu */
+.img_presentation {
+    width: 100%;
+    height: 300px;
+}
+.text_presentation {
+    text-align: justify;
+}
+.bouton {
+    border-radius: 30px;
+}
+/* Bijoux */
+.imgbijou {
+    width: 100%;
+}

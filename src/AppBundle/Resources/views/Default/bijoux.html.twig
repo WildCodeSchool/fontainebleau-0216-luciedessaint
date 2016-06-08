@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header>
+        <div class="container-fluid"><!-- Top Bar noir -->
+            <div class="row">
+                <div class="col-md-6 rowblack text-center textwhite"><h1>Bienvenue dans l'univers BIJOUX</h1></div>
+            </div>
+        </div><!-- Fin top bar noir -->
+    </header>
+    <div class="space"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <img class="img-responsive center-block imgbijou" src={{ asset('bundles/app/img/bijoux/1.png') }}>
+                <div class="space"></div>
+                <div class="col-md-3">
+                    <img class="center-block img-responsive imgbijou" src={{ asset('bundles/app/img/bijoux/2.png') }}>
+                    <div class="col-md-12">
+                        <p>Moonstone on blue $145,00</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <img class="center-block img-responsive imgbijou" src={{ asset('bundles/app/img/bijoux/3.png') }}>
+                    <div class="col-md-12">
+                        <p>Rose $165,00</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <img class="center-block img-responsive imgbijou" src={{ asset('bundles/app/img/bijoux/4.png') }}>
+                    <div class="col-md-12">
+                        <p>Moonstone on browne $145,00</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <img class="center-block img-responsive imgbijou" src={{ asset('bundles/app/img/bijoux/5.png') }}>
+                    <div class="col-md-12">
+                        <p>Rose quartz $145,00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

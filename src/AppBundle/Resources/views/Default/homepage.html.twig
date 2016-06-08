@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <header>
+            <div class="container-fluid"><!-- Top Bar noir -->
+                <div class="row rowblack">
+                    <div class="row text-center textwhite"><h1>Lucie DE SAINT</h1></div>
+                    <div class="row text-center textwhite"><h2>Artiste Plasticienne, Créatrice de Bijoux</h2></div>
+                </div>
+            </div><!-- Fin top bar noir -->
+        </header>
+        <div class="container imgnav"><!-- Image navigation -->
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4 img-responsive"><a href={{ path('app_tableau') }}><img class="imghp" src="{{ asset('bundles/app/img/homepage/lefthp.png') }}" alt="image peinture"></a>
+                    <div class="row text-right"><p>Entrer dans l'univers de l'Art</p></div>
+                </div>
+                <div class="col-md-4 img-responsive"><a href={{ path('app_bijou') }}><img class="imghp" src="{{ asset('bundles/app/img/homepage/middlehp.png') }}" alt="image bijoux"></a>
+                    <div class="row text-right"><p>Entrer dans l'univers des Bijoux</p></div>
+                </div>
+                <div class="col-md-2 img-responsive"><a href={{ path('app_lucieactu') }}><img class="imghp" src="{{ asset('bundles/app/img/homepage/righthp.png') }}" alt="image lucie"></a>
+                    <div class="row text-right"><p>Lucie DE SAINT</p></div>
+                </div>
+            </div>
+        </div> <!-- Fin image navigation -->
+{% endblock %}
