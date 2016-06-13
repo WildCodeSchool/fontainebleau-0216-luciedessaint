@@ -4,18 +4,40 @@
 3/ Lucie Actu
 4/ Bijoux
 */
-
 .minspace {
     height: 25px;
 }
 .space {
     height: 50px;
 }
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 20px;
+}
 /* Nav bar */
 .navbar {
     margin-bottom: 0px;
 }
-/* HomePage */
+.navbar-default .navbar-brand{
+    color: #b8b8b8;
+}
+.navbar-default .navbar-brand:hover {
+    color: #ffffff;
+}
+.navbar-default {
+    background-color: #2d2d2d;
+    border-color: #101010;
+    border-radius: 0;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #b8b8b8;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color: #ffffff;
+}
+/* ------------------HomePage------------------ */
 .container-fluid {
     margin: auto;
     padding: 0px;
@@ -35,6 +57,36 @@
 .imghp {
     width: 100%;
     height: 300px;
+}
+.divimgleft {
+    width: 350px;
+    height: 300px;
+}
+.divimgmiddle {
+    width: 320px;
+    height: 300px;
+}
+.divimgright {
+    width: 160px;
+    height: 300px;
+}
+.imgleft {
+    height: 100%;
+    background-image: url("../img/homepage/lefthp.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imgmiddle {
+    height: 100%;
+    background-image: url("../img/homepage/middlehp.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.imgright {
+    height: 100%;
+    background-image: url("../img/homepage/righthp.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* Lucie Actu */
 .img_presentation {

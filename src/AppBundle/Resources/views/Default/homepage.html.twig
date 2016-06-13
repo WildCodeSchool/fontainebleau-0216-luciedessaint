@@ -11,14 +11,26 @@
         </header>
         <div class="container imgnav"><!-- Image navigation -->
             <div class="row">
-                <div class="col-md-offset-1 col-md-4 img-responsive"><a href={{ path('app_tableau') }}><img class="imghp" src="{{ asset('bundles/app/img/homepage/lefthp.png') }}" alt="image peinture"></a>
-                    <div class="row text-right"><p>Entrer dans l'univers de l'Art</p></div>
+                <div class="col-md-offset-1 col-md-4 divimgleft">
+                    <a href={{ path('app_tableau') }}>
+                        <div class="img-responsive imgleft hvr-grow-shadow">
+                            <p class="">Entrer dans l'univers de l'Art</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-4 img-responsive"><a href={{ path('app_bijou') }}><img class="imghp" src="{{ asset('bundles/app/img/homepage/middlehp.png') }}" alt="image bijoux"></a>
-                    <div class="row text-right"><p>Entrer dans l'univers des Bijoux</p></div>
+                <div class="col-md-4 divimgmiddle">
+                    <a href={{ path('app_bijou') }}>
+                        <div class="img-responsive imgmiddle hvr-grow-shadow">
+                            <p class="">Entrer dans l'univers des Bijoux</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-2 img-responsive"><a href={{ path('app_lucieactu') }}><img class="imghp" src="{{ asset('bundles/app/img/homepage/righthp.png') }}" alt="image lucie"></a>
-                    <div class="row text-right"><p>Lucie DE SAINT</p></div>
+                <div class="col-md-2 divimgright">
+                    <a href={{ path('app_lucieactu') }}>
+                        <div class="img-responsive imgright hvr-grow-shadow">
+                            <p class="">Lucie DE SAINT</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div> <!-- Fin image navigation -->
