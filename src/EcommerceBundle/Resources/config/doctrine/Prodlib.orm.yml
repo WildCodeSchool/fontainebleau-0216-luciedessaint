@@ -1,0 +1,102 @@
+EcommerceBundle\Entity\Prodlib:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\ProdlibRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        pdlLocale:
+            type: string
+            length: '2'
+            column: pdl_locale
+        pdlLib:
+            type: string
+            length: '100'
+            column: pdl_lib
+        pdlDesc:
+            type: text
+            column: pdl_desc
+        pdlCat:
+            type: string
+            length: '50'
+            column: pdl_cat
+        pdlType:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_type
+        pdlItem:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_item
+        pdlInfoLib1:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib1
+        pdlInfoLib2:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib2
+        pdlInfoLib3:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib3
+        pdlInfoLib4:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib4
+        pdlInfoLib5:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib5
+        pdlInfoLib6:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib6
+        pdlInfoLib7:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib7
+        pdlInfoLib8:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib8
+        pdlInfoLib9:
+            type: string
+            length: '50'
+            nullable: true
+            column: pdl_info_lib9
+        pdlPckgComm:
+            type: string
+            length: 255
+            nullable: true
+            column: pdl_pckg_comm
+        pdlDispo:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_dispo
+        pdlFabDelai:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_fab_delai
+        pdlLivDelai:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_liv_delai
+    lifecycleCallbacks: {  }

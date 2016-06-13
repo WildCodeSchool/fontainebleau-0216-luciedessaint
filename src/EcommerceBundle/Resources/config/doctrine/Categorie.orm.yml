@@ -1,0 +1,36 @@
+EcommerceBundle\Entity\Categorie:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\CategorieRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        catNiv:
+            type: smallint
+            column: cat_niv
+        catAvendre:
+            type: boolean
+            nullable: true
+            column: cat_avendre
+        catAffPrix:
+            type: boolean
+            nullable: true
+            column: cat_aff_prix
+        catAffNostock:
+            type: boolean
+            nullable: true
+            column: cat_aff_nostock
+        catAffVendu:
+            type: boolean
+            nullable: true
+            column: cat_aff_vendu
+        catPhoto:
+            type: string
+            length: '100'
+            nullable: true
+            column: cat_photo
+    lifecycleCallbacks: {  }

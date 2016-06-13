@@ -1,0 +1,112 @@
+EcommerceBundle\Entity\Commande:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\CommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        comCode:
+            type: string
+            length: '50'
+            nullable: true
+            column: com_code
+        comEtat:
+            type: smallint
+            column: com_etat
+        comCdebank:
+            type: string
+            length: '100'
+            nullable: true
+            unique: true
+            column: com_cdebank
+        comVenteDte:
+            type: datetime
+            column: com_vente_dte
+        comExpedDte:
+            type: datetime
+            nullable: true
+            column: com_exped_dte
+        comMajDte:
+            type: datetime
+            nullable: true
+            column: com_maj_dte
+        comMajWho:
+            type: string
+            length: '100'
+            nullable: true
+            column: com_maj_who
+        comMajLib:
+            type: string
+            length: '100'
+            nullable: true
+            column: com_maj_lib
+        comAnnulDte:
+            type: datetime
+            nullable: true
+            column: com_annul_dte
+        comAnnulWho:
+            type: string
+            length: '100'
+            nullable: true
+            column: com_annul_who
+        comAnnulLib:
+            type: string
+            length: '100'
+            nullable: true
+            column: com_annul_lib
+        comFact:
+            type: string
+            length: '50'
+            nullable: true
+            column: com_fact
+        comFactDte:
+            type: datetime
+            nullable: true
+            column: com_fact_dte
+        comFactWho:
+            type: string
+            length: '100'
+            nullable: true
+            column: com_fact_who
+        comNbArts:
+            type: smallint
+            column: com_nb_arts
+        comTvaUnique:
+            type: boolean
+            nullable: true
+            column: com_tva_unique
+        comPrixTotHt:
+            type: decimal
+            precision: '9'
+            scale: '2'
+            column: com_prix_tot_ht
+        comPrixTotTtc:
+            type: decimal
+            precision: '9'
+            scale: '2'
+            column: com_prix_tot_ttc
+        comEmbPoids:
+            type: string
+            length: '20'
+            nullable: true
+            column: com_emb_poids
+        comEmbDim:
+            type: string
+            length: '20'
+            nullable: true
+            column: com_emb_dim
+        comLivDelai:
+            type: string
+            length: '100'
+            nullable: true
+            column: com_liv_delai
+        comComments:
+            type: string
+            length: 255
+            nullable: true
+            column: com_comments
+    lifecycleCallbacks: {  }

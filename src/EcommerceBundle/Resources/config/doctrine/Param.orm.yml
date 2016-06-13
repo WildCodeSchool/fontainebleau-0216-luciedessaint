@@ -1,0 +1,38 @@
+EcommerceBundle\Entity\Param:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\ParamRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        prmNbnivcat:
+            type: smallint
+            column: prm_nbnivcat
+        prmDevise:
+            type: string
+            length: '3'
+            column: prm_devise
+        prmTvaUnique:
+            type: boolean
+            column: prm_tva_unique
+        prmNewsletter:
+            type: boolean
+            nullable: true
+            column: prm_newsletter
+        prmFactGen:
+            type: boolean
+            nullable: true
+            column: prm_fact_gen
+        prmFactEnv:
+            type: boolean
+            nullable: true
+            column: prm_fact_env
+        prmFactUpload:
+            type: boolean
+            nullable: true
+            column: prm_fact_upload
+    lifecycleCallbacks: {  }

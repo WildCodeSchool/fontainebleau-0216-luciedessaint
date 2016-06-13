@@ -1,0 +1,87 @@
+EcommerceBundle\Entity\Paramlib:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\ParamlibRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        prlLocale:
+            type: string
+            length: '2'
+            column: prl_locale
+        prlDelaiLiv:
+            type: string
+            length: '100'
+            nullable: true
+            column: prl_delai_liv
+        prlLivRestrict:
+            type: string
+            length: '100'
+            nullable: true
+            column: prl_liv_restrict
+        prlFabDelai:
+            type: string
+            length: '100'
+            nullable: true
+            column: prl_fab_delai
+        prlArtPhoto:
+            type: string
+            length: '50'
+            nullable: true
+            column: prl_art_photo
+        prlArtPres:
+            type: text
+            nullable: true
+            column: prl_art_pres
+        prlArtComm:
+            type: text
+            nullable: true
+            column: prl_art_comm
+        prlPanTitre:
+            type: string
+            length: '100'
+            nullable: true
+            column: prl_pan_titre
+        prlPanPhoto:
+            type: string
+            length: '50'
+            nullable: true
+            column: prl_pan_photo
+        prlPanPres:
+            type: text
+            nullable: true
+            column: prl_pan_pres
+        prlPanComm:
+            type: text
+            nullable: true
+            column: prl_pan_comm
+        prlPanTabEnt:
+            type: string
+            length: '100'
+            nullable: true
+            column: prl_pan_tab_ent
+        prlPanTabCol1:
+            type: string
+            length: '30'
+            nullable: true
+            column: prl_pan_tab_col1
+        prlPanTabCol2:
+            type: string
+            length: '30'
+            nullable: true
+            column: prl_pan_tab_col2
+        prlPanTabCol3:
+            type: string
+            length: '30'
+            nullable: true
+            column: prl_pan_tab_col3
+        prlPanTabSupp:
+            type: string
+            length: '30'
+            nullable: true
+            column: prl_pan_tab_supp
+    lifecycleCallbacks: {  }

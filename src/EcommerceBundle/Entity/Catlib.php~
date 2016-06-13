@@ -1,0 +1,167 @@
+<?php
+
+namespace EcommerceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Catlib
+ */
+class Catlib
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $ctlLocale;
+
+    /**
+     * @var string
+     */
+    private $ctlCateg;
+
+    /**
+     * @var string
+     */
+    private $ctlType;
+
+    /**
+     * @var string
+     */
+    private $ctlItem;
+
+    /**
+     * @var string
+     */
+    private $ctlLib;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set ctlLocale
+     *
+     * @param string $ctlLocale
+     * @return Catlib
+     */
+    public function setCtlLocale($ctlLocale)
+    {
+        $this->ctlLocale = $ctlLocale;
+
+        return $this;
+    }
+
+    /**
+     * Get ctlLocale
+     *
+     * @return string 
+     */
+    public function getCtlLocale()
+    {
+        return $this->ctlLocale;
+    }
+
+    /**
+     * Set ctlCateg
+     *
+     * @param string $ctlCateg
+     * @return Catlib
+     */
+    public function setCtlCateg($ctlCateg)
+    {
+        $this->ctlCateg = $ctlCateg;
+
+        return $this;
+    }
+
+    /**
+     * Get ctlCateg
+     *
+     * @return string 
+     */
+    public function getCtlCateg()
+    {
+        return $this->ctlCateg;
+    }
+
+    /**
+     * Set ctlType
+     *
+     * @param string $ctlType
+     * @return Catlib
+     */
+    public function setCtlType($ctlType)
+    {
+        $this->ctlType = $ctlType;
+
+        return $this;
+    }
+
+    /**
+     * Get ctlType
+     *
+     * @return string 
+     */
+    public function getCtlType()
+    {
+        return $this->ctlType;
+    }
+
+    /**
+     * Set ctlItem
+     *
+     * @param string $ctlItem
+     * @return Catlib
+     */
+    public function setCtlItem($ctlItem)
+    {
+        $this->ctlItem = $ctlItem;
+
+        return $this;
+    }
+
+    /**
+     * Get ctlItem
+     *
+     * @return string 
+     */
+    public function getCtlItem()
+    {
+        return $this->ctlItem;
+    }
+
+    /**
+     * Set ctlLib
+     *
+     * @param string $ctlLib
+     * @return Catlib
+     */
+    public function setCtlLib($ctlLib)
+    {
+        $this->ctlLib = $ctlLib;
+
+        return $this;
+    }
+
+    /**
+     * Get ctlLib
+     *
+     * @return string 
+     */
+    public function getCtlLib()
+    {
+        return $this->ctlLib;
+    }
+}

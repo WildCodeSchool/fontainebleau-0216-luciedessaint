@@ -1,0 +1,27 @@
+EcommerceBundle\Entity\Abontnews:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\AbontnewsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        anlEtat:
+            type: boolean
+            column: anl_etat
+        anlEmail:
+            type: string
+            length: '100'
+            unique: true
+            column: anl_email
+        anlDteActif:
+            type: datetime
+            column: anl_dte_actif
+        anlDteDesact:
+            type: datetime
+            nullable: true
+            column: anl_dte_desact
+    lifecycleCallbacks: {  }

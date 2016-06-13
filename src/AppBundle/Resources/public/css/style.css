@@ -16,7 +16,7 @@ h1 {
 h2 {
     font-size: 20px;
 }
-/* Nav bar */
+/* ------------------ Nav bar ------------------ */
 .navbar {
     margin-bottom: 0px;
 }
@@ -37,7 +37,7 @@ h2 {
 .navbar-default .navbar-nav > li > a:hover {
     color: #ffffff;
 }
-/* ------------------HomePage------------------ */
+/* ------------------ HomePage ------------------ */
 .container-fluid {
     margin: auto;
     padding: 0px;
@@ -88,7 +88,7 @@ h2 {
     background-repeat: no-repeat;
     background-size: cover;
 }
-/* Lucie Actu */
+/* ------------------ Lucie Actu ------------------ */
 .img_presentation {
     width: 100%;
     height: 300px;
@@ -99,7 +99,7 @@ h2 {
 .bouton {
     border-radius: 30px;
 }
-/* Bijoux */
+/* ------------------ Bijoux ------------------ */
 .imgbijou {
     width: 100%;
 }

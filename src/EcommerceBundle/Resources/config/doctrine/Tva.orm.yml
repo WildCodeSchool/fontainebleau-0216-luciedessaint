@@ -1,0 +1,29 @@
+EcommerceBundle\Entity\Tva:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\TvaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tvaEtat:
+            type: boolean
+            column: tva_etat
+        tvaLib:
+            type: string
+            length: '100'
+            unique: true
+            column: tva_lib
+        tvaTaux:
+            type: decimal
+            precision: '4'
+            scale: '2'
+            column: tva_taux
+        tvaDteDesact:
+            type: datetime
+            nullable: true
+            column: tva_dte_desact
+    lifecycleCallbacks: {  }

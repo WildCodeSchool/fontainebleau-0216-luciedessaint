@@ -1,0 +1,27 @@
+EcommerceBundle\Entity\Lang:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\LangRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        lngCode:
+            type: string
+            length: '2'
+            unique: true
+            column: lng_code
+        lngLib:
+            type: string
+            length: '30'
+            unique: true
+            column: lng_lib
+        lngFlag:
+            type: string
+            length: '50'
+            unique: true
+            column: lng_flag
+    lifecycleCallbacks: {  }

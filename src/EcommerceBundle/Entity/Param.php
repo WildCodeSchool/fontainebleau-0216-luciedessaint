@@ -1,0 +1,223 @@
+<?php
+
+namespace EcommerceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Param
+ */
+class Param
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var int
+     */
+    private $prmNbnivcat;
+
+    /**
+     * @var string
+     */
+    private $prmDevise;
+
+    /**
+     * @var bool
+     */
+    private $prmTvaUnique;
+
+    /**
+     * @var bool
+     */
+    private $prmNewsletter;
+
+    /**
+     * @var bool
+     */
+    private $prmFactGen;
+
+    /**
+     * @var bool
+     */
+    private $prmFactEnv;
+
+    /**
+     * @var bool
+     */
+    private $prmFactUpload;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set prmNbnivcat
+     *
+     * @param integer $prmNbnivcat
+     * @return Param
+     */
+    public function setPrmNbnivcat($prmNbnivcat)
+    {
+        $this->prmNbnivcat = $prmNbnivcat;
+
+        return $this;
+    }
+
+    /**
+     * Get prmNbnivcat
+     *
+     * @return integer 
+     */
+    public function getPrmNbnivcat()
+    {
+        return $this->prmNbnivcat;
+    }
+
+    /**
+     * Set prmDevise
+     *
+     * @param string $prmDevise
+     * @return Param
+     */
+    public function setPrmDevise($prmDevise)
+    {
+        $this->prmDevise = $prmDevise;
+
+        return $this;
+    }
+
+    /**
+     * Get prmDevise
+     *
+     * @return string 
+     */
+    public function getPrmDevise()
+    {
+        return $this->prmDevise;
+    }
+
+    /**
+     * Set prmTvaUnique
+     *
+     * @param boolean $prmTvaUnique
+     * @return Param
+     */
+    public function setPrmTvaUnique($prmTvaUnique)
+    {
+        $this->prmTvaUnique = $prmTvaUnique;
+
+        return $this;
+    }
+
+    /**
+     * Get prmTvaUnique
+     *
+     * @return boolean 
+     */
+    public function getPrmTvaUnique()
+    {
+        return $this->prmTvaUnique;
+    }
+
+    /**
+     * Set prmNewsletter
+     *
+     * @param boolean $prmNewsletter
+     * @return Param
+     */
+    public function setPrmNewsletter($prmNewsletter)
+    {
+        $this->prmNewsletter = $prmNewsletter;
+
+        return $this;
+    }
+
+    /**
+     * Get prmNewsletter
+     *
+     * @return boolean 
+     */
+    public function getPrmNewsletter()
+    {
+        return $this->prmNewsletter;
+    }
+
+    /**
+     * Set prmFactGen
+     *
+     * @param boolean $prmFactGen
+     * @return Param
+     */
+    public function setPrmFactGen($prmFactGen)
+    {
+        $this->prmFactGen = $prmFactGen;
+
+        return $this;
+    }
+
+    /**
+     * Get prmFactGen
+     *
+     * @return boolean 
+     */
+    public function getPrmFactGen()
+    {
+        return $this->prmFactGen;
+    }
+
+    /**
+     * Set prmFactEnv
+     *
+     * @param boolean $prmFactEnv
+     * @return Param
+     */
+    public function setPrmFactEnv($prmFactEnv)
+    {
+        $this->prmFactEnv = $prmFactEnv;
+
+        return $this;
+    }
+
+    /**
+     * Get prmFactEnv
+     *
+     * @return boolean 
+     */
+    public function getPrmFactEnv()
+    {
+        return $this->prmFactEnv;
+    }
+
+    /**
+     * Set prmFactUpload
+     *
+     * @param boolean $prmFactUpload
+     * @return Param
+     */
+    public function setPrmFactUpload($prmFactUpload)
+    {
+        $this->prmFactUpload = $prmFactUpload;
+
+        return $this;
+    }
+
+    /**
+     * Get prmFactUpload
+     *
+     * @return boolean 
+     */
+    public function getPrmFactUpload()
+    {
+        return $this->prmFactUpload;
+    }
+}

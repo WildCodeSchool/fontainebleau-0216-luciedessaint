@@ -1,0 +1,80 @@
+EcommerceBundle\Entity\Catlib:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\CatlibRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        ctlLocale:
+            type: string
+            length: '2'
+            column: ctl_locale
+        ctlCateg:
+            type: string
+            length: '50'
+            column: ctl_categ
+        ctlType:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_type
+        ctlItem:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_item
+        ctlLib:
+            type: string
+            length: 255
+            nullable: true
+            column: ctl_lib
+        ctlInfoLib1:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib1
+        ctlInfoLib2:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib2
+        ctlInfoLib3:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib3
+        ctlInfoLib4:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib4
+        ctlInfoLib5:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib5
+        ctlInfoLib6:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib6
+        ctlInfoLib7:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib7
+        ctlInfoLib8:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib8
+        ctlInfoLib9:
+            type: string
+            length: '50'
+            nullable: true
+            column: ctl_info_lib9
+    lifecycleCallbacks: {  }

@@ -1,0 +1,475 @@
+<?php
+
+namespace EcommerceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Paramlib
+ */
+class Paramlib
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $prlLocale;
+
+    /**
+     * @var string
+     */
+    private $prlDelaiLiv;
+
+    /**
+     * @var string
+     */
+    private $prlLivRestrict;
+
+    /**
+     * @var string
+     */
+    private $prlFabDelai;
+
+    /**
+     * @var string
+     */
+    private $prlArtPhoto;
+
+    /**
+     * @var string
+     */
+    private $prlArtPres;
+
+    /**
+     * @var string
+     */
+    private $prlArtComm;
+
+    /**
+     * @var string
+     */
+    private $prlPanTitre;
+
+    /**
+     * @var string
+     */
+    private $prlPanPhoto;
+
+    /**
+     * @var string
+     */
+    private $prlPanPres;
+
+    /**
+     * @var string
+     */
+    private $prlPanComm;
+
+    /**
+     * @var string
+     */
+    private $prlPanTabEnt;
+
+    /**
+     * @var string
+     */
+    private $prlPanTabCol1;
+
+    /**
+     * @var string
+     */
+    private $prlPanTabCol2;
+
+    /**
+     * @var string
+     */
+    private $prlPanTabCol3;
+
+    /**
+     * @var string
+     */
+    private $prlPanTabSupp;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set prlLocale
+     *
+     * @param string $prlLocale
+     * @return Paramlib
+     */
+    public function setPrlLocale($prlLocale)
+    {
+        $this->prlLocale = $prlLocale;
+
+        return $this;
+    }
+
+    /**
+     * Get prlLocale
+     *
+     * @return string 
+     */
+    public function getPrlLocale()
+    {
+        return $this->prlLocale;
+    }
+
+    /**
+     * Set prlDelaiLiv
+     *
+     * @param string $prlDelaiLiv
+     * @return Paramlib
+     */
+    public function setPrlDelaiLiv($prlDelaiLiv)
+    {
+        $this->prlDelaiLiv = $prlDelaiLiv;
+
+        return $this;
+    }
+
+    /**
+     * Get prlDelaiLiv
+     *
+     * @return string 
+     */
+    public function getPrlDelaiLiv()
+    {
+        return $this->prlDelaiLiv;
+    }
+
+    /**
+     * Set prlLivRestrict
+     *
+     * @param string $prlLivRestrict
+     * @return Paramlib
+     */
+    public function setPrlLivRestrict($prlLivRestrict)
+    {
+        $this->prlLivRestrict = $prlLivRestrict;
+
+        return $this;
+    }
+
+    /**
+     * Get prlLivRestrict
+     *
+     * @return string 
+     */
+    public function getPrlLivRestrict()
+    {
+        return $this->prlLivRestrict;
+    }
+
+    /**
+     * Set prlFabDelai
+     *
+     * @param string $prlFabDelai
+     * @return Paramlib
+     */
+    public function setPrlFabDelai($prlFabDelai)
+    {
+        $this->prlFabDelai = $prlFabDelai;
+
+        return $this;
+    }
+
+    /**
+     * Get prlFabDelai
+     *
+     * @return string 
+     */
+    public function getPrlFabDelai()
+    {
+        return $this->prlFabDelai;
+    }
+
+    /**
+     * Set prlArtPhoto
+     *
+     * @param string $prlArtPhoto
+     * @return Paramlib
+     */
+    public function setPrlArtPhoto($prlArtPhoto)
+    {
+        $this->prlArtPhoto = $prlArtPhoto;
+
+        return $this;
+    }
+
+    /**
+     * Get prlArtPhoto
+     *
+     * @return string 
+     */
+    public function getPrlArtPhoto()
+    {
+        return $this->prlArtPhoto;
+    }
+
+    /**
+     * Set prlArtPres
+     *
+     * @param string $prlArtPres
+     * @return Paramlib
+     */
+    public function setPrlArtPres($prlArtPres)
+    {
+        $this->prlArtPres = $prlArtPres;
+
+        return $this;
+    }
+
+    /**
+     * Get prlArtPres
+     *
+     * @return string 
+     */
+    public function getPrlArtPres()
+    {
+        return $this->prlArtPres;
+    }
+
+    /**
+     * Set prlArtComm
+     *
+     * @param string $prlArtComm
+     * @return Paramlib
+     */
+    public function setPrlArtComm($prlArtComm)
+    {
+        $this->prlArtComm = $prlArtComm;
+
+        return $this;
+    }
+
+    /**
+     * Get prlArtComm
+     *
+     * @return string 
+     */
+    public function getPrlArtComm()
+    {
+        return $this->prlArtComm;
+    }
+
+    /**
+     * Set prlPanTitre
+     *
+     * @param string $prlPanTitre
+     * @return Paramlib
+     */
+    public function setPrlPanTitre($prlPanTitre)
+    {
+        $this->prlPanTitre = $prlPanTitre;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanTitre
+     *
+     * @return string 
+     */
+    public function getPrlPanTitre()
+    {
+        return $this->prlPanTitre;
+    }
+
+    /**
+     * Set prlPanPhoto
+     *
+     * @param string $prlPanPhoto
+     * @return Paramlib
+     */
+    public function setPrlPanPhoto($prlPanPhoto)
+    {
+        $this->prlPanPhoto = $prlPanPhoto;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanPhoto
+     *
+     * @return string 
+     */
+    public function getPrlPanPhoto()
+    {
+        return $this->prlPanPhoto;
+    }
+
+    /**
+     * Set prlPanPres
+     *
+     * @param string $prlPanPres
+     * @return Paramlib
+     */
+    public function setPrlPanPres($prlPanPres)
+    {
+        $this->prlPanPres = $prlPanPres;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanPres
+     *
+     * @return string 
+     */
+    public function getPrlPanPres()
+    {
+        return $this->prlPanPres;
+    }
+
+    /**
+     * Set prlPanComm
+     *
+     * @param string $prlPanComm
+     * @return Paramlib
+     */
+    public function setPrlPanComm($prlPanComm)
+    {
+        $this->prlPanComm = $prlPanComm;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanComm
+     *
+     * @return string 
+     */
+    public function getPrlPanComm()
+    {
+        return $this->prlPanComm;
+    }
+
+    /**
+     * Set prlPanTabEnt
+     *
+     * @param string $prlPanTabEnt
+     * @return Paramlib
+     */
+    public function setPrlPanTabEnt($prlPanTabEnt)
+    {
+        $this->prlPanTabEnt = $prlPanTabEnt;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanTabEnt
+     *
+     * @return string 
+     */
+    public function getPrlPanTabEnt()
+    {
+        return $this->prlPanTabEnt;
+    }
+
+    /**
+     * Set prlPanTabCol1
+     *
+     * @param string $prlPanTabCol1
+     * @return Paramlib
+     */
+    public function setPrlPanTabCol1($prlPanTabCol1)
+    {
+        $this->prlPanTabCol1 = $prlPanTabCol1;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanTabCol1
+     *
+     * @return string 
+     */
+    public function getPrlPanTabCol1()
+    {
+        return $this->prlPanTabCol1;
+    }
+
+    /**
+     * Set prlPanTabCol2
+     *
+     * @param string $prlPanTabCol2
+     * @return Paramlib
+     */
+    public function setPrlPanTabCol2($prlPanTabCol2)
+    {
+        $this->prlPanTabCol2 = $prlPanTabCol2;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanTabCol2
+     *
+     * @return string 
+     */
+    public function getPrlPanTabCol2()
+    {
+        return $this->prlPanTabCol2;
+    }
+
+    /**
+     * Set prlPanTabCol3
+     *
+     * @param string $prlPanTabCol3
+     * @return Paramlib
+     */
+    public function setPrlPanTabCol3($prlPanTabCol3)
+    {
+        $this->prlPanTabCol3 = $prlPanTabCol3;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanTabCol3
+     *
+     * @return string 
+     */
+    public function getPrlPanTabCol3()
+    {
+        return $this->prlPanTabCol3;
+    }
+
+    /**
+     * Set prlPanTabSupp
+     *
+     * @param string $prlPanTabSupp
+     * @return Paramlib
+     */
+    public function setPrlPanTabSupp($prlPanTabSupp)
+    {
+        $this->prlPanTabSupp = $prlPanTabSupp;
+
+        return $this;
+    }
+
+    /**
+     * Get prlPanTabSupp
+     *
+     * @return string 
+     */
+    public function getPrlPanTabSupp()
+    {
+        return $this->prlPanTabSupp;
+    }
+}
