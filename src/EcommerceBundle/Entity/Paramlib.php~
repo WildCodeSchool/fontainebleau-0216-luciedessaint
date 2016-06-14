@@ -472,32 +472,4 @@ class Paramlib
     {
         return $this->prlPanTabSupp;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Param
-     */
-    private $prlIdprm;
-
-
-    /**
-     * Set prlIdprm
-     *
-     * @param \EcommerceBundle\Entity\Param $prlIdprm
-     * @return Paramlib
-     */
-    public function setPrlIdprm(\EcommerceBundle\Entity\Param $prlIdprm = null)
-    {
-        $this->prlIdprm = $prlIdprm;
-
-        return $this;
-    }
-
-    /**
-     * Get prlIdprm
-     *
-     * @return \EcommerceBundle\Entity\Param 
-     */
-    public function getPrlIdprm()
-    {
-        return $this->prlIdprm;
-    }
 }

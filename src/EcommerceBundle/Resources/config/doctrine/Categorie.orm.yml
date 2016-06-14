@@ -33,4 +33,10 @@ EcommerceBundle\Entity\Categorie:
             length: '100'
             nullable: true
             column: cat_photo
+    manyToOne:
+      catIdtva:
+        targetEntity: EcommerceBundle\Entity\Tva
+        joinColumn:
+          name: cat_idtva
+          referencedColumnName: id
     lifecycleCallbacks: {  }

@@ -1,0 +1,55 @@
+<?php
+
+namespace EcommerceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Compdt
+ */
+class Compdt
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var int
+     */
+    private $cPNbpdt;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cPNbpdt
+     *
+     * @param integer $cPNbpdt
+     * @return Compdt
+     */
+    public function setCPNbpdt($cPNbpdt)
+    {
+        $this->cPNbpdt = $cPNbpdt;
+
+        return $this;
+    }
+
+    /**
+     * Get cPNbpdt
+     *
+     * @return integer 
+     */
+    public function getCPNbpdt()
+    {
+        return $this->cPNbpdt;
+    }
+}

@@ -220,32 +220,4 @@ class Param
     {
         return $this->prmFactUpload;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Tva
-     */
-    private $prmIdtva;
-
-
-    /**
-     * Set prmIdtva
-     *
-     * @param \EcommerceBundle\Entity\Tva $prmIdtva
-     * @return Param
-     */
-    public function setPrmIdtva(\EcommerceBundle\Entity\Tva $prmIdtva = null)
-    {
-        $this->prmIdtva = $prmIdtva;
-
-        return $this;
-    }
-
-    /**
-     * Get prmIdtva
-     *
-     * @return \EcommerceBundle\Entity\Tva 
-     */
-    public function getPrmIdtva()
-    {
-        return $this->prmIdtva;
-    }
 }

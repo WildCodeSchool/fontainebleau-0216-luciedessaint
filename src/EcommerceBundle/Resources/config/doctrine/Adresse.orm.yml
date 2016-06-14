@@ -1,0 +1,61 @@
+EcommerceBundle\Entity\Adresse:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\AdresseRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        adrType:
+            type: smallint
+            column: adr_type
+        adrNom:
+            type: string
+            length: '50'
+            column: adr_nom
+        adrPrenom:
+            type: string
+            length: '50'
+            column: adr_prenom
+        adrSoc:
+            type: string
+            length: '100'
+            nullable: true
+            column: adr_soc
+        adrEmail:
+            type: string
+            length: '100'
+            nullable: true
+            column: adr_email
+        adrAdr:
+            type: string
+            length: '100'
+            column: adr_adr
+        adrAdr2:
+            type: string
+            length: '100'
+            nullable: true
+            column: adr_adr2
+        adrCp:
+            type: string
+            length: '20'
+            column: adr_cp
+        adrVille:
+            type: string
+            length: '50'
+            column: adr_ville
+        adrPays:
+            type: string
+            length: '50'
+            nullable: true
+            column: adr_pays
+    manyToOne:
+      adrIdcom:
+        targetEntity: EcommerceBundle\Entity\Commande
+        joinColumn:
+          name: adr_idcom
+          referencedColumnName: id
+    lifecycleCallbacks: {  }

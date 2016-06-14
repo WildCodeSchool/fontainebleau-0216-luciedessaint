@@ -99,4 +99,10 @@ EcommerceBundle\Entity\Prodlib:
             length: '100'
             nullable: true
             column: pdl_liv_delai
+    manyToOne:
+      pdlIdpdt:
+        targetEntity: EcommerceBundle\Entity\Produit
+        joinColumn:
+          name: pdl_idpdt
+          referencedColumnName: id
     lifecycleCallbacks: {  }

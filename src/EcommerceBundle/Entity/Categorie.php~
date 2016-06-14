@@ -192,32 +192,4 @@ class Categorie
     {
         return $this->catPhoto;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Tva
-     */
-    private $catIdtva;
-
-
-    /**
-     * Set catIdtva
-     *
-     * @param \EcommerceBundle\Entity\Tva $catIdtva
-     * @return Categorie
-     */
-    public function setCatIdtva(\EcommerceBundle\Entity\Tva $catIdtva = null)
-    {
-        $this->catIdtva = $catIdtva;
-
-        return $this;
-    }
-
-    /**
-     * Get catIdtva
-     *
-     * @return \EcommerceBundle\Entity\Tva 
-     */
-    public function getCatIdtva()
-    {
-        return $this->catIdtva;
-    }
 }

@@ -4,7 +4,7 @@ appun:
 
 ecommerce:
     resource: "@EcommerceBundle/Resources/config/routing.yml"
-    prefix:   /produits
+    prefix:   /eco
 
 app:
     resource: "@AppBundle/Controller/"

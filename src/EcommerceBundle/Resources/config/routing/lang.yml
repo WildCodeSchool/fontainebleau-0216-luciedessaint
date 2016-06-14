@@ -1,0 +1,24 @@
+lang_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Lang:index" }
+    methods:  GET
+
+lang_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Lang:show" }
+    methods:  GET
+
+lang_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:Lang:new" }
+    methods:  [GET, POST]
+
+lang_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Lang:edit" }
+    methods:  [GET, POST]
+
+lang_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Lang:delete" }
+    methods:  DELETE

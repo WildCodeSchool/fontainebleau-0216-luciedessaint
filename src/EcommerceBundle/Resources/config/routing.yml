@@ -1,3 +1,11 @@
+ecommerce_lang:
+    resource: "@EcommerceBundle/Resources/config/routing/lang.yml"
+    prefix:   /admin/lng
+
+ecommerce_tva:
+    resource: "@EcommerceBundle/Resources/config/routing/tva.yml"
+    prefix:   /admin/tva
+
 ecommerce_panier:
-    path:     /kifa/panier
+    path:     /panier
     defaults: { _controller: EcommerceBundle:Panier:index }

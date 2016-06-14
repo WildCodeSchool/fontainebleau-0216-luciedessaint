@@ -77,4 +77,10 @@ EcommerceBundle\Entity\Catlib:
             length: '50'
             nullable: true
             column: ctl_info_lib9
+    manyToOne:
+      ctlIdcat:
+        targetEntity: EcommerceBundle\Entity\Categorie
+        joinColumn:
+          name: ctl_idcat
+          referencedColumnName: id
     lifecycleCallbacks: {  }

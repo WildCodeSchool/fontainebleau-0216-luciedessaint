@@ -35,4 +35,10 @@ EcommerceBundle\Entity\Param:
             type: boolean
             nullable: true
             column: prm_fact_upload
+    manyToOne:
+      prmIdtva:
+        targetEntity: EcommerceBundle\Entity\Tva
+        joinColumn:
+          name: prm_idtva
+          referencedColumnName: id
     lifecycleCallbacks: {  }

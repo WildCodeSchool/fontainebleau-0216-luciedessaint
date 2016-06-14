@@ -1,0 +1,26 @@
+EcommerceBundle\Entity\Compdt:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\CompdtRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        cxpNbpdt:
+            type: smallint
+            column: cxp_nbpdt
+    manyToOne:
+        cxpIdpdt:
+            targetEntity: EcommerceBundle\Entity\Produit
+            joinColumn:
+                name: cxp_idpdt
+                referencedColumnName: id
+        cxpIdcom:
+            targetEntity: EcommerceBundle\Entity\Commande
+            joinColumn:
+                name: cxp_idcom
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

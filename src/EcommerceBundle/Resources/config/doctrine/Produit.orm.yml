@@ -154,4 +154,10 @@ EcommerceBundle\Entity\Produit:
             length: '30'
             nullable: true
             column: pdt_pckg_photo
+    manyToOne:
+      pdtIdtva:
+        targetEntity: EcommerceBundle\Entity\Tva
+        joinColumn:
+          name: pdt_idtva
+          referencedColumnName: id
     lifecycleCallbacks: {  }

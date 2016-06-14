@@ -556,32 +556,4 @@ class Prodlib
     {
         return $this->pdlLivDelai;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Produit
-     */
-    private $pdlIdpdt;
-
-
-    /**
-     * Set pdlIdpdt
-     *
-     * @param \EcommerceBundle\Entity\Produit $pdlIdpdt
-     * @return Prodlib
-     */
-    public function setPdlIdpdt(\EcommerceBundle\Entity\Produit $pdlIdpdt = null)
-    {
-        $this->pdlIdpdt = $pdlIdpdt;
-
-        return $this;
-    }
-
-    /**
-     * Get pdlIdpdt
-     *
-     * @return \EcommerceBundle\Entity\Produit 
-     */
-    public function getPdlIdpdt()
-    {
-        return $this->pdlIdpdt;
-    }
 }

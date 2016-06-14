@@ -84,4 +84,10 @@ EcommerceBundle\Entity\Paramlib:
             length: '30'
             nullable: true
             column: prl_pan_tab_supp
+    manyToOne:
+      prlIdprm:
+        targetEntity: EcommerceBundle\Entity\Param
+        joinColumn:
+          name: prl_idprm
+          referencedColumnName: id
     lifecycleCallbacks: {  }

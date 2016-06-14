@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tva list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tvaetat</th>
+                <th>Tvalib</th>
+                <th>Tvataux</th>
+                <th>Tvadtedesact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tva in tvas %}
+            <tr>
+                <td><a href="{{ path('tva_show', { 'id': tva.id }) }}">{{ tva.id }}</a></td>
+                <td>{% if tva.tvaEtat %}Yes{% else %}No{% endif %}</td>
+                <td>{{ tva.tvaLib }}</td>
+                <td>{{ tva.tvaTaux }}</td>
+                <td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tva_show', { 'id': tva.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tva_edit', { 'id': tva.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tva_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
