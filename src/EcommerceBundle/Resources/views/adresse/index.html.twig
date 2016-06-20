@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Adresse list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adrtype</th>
+                <th>Adrnom</th>
+                <th>Adrprenom</th>
+                <th>Adrsoc</th>
+                <th>Adremail</th>
+                <th>Adradr</th>
+                <th>Adradr2</th>
+                <th>Adrcp</th>
+                <th>Adrville</th>
+                <th>Adrpays</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adresse in adresses %}
+            <tr>
+                <td><a href="{{ path('adresse_show', { 'id': adresse.id }) }}">{{ adresse.id }}</a></td>
+                <td>{{ adresse.adrType }}</td>
+                <td>{{ adresse.adrNom }}</td>
+                <td>{{ adresse.adrPrenom }}</td>
+                <td>{{ adresse.adrSoc }}</td>
+                <td>{{ adresse.adrEmail }}</td>
+                <td>{{ adresse.adrAdr }}</td>
+                <td>{{ adresse.adrAdr2 }}</td>
+                <td>{{ adresse.adrCp }}</td>
+                <td>{{ adresse.adrVille }}</td>
+                <td>{{ adresse.adrPays }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('adresse_show', { 'id': adresse.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('adresse_edit', { 'id': adresse.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adresse_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

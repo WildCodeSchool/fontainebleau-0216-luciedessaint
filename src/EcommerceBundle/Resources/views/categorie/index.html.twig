@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Categorie list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Catniv</th>
+                <th>Catavendre</th>
+                <th>Cataffprix</th>
+                <th>Cataffnostock</th>
+                <th>Cataffvendu</th>
+                <th>Catphoto</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                <td>{{ categorie.catNiv }}</td>
+                <td>{% if categorie.catAvendre %}Yes{% else %}No{% endif %}</td>
+                <td>{% if categorie.catAffPrix %}Yes{% else %}No{% endif %}</td>
+                <td>{% if categorie.catAffNostock %}Yes{% else %}No{% endif %}</td>
+                <td>{% if categorie.catAffVendu %}Yes{% else %}No{% endif %}</td>
+                <td>{{ categorie.catPhoto }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorie_show', { 'id': categorie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorie_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

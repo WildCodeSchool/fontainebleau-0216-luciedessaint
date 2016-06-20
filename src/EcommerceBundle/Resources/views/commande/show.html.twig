@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commande</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande.id }}</td>
+            </tr>
+            <tr>
+                <th>Comcode</th>
+                <td>{{ commande.comCode }}</td>
+            </tr>
+            <tr>
+                <th>Cometat</th>
+                <td>{{ commande.comEtat }}</td>
+            </tr>
+            <tr>
+                <th>Comcdebank</th>
+                <td>{{ commande.comCdebank }}</td>
+            </tr>
+            <tr>
+                <th>Comventedte</th>
+                <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comexpeddte</th>
+                <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Commajdte</th>
+                <td>{% if commande.comMajDte %}{{ commande.comMajDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Commajwho</th>
+                <td>{{ commande.comMajWho }}</td>
+            </tr>
+            <tr>
+                <th>Commajlib</th>
+                <td>{{ commande.comMajLib }}</td>
+            </tr>
+            <tr>
+                <th>Comannuldte</th>
+                <td>{% if commande.comAnnulDte %}{{ commande.comAnnulDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comannulwho</th>
+                <td>{{ commande.comAnnulWho }}</td>
+            </tr>
+            <tr>
+                <th>Comannullib</th>
+                <td>{{ commande.comAnnulLib }}</td>
+            </tr>
+            <tr>
+                <th>Comfact</th>
+                <td>{{ commande.comFact }}</td>
+            </tr>
+            <tr>
+                <th>Comfactdte</th>
+                <td>{% if commande.comFactDte %}{{ commande.comFactDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comfactwho</th>
+                <td>{{ commande.comFactWho }}</td>
+            </tr>
+            <tr>
+                <th>Comnbarts</th>
+                <td>{{ commande.comNbArts }}</td>
+            </tr>
+            <tr>
+                <th>Comtvaunique</th>
+                <td>{% if commande.comTvaUnique %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comprixtotht</th>
+                <td>{{ commande.comPrixTotHt }}</td>
+            </tr>
+            <tr>
+                <th>Comprixtotttc</th>
+                <td>{{ commande.comPrixTotTtc }}</td>
+            </tr>
+            <tr>
+                <th>Comembpoids</th>
+                <td>{{ commande.comEmbPoids }}</td>
+            </tr>
+            <tr>
+                <th>Comembdim</th>
+                <td>{{ commande.comEmbDim }}</td>
+            </tr>
+            <tr>
+                <th>Comlivdelai</th>
+                <td>{{ commande.comLivDelai }}</td>
+            </tr>
+            <tr>
+                <th>Comcomments</th>
+                <td>{{ commande.comComments }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commande_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('commande_edit', { 'id': commande.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

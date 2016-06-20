@@ -1,0 +1,24 @@
+commande_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Commande:index" }
+    methods:  GET
+
+commande_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Commande:show" }
+    methods:  GET
+
+commande_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:Commande:new" }
+    methods:  [GET, POST]
+
+commande_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Commande:edit" }
+    methods:  [GET, POST]
+
+commande_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Commande:delete" }
+    methods:  DELETE

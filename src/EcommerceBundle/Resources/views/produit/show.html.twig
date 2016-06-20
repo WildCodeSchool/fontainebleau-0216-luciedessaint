@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Pdtetat</th>
+                <td>{% if produit.pdtEtat %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Pdtavendre</th>
+                <td>{% if produit.pdtAvendre %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Pdtaffnostock</th>
+                <td>{% if produit.pdtAffNostock %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Pdtaffprix</th>
+                <td>{% if produit.pdtAffPrix %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Pdtnom</th>
+                <td>{{ produit.pdtNom }}</td>
+            </tr>
+            <tr>
+                <th>Pdtref</th>
+                <td>{{ produit.pdtRef }}</td>
+            </tr>
+            <tr>
+                <th>Pdtprixunitht</th>
+                <td>{{ produit.pdtPrixUnitHt }}</td>
+            </tr>
+            <tr>
+                <th>Pdtprixunitttc</th>
+                <td>{{ produit.pdtPrixUnitTtc }}</td>
+            </tr>
+            <tr>
+                <th>Pdtpromopct</th>
+                <td>{{ produit.pdtPromoPct }}</td>
+            </tr>
+            <tr>
+                <th>Pdtpromoht</th>
+                <td>{{ produit.pdtPromoHt }}</td>
+            </tr>
+            <tr>
+                <th>Pdtpromottc</th>
+                <td>{{ produit.pdtPromoTtc }}</td>
+            </tr>
+            <tr>
+                <th>Pdtphoto</th>
+                <td>{{ produit.pdtPhoto }}</td>
+            </tr>
+            <tr>
+                <th>Pdtphoto2</th>
+                <td>{{ produit.pdtPhoto2 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtphoto3</th>
+                <td>{{ produit.pdtPhoto3 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtphoto4</th>
+                <td>{{ produit.pdtPhoto4 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtphoto5</th>
+                <td>{{ produit.pdtPhoto5 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval1</th>
+                <td>{{ produit.pdtInfoVal1 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval2</th>
+                <td>{{ produit.pdtInfoVal2 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval3</th>
+                <td>{{ produit.pdtInfoVal3 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval4</th>
+                <td>{{ produit.pdtInfoVal4 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval5</th>
+                <td>{{ produit.pdtInfoVal5 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval6</th>
+                <td>{{ produit.pdtInfoVal6 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval7</th>
+                <td>{{ produit.pdtInfoVal7 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval8</th>
+                <td>{{ produit.pdtInfoVal8 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtinfoval9</th>
+                <td>{{ produit.pdtInfoVal9 }}</td>
+            </tr>
+            <tr>
+                <th>Pdtpoids</th>
+                <td>{{ produit.pdtPoids }}</td>
+            </tr>
+            <tr>
+                <th>Pdtdim</th>
+                <td>{{ produit.pdtDim }}</td>
+            </tr>
+            <tr>
+                <th>Pdtembpoids</th>
+                <td>{{ produit.pdtEmbPoids }}</td>
+            </tr>
+            <tr>
+                <th>Pdtembdim</th>
+                <td>{{ produit.pdtEmbDim }}</td>
+            </tr>
+            <tr>
+                <th>Pdtpckgphoto</th>
+                <td>{{ produit.pdtPckgPhoto }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

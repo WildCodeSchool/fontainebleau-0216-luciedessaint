@@ -1,0 +1,24 @@
+prodlib_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Prodlib:index" }
+    methods:  GET
+
+prodlib_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Prodlib:show" }
+    methods:  GET
+
+prodlib_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:Prodlib:new" }
+    methods:  [GET, POST]
+
+prodlib_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Prodlib:edit" }
+    methods:  [GET, POST]
+
+prodlib_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Prodlib:delete" }
+    methods:  DELETE

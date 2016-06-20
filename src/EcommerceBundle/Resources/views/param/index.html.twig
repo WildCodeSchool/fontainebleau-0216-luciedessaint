@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Param list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prmnbnivcat</th>
+                <th>Prmdevise</th>
+                <th>Prmtvaunique</th>
+                <th>Prmnewsletter</th>
+                <th>Prmfactgen</th>
+                <th>Prmfactenv</th>
+                <th>Prmfactupload</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for param in params %}
+            <tr>
+                <td><a href="{{ path('param_show', { 'id': param.id }) }}">{{ param.id }}</a></td>
+                <td>{{ param.prmNbnivcat }}</td>
+                <td>{{ param.prmDevise }}</td>
+                <td>{% if param.prmTvaUnique %}Yes{% else %}No{% endif %}</td>
+                <td>{% if param.prmNewsletter %}Yes{% else %}No{% endif %}</td>
+                <td>{% if param.prmFactGen %}Yes{% else %}No{% endif %}</td>
+                <td>{% if param.prmFactEnv %}Yes{% else %}No{% endif %}</td>
+                <td>{% if param.prmFactUpload %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('param_show', { 'id': param.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('param_edit', { 'id': param.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('param_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

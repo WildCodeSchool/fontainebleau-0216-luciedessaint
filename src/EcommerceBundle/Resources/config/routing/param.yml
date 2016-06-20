@@ -1,0 +1,24 @@
+param_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Param:index" }
+    methods:  GET
+
+param_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Param:show" }
+    methods:  GET
+
+param_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:Param:new" }
+    methods:  [GET, POST]
+
+param_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Param:edit" }
+    methods:  [GET, POST]
+
+param_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Param:delete" }
+    methods:  DELETE

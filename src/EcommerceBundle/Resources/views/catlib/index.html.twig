@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catlib list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ctllocale</th>
+                <th>Ctlcateg</th>
+                <th>Ctltype</th>
+                <th>Ctlitem</th>
+                <th>Ctllib</th>
+                <th>Ctlinfolib1</th>
+                <th>Ctlinfolib2</th>
+                <th>Ctlinfolib3</th>
+                <th>Ctlinfolib4</th>
+                <th>Ctlinfolib5</th>
+                <th>Ctlinfolib6</th>
+                <th>Ctlinfolib7</th>
+                <th>Ctlinfolib8</th>
+                <th>Ctlinfolib9</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for catlib in catlibs %}
+            <tr>
+                <td><a href="{{ path('catlib_show', { 'id': catlib.id }) }}">{{ catlib.id }}</a></td>
+                <td>{{ catlib.ctlLocale }}</td>
+                <td>{{ catlib.ctlCateg }}</td>
+                <td>{{ catlib.ctlType }}</td>
+                <td>{{ catlib.ctlItem }}</td>
+                <td>{{ catlib.ctlLib }}</td>
+                <td>{{ catlib.ctlInfoLib1 }}</td>
+                <td>{{ catlib.ctlInfoLib2 }}</td>
+                <td>{{ catlib.ctlInfoLib3 }}</td>
+                <td>{{ catlib.ctlInfoLib4 }}</td>
+                <td>{{ catlib.ctlInfoLib5 }}</td>
+                <td>{{ catlib.ctlInfoLib6 }}</td>
+                <td>{{ catlib.ctlInfoLib7 }}</td>
+                <td>{{ catlib.ctlInfoLib8 }}</td>
+                <td>{{ catlib.ctlInfoLib9 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('catlib_show', { 'id': catlib.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('catlib_edit', { 'id': catlib.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('catlib_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

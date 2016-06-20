@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Catlib</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ catlib.id }}</td>
+            </tr>
+            <tr>
+                <th>Ctllocale</th>
+                <td>{{ catlib.ctlLocale }}</td>
+            </tr>
+            <tr>
+                <th>Ctlcateg</th>
+                <td>{{ catlib.ctlCateg }}</td>
+            </tr>
+            <tr>
+                <th>Ctltype</th>
+                <td>{{ catlib.ctlType }}</td>
+            </tr>
+            <tr>
+                <th>Ctlitem</th>
+                <td>{{ catlib.ctlItem }}</td>
+            </tr>
+            <tr>
+                <th>Ctllib</th>
+                <td>{{ catlib.ctlLib }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib1</th>
+                <td>{{ catlib.ctlInfoLib1 }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib2</th>
+                <td>{{ catlib.ctlInfoLib2 }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib3</th>
+                <td>{{ catlib.ctlInfoLib3 }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib4</th>
+                <td>{{ catlib.ctlInfoLib4 }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib5</th>
+                <td>{{ catlib.ctlInfoLib5 }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib6</th>
+                <td>{{ catlib.ctlInfoLib6 }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib7</th>
+                <td>{{ catlib.ctlInfoLib7 }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib8</th>
+                <td>{{ catlib.ctlInfoLib8 }}</td>
+            </tr>
+            <tr>
+                <th>Ctlinfolib9</th>
+                <td>{{ catlib.ctlInfoLib9 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('catlib_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('catlib_edit', { 'id': catlib.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

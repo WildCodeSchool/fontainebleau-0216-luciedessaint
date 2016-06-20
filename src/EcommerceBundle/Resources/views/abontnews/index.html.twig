@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Abontnews list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Anletat</th>
+                <th>Anlemail</th>
+                <th>Anldteactif</th>
+                <th>Anldtedesact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abontnews in abontnews %}
+            <tr>
+                <td><a href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">{{ abontnews.id }}</a></td>
+                <td>{% if abontnews.anlEtat %}Yes{% else %}No{% endif %}</td>
+                <td>{{ abontnews.anlEmail }}</td>
+                <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if abontnews.anlDteDesact %}{{ abontnews.anlDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('abontnews_edit', { 'id': abontnews.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('abontnews_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

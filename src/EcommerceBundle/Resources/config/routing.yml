@@ -9,3 +9,39 @@ ecommerce_tva:
 ecommerce_panier:
     path:     /panier
     defaults: { _controller: EcommerceBundle:Panier:index }
+
+ecommerce_abontnews:
+    resource: "@EcommerceBundle/Resources/config/routing/abontnews.yml"
+    prefix:   /admin/abontnews
+
+ecommerce_param:
+    resource: "@EcommerceBundle/Resources/config/routing/param.yml"
+    prefix:   /admin/param
+
+ecommerce_paramlib:
+    resource: "@EcommerceBundle/Resources/config/routing/paramlib.yml"
+    prefix:   /admin/paramlib
+
+ecommerce_categorie:
+    resource: "@EcommerceBundle/Resources/config/routing/categorie.yml"
+    prefix:   /admin/categorie
+
+ecommerce_catlib:
+    resource: "@EcommerceBundle/Resources/config/routing/catlib.yml"
+    prefix:   /admin/catlib
+
+ecommerce_produit:
+    resource: "@EcommerceBundle/Resources/config/routing/produit.yml"
+    prefix:   /admin/produit
+
+ecommerce_prodlib:
+    resource: "@EcommerceBundle/Resources/config/routing/prodlib.yml"
+    prefix:   /admin/prodlib
+
+ecommerce_commande:
+    resource: "@EcommerceBundle/Resources/config/routing/commande.yml"
+    prefix:   /admin/commande
+
+ecommerce_adresse:
+    resource: "@EcommerceBundle/Resources/config/routing/adresse.yml"
+    prefix:   /admin/adresse

@@ -1,0 +1,24 @@
+adresse_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Adresse:index" }
+    methods:  GET
+
+adresse_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Adresse:show" }
+    methods:  GET
+
+adresse_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:Adresse:new" }
+    methods:  [GET, POST]
+
+adresse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Adresse:edit" }
+    methods:  [GET, POST]
+
+adresse_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Adresse:delete" }
+    methods:  DELETE

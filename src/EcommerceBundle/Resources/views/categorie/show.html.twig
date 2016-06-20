@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Categorie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Catniv</th>
+                <td>{{ categorie.catNiv }}</td>
+            </tr>
+            <tr>
+                <th>Catavendre</th>
+                <td>{% if categorie.catAvendre %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cataffprix</th>
+                <td>{% if categorie.catAffPrix %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cataffnostock</th>
+                <td>{% if categorie.catAffNostock %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cataffvendu</th>
+                <td>{% if categorie.catAffVendu %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Catphoto</th>
+                <td>{{ categorie.catPhoto }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

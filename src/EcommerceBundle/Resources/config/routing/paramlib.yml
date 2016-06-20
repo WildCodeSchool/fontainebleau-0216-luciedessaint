@@ -1,0 +1,24 @@
+paramlib_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:Paramlib:index" }
+    methods:  GET
+
+paramlib_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Paramlib:show" }
+    methods:  GET
+
+paramlib_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:Paramlib:new" }
+    methods:  [GET, POST]
+
+paramlib_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Paramlib:edit" }
+    methods:  [GET, POST]
+
+paramlib_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Paramlib:delete" }
+    methods:  DELETE

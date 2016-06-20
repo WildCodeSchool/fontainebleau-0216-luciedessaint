@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Produit list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pdtetat</th>
+                <th>Pdtavendre</th>
+                <th>Pdtaffnostock</th>
+                <th>Pdtaffprix</th>
+                <th>Pdtnom</th>
+                <th>Pdtref</th>
+                <th>Pdtprixunitht</th>
+                <th>Pdtprixunitttc</th>
+                <th>Pdtpromopct</th>
+                <th>Pdtpromoht</th>
+                <th>Pdtpromottc</th>
+                <th>Pdtphoto</th>
+                <th>Pdtphoto2</th>
+                <th>Pdtphoto3</th>
+                <th>Pdtphoto4</th>
+                <th>Pdtphoto5</th>
+                <th>Pdtinfoval1</th>
+                <th>Pdtinfoval2</th>
+                <th>Pdtinfoval3</th>
+                <th>Pdtinfoval4</th>
+                <th>Pdtinfoval5</th>
+                <th>Pdtinfoval6</th>
+                <th>Pdtinfoval7</th>
+                <th>Pdtinfoval8</th>
+                <th>Pdtinfoval9</th>
+                <th>Pdtpoids</th>
+                <th>Pdtdim</th>
+                <th>Pdtembpoids</th>
+                <th>Pdtembdim</th>
+                <th>Pdtpckgphoto</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+                <td>{% if produit.pdtEtat %}Yes{% else %}No{% endif %}</td>
+                <td>{% if produit.pdtAvendre %}Yes{% else %}No{% endif %}</td>
+                <td>{% if produit.pdtAffNostock %}Yes{% else %}No{% endif %}</td>
+                <td>{% if produit.pdtAffPrix %}Yes{% else %}No{% endif %}</td>
+                <td>{{ produit.pdtNom }}</td>
+                <td>{{ produit.pdtRef }}</td>
+                <td>{{ produit.pdtPrixUnitHt }}</td>
+                <td>{{ produit.pdtPrixUnitTtc }}</td>
+                <td>{{ produit.pdtPromoPct }}</td>
+                <td>{{ produit.pdtPromoHt }}</td>
+                <td>{{ produit.pdtPromoTtc }}</td>
+                <td>{{ produit.pdtPhoto }}</td>
+                <td>{{ produit.pdtPhoto2 }}</td>
+                <td>{{ produit.pdtPhoto3 }}</td>
+                <td>{{ produit.pdtPhoto4 }}</td>
+                <td>{{ produit.pdtPhoto5 }}</td>
+                <td>{{ produit.pdtInfoVal1 }}</td>
+                <td>{{ produit.pdtInfoVal2 }}</td>
+                <td>{{ produit.pdtInfoVal3 }}</td>
+                <td>{{ produit.pdtInfoVal4 }}</td>
+                <td>{{ produit.pdtInfoVal5 }}</td>
+                <td>{{ produit.pdtInfoVal6 }}</td>
+                <td>{{ produit.pdtInfoVal7 }}</td>
+                <td>{{ produit.pdtInfoVal8 }}</td>
+                <td>{{ produit.pdtInfoVal9 }}</td>
+                <td>{{ produit.pdtPoids }}</td>
+                <td>{{ produit.pdtDim }}</td>
+                <td>{{ produit.pdtEmbPoids }}</td>
+                <td>{{ produit.pdtEmbDim }}</td>
+                <td>{{ produit.pdtPckgPhoto }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('produit_show', { 'id': produit.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

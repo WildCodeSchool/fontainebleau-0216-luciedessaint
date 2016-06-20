@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Paramlib</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ paramlib.id }}</td>
+            </tr>
+            <tr>
+                <th>Prllocale</th>
+                <td>{{ paramlib.prlLocale }}</td>
+            </tr>
+            <tr>
+                <th>Prldelailiv</th>
+                <td>{{ paramlib.prlDelaiLiv }}</td>
+            </tr>
+            <tr>
+                <th>Prllivrestrict</th>
+                <td>{{ paramlib.prlLivRestrict }}</td>
+            </tr>
+            <tr>
+                <th>Prlfabdelai</th>
+                <td>{{ paramlib.prlFabDelai }}</td>
+            </tr>
+            <tr>
+                <th>Prlartphoto</th>
+                <td>{{ paramlib.prlArtPhoto }}</td>
+            </tr>
+            <tr>
+                <th>Prlartpres</th>
+                <td>{{ paramlib.prlArtPres }}</td>
+            </tr>
+            <tr>
+                <th>Prlartcomm</th>
+                <td>{{ paramlib.prlArtComm }}</td>
+            </tr>
+            <tr>
+                <th>Prlpantitre</th>
+                <td>{{ paramlib.prlPanTitre }}</td>
+            </tr>
+            <tr>
+                <th>Prlpanphoto</th>
+                <td>{{ paramlib.prlPanPhoto }}</td>
+            </tr>
+            <tr>
+                <th>Prlpanpres</th>
+                <td>{{ paramlib.prlPanPres }}</td>
+            </tr>
+            <tr>
+                <th>Prlpancomm</th>
+                <td>{{ paramlib.prlPanComm }}</td>
+            </tr>
+            <tr>
+                <th>Prlpantabent</th>
+                <td>{{ paramlib.prlPanTabEnt }}</td>
+            </tr>
+            <tr>
+                <th>Prlpantabcol1</th>
+                <td>{{ paramlib.prlPanTabCol1 }}</td>
+            </tr>
+            <tr>
+                <th>Prlpantabcol2</th>
+                <td>{{ paramlib.prlPanTabCol2 }}</td>
+            </tr>
+            <tr>
+                <th>Prlpantabcol3</th>
+                <td>{{ paramlib.prlPanTabCol3 }}</td>
+            </tr>
+            <tr>
+                <th>Prlpantabsupp</th>
+                <td>{{ paramlib.prlPanTabSupp }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paramlib_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('paramlib_edit', { 'id': paramlib.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
