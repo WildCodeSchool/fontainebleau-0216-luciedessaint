@@ -25,9 +25,7 @@
                 <p><a href="{{ path('tva_index') }}">Liste des taux de TVA</a></p>
                 <p><a href="{{ path('lang_index') }}">Liste des langues</a></p>
                 <p>
-                    {% for param in params %}
-                        <a href="{{ path('param_edit', { 'id' : param.id}) }}"> Paremètres généraux</a>
-                    {%  endfor %}
+                    <a href="{{ path('param_show', { 'id': 1 }) }}">Paremètres généraux</a>
                 </p>
             </div>
         </div>

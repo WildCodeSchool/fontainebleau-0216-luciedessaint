@@ -37,11 +37,7 @@
                 <li><a class="hvr-underline-from-left" href="{{  path('categorie_index') }}">Catégories des produits</a></li>
                 <li><a class="hvr-underline-from-left" href="{{  path('tva_index') }}">TVA</a></li>
                 <li><a class="hvr-underline-from-left" href="{{  path('lang_index') }}">Langues</a></li>
-                <li>
-                    {% for param in params %}
-                        <a class="hvr-underline-from-left" href="{{  path('param_edit', { 'id' : param.id}) }}"> Paremètres généraux</a>
-                    {%  endfor %}
-                </li>
+                
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
