@@ -4,15 +4,7 @@ app_homepage:
 
 app_kifa:
     path:     /kifa
-    defaults: { _controller: AppBundle:Default:idx }
-
-app_tableau:
-    path:     /tableaux
-    defaults: { _controller: AppBundle:Tableau:index }
-
-app_bijou:
-    path:     /bijoux
-    defaults: { _controller: AppBundle:Bijou:index }
+    defaults: { _controller: AppBundle:Default:index }
 
 app_lucieactu:
     path:     /lucieetactualites
