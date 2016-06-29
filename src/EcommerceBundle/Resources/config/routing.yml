@@ -45,3 +45,15 @@ ecommerce_commande:
 ecommerce_adresse:
     resource: "@EcommerceBundle/Resources/config/routing/adresse.yml"
     prefix:   /admin/adresse
+
+ecommerce_admin:
+    path:     /admin
+    defaults: { _controller: EcommerceBundle:Admin:index }
+
+ecommerce_tableau:
+    path:     /tableaux
+    defaults: { _controller: EcommerceBundle:Tableau:index }
+
+ecommerce_bijou:
+    path:     /bijoux
+    defaults: { _controller: EcommerceBundle:Bijou:index }

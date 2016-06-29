@@ -1,44 +1,58 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Tva</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>{{ tva.tvaLib }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('tva_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                    {#<tr>#}
+                    {#<th>Id</th>#}
+                    {#<td>{{ tva.id }}</td>#}
+                    {#</tr>#}
+                    <tr>
+                        <th>Actif/inactif</th>
+                        <td>{% if tva.tvaEtat %}Oui{% else %}Non{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Libellé</th>
+                        <td>{{ tva.tvaLib }}</td>
+                    </tr>
+                    <tr>
+                        <th>Taux de TVA</th>
+                        <td>{{ tva.tvaTaux|number_format(2, ',', ' ') }} %</td>
+                    </tr>
+                    {#<tr>#}
+                    {#<th>Désactivation</th>#}
+                    {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                    {#</tr>#}
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('tva_edit', { 'id': tva.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                {#<ul>#}
+                    {#<li>#}
+                    {#<a href="{{ path('tva_index') }}">Back to the list</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a class="btn btn-success" href="{{ path('tva_edit', { 'id': tva.id }) }}">#}
+                            {#<i class="glyphicon glyphicon-edit"></i>Edit</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                    {#{{ form_start(delete_form) }}#}
+                    {#<input type="submit" value="Delete">#}
+                    {#{{ form_end(delete_form) }}#}
+                    {#</li>#}
+                {#</ul>#}
+            </div>
+        </div>
+    </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tva.id }}</td>
-            </tr>
-            <tr>
-                <th>Tvaetat</th>
-                <td>{% if tva.tvaEtat %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Tvalib</th>
-                <td>{{ tva.tvaLib }}</td>
-            </tr>
-            <tr>
-                <th>Tvataux</th>
-                <td>{{ tva.tvaTaux }}</td>
-            </tr>
-            <tr>
-                <th>Tvadtedesact</th>
-                <td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('tva_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('tva_edit', { 'id': tva.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

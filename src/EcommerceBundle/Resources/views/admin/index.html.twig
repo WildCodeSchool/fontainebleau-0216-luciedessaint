@@ -1,0 +1,33 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+                <p class="text-center">Commandes :</p><br />
+                <p><a href="{{ path('commande_index') }}">Liste des commandes</a></p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-center">Produits :</p><br />
+                <p><a href="{{ path('produit_index') }}">Listes des produits</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+                <p class="text-center">Newsletter :</p><br />
+                <p><a href="{{ path('abontnews_index') }}">Liste des abonnés aux newsletter</a></p>
+                <p>Uploader une newsletter</p>
+                <p>Envoyer la newsletter</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-center">Paramètres :</p><br />
+                <p><a href="{{ path('categorie_index') }}">Liste des catégories de produit</a></p>
+                <p><a href="{{ path('tva_index') }}">Liste des taux de TVA</a></p>
+                <p><a href="{{ path('lang_index') }}">Liste des langues</a></p>
+                <p>
+                    <a href="{{ path('param_show', { 'id': 1 }) }}">Paremètres généraux</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

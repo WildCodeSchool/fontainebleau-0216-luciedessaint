@@ -1,45 +1,52 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Tva list</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>Liste des taux de TVA</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('tva_new') }}">
+            <i class="glyphicon glyphicon-plus"></i>
+            Créer une nouvelle entrée
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        {#<th>Id</th>#}
+                        <th>Actif/inactif</th>
+                        <th>Libellé</th>
+                        <th>Taux de TVA</th>
+                        {#<th>Désactivation</th>#}
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for tva in tvas %}
+                        <tr>
+                            {#<td><a href="{{ path('tva_show', { 'id': tva.id }) }}">{{ tva.id }}</a></td>#}
+                            <td>{% if tva.tvaEtat %}Oui{% else %}Non{% endif %}</td>
+                            <td>{{ tva.tvaLib }}</td>
+                            <td>{{ tva.tvaTaux|number_format(2, ',', ' ') }} %</td>
+                            {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                            <td>
+                                <ul class="nopuce">
+                                    <li>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('tva_show', { 'id': tva.id }) }}">
+                                            <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('tva_edit', { 'id': tva.id }) }}">
+                                            <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Tvaetat</th>
-                <th>Tvalib</th>
-                <th>Tvataux</th>
-                <th>Tvadtedesact</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tva in tvas %}
-            <tr>
-                <td><a href="{{ path('tva_show', { 'id': tva.id }) }}">{{ tva.id }}</a></td>
-                <td>{% if tva.tvaEtat %}Yes{% else %}No{% endif %}</td>
-                <td>{{ tva.tvaLib }}</td>
-                <td>{{ tva.tvaTaux }}</td>
-                <td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('tva_show', { 'id': tva.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tva_edit', { 'id': tva.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </div>
+        </div>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('tva_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}

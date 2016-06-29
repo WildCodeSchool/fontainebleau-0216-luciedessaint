@@ -1,0 +1,80 @@
+img.image_event,
+img.image_spend {
+    width: 100px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.col-lg-4 ul li,
+.col-lg-8 ul li,
+.col-lg-offset-1.col-lg-11 ul li,
+ul.nopuce li {
+    list-style-type: none;
+    margin: 0 0 10px 0;
+}
+
+/*ul li
+{
+    list-style-type: none;
+    margin: 0 0 10px 0;
+}*/
+
+label {
+    display: block;
+    margin: 0px;
+}
+
+#spend_spendDate_date {
+    margin: 0px;
+    padding: 0px;
+}
+
+#spend_spendGroupIndiv, #spend_spendDate_time_hour, #spend_spendDate_time_minute {
+    margin: 0 0 20px 0;
+}
+
+#spend_spendLibel {
+    float: none;
+}
+
+#spend_spendDate_date, #spend_spendDate_time_hour {
+    margin: 0 0 5px 0;
+}
+
+.btn-primary {
+    margin-top: 30px;
+}
+
+.btn-success {
+    margin-top: 25px;
+}
+
+.point {
+    display: inline-block;
+}
+
+#place-btn {
+    margin-top: 15px;
+}
+
+.jumbotron h1 {
+    margin: initial;
+}
+
+/*--------------------------------------*\
+                Admin boutons
+\*--------------------------------------*/
+.glyphicon-eye-open, .glyphicon-edit {
+    margin-right: 5px;
+}
+.lib_champs {
+    text-align: right;
+    margin-top: 5%;
+}
+#tva_tvaEtat {
+    height: 34px;
+    width: 34px;
+}
