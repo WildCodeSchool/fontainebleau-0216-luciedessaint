@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EcommerceBundle\Entity\Tva;
 use EcommerceBundle\Form\TvaType;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Tva controller.
@@ -73,12 +74,29 @@ class TvaController extends Controller
      */
     public function editAction(Request $request, Tva $tva)
     {
+        //Sauvegarde Etat (actif/inactif), en BDD de l'enregistrement
+        $EtatEnBdd = $tva->getTvaEtat();
+
         $deleteForm = $this->createDeleteForm($tva);
         $editForm = $this->createForm('EcommerceBundle\Form\TvaType', $tva);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            //Initialisation variable avec CurrentDateTime
+            $currentDte = new \DateTime();
+
+            //var_dump($tva->getTvaEtat());exit;
+            //var_dump($editForm->getViewData()->getTvaEtat());exit;
+            //var_dump($editForm->getViewData()->getTvaDteDesact());exit;
+
+            // Si Etat actuel (en bdd) => ACTIF et nouvel Etat (saisi par user) => INACTIF
+            if ($EtatEnBdd == TRUE && $editForm->getViewData()->getTvaEtat() == FALSE) {
+                // DateDesactivation passée à CurrentDateTime
+                $tva->setTvaDteDesact($currentDte);
+            }
+
             $em->persist($tva);
             $em->flush();
 
