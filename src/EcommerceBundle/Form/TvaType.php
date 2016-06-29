@@ -18,7 +18,7 @@ class TvaType extends AbstractType
             ->add('tvaEtat')
             ->add('tvaLib')
             ->add('tvaTaux')
-            ->add('tvaDteDesact', 'datetime')
+//            ->add('tvaDteDesact', 'datetime')
         ;
     }
     
