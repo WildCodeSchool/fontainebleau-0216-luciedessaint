@@ -304,4 +304,32 @@ class Adresse
     {
         return $this->adrPays;
     }
+    /**
+     * @var \EcommerceBundle\Entity\Commande
+     */
+    private $adrIdcom;
+
+
+    /**
+     * Set adrIdcom
+     *
+     * @param \EcommerceBundle\Entity\Commande $adrIdcom
+     * @return Adresse
+     */
+    public function setAdrIdcom(\EcommerceBundle\Entity\Commande $adrIdcom = null)
+    {
+        $this->adrIdcom = $adrIdcom;
+
+        return $this;
+    }
+
+    /**
+     * Get adrIdcom
+     *
+     * @return \EcommerceBundle\Entity\Commande 
+     */
+    public function getAdrIdcom()
+    {
+        return $this->adrIdcom;
+    }
 }

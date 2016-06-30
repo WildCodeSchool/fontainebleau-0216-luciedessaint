@@ -864,4 +864,32 @@ class Produit
     {
         return $this->pdtPckgPhoto;
     }
+    /**
+     * @var \EcommerceBundle\Entity\Tva
+     */
+    private $pdtIdtva;
+
+
+    /**
+     * Set pdtIdtva
+     *
+     * @param \EcommerceBundle\Entity\Tva $pdtIdtva
+     * @return Produit
+     */
+    public function setPdtIdtva(\EcommerceBundle\Entity\Tva $pdtIdtva = null)
+    {
+        $this->pdtIdtva = $pdtIdtva;
+
+        return $this;
+    }
+
+    /**
+     * Get pdtIdtva
+     *
+     * @return \EcommerceBundle\Entity\Tva 
+     */
+    public function getPdtIdtva()
+    {
+        return $this->pdtIdtva;
+    }
 }

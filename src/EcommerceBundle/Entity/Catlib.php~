@@ -416,4 +416,32 @@ class Catlib
     {
         return $this->ctlInfoLib9;
     }
+    /**
+     * @var \EcommerceBundle\Entity\Categorie
+     */
+    private $ctlIdcat;
+
+
+    /**
+     * Set ctlIdcat
+     *
+     * @param \EcommerceBundle\Entity\Categorie $ctlIdcat
+     * @return Catlib
+     */
+    public function setCtlIdcat(\EcommerceBundle\Entity\Categorie $ctlIdcat = null)
+    {
+        $this->ctlIdcat = $ctlIdcat;
+
+        return $this;
+    }
+
+    /**
+     * Get ctlIdcat
+     *
+     * @return \EcommerceBundle\Entity\Categorie 
+     */
+    public function getCtlIdcat()
+    {
+        return $this->ctlIdcat;
+    }
 }
