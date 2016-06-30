@@ -36,9 +36,24 @@ class AbontnewsController extends Controller
     public function newAction(Request $request)
     {
         $abontnews = new Abontnews();
+
+        $em = $this->getDoctrine()->getManager();
+        $emailverif = $abontnews->getAnlEmail();
+
+        var_dump($emailverif);
+
+        //$res_verif = $em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif);
+
+        //var_dump($res_verif);
+
+
+        /*if ($em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif)){
+            var_dump("erreur");
+            exit;
+        }*/
+
         $form = $this->createForm('EcommerceBundle\Form\AbontnewsType', $abontnews);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($abontnews);
