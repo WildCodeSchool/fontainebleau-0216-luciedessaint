@@ -18,7 +18,6 @@ class AbontnewsType extends AbstractType
             ->add('anlEtat')
             ->add('anlEmail')
             ->add('anlDteActif', 'datetime')
-            ->add('anlDteDesact', 'datetime')
         ;
     }
     
