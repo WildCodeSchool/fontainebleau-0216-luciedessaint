@@ -9,8 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Prodlib
 {
+    
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -92,6 +93,51 @@ class Prodlib
     /**
      * @var string
      */
+    private $pdlInfoVal1;
+
+    /**
+     * @var string
+     */
+    private $pdlInfoVal2;
+
+    /**
+     * @var string
+     */
+    private $pdlInfoVal3;
+
+    /**
+     * @var string
+     */
+    private $pdlInfoVal4;
+
+    /**
+     * @var string
+     */
+    private $pdlInfoVal5;
+
+    /**
+     * @var string
+     */
+    private $pdlInfoVal6;
+
+    /**
+     * @var string
+     */
+    private $pdlInfoVal7;
+
+    /**
+     * @var string
+     */
+    private $pdlInfoVal8;
+
+    /**
+     * @var string
+     */
+    private $pdlInfoVal9;
+
+    /**
+     * @var string
+     */
     private $pdlPckgComm;
 
     /**
@@ -108,6 +154,11 @@ class Prodlib
      * @var string
      */
     private $pdlLivDelai;
+
+    /**
+     * @var \EcommerceBundle\Entity\Produit
+     */
+    private $pdlIdpdt;
 
 
     /**
@@ -466,6 +517,213 @@ class Prodlib
     }
 
     /**
+     * Set pdlInfoVal1
+     *
+     * @param string $pdlInfoVal1
+     * @return Prodlib
+     */
+    public function setPdlInfoVal1($pdlInfoVal1)
+    {
+        $this->pdlInfoVal1 = $pdlInfoVal1;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal1
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal1()
+    {
+        return $this->pdlInfoVal1;
+    }
+
+    /**
+     * Set pdlInfoVal2
+     *
+     * @param string $pdlInfoVal2
+     * @return Prodlib
+     */
+    public function setPdlInfoVal2($pdlInfoVal2)
+    {
+        $this->pdlInfoVal2 = $pdlInfoVal2;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal2
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal2()
+    {
+        return $this->pdlInfoVal2;
+    }
+
+    /**
+     * Set pdlInfoVal3
+     *
+     * @param string $pdlInfoVal3
+     * @return Prodlib
+     */
+    public function setPdlInfoVal3($pdlInfoVal3)
+    {
+        $this->pdlInfoVal3 = $pdlInfoVal3;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal3
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal3()
+    {
+        return $this->pdlInfoVal3;
+    }
+
+    /**
+     * Set pdlInfoVal4
+     *
+     * @param string $pdlInfoVal4
+     * @return Prodlib
+     */
+    public function setPdlInfoVal4($pdlInfoVal4)
+    {
+        $this->pdlInfoVal4 = $pdlInfoVal4;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal4
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal4()
+    {
+        return $this->pdlInfoVal4;
+    }
+
+    /**
+     * Set pdlInfoVal5
+     *
+     * @param string $pdlInfoVal5
+     * @return Prodlib
+     */
+    public function setPdlInfoVal5($pdlInfoVal5)
+    {
+        $this->pdlInfoVal5 = $pdlInfoVal5;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal5
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal5()
+    {
+        return $this->pdlInfoVal5;
+    }
+
+    /**
+     * Set pdlInfoVal6
+     *
+     * @param string $pdlInfoVal6
+     * @return Prodlib
+     */
+    public function setPdlInfoVal6($pdlInfoVal6)
+    {
+        $this->pdlInfoVal6 = $pdlInfoVal6;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal6
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal6()
+    {
+        return $this->pdlInfoVal6;
+    }
+
+    /**
+     * Set pdlInfoVal7
+     *
+     * @param string $pdlInfoVal7
+     * @return Prodlib
+     */
+    public function setPdlInfoVal7($pdlInfoVal7)
+    {
+        $this->pdlInfoVal7 = $pdlInfoVal7;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal7
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal7()
+    {
+        return $this->pdlInfoVal7;
+    }
+
+    /**
+     * Set pdlInfoVal8
+     *
+     * @param string $pdlInfoVal8
+     * @return Prodlib
+     */
+    public function setPdlInfoVal8($pdlInfoVal8)
+    {
+        $this->pdlInfoVal8 = $pdlInfoVal8;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal8
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal8()
+    {
+        return $this->pdlInfoVal8;
+    }
+
+    /**
+     * Set pdlInfoVal9
+     *
+     * @param string $pdlInfoVal9
+     * @return Prodlib
+     */
+    public function setPdlInfoVal9($pdlInfoVal9)
+    {
+        $this->pdlInfoVal9 = $pdlInfoVal9;
+
+        return $this;
+    }
+
+    /**
+     * Get pdlInfoVal9
+     *
+     * @return string 
+     */
+    public function getPdlInfoVal9()
+    {
+        return $this->pdlInfoVal9;
+    }
+
+    /**
      * Set pdlPckgComm
      *
      * @param string $pdlPckgComm
@@ -556,11 +814,6 @@ class Prodlib
     {
         return $this->pdlLivDelai;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Produit
-     */
-    private $pdlIdpdt;
-
 
     /**
      * Set pdlIdpdt

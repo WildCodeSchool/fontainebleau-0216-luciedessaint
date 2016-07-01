@@ -84,51 +84,6 @@ EcommerceBundle\Entity\Produit:
             length: '50'
             nullable: true
             column: pdt_photo5
-        pdtInfoVal1:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val1
-        pdtInfoVal2:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val2
-        pdtInfoVal3:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val3
-        pdtInfoVal4:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val4
-        pdtInfoVal5:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val5
-        pdtInfoVal6:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val6
-        pdtInfoVal7:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val7
-        pdtInfoVal8:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val8
-        pdtInfoVal9:
-            type: string
-            length: '100'
-            nullable: true
-            column: pdt_info_val9
         pdtPoids:
             type: string
             length: '50'
