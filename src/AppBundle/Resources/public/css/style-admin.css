@@ -78,3 +78,6 @@ label {
     height: 34px;
     width: 34px;
 }
+.lib_error {
+    color: #761c19;
+}

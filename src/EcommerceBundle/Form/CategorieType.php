@@ -15,12 +15,14 @@ class CategorieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('catLibAdmin')
             ->add('catNiv')
             ->add('catAvendre')
             ->add('catAffPrix')
 //            ->add('catAffNostock')
             ->add('catAffVendu')
-            ->add('catPhoto')
+//            ->add('catPhoto')
+            ->add('catPhoto', 'file', array('label' => 'Photo illustration', 'required' => false))
             ->add('catIdtva')
         ;
     }
