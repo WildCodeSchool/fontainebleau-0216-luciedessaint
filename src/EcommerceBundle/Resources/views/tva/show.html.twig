@@ -2,7 +2,7 @@
 
 {% block body %}
     <div id="header" class="jumbotron text-center">
-        <h1>{{ tva.tvaLib }}</h1>
+        <h1>Taux de TVA : {{ tva.tvaLib }}</h1>
         <a class="btn btn-success btn-lg" href="{{ path('tva_index') }}">
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour à la liste
@@ -19,7 +19,7 @@
                     {#</tr>#}
                     <tr>
                         <th>Actif/inactif</th>
-                        <td>{% if tva.tvaEtat %}Oui{% else %}Non{% endif %}</td>
+                        <td>{% if tva.tvaEtat %}Actif{% else %}Inactif{% endif %}</td>
                     </tr>
                     <tr>
                         <th>Libellé</th>

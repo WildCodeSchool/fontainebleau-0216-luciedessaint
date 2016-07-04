@@ -9,7 +9,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Produit
 {
-    
+
+    // Code écrit
+
+    public function __toString()
+    {
+        return $this->getPdtNom();
+    }
+
+    ///////////////////////
+    // GENERATED CODE
+
     /**
      * @var integer
      */

@@ -16,15 +16,18 @@
             <div class="col-md-offset-1 col-md-8">
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Nom</p>
+                        <p class="text-right lib_champs">Dénomination</p>
                     </div>
                     <div class="col-md-9">
-                        {{ form_widget(form.pdtNom) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtNom, { 'attr': {'class': 'form-control Nom', 'placeholder': 'Dénomination' }}) }}
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Etat</p>
+                        <p class="text-right lib_champs">Etat (actif/inactif)</p>
                     </div>
                     <div class="col-md-9">
                         {{ form_widget(form.pdtEtat) }}
@@ -32,7 +35,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">A vendre</p>
+                        <p class="text-right lib_champs">A vendre (O/N)</p>
                     </div>
                     <div class="col-md-9">
                         {{ form_widget(form.pdtAvendre) }}
@@ -40,7 +43,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Afficher le prix</p>
+                        <p class="text-right lib_champs">Affichage du prix (O/N)</p>
                     </div>
                     <div class="col-md-9">
                         {{ form_widget(form.pdtAffPrix) }}
@@ -64,7 +67,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(form.pdtPrixUnitHt, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Prix hors taxe' }}) }}
+                            {{ form_widget(form.pdtPrixUnitHt, { 'attr': {'class': 'form-control Prix HT', 'placeholder': 'Prix hors taxe' }}) }}
                         </div>
                     </div>
                 </div>
@@ -75,13 +78,13 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(form.pdtPrixUnitTtc, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Prix toute taxe comprise' }}) }}
+                            {{ form_widget(form.pdtPrixUnitTtc, { 'attr': {'class': 'form-control Prix TTC', 'placeholder': 'Prix toute taxe comprise' }}) }}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Promotion en pourcentage</p>
+                        <p class="text-right lib_champs">Promotion (en %)</p>
                     </div>
                     <div class="col-md-9">
                         <div class="input-group">
@@ -92,7 +95,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Photo</p>
+                        <p class="text-right lib_champs">Photo du produit</p>
                     </div>
                     <div class="col-md-9">
                         {{ form_widget(form.pdtPhoto) }}
@@ -100,7 +103,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Poid</p>
+                        <p class="text-right lib_champs">Poids</p>
                     </div>
                     <div class="col-md-9">
                         <div class="input-group">
@@ -144,18 +147,18 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Photo du packaging</p>
-                    </div>
-                    <div class="col-md-9">
-                        {{ form_widget(form.pdtPckgPhoto) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
                         <p class="text-right lib_champs">TVA du produit</p>
                     </div>
                     <div class="col-md-9">
                         {{ form_widget(form.pdtIdtva) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Photo du packaging</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdtPckgPhoto) }}
                     </div>
                 </div>
 

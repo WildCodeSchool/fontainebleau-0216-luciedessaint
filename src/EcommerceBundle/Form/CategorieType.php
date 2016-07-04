@@ -21,7 +21,6 @@ class CategorieType extends AbstractType
             ->add('catAffPrix')
 //            ->add('catAffNostock')
             ->add('catAffVendu')
-//            ->add('catPhoto')
             ->add('catPhoto', 'file', array('label' => 'Photo illustration', 'required' => false))
             ->add('catIdtva')
         ;

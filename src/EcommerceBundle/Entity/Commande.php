@@ -9,6 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commande
 {
+    // Code écrit
+
+    public function __toString()
+    {
+        return $this->getComCode();
+    }
+
+    ///////////////////////
+    // GENERATED CODE
+
     /**
      * @var int
      */

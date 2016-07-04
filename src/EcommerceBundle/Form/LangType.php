@@ -28,7 +28,7 @@ class LangType extends AbstractType
                     "el - ελληνικά (Grec)" => "el",
                     "ja - 日本の (Japonais)" => "ja",
                     "zh - 中国 (Chinois)" => "zh",
-                    "ko - 한국의 (Koréen)" => "ko",
+                    "ko - 한국의 (Coréen)" => "ko",
                     "ru - русский (Russe)" => "ru"
                 )
             ))
@@ -45,7 +45,7 @@ class LangType extends AbstractType
                     "ελληνικά (Grec)" => "ελληνικά",
                     "日本の (Japonais)" => "日本の",
                     "中国 (Chinois)" => "中国",
-                    "한국의 (Koréen)" => "한국의",
+                    "한국의 (Coréen)" => "한국의",
                     "русский (Russe)" => "русский"
                 )
             ))
