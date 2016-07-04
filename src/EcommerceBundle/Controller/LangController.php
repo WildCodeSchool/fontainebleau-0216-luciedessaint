@@ -36,7 +36,8 @@ class LangController extends Controller
     public function newAction(Request $request)
     {
         $lang = new Lang();
-        $form = $this->createForm('EcommerceBundle\Form\LangType', $lang);
+        $request = $this->getRequest();
+        $form    = $this->createForm(new LangType(), $lang);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
