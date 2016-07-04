@@ -29,6 +29,7 @@ class Lang
      */
     private $lngFlag;
 
+    
 
     /**
      * Get id
