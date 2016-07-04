@@ -1,140 +1,163 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Prodlib</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>Libellé du produit : {{ prodlib.pdlIdpdt }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('tva_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                        <th>Pdllocale</th>
+                        <td>{{ prodlib.pdlLocale }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdllib</th>
+                        <td>{{ prodlib.pdlLib }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdldesc</th>
+                        <td>{{ prodlib.pdlDesc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlcat</th>
+                        <td>{{ prodlib.pdlCat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdltype</th>
+                        <td>{{ prodlib.pdlType }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlitem</th>
+                        <td>{{ prodlib.pdlItem }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib1</th>
+                        <td>{{ prodlib.pdlInfoLib1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib2</th>
+                        <td>{{ prodlib.pdlInfoLib2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib3</th>
+                        <td>{{ prodlib.pdlInfoLib3 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib4</th>
+                        <td>{{ prodlib.pdlInfoLib4 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib5</th>
+                        <td>{{ prodlib.pdlInfoLib5 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib6</th>
+                        <td>{{ prodlib.pdlInfoLib6 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib7</th>
+                        <td>{{ prodlib.pdlInfoLib7 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib8</th>
+                        <td>{{ prodlib.pdlInfoLib8 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlinfolib9</th>
+                        <td>{{ prodlib.pdlInfoLib9 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval1</th>
+                        <td>{{ prodlib.pdlInfoVal1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval2</th>
+                        <td>{{ prodlib.pdlInfoVal2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval3</th>
+                        <td>{{ prodlib.pdlInfoVal3 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval4</th>
+                        <td>{{ prodlib.pdlInfoVal4 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval5</th>
+                        <td>{{ prodlib.pdlInfoVal5 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval6</th>
+                        <td>{{ prodlib.pdlInfoVal6 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval7</th>
+                        <td>{{ prodlib.pdlInfoVal7 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval8</th>
+                        <td>{{ prodlib.pdlInfoVal8 }}</td>
+                    </tr>
+                    <tr>
+                        <th>pdlinfoval9</th>
+                        <td>{{ prodlib.pdlInfoVal9 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlpckgcomm</th>
+                        <td>{{ prodlib.pdlPckgComm }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdldispo</th>
+                        <td>{{ prodlib.pdlDispo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdlfabdelai</th>
+                        <td>{{ prodlib.pdlFabDelai }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdllivdelai</th>
+                        <td>{{ prodlib.pdlLivDelai }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pdl id prod</th>
+                        <td>{{ prodlib.pdlIdpdt }}</td>
+                    </tr>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ prodlib.id }}</td>
-            </tr>
-            <tr>
-                <th>Pdllocale</th>
-                <td>{{ prodlib.pdlLocale }}</td>
-            </tr>
-            <tr>
-                <th>Pdllib</th>
-                <td>{{ prodlib.pdlLib }}</td>
-            </tr>
-            <tr>
-                <th>Pdldesc</th>
-                <td>{{ prodlib.pdlDesc }}</td>
-            </tr>
-            <tr>
-                <th>Pdlcat</th>
-                <td>{{ prodlib.pdlCat }}</td>
-            </tr>
-            <tr>
-                <th>Pdltype</th>
-                <td>{{ prodlib.pdlType }}</td>
-            </tr>
-            <tr>
-                <th>Pdlitem</th>
-                <td>{{ prodlib.pdlItem }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib1</th>
-                <td>{{ prodlib.pdlInfoLib1 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib2</th>
-                <td>{{ prodlib.pdlInfoLib2 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib3</th>
-                <td>{{ prodlib.pdlInfoLib3 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib4</th>
-                <td>{{ prodlib.pdlInfoLib4 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib5</th>
-                <td>{{ prodlib.pdlInfoLib5 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib6</th>
-                <td>{{ prodlib.pdlInfoLib6 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib7</th>
-                <td>{{ prodlib.pdlInfoLib7 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib8</th>
-                <td>{{ prodlib.pdlInfoLib8 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlinfolib9</th>
-                <td>{{ prodlib.pdlInfoLib9 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval1</th>
-                <td>{{ produit.pdlInfoVal1 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval2</th>
-                <td>{{ produit.pdlInfoVal2 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval3</th>
-                <td>{{ produit.pdlInfoVal3 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval4</th>
-                <td>{{ produit.pdlInfoVal4 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval5</th>
-                <td>{{ produit.pdlInfoVal5 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval6</th>
-                <td>{{ produit.pdlInfoVal6 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval7</th>
-                <td>{{ produit.pdlInfoVal7 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval8</th>
-                <td>{{ produit.pdlInfoVal8 }}</td>
-            </tr>
-            <tr>
-                <th>pdlinfoval9</th>
-                <td>{{ produit.pdlInfoVal9 }}</td>
-            </tr>
-            <tr>
-                <th>Pdlpckgcomm</th>
-                <td>{{ prodlib.pdlPckgComm }}</td>
-            </tr>
-            <tr>
-                <th>Pdldispo</th>
-                <td>{{ prodlib.pdlDispo }}</td>
-            </tr>
-            <tr>
-                <th>Pdlfabdelai</th>
-                <td>{{ prodlib.pdlFabDelai }}</td>
-            </tr>
-            <tr>
-                <th>Pdllivdelai</th>
-                <td>{{ prodlib.pdlLivDelai }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('prodlib_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('prodlib_edit', { 'id': prodlib.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('prodlib_edit', { 'id': prodlib.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                {#<h1>Prodlib</h1>
+                    <table>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('prodlib_index') }}">Back to the list</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('prodlib_edit', { 'id': prodlib.id }) }}">Edit</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form) }}
+                                <input type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>#}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
