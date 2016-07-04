@@ -1,7 +1,104 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Prodlib list</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>Liste des libellés</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('prodlib_new') }}">
+            <i class="glyphicon glyphicon-plus"></i>
+            Créer une nouvelle entrée
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        {#<th>Id</th>#}
+                        <th>Pdllocale</th>
+                        <th>Pdllib</th>
+                        <th>Pdldesc</th>
+                        <th>Pdlcat</th>
+                        <th>Pdltype</th>
+                        <th>Pdlitem</th>
+                        <th>Pdlinfolib1</th>
+                        <th>Pdlinfolib2</th>
+                        <th>Pdlinfolib3</th>
+                        <th>Pdlinfolib4</th>
+                        <th>Pdlinfolib5</th>
+                        <th>Pdlinfolib6</th>
+                        <th>Pdlinfolib7</th>
+                        <th>Pdlinfolib8</th>
+                        <th>Pdlinfolib9</th>
+                        <th>Pdlinfoval1</th>
+                        <th>Pdlinfoval2</th>
+                        <th>Pdlinfoval3</th>
+                        <th>Pdlinfoval4</th>
+                        <th>Pdlinfoval5</th>
+                        <th>Pdlinfoval6</th>
+                        <th>Pdlinfoval7</th>
+                        <th>Pdlinfoval8</th>
+                        <th>Pdlinfoval9</th>
+                        <th>Pdlpckgcomm</th>
+                        <th>Pdldispo</th>
+                        <th>Pdlfabdelai</th>
+                        <th>Pdllivdelai</th>
+                        <th>pdl id prod</th>
+                        {#<th>Désactivation</th>#}
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for prodlib in prodlibs %}
+                        <tr>
+                            {#<td><a href="{{ path('prodlib_show', { 'id': prodlib.id }) }}">{{ prodlib.id }}</a></td>#}
+                            <td>{{ prodlib.pdlLocale }}</td>
+                            <td>{{ prodlib.pdlLib }}</td>
+                            <td>{{ prodlib.pdlDesc }}</td>
+                            <td>{{ prodlib.pdlCat }}</td>
+                            <td>{{ prodlib.pdlType }}</td>
+                            <td>{{ prodlib.pdlItem }}</td>
+                            <td>{{ prodlib.pdlInfoLib1 }}</td>
+                            <td>{{ prodlib.pdlInfoLib2 }}</td>
+                            <td>{{ prodlib.pdlInfoLib3 }}</td>
+                            <td>{{ prodlib.pdlInfoLib4 }}</td>
+                            <td>{{ prodlib.pdlInfoLib5 }}</td>
+                            <td>{{ prodlib.pdlInfoLib6 }}</td>
+                            <td>{{ prodlib.pdlInfoLib7 }}</td>
+                            <td>{{ prodlib.pdlInfoLib8 }}</td>
+                            <td>{{ prodlib.pdlInfoLib9 }}</td>
+                            <td>{{ prodlib.pdlInfoVal1 }}</td>
+                            <td>{{ prodlib.pdlInfoVal2 }}</td>
+                            <td>{{ prodlib.pdlInfoVal3 }}</td>
+                            <td>{{ prodlib.pdlInfoVal4 }}</td>
+                            <td>{{ prodlib.pdlInfoVal5 }}</td>
+                            <td>{{ prodlib.pdlInfoVal6 }}</td>
+                            <td>{{ prodlib.pdlInfoVal7 }}</td>
+                            <td>{{ prodlib.pdlInfoVal8 }}</td>
+                            <td>{{ prodlib.pdlInfoVal9 }}</td>
+                            <td>{{ prodlib.pdlPckgComm }}</td>
+                            <td>{{ prodlib.pdlDispo }}</td>
+                            <td>{{ prodlib.pdlFabDelai }}</td>
+                            <td>{{ prodlib.pdlLivDelai }}</td>
+                            <td>{{ prodlib.pdlIdpdt }}</td>
+                            <td>
+                                <ul class="nopuce">
+                                    <li>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('prodlib_show', { 'id': prodlib.id }) }}">
+                                            <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('prodlib_edit', { 'id': prodlib.id }) }}">
+                                            <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {#<h1>Prodlib list</h1>
 
     <table>
         <thead>
@@ -89,5 +186,5 @@
         <li>
             <a href="{{ path('prodlib_new') }}">Create a new entry</a>
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}
