@@ -26,9 +26,9 @@
                     {% for abontnews in abontnews %}
                         <tr>
                             {#<td><a href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">{{ abontnews.id }}</a></td>#}
-                            <td>{% if abontnews.anlEtat %}Oui{% else %}Non{% endif %}</td>
+                            <td>{% if abontnews.anlEtat %}Actif{% else %}Inactif{% endif %}</td>
                             <td>{{ abontnews.anlEmail }}</td>
-                            <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('d-m-Y H:i:s') }}{% endif %}</td>
                             {#<td>{% if abontnews.anlDteDesact %}{{ abontnews.anlDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
                             <td>
                                 <ul class="nopuce">
