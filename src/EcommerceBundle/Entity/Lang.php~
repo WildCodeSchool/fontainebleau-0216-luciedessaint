@@ -9,6 +9,29 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Lang
 {
+    /*upload d'image champ"virtuel"*/
+    public $file;
+
+    protected function getUploadDir()
+    {
+        return 'bundles/drapeaux';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->lngFlag ? null : $this->getUploadDir().'/'.$this->lngFlag;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->lngFlag ? null : $this->getUploadRootDir().'/'.$this->lngFlag;
+    }
+    /*fin champ virtuel*/
     /**
      * @var int
      */
@@ -29,6 +52,7 @@ class Lang
      */
     private $lngFlag;
 
+    
 
     /**
      * Get id

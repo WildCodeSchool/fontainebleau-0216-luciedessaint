@@ -4,6 +4,8 @@ EcommerceBundle\Entity\Lang:
 #        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: lngCode
 #          message:  "Code langue déjà existant"
     properties:
+        file:
+            - Image: ~
         lngCode:
             - Choice:
                 choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
