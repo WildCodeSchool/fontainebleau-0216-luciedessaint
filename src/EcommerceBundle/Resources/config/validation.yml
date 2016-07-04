@@ -17,10 +17,12 @@ EcommerceBundle\Entity\Lang:
     properties:
         anlEmail:
             - Email: ~
+
 EcommerceBundle\Entity\Categorie:
     properties:
         catPhoto:
             - Image: ~
+
 EcommerceBundle\Entity\Catlib:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
@@ -35,3 +37,9 @@ EcommerceBundle\Entity\Catlib:
 #            - Choice:
 #                choices:  [male, female]
 #                message:  Choose a valid gender.
+
+EcommerceBundle\Entity\Abontnews:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: anlEmail
+            message: 'trou du cul !!!'
