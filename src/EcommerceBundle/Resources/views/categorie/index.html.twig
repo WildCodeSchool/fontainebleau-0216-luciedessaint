@@ -24,7 +24,6 @@
                             {#<th>Affichage si<br />pas de stock ?<br />(0/N)</th>#}
                             <th>Affichage<br />si vendu ?<br />(0/N)</th>
                             {#<th>Photo</th>#}
-                            <th>Libellés</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -33,7 +32,7 @@
                             <tr>
                                 {#<td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>#}
                                 <td>{{ categorie.catLibAdmin }}</td>
-                                <td>{{ categorie.catNiv|number_format(0, ',', ' ') }}}</td>
+                                <td>{{ categorie.catNiv|number_format(0, ',', ' ') }}</td>
                                 <td>{% if categorie.catAvendre %}Oui{% else %}Non{% endif %}</td>
                                 <td>{% if categorie.catAffPrix %}Oui{% else %}Non{% endif %}</td>
                                 {#<td>{% if categorie.catAffNostock %}Oui{% else %}Non{% endif %}</td>#}

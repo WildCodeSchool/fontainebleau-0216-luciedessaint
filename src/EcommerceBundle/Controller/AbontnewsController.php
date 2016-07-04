@@ -37,25 +37,39 @@ class AbontnewsController extends Controller
     {
         $abontnews = new Abontnews();
 
-        $em = $this->getDoctrine()->getManager();
-        $emailverif = $abontnews->getAnlEmail();
-
-        var_dump($emailverif);
-
-        //$res_verif = $em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif);
-
-        //var_dump($res_verif);
-
-
-        /*if ($em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif)){
-            var_dump("erreur");
-            exit;
-        }*/
-
         $form = $this->createForm('EcommerceBundle\Form\AbontnewsType', $abontnews);
         $form->handleRequest($request);
+
+//        $errors = ["email" => "", "etat" => ""];
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $emailverif = $abontnews->getAnlEmail();
+            //var_dump($emailverif);
+
+            $res_verif = $em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif);
+            var_dump($res_verif);
+
+            if ($res_verif) {
+/*                $erreur_unique = "Déjà enregistrée";
+                //var_dump($erreur_unique);
+                $errors["email"] = $erreur_unique;
+                var_dump($errors);
+                return $this->render('EcommerceBundle:abontnews:new.html.twig', array(
+                    'abontnews' => $abontnews,
+                    'form' => $form->createView(),
+                    'errors' => $errors,
+                ));*/
+
+/*                foreach ( $res_verif as $idx => $enreg_email ) {
+                    var_dump($enreg_email);
+                    $id = intval($enreg_email['id']);
+                }*/
+                
+                return $this->redirectToRoute('abontnews_edit', array('id' => $res_verif[0]->getId()));
+
+            }
             $em->persist($abontnews);
             $em->flush();
 
@@ -65,6 +79,7 @@ class AbontnewsController extends Controller
         return $this->render('EcommerceBundle:abontnews:new.html.twig', array(
             'abontnews' => $abontnews,
             'form' => $form->createView(),
+//            'errors' => $errors,
         ));
     }
 

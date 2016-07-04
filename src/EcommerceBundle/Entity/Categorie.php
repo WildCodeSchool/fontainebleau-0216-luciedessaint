@@ -9,6 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categorie
 {
+    // Code écrit
+
+    public function __toString()
+    {
+        return $this->getCatLibAdmin();
+    }
 
     ///////////////////////
     // GENERATED CODE

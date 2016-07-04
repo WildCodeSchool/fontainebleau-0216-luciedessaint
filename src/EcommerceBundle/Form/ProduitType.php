@@ -17,19 +17,19 @@ class ProduitType extends AbstractType
         $builder
             ->add('pdtEtat')
             ->add('pdtAvendre')
-            ->add('pdtAffNostock')
+//            ->add('pdtAffNostock')
             ->add('pdtAffPrix')
             ->add('pdtNom')
             ->add('pdtRef')
             ->add('pdtPrixUnitHt')
             ->add('pdtPrixUnitTtc')
             ->add('pdtPromoPct')
-            ->add('pdtPhoto')
+            ->add('pdtPhoto', 'file', array('label' => 'Photo du produit', 'required' => false))
             ->add('pdtPoids')
             ->add('pdtDim')
             ->add('pdtEmbPoids')
             ->add('pdtEmbDim')
-            ->add('pdtPckgPhoto')
+            ->add('pdtPckgPhoto', 'file', array('label' => 'Photo du packaging', 'required' => false))
             ->add('pdtIdtva')
         ;
     }

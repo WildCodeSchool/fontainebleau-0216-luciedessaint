@@ -18,7 +18,7 @@
                     <div class="col-md-3">
                         <p class="text-right lib_champs">Etat (actif/inactif)</p>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-6">
                         {{ form_widget(form.anlEtat) }}
                     </div>
                 </div>
@@ -26,19 +26,23 @@
                     <div class="col-md-3">
                         <p class="text-right lib_champs">Adresse email</p>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                             {{ form_widget(form.anlEmail, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Adresse mail' }}) }}
-                            {{ form_errors(form.anlEmail) }}
                         </div>
                     </div>
+{#                    {% if errors.email %}
+                        <div class="col-md-3">
+                            <p class="lib_error">{{ errors.email }}</p>
+                        </div>
+                    {% endif %}#}
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         <p class="text-right lib_champs">Date d'activation</p>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                             {{ form_widget(form.anlDteActif) }}

@@ -1,8 +1,68 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Categorie</h1>
 
+    <div id="header" class="jumbotron text-center">
+        <h1>Catégorie :<br/>{{ categorie.catLibAdmin }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('tva_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                    {#<tr>#}
+                        {#<th>Id</th>#}
+                        {#<td>{{ categorie.id }}</td>#}
+                    {#</tr>#}
+                    <tr>
+                        <th>Libellé administration</th>
+                        <td>{{ categorie.catLibAdmin }}</td>
+                    </tr>
+                    <tr>
+                        <th>Niveau (1/2/3)</th>
+                        <td>{{ categorie.catNiv }}</td>
+                    </tr>
+                    <tr>
+                        <th>A vendre (O/N)</th>
+                        <td>{% if categorie.catAvendre %}Oui{% else %}Non{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Affichage du prix (O/N)</th>
+                        <td>{% if categorie.catAffPrix %}Oui{% else %}Non{% endif %}</td>
+                    </tr>
+{#
+                    <tr>
+                        <th>Affichage si plus de stock (O/N)</th>
+                        <td>{% if categorie.catAffNostock %}Oui{% else %}Non{% endif %}</td>
+                    </tr>
+#}
+                    <tr>
+                        <th>Affichage 'Vendu' (O/N)</th>
+                        <td>{% if categorie.catAffVendu %}Oui{% else %}Non{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Taux de TVA associé</th>
+                        <td>{{ categorie.catIdtva }}</td>
+                    </tr>
+                    <tr>
+                        <th>Photo illustration</th>
+                        {#<td>{{ categorie.catPhoto }}</td>#}
+                        <td><img class="image_cat" src="{{ asset('uploads/photosCateg/') }}{{ categorie.catPhoto }}">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('categorie_edit', { 'id': categorie.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+              </div>
+        </div>
+    </div>
+
+{#
     <table>
         <tbody>
             <tr>
@@ -35,7 +95,9 @@
             </tr>
         </tbody>
     </table>
+#}
 
+{#
     <ul>
         <li>
             <a href="{{ path('categorie_index') }}">Back to the list</a>
@@ -49,4 +111,6 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+#}
+
 {% endblock %}
