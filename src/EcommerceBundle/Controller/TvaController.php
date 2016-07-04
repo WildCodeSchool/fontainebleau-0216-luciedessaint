@@ -38,7 +38,10 @@ class TvaController extends Controller
     {
         $tva = new Tva();
         $form = $this->createForm('EcommerceBundle\Form\TvaType', $tva);
+        $form->remove('tvaEtat');
         $form->handleRequest($request);
+        $tva->setTvaEtat(true);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
