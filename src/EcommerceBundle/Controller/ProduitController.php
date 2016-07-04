@@ -77,8 +77,8 @@ class ProduitController extends Controller
         $editForm = $this->createForm('EcommerceBundle\Form\ProduitType', $produit);
         $editForm->handleRequest($request);
 
-        // ceci permet de d'enlever la colonne pdtRef dans l'editform
-//        $editForm->remove('pdtRef');
+        // ceci permet d'enlever la colonne pdtRef dans l'editform
+        //$editForm->remove('pdtRef');
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
