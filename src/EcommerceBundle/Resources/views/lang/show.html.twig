@@ -1,40 +1,58 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Lang</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>{{ lang.lngLib }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('lang_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                    {#<tr>#}
+                    {#<th>Id</th>#}
+                    {#<td>{{ lng.id }}</td>#}
+                    {#</tr>#}
+                    <tr>
+                        <th>Code langue</th>
+                        <td>{{ lang.lngCode }}</td>
+                    </tr>
+                    <tr>
+                        <th>Libellé</th>
+                        <td>{{ lang.lngLib }}</td>
+                    </tr>
+                    <tr>
+                        <th>Drapeau langue</th>
+                        <td>{{ lang.lngFlag }} </td>
+                    </tr>
+                    {#<tr>#}
+                    {#<th>Désactivation</th>#}
+                    {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                    {#</tr>#}
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('lang_edit', { 'id': lang.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                {#<ul>#}
+                {#<li>#}
+                {#<a href="{{ path('tva_index') }}">Back to the list</a>#}
+                {#</li>#}
+                {#<li>#}
+                {#<a class="btn btn-success" href="{{ path('tva_edit', { 'id': tva.id }) }}">#}
+                {#<i class="glyphicon glyphicon-edit"></i>Edit</a>#}
+                {#</li>#}
+                {#<li>#}
+                {#{{ form_start(delete_form) }}#}
+                {#<input type="submit" value="Delete">#}
+                {#{{ form_end(delete_form) }}#}
+                {#</li>#}
+                {#</ul>#}
+            </div>
+        </div>
+    </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ lang.id }}</td>
-            </tr>
-            <tr>
-                <th>Lngcode</th>
-                <td>{{ lang.lngCode }}</td>
-            </tr>
-            <tr>
-                <th>Lnglib</th>
-                <td>{{ lang.lngLib }}</td>
-            </tr>
-            <tr>
-                <th>Lngflag</th>
-                <td>{{ lang.lngFlag }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('lang_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('lang_edit', { 'id': lang.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

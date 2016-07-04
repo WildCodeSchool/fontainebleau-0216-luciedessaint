@@ -1,21 +1,56 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Lang edit</h1>
+    <div id="header" class="jumbotron text-center">
+    <h1>{{ lang.lngCode }}</h1>
+    <a class="btn btn-success btn-lg" href="{{ path('lang_index') }}">
+        <i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à la liste
+    </a>
+    </div>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('lang_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                    <p class="text-right lib_champs">Code langue</p>
+                    </div>
+                    <div class="col-md-9">
+                    {{ form_widget(edit_form.lngCode) }}
+                    {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="glyphicon glyphicon-ok-sign"></i></span>#}
+                    {#{{ form_widget(edit_form.tvaEtat, { 'attr': {'class': 'form-control Actif', 'placeholder': 'Etat' }}) }}#}
+                    {#</div>#}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Libellé correspondant</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.lngLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libelle de la langue' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Drapeau correspondant</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+                            {{ form_widget(edit_form.lngFlag, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'drapeau de la langue' }}) }}
+                        </div>
+                    </div>
+                </div>
+                    <input class="btn btn-success" type="submit" value="Enregistrer" />
+                    <a href="{{ path('lang_index') }}">Back to the list</a>
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
