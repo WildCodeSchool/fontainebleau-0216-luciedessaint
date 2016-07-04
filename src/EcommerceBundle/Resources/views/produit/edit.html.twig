@@ -1,7 +1,164 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Produit edit</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>{{ produit.pdtNom }} &nbsp;|&nbsp;&nbsp;réf: {{ produit.pdtRef }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('produit_index') }}">
+            </i><i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+    {{ form_start(edit_form) }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="text-right lib_champs">Référence</p>
+                        </div>
+                        <div class="col-md-9">
+                            {{ form_widget(edit_form.pdtNom, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Référence du produit' }}) }}
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Nom</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtNom, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nom du produit' }}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Etat</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtEtat) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">A vendre</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtAvendre) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Afficher le prix</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtAffPrix) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Prix unitaire HT</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtPrixUnitHt) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Prix unitaire TTC</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtPrixUnitTtc) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Promotion en pourcentage</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtPromoPct) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Photo</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtPhoto) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Poid</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtPoids) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Dimensions</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtDim) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Poid de l'emballage</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtEmbPoids) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Dimensions de l'emballage</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtEmbDim) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Photo du packaging</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtPckgPhoto) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">TVA du produit</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtIdtva) }}
+                    </div>
+                </div>
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+    {#<h1>Produit edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -17,5 +174,5 @@
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}

@@ -1,148 +1,89 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Produit</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>{{ produit.pdtNom }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('produit_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                        {#<tr>#}
+                            {#<th>Id</th>#}
+                            {#<td>{{ produit.id }}</td>#}
+                        {#</tr>#}
+                        <tr>
+                            <th>Référence du produit</th>
+                            <td>{{ produit.pdtRef }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ produit.pdtNom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Actif/inactif</th>
+                            <td>{% if produit.pdtEtat %}Actif{% else %}Inactif{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>A vendre</th>
+                            <td>{% if produit.pdtAvendre %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Prix unitaire HT</th>
+                            <td>{{ produit.pdtPrixUnitHt }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prix unitaire TTC</th>
+                            <td>{{ produit.pdtPrixUnitTtc }}</td>
+                        </tr>
+                        <tr>
+                            <th>Afficher le prix</th>
+                            <td>{% if produit.pdtAffPrix %}Yes{% else %}Non{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Promotion en pourcentage</th>
+                            <td>{% if produit.pdtPromoPct == null %}Non renseigné{% else %}{{ produit.pdtPromoPct }} %{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Photo du produit</th>
+                            <td>{{ produit.pdtPhoto }}</td>
+                        </tr>
+                        <tr>
+                            <th>Poids du produit</th>
+                            <td>{% if produit.pdtPoids == null %}Non renseigné{% else %}{{ produit.pdtPoids }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Dimension du produit</th>
+                            <td>{% if produit.pdtDim == null %}Non renseigné{% else %}{{ produit.pdtDim }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Poids de l'emballage</th>
+                            <td>{% if produit.pdtEmbPoids == null %}Non renseigné{% else %}{{ produit.pdtEmbPoids }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Dimension de l'emballage</th>
+                            <td>{% if produit.pdtEmbDim == null %}Non renseigné{% else %}{{ produit.pdtEmbDim }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Photo du packaging</th>
+                            <td>{{ produit.pdtPckgPhoto }}</td>
+                        </tr>
+                        <tr>
+                            <th>Taux de TVA</th>
+                            <td>{{ produit.pdtIdtva }} %</td>
+                        </tr>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ produit.id }}</td>
-            </tr>
-            <tr>
-                <th>Pdtetat</th>
-                <td>{% if produit.pdtEtat %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Pdtavendre</th>
-                <td>{% if produit.pdtAvendre %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Pdtaffnostock</th>
-                <td>{% if produit.pdtAffNostock %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Pdtaffprix</th>
-                <td>{% if produit.pdtAffPrix %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Pdtnom</th>
-                <td>{{ produit.pdtNom }}</td>
-            </tr>
-            <tr>
-                <th>Pdtref</th>
-                <td>{{ produit.pdtRef }}</td>
-            </tr>
-            <tr>
-                <th>Pdtprixunitht</th>
-                <td>{{ produit.pdtPrixUnitHt }}</td>
-            </tr>
-            <tr>
-                <th>Pdtprixunitttc</th>
-                <td>{{ produit.pdtPrixUnitTtc }}</td>
-            </tr>
-            <tr>
-                <th>Pdtpromopct</th>
-                <td>{{ produit.pdtPromoPct }}</td>
-            </tr>
-            <tr>
-                <th>Pdtpromoht</th>
-                <td>{{ produit.pdtPromoHt }}</td>
-            </tr>
-            <tr>
-                <th>Pdtpromottc</th>
-                <td>{{ produit.pdtPromoTtc }}</td>
-            </tr>
-            <tr>
-                <th>Pdtphoto</th>
-                <td>{{ produit.pdtPhoto }}</td>
-            </tr>
-            <tr>
-                <th>Pdtphoto2</th>
-                <td>{{ produit.pdtPhoto2 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtphoto3</th>
-                <td>{{ produit.pdtPhoto3 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtphoto4</th>
-                <td>{{ produit.pdtPhoto4 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtphoto5</th>
-                <td>{{ produit.pdtPhoto5 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval1</th>
-                <td>{{ produit.pdtInfoVal1 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval2</th>
-                <td>{{ produit.pdtInfoVal2 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval3</th>
-                <td>{{ produit.pdtInfoVal3 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval4</th>
-                <td>{{ produit.pdtInfoVal4 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval5</th>
-                <td>{{ produit.pdtInfoVal5 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval6</th>
-                <td>{{ produit.pdtInfoVal6 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval7</th>
-                <td>{{ produit.pdtInfoVal7 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval8</th>
-                <td>{{ produit.pdtInfoVal8 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtinfoval9</th>
-                <td>{{ produit.pdtInfoVal9 }}</td>
-            </tr>
-            <tr>
-                <th>Pdtpoids</th>
-                <td>{{ produit.pdtPoids }}</td>
-            </tr>
-            <tr>
-                <th>Pdtdim</th>
-                <td>{{ produit.pdtDim }}</td>
-            </tr>
-            <tr>
-                <th>Pdtembpoids</th>
-                <td>{{ produit.pdtEmbPoids }}</td>
-            </tr>
-            <tr>
-                <th>Pdtembdim</th>
-                <td>{{ produit.pdtEmbDim }}</td>
-            </tr>
-            <tr>
-                <th>Pdtpckgphoto</th>
-                <td>{{ produit.pdtPckgPhoto }}</td>
-            </tr>
-        </tbody>
-    </table>
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('produit_edit', { 'id': produit.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('produit_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}

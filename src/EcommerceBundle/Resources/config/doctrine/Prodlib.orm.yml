@@ -79,6 +79,51 @@ EcommerceBundle\Entity\Prodlib:
             length: '50'
             nullable: true
             column: pdl_info_lib9
+        pdlInfoVal1:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val1
+        pdlInfoVal2:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val2
+        pdlInfoVal3:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val3
+        pdlInfoVal4:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val4
+        pdlInfoVal5:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val5
+        pdlInfoVal6:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val6
+        pdlInfoVal7:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val7
+        pdlInfoVal8:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val8
+        pdlInfoVal9:
+            type: string
+            length: '100'
+            nullable: true
+            column: pdl_info_val9
         pdlPckgComm:
             type: string
             length: 255

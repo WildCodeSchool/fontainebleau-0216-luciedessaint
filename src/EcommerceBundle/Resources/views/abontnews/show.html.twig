@@ -1,44 +1,56 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Abontnews</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ abontnews.id }}</td>
-            </tr>
-            <tr>
-                <th>Anletat</th>
-                <td>{% if abontnews.anlEtat %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Anlemail</th>
-                <td>{{ abontnews.anlEmail }}</td>
-            </tr>
-            <tr>
-                <th>Anldteactif</th>
-                <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Anldtedesact</th>
-                <td>{% if abontnews.anlDteDesact %}{{ abontnews.anlDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('abontnews_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('abontnews_edit', { 'id': abontnews.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div id="header" class="jumbotron text-center">
+        <h1>{{ abontnews.anlEmail }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('abontnews_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                        {#<tr>#}
+                        {#<th>Id</th>#}
+                        {#<td>{{ abontnews.id }}</td>#}
+                        {#</tr>#}
+                        <tr>
+                            <th>Actif/inactif</th>
+                            <td>{% if abontnews.anlEtat %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse email</th>
+                            <td>{{ abontnews.anlEmail }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date d'activation</th>
+                            <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        {#<tr>#}
+                            {#<th>Anldtedesact</th>#}
+                            {#<td>{% if abontnews.anlDteDesact %}{{ abontnews.anlDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                        {#</tr>#}
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('abontnews_edit', { 'id': abontnews.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                {#<ul>#}
+                    {#<li>#}
+                        {#<a href="{{ path('abontnews_index') }}">Back to the list</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="{{ path('abontnews_edit', { 'id': abontnews.id }) }}">Edit</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#{{ form_start(delete_form) }}#}
+                        {#<input type="submit" value="Delete">#}
+                        {#{{ form_end(delete_form) }}#}
+                    {#</li>#}
+                {#</ul>#}
+            </div>
+        </div>
+    </div>
 {% endblock %}

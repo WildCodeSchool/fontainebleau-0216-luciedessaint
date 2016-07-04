@@ -1,7 +1,172 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Produit creation</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>Création d'un produit</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('produit_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+    {{ form_start(form) }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Nom</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdtNom) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Etat</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdtEtat) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">A vendre</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdtAvendre) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Afficher le prix</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdtAffPrix) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Référence du produit</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtRef, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Référence du produit' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Prix unitaire HT</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtPrixUnitHt, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Prix hors taxe' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Prix unitaire TTC</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtPrixUnitTtc, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Prix toute taxe comprise' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Promotion en pourcentage</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtPromoPct, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Si produit en promotion' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Photo</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdtPhoto) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Poid</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtPoids, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Informations' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Dimensions</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtDim, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Hauteur x Largeur' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Poids emballage</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtEmbPoids, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Informations' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Dimensions emballage</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdtEmbDim, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Hauteur x Largeur' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Photo du packaging</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdtPckgPhoto) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">TVA du produit</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdtIdtva) }}
+                    </div>
+                </div>
+
+
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    {#<h1>Produit creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -12,5 +177,5 @@
         <li>
             <a href="{{ path('produit_index') }}">Back to the list</a>
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}

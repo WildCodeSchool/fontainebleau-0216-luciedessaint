@@ -18,7 +18,7 @@ class CategorieType extends AbstractType
             ->add('catNiv')
             ->add('catAvendre')
             ->add('catAffPrix')
-            ->add('catAffNostock')
+//            ->add('catAffNostock')
             ->add('catAffVendu')
             ->add('catPhoto')
             ->add('catIdtva')

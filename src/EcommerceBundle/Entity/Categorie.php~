@@ -9,33 +9,42 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categorie
 {
+
+    ///////////////////////
+    // GENERATED CODE
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var int
+     * @var string
+     */
+    private $catLibAdmin;
+
+    /**
+     * @var integer
      */
     private $catNiv;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $catAvendre;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $catAffPrix;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $catAffNostock;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $catAffVendu;
 
@@ -43,6 +52,11 @@ class Categorie
      * @var string
      */
     private $catPhoto;
+
+    /**
+     * @var \EcommerceBundle\Entity\Tva
+     */
+    private $catIdtva;
 
 
     /**
@@ -53,6 +67,29 @@ class Categorie
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set catLibAdmin
+     *
+     * @param string $catLibAdmin
+     * @return Categorie
+     */
+    public function setCatLibAdmin($catLibAdmin)
+    {
+        $this->catLibAdmin = $catLibAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get catLibAdmin
+     *
+     * @return string 
+     */
+    public function getCatLibAdmin()
+    {
+        return $this->catLibAdmin;
     }
 
     /**
@@ -191,5 +228,28 @@ class Categorie
     public function getCatPhoto()
     {
         return $this->catPhoto;
+    }
+
+    /**
+     * Set catIdtva
+     *
+     * @param \EcommerceBundle\Entity\Tva $catIdtva
+     * @return Categorie
+     */
+    public function setCatIdtva(\EcommerceBundle\Entity\Tva $catIdtva = null)
+    {
+        $this->catIdtva = $catIdtva;
+
+        return $this;
+    }
+
+    /**
+     * Get catIdtva
+     *
+     * @return \EcommerceBundle\Entity\Tva 
+     */
+    public function getCatIdtva()
+    {
+        return $this->catIdtva;
     }
 }

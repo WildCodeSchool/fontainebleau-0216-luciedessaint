@@ -1,45 +1,51 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Abontnews list</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>Liste des abonner aux newsletters</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('abontnews_new') }}">
+            <i class="glyphicon glyphicon-plus"></i>
+            Créer une nouvelle entrée
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        {#<th>Id</th>#}
+                        <th>Actif/inactif</th>
+                        <th>Adresse email</th>
+                        <th>Date d'activation</th>
+                        {#<th>Date de désactivation</th>#}
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for abontnews in abontnews %}
+                        <tr>
+                            {#<td><a href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">{{ abontnews.id }}</a></td>#}
+                            <td>{% if abontnews.anlEtat %}Oui{% else %}Non{% endif %}</td>
+                            <td>{{ abontnews.anlEmail }}</td>
+                            <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            {#<td>{% if abontnews.anlDteDesact %}{{ abontnews.anlDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                            <td>
+                                <ul class="nopuce">
+                                    <li>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">
+                                            <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('abontnews_edit', { 'id': abontnews.id }) }}">
+                                            <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Anletat</th>
-                <th>Anlemail</th>
-                <th>Anldteactif</th>
-                <th>Anldtedesact</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for abontnews in abontnews %}
-            <tr>
-                <td><a href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">{{ abontnews.id }}</a></td>
-                <td>{% if abontnews.anlEtat %}Yes{% else %}No{% endif %}</td>
-                <td>{{ abontnews.anlEmail }}</td>
-                <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if abontnews.anlDteDesact %}{{ abontnews.anlDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('abontnews_edit', { 'id': abontnews.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('abontnews_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}

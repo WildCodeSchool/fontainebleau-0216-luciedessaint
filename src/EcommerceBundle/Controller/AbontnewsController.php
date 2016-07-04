@@ -36,9 +36,24 @@ class AbontnewsController extends Controller
     public function newAction(Request $request)
     {
         $abontnews = new Abontnews();
+
+        $em = $this->getDoctrine()->getManager();
+        $emailverif = $abontnews->getAnlEmail();
+
+        var_dump($emailverif);
+
+        //$res_verif = $em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif);
+
+        //var_dump($res_verif);
+
+
+        /*if ($em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif)){
+            var_dump("erreur");
+            exit;
+        }*/
+
         $form = $this->createForm('EcommerceBundle\Form\AbontnewsType', $abontnews);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($abontnews);
@@ -73,12 +88,28 @@ class AbontnewsController extends Controller
      */
     public function editAction(Request $request, Abontnews $abontnews)
     {
+        $EtatEnBdd = $abontnews->getAnlEtat();
+
         $deleteForm = $this->createDeleteForm($abontnews);
         $editForm = $this->createForm('EcommerceBundle\Form\AbontnewsType', $abontnews);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            //Initialisation variable avec CurrentDateTime
+            $currentDte = new \DateTime();
+
+            //var_dump($tva->getTvaEtat());exit;
+            //var_dump($editForm->getViewData()->getAnlEtat());exit;
+            //var_dump($editForm->getViewData()->getAnlDteDesact());exit;
+
+            // Si Etat actuel (en bdd) => ACTIF et nouvel Etat (saisi par user) => INACTIF
+            if ($EtatEnBdd == TRUE && $editForm->getViewData()->getAnlEtat() == FALSE) {
+                // DateDesactivation passée à CurrentDateTime
+                $abontnews->setAnlDteDesact($currentDte);
+            }
+
             $em->persist($abontnews);
             $em->flush();
 

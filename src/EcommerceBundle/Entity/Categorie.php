@@ -9,33 +9,42 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categorie
 {
+
+    ///////////////////////
+    // GENERATED CODE
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var int
+     * @var string
+     */
+    private $catLibAdmin;
+
+    /**
+     * @var integer
      */
     private $catNiv;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $catAvendre;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $catAffPrix;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $catAffNostock;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $catAffVendu;
 
@@ -43,6 +52,11 @@ class Categorie
      * @var string
      */
     private $catPhoto;
+
+    /**
+     * @var \EcommerceBundle\Entity\Tva
+     */
+    private $catIdtva;
 
 
     /**
@@ -53,6 +67,29 @@ class Categorie
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set catLibAdmin
+     *
+     * @param string $catLibAdmin
+     * @return Categorie
+     */
+    public function setCatLibAdmin($catLibAdmin)
+    {
+        $this->catLibAdmin = $catLibAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get catLibAdmin
+     *
+     * @return string 
+     */
+    public function getCatLibAdmin()
+    {
+        return $this->catLibAdmin;
     }
 
     /**
@@ -192,11 +229,6 @@ class Categorie
     {
         return $this->catPhoto;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Tva
-     */
-    private $catIdtva;
-
 
     /**
      * Set catIdtva

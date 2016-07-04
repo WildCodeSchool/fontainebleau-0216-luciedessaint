@@ -1,7 +1,92 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Param edit</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>Modifier les paremètres généraux</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('ecommerce_admin') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la page d'accueil
+        </a>
+    </div>
+
+    {{ form_start(edit_form) }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Niveau catégorie</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.prmNbnivcat) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Code devise utilisé</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prmDevise, { 'attr': {'class': 'form-control Libelle', 'placeholder': '(ex: €, $...)' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Activer la TVA unique</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.prmTvaUnique) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Activer la newsletter</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.prmNewsletter) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Activer la facture généré</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.prmFactGen) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Activer l'envoi de facture</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.prmFactEnv) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Activer l'upload de facture</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.prmFactUpload) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">TVA unique utilisé</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.prmIdtva) }}
+                    </div>
+                </div>
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+{#    <h1>Param edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -17,5 +102,5 @@
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}
