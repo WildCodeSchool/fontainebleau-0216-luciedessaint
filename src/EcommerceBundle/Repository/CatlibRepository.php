@@ -18,8 +18,17 @@ class CatlibRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery('SELECT p.ctlCateg, p.ctlType, p.ctlItem FROM EcommerceBundle:Catlib p 
                             WHERE (p.ctlIdcat = :idCat AND p.ctlLocale = :locale)')
+            ->setParameters('idCat', $id_cat)
+            ->setParameters('locale', "fr")
+            ->getResult();
+    }
+
+    public function getCatlib4Categ($id_cat)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM EcommerceBundle:Catlib p 
+                            WHERE (p.ctlIdcat = :idCat)')
             ->setParameter('idCat', $id_cat)
-            ->setParameter('locale', "fr")
             ->getResult();
     }
 

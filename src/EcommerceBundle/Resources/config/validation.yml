@@ -1,33 +1,14 @@
 # EcommerceBundle/Resources/config/validation.yml
-EcommerceBundle\Entity\Lang:
+#EcommerceBundle\Entity\Lang:
 #    constraints:
 #        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: lngCode
-#          message:  "Code langue déjà existant"
-    properties:
-        file:
-            - Image: ~
-        lngCode:
-            - Choice:
-                choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
-                message:  "Sélectionnez un code valide"
-#EcommerceBundle\Entity\Abontnews:
-#    constraints:
-#        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: anlEmail
-#            message:  "Adresse mail déjà abonnée aux newsletters"
-    properties:
-        anlEmail:
-            - Email: ~
-EcommerceBundle\Entity\Categorie:
-    properties:
-        catPhoto:
-            - Image: ~
-EcommerceBundle\Entity\Catlib:
-    constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: [ctlIdcat, ctlLocale]
-            errorPath: ctlLocale
-            message:  "Langue déjà gérée pour cette catégorie"
-
+#            message:  "Code langue déjà existant"
+#    properties:
+#        lngCode:
+#            - Choice:
+#                choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
+#                message:  "Sélectionnez un code valide"
+#
 #EcommerceBundle\Entity\Lang:
 #    properties:
 #        city: [New York, Berlin, Tokyo]
@@ -35,3 +16,24 @@ EcommerceBundle\Entity\Catlib:
 #            - Choice:
 #                choices:  [male, female]
 #                message:  Choose a valid gender.
+#
+EcommerceBundle\Entity\Categorie:
+    properties:
+        catPhoto:
+            - Image: ~
+
+EcommerceBundle\Entity\Catlib:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [ctlIdcat, ctlLocale]
+            errorPath: ctlLocale
+            message:  "Langue déjà gérée pour cette catégorie"
+
+EcommerceBundle\Entity\Abontnews:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: anlEmail
+            message: 'trou du cul !!!'
+    properties:
+        anlEmail:
+            - Email: ~

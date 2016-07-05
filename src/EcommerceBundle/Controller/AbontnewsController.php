@@ -35,21 +35,46 @@ class AbontnewsController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $newsletter = $em->getRepository('EcommerceBundle:Abontnews')->findAll();
+        
         $abontnews = new Abontnews();
 
+        $em = $this->getDoctrine()->getManager();
+
         $form = $this->createForm('EcommerceBundle\Form\AbontnewsType', $abontnews);
+        $form->remove('anlEtat');
+        $form->remove('anlDteActif');
         $form->handleRequest($request);
+        $abontnews->setAnlEtat(true);
+
+        $mail = $em->getRepository('EcommerceBundle:Abontnews')->findOneBy(array('anlEmail' => $form->getViewData()->getAnlEmail()));
 
 //        $errors = ["email" => "", "etat" => ""];
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+//            if ($mail){
+//                $request->getSession()
+//                    ->getFlashbag()
+//                    ->add('fail', 'trou du cul')
+//                ;
+//                return $this->render('EcommerceBundle:abontnews:index.html.twig', array(
+//                    'abontnews' => $newsletter,
+//                ));
+//            }
+
             $em = $this->getDoctrine()->getManager();
-            
+
+            // la date d'activation se met a jour automatiquement
+            $abontnews->setAnlDteActif(new \DateTime());
+
             $emailverif = $abontnews->getAnlEmail();
             //var_dump($emailverif);
 
             $res_verif = $em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif);
-            var_dump($res_verif);
+            //var_dump($res_verif);
 
             if ($res_verif) {
 /*                $erreur_unique = "Déjà enregistrée";

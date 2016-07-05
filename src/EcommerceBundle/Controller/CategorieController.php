@@ -59,7 +59,30 @@ class CategorieController extends Controller
      */
     public function showAction(Categorie $categorie)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $deleteForm = $this->createDeleteForm($categorie);
+
+        $id = $categorie->getId();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération de la liste des libellés 'localisés' pour une catégorie donnée ($id)
+
+        $catlibs_4_categ = $em->getRepository('EcommerceBundle:Catlib')->getCatlib4Categ($id);
+
+        $categorie->catlibs = $catlibs_4_categ;
+
+        // Récupération du nbre de libellés 'localisés' pour une catégorie donnée ($id)
+        //  => Count sur liste extraite précédemment
+        $nb_catlibs = count($catlibs_4_categ);
+
+        $categorie->nbcatlibs = $nb_catlibs;
+
+        var_dump($categorie);//exit;
+
+        //
+        /////////////////////////////////////////////////////////////////////////////////////////////
 
         return $this->render('EcommerceBundle:categorie:show.html.twig', array(
             'categorie' => $categorie,
