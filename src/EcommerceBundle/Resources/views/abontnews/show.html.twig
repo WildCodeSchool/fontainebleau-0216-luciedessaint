@@ -31,7 +31,7 @@
                         </tr>
                         <tr>{% if abontnews.anlDteDesact and not abontnews.anlEtat %}
                                 <th>Désactivation</th>
-                                <td>{{ abontnews.anlDteDesact|date('d-m-Y') }}</td>
+                                <td>{{ abontnews.anlDteDesact|date('d-m-Y H:i:s') }}</td>
                             {% else %} &nbsp;{% endif %}
                         </tr>
                         {#<tr>#}

@@ -14,8 +14,8 @@
                 <table class="table table-hover">
                     <tbody>
                     {#<tr>#}
-                    {#<th>Id</th>#}
-                    {#<td>{{ tva.id }}</td>#}
+                        {#<th>Id</th>#}
+                        {#<td>{{ tva.id }}</td>#}
                     {#</tr>#}
                     <tr>
                         <th>Actif/inactif</th>
@@ -30,8 +30,8 @@
                         <td>{{ tva.tvaTaux|number_format(2, ',', ' ') }} %</td>
                     </tr>
                     {#<tr>#}
-                    {#<th>Désactivation</th>#}
-                    {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                        {#<th>Désactivation</th>#}
+                        {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
                     {#</tr>#}
                     </tbody>
                 </table>
