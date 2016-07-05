@@ -25,11 +25,6 @@
                             {{ form_widget(form.anlEmail, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Adresse mail' }}) }}
                         </div>
                     </div>
-{#                    {% if errors.email %}
-                        <div class="col-md-3">
-                            <p class="lib_error">{{ errors.email }}</p>
-                        </div>
-                    {% endif %}#}
                 </div>
                 <input class="btn btn-success" type="submit" value="Enregistrer" />
                 {{ form_end(form) }}

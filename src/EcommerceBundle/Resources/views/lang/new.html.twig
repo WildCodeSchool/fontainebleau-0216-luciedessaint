@@ -20,6 +20,7 @@
                         <p class="text-right lib_champs">Code </p>
                     </div>
                     <div class="col-md-9">
+                        {{ form_errors(form.lngCode) }}
                         {{ form_widget(form.lngCode) }}
                         {#<div class="input-group">#}
                         {#<span class="input-group-addon"><i class="glyphicon glyphicon-ok-sign"></i></span>#}

@@ -35,25 +35,19 @@ class AbontnewsController extends Controller
      */
     public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $newsletter = $em->getRepository('EcommerceBundle:Abontnews')->findAll();
-        
         $abontnews = new Abontnews();
-
-        $em = $this->getDoctrine()->getManager();
-
+        
         $form = $this->createForm('EcommerceBundle\Form\AbontnewsType', $abontnews);
         $form->remove('anlEtat');
         $form->remove('anlDteActif');
         $form->handleRequest($request);
-        $abontnews->setAnlEtat(true);
-
-        $mail = $em->getRepository('EcommerceBundle:Abontnews')->findOneBy(array('anlEmail' => $form->getViewData()->getAnlEmail()));
-
-//        $errors = ["email" => "", "etat" => ""];
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            // Récupération enregt trouvé en bdd (si existe) correspondant à l'adresse mail tapée par user
+            $mail = $em->getRepository('EcommerceBundle:Abontnews')->findOneBy(array('anlEmail' => $form->getViewData()->getAnlEmail()));
 
 //            if ($mail){
 //                $request->getSession()
@@ -65,36 +59,23 @@ class AbontnewsController extends Controller
 //                ));
 //            }
 
-            $em = $this->getDoctrine()->getManager();
+//            $em = $this->getDoctrine()->getManager();
+//            $res_verif = $em->getRepository('EcommerceBundle:Abontnews')->findEmail($form->getViewData()->getAnlEmail());
+//            var_dump($res_verif);
+//            if ($res_verif) {
+//                  return $this->redirectToRoute('abontnews_edit', array('id' => $res_verif[0]->getId()));
+//            }
 
-            // la date d'activation se met a jour automatiquement
-            $abontnews->setAnlDteActif(new \DateTime());
-
-            $emailverif = $abontnews->getAnlEmail();
-            //var_dump($emailverif);
-
-            $res_verif = $em->getRepository('EcommerceBundle:Abontnews')->findEmail($emailverif);
-            //var_dump($res_verif);
-
-            if ($res_verif) {
-/*                $erreur_unique = "Déjà enregistrée";
-                //var_dump($erreur_unique);
-                $errors["email"] = $erreur_unique;
-                var_dump($errors);
-                return $this->render('EcommerceBundle:abontnews:new.html.twig', array(
-                    'abontnews' => $abontnews,
-                    'form' => $form->createView(),
-                    'errors' => $errors,
-                ));*/
-
-/*                foreach ( $res_verif as $idx => $enreg_email ) {
-                    var_dump($enreg_email);
-                    $id = intval($enreg_email['id']);
-                }*/
-                
-                return $this->redirectToRoute('abontnews_edit', array('id' => $res_verif[0]->getId()));
-
+            // Si email déjà existant => Renvoi vers vue de l'enregt concerné en 'edit'
+            if ($mail) {
+                    return $this->redirectToRoute('abontnews_edit', array('id' => $mail->getId()));
             }
+
+            // L'état et la date d'activation sont positionnés automatiquement
+            $abontnews->setAnlEtat(true);
+            $abontnews->setAnlDteActif(new \DateTime());
+            $abontnews->setAnlDteDesact(null);
+
             $em->persist($abontnews);
             $em->flush();
 
@@ -104,7 +85,6 @@ class AbontnewsController extends Controller
         return $this->render('EcommerceBundle:abontnews:new.html.twig', array(
             'abontnews' => $abontnews,
             'form' => $form->createView(),
-//            'errors' => $errors,
         ));
     }
 
