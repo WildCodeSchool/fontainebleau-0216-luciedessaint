@@ -3,6 +3,9 @@
 namespace EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * Lang
@@ -11,7 +14,6 @@ class Lang
 {
     /*upload d'image champ"virtuel"*/
     public $file;
-
     protected function getUploadDir()
     {
         return 'bundles/drapeaux';
@@ -31,6 +33,8 @@ class Lang
     {
         return null === $this->lngFlag ? null : $this->getUploadRootDir().'/'.$this->lngFlag;
     }
+
+
     /*fin champ virtuel*/
     /**
      * @var int
@@ -132,4 +136,32 @@ class Lang
     {
         return $this->lngFlag;
     }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setExpiresAtValue()
+    {
+        // Add your code here
+    }
+
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        // Add your code here
+    }
+
+
+
 }
