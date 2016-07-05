@@ -81,3 +81,10 @@ label {
 .lib_error {
     color: #761c19;
 }
+/*--------------------------------------*\
+                Email exist
+\*--------------------------------------*/
+li {
+    list-style: none;
+    list-style-type: none;
+}
