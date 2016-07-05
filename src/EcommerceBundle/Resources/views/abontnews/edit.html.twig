@@ -28,11 +28,11 @@
                         <p class="text-right lib_champs">Adresse email</p>
                     </div>
                     <div class="col-md-9">
-                        <div class="">
-                            <span class=""><i class="glyphicon glyphicon-pencil"></i></span>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                             {{ form_errors(edit_form.anlEmail) }}
-                            {{ form_widget(edit_form.anlEmail, { 'attr': {'class': '', 'placeholder': 'Adresse email' }}) }}
-                        </div>
+                            {{ form_widget(edit_form.anlEmail, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Adresse email' }}) }}
+                       </div>
                     </div>
                 </div>
                 <input class="btn btn-success" type="submit" value="Enregistrer" />
