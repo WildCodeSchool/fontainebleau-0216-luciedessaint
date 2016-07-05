@@ -1,17 +1,17 @@
 # EcommerceBundle/Resources/config/validation.yml
-EcommerceBundle\Entity\Lang:
+#EcommerceBundle\Entity\Lang:
 #    constraints:
 #        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: lngCode
-#          message:  "Code langue déjà existant"
-    properties:
-        lngCode:
-            - Choice:
-                choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
-                message:  "Sélectionnez un code valide"
-#EcommerceBundle\Entity\Abontnews:
-#    constraints:
-#        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: anlEmail
-#            message:  "Adresse mail déjà abonnée aux newsletters"
+#            message:  "Code langue déjà existant"
+#    properties:
+#        lngCode:
+#            - Choice:
+#                choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
+#                message:  "Sélectionnez un code valide"
+EcommerceBundle\Entity\Abontnews:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: anlEmail
+#            message: "Adresse mail déjà abonnée aux newsletters"
     properties:
         anlEmail:
             - Email: ~
