@@ -39,7 +39,6 @@ class AbontnewsController extends Controller
         
         $form = $this->createForm('EcommerceBundle\Form\AbontnewsType', $abontnews);
         $form->remove('anlEtat');
-        $form->remove('anlDteActif');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

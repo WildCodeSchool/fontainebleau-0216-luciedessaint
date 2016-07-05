@@ -49,7 +49,7 @@ class LangType extends AbstractType
                     "русский (Russe)" => "русский"
                 )
             ))
-            ->add("lngLang")
+            ->add("lngFlag")
             //->add('file', 'file', array('label' => 'lngFlag', 'required' => false));//
 
         ;
