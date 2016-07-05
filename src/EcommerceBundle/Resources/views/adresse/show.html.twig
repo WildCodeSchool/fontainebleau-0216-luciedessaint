@@ -1,68 +1,65 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Adresse</h1>
-
-    <table>
-        <tbody>
+    <div id="header" class="jumbotron text-center">
+        <h1>Liste des adresses</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('adresse_index') }}">
+            <i class="glyphicon glyphicon-plus"></i>
+            Créer une nouvelle entrée
+        </a>
+    </div>
+       <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-8">
+                    <table class="table table-hover">
+                        <tbody>
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ adresse.id }}</td>#}
+            {#</tr>#}
             <tr>
-                <th>Id</th>
-                <td>{{ adresse.id }}</td>
-            </tr>
-            <tr>
-                <th>Adrtype</th>
+                <th>Type d'adresse</th>
                 <td>{{ adresse.adrType }}</td>
             </tr>
             <tr>
-                <th>Adrnom</th>
+                <th>Nom commanditaire</th>
                 <td>{{ adresse.adrNom }}</td>
             </tr>
             <tr>
-                <th>Adrprenom</th>
+                <th>Prenom commanditaire</th>
                 <td>{{ adresse.adrPrenom }}</td>
             </tr>
             <tr>
-                <th>Adrsoc</th>
+                <th>Société commanditaire</th>
                 <td>{{ adresse.adrSoc }}</td>
             </tr>
             <tr>
-                <th>Adremail</th>
+                <th>Email commanditaire</th>
                 <td>{{ adresse.adrEmail }}</td>
             </tr>
             <tr>
-                <th>Adradr</th>
+                <th>Adresse commanditaire</th>
                 <td>{{ adresse.adrAdr }}</td>
             </tr>
             <tr>
-                <th>Adradr2</th>
+                <th>Adresse de livraison</th>
                 <td>{{ adresse.adrAdr2 }}</td>
             </tr>
             <tr>
-                <th>Adrcp</th>
+                <th>Code postal de livraison</th>
                 <td>{{ adresse.adrCp }}</td>
             </tr>
             <tr>
-                <th>Adrville</th>
+                <th>Ville de livraison</th>
                 <td>{{ adresse.adrVille }}</td>
             </tr>
             <tr>
-                <th>Adrpays</th>
+                <th>Pays de livraison</th>
                 <td>{{ adresse.adrPays }}</td>
             </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('adresse_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('adresse_edit', { 'id': adresse.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    <a class="btn btn-success" href="{{ path('adresse_edit', { 'id': adresse.id }) }}">
+                        <i class="glyphicon glyphicon-edit"></i>Modifier</a>
 {% endblock %}

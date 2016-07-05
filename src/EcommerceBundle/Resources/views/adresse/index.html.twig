@@ -1,29 +1,37 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Adresse list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Adrtype</th>
-                <th>Adrnom</th>
-                <th>Adrprenom</th>
-                <th>Adrsoc</th>
-                <th>Adremail</th>
-                <th>Adradr</th>
-                <th>Adradr2</th>
-                <th>Adrcp</th>
-                <th>Adrville</th>
-                <th>Adrpays</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div id="header" class="jumbotron text-center">
+    <h1>Liste des adresses</h1>
+    <a class="btn btn-success btn-lg" href="{{ path('adresse_new') }}">
+        <i class="glyphicon glyphicon-plus"></i>
+        Créer une nouvelle entrée
+    </a>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    {#<th>Id</th>#}
+                    <th>Type</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Société</th>
+                    <th>Email</th>
+                    <th>Commanditaire adresse</th>
+                    <th>livraison adresse</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                    <th>Pays</th>
+                    {#<th>Désactivation</th>#}
+                    <th> </th>
+                </tr>
+                </thead>
+                <tbody>
         {% for adresse in adresses %}
             <tr>
-                <td><a href="{{ path('adresse_show', { 'id': adresse.id }) }}">{{ adresse.id }}</a></td>
                 <td>{{ adresse.adrType }}</td>
                 <td>{{ adresse.adrNom }}</td>
                 <td>{{ adresse.adrPrenom }}</td>
@@ -35,12 +43,12 @@
                 <td>{{ adresse.adrVille }}</td>
                 <td>{{ adresse.adrPays }}</td>
                 <td>
-                    <ul>
+                    <ul class="nopuce">
                         <li>
-                            <a href="{{ path('adresse_show', { 'id': adresse.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('adresse_edit', { 'id': adresse.id }) }}">edit</a>
+                            <a class="btn btn-primary" id="place-btn" href="{{ path('adresse_show', { 'id': adresse.id }) }}">
+                                <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                            <a class="btn btn-primary" id="place-btn" href="{{ path('adresse_edit', { 'id': adresse.id }) }}">
+                                <i class="glyphicon glyphicon-edit"></i>Modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -48,10 +56,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('adresse_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            
 {% endblock %}

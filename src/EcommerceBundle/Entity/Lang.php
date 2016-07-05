@@ -4,11 +4,73 @@ namespace EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Lang
  */
 class Lang
 {
+    /*upload d'image champ"virtuel"*/
+    public $file;
+
+    /**
+     * @ORM\prePersist
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // do whatever you want to generate a unique name
+            $this->lngFlag = uniqid().'.'.$this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\postPersist
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->file->move($this->getUploadRootDir(), $this->lngFlag);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\postRemove
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+
+    protected function getUploadDir()
+    {
+        return 'bundles/drapeaux';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->lngFlag ? null : $this->getUploadDir().'/'.$this->lngFlag;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->lngFlag ? null : $this->getUploadRootDir().'/'.$this->lngFlag;
+    }
+    /*fin champ virtuel*/
     /**
      * @var int
      */
@@ -109,4 +171,32 @@ class Lang
     {
         return $this->lngFlag;
     }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setExpiresAtValue()
+    {
+        // Add your code here
+    }
+
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        // Add your code here
+    }
+
+
+
 }

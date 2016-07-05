@@ -1,7 +1,340 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Prodlib creation</h1>
+    <div id="header" class="jumbotron text-center">
+        <h1>Création des libellé de produit</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('prodlib_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+    {{ form_start(form) }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">pdl locale</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdlLocale, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Locale' }}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Libellé correspondant</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libelle de ce code TVA' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Description</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlDesc, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Catégorie</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlCat, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Type</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlType, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">item</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlItem, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 1</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib1, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 1</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal1, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 2</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib2, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 2</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal2, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 3</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib3, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 3</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal3, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 4</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib4, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 4</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal4, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 5</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib5, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 5</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal5, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 6</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib6, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 6</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal6, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 7</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib7, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 7</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal7, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 8</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib8, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 8</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal8, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info lib 9</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoLib9, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Titre information' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">info val 9</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlInfoVal9, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Information complementaire' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">PckgComm</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlPckgComm, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Commentaire du packaging' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Dispo</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlDispo, { 'attr': {'class': 'form-control Taux', 'placeholder': '' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">FabDelai</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlFabDelai, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Délai de fabrication' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">livDelai</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.pdlLivDelai, { 'attr': {'class': 'form-control Taux', 'placeholder': 'Delai de livraison' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">ID produit</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(form.pdlIdpdt) }}
+                    </div>
+                </div>
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    {#<h1>Prodlib creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -12,5 +345,5 @@
         <li>
             <a href="{{ path('prodlib_index') }}">Back to the list</a>
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}
