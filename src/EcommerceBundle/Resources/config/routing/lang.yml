@@ -21,4 +21,4 @@ lang_edit:
 lang_delete:
     path:     /{id}/delete
     defaults: { _controller: "EcommerceBundle:Lang:delete" }
-    methods:  DELETE
+    methods:  [GET, DELETE]

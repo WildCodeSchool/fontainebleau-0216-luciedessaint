@@ -26,12 +26,15 @@
                         <td>{{ lang.lngLib }}</td>
                     </tr>
                     <tr>
-                        <th>Drapeau langue</th>
-                        <td>{{ lang.lngFlag}} </td>
+                        <th>Drapeau</th>
+                        {#<td>{{ lang.lngFlag }}</td>#}
+                        <td>
+                            <img class="image_lang" src="{{ asset('uploads/drapeaux/') }}{{ lang.lngFlag }}">
+                        </td>
                     </tr>
                     {#<tr>#}
-                    {#<th>Désactivation</th>#}
-                    {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                        {#<th>Désactivation</th>#}
+                        {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
                     {#</tr>#}
                     </tbody>
                 </table>

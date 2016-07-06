@@ -19,7 +19,20 @@ class LangType extends AbstractType
             ->add("lngCode", "choice", array(
                 "label" => "Code langue :",
                 "choices" => array(
-                    "fr - Français" => "fr",
+                    "fr" => "fr",
+                    "en" => "en",
+                    "de" => "de",
+                    "it" => "it",
+                    "es" => "es",
+                    "pt" => "pt",
+                    "el" => "el",
+                    "ja" => "ja",
+                    "zh" => "zh",
+                    "ko" => "ko",
+                    "ru" => "ru"
+                )
+            ))
+/*                    "fr - Français" => "fr",
                     "en - English" => "en",
                     "de - Deutsch" => "de",
                     "it - Italiano" => "it",
@@ -29,9 +42,7 @@ class LangType extends AbstractType
                     "ja - 日本の (Japonais)" => "ja",
                     "zh - 中国 (Chinois)" => "zh",
                     "ko - 한국의 (Coréen)" => "ko",
-                    "ru - русский (Russe)" => "ru"
-                )
-            ))
+                    "ru - русский (Russe)" => "ru"*/
 //            ->add('lngLib')
             ->add("lngLib", "choice", array(
                 "label" => "Langue :",
@@ -49,9 +60,7 @@ class LangType extends AbstractType
                     "русский (Russe)" => "русский"
                 )
             ))
-            ->add("lngFlag")
-            //->add('file', 'file', array('label' => 'lngFlag', 'required' => false));//
-
+            ->add('file', 'file', array('label' => 'lngFlag', 'required' => false))
         ;
     }
     

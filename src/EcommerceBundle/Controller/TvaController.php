@@ -137,9 +137,9 @@ class TvaController extends Controller
         public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $tag = $em->getRepository('EcommerceBundle:Tva')->find($id);
+        $tva = $em->getRepository('EcommerceBundle:Tva')->find($id);
 
-        $em->remove($tag);
+        $em->remove($tva);
         $em->flush();
 
         $this->get('session')->getFlashBag()->add(

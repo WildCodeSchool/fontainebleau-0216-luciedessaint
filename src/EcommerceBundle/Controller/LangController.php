@@ -36,15 +36,13 @@ class LangController extends Controller
     public function newAction(Request $request)
     {
         $lang = new Lang();
-       // $request = $this->getRequest();
-        $form = $this->createForm(new LangType(), $lang);
+        $request = $this->getRequest();
+        $form    = $this->createForm(new LangType(), $lang);
         $form->handleRequest($request);
-
 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            //$Langtype->file->move(__DIR__.'/../web/bundles/drapeaux', $LangType->file->getClientOriginalName());
             //$LangType->setLngFlag($LangType->file->getClientOriginalName());
             $em->persist($lang);
             $em->flush();
@@ -84,10 +82,26 @@ class LangController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            if($editForm->get('file')->getData() != null) {
+
+                if($lang->getLngFlag() != null) {
+                    unlink(__DIR__.'/../../../web/uploads/drapeaux/'.$lang->getLngFlag());
+                    $lang->setLngFlag(null);
+                }
+            }
+
+            $lang->preUpload();
+
             $em->persist($lang);
             $em->flush();
 
-            return $this->redirectToRoute('lang_edit', array('id' => $lang->getId()));
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Modification enregistrée'
+            );
+
+            return $this->redirectToRoute('lang_index');
         }
 
         return $this->render('EcommerceBundle:lang:edit.html.twig', array(
@@ -101,16 +115,18 @@ class LangController extends Controller
      * Deletes a Lang entity.
      *
      */
-    public function deleteAction(Request $request, Lang $lang)
+    public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($lang);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $lang = $em->getRepository('EcommerceBundle:Lang')->find($id);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($lang);
-            $em->flush();
-        }
+        $em->remove($lang);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'mesModifs',
+            'Suppression effectuée'
+        );
 
         return $this->redirectToRoute('lang_index');
     }

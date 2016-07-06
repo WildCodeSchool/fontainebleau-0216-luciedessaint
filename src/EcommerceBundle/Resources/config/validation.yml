@@ -24,6 +24,11 @@ EcommerceBundle\Entity\Lang:
 #                choices:  [male, female]
 #                message:  Choose a valid gender.
 #
+EcommerceBundle\Entity\Lang:
+    properties:
+        file:
+            - Image: ~
+
 EcommerceBundle\Entity\Categorie:
     properties:
         catPhoto:
