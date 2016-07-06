@@ -8,6 +8,14 @@
             Retour à la liste
         </a>
     </div>
+
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-8">
@@ -30,16 +38,20 @@
                             <td>{% if produit.pdtEtat %}Actif{% else %}Inactif{% endif %}</td>
                         </tr>
                         <tr>
-                            <th>A vendre</th>
+                            <th>A vendre (O/N)</th>
                             <td>{% if produit.pdtAvendre %}Oui{% else %}Non{% endif %}</td>
                         </tr>
                         <tr>
+                            <th>Taux de TVA</th>
+                            <td>{{ produit.pdtIdtva }} %</td>
+                        </tr>
+                        <tr>
                             <th>Prix unitaire HT</th>
-                            <td>{{ produit.pdtPrixUnitHt }}</td>
+                            <td>{{ produit.pdtPrixUnitHt|number_format(2, ',', ' ') }} €</td>
                         </tr>
                         <tr>
                             <th>Prix unitaire TTC</th>
-                            <td>{{ produit.pdtPrixUnitTtc }}</td>
+                            <td>{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</td>
                         </tr>
                         <tr>
                             <th>Afficher le prix</th>
@@ -48,10 +60,6 @@
                         <tr>
                             <th>Promotion en pourcentage</th>
                             <td>{% if produit.pdtPromoPct == null %}Non renseigné{% else %}{{ produit.pdtPromoPct }} %{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Photo du produit</th>
-                            <td>{{ produit.pdtPhoto }}</td>
                         </tr>
                         <tr>
                             <th>Poids du produit</th>
@@ -70,12 +78,18 @@
                             <td>{% if produit.pdtEmbDim == null %}Non renseigné{% else %}{{ produit.pdtEmbDim }}{% endif %}</td>
                         </tr>
                         <tr>
-                            <th>Photo du packaging</th>
-                            <td>{{ produit.pdtPckgPhoto }}</td>
+                            <th>Photo du produit</th>
+                            {#<td>{{ produit.pdtPhoto }}</td>#}
+                            <td>
+                                <img class="image_prodt" src="{{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}">
+                            </td>
                         </tr>
                         <tr>
-                            <th>Taux de TVA</th>
-                            <td>{{ produit.pdtIdtva }} %</td>
+                            <th>Photo du packaging</th>
+                            {#<td>{{ produit.pdtPckgPhoto }}</td>#}
+                            <td>
+                                <img class="image_prodt" src="{{ asset('uploads/produits/') }}{{ produit.pdtPckgPhoto }}">
+                            </td>
                         </tr>
 
                     </tbody>

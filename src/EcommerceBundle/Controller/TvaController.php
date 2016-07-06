@@ -103,7 +103,13 @@ class TvaController extends Controller
             $em->persist($tva);
             $em->flush();
 
-            return $this->redirectToRoute('tva_edit', array('id' => $tva->getId()));
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Modification enregistrée'
+            );
+
+            //return $this->redirectToRoute('tva_edit', array('id' => $tva->getId()));
+            return $this->redirectToRoute('tva_index');
         }
 
         return $this->render('EcommerceBundle:tva:edit.html.twig', array(
@@ -117,16 +123,29 @@ class TvaController extends Controller
      * Deletes a Tva entity.
      *
      */
-    public function deleteAction(Request $request, Tva $tva)
-    {
-        $form = $this->createDeleteForm($tva);
-        $form->handleRequest($request);
+//    public function deleteAction(Request $request, Tva $tva)
+//    {
+//        $form = $this->createDeleteForm($tva);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->remove($tva);
+//            $em->flush();
+//        }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tva);
-            $em->flush();
-        }
+        public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tag = $em->getRepository('EcommerceBundle:Tva')->find($id);
+
+        $em->remove($tag);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'mesModifs',
+            'Suppression effectuée'
+        );
 
         return $this->redirectToRoute('tva_index');
     }
@@ -147,3 +166,4 @@ class TvaController extends Controller
         ;
     }
 }
+

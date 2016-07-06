@@ -37,7 +37,7 @@ class LangController extends Controller
     {
         $lang = new Lang();
        // $request = $this->getRequest();
-        $form    = $this->createForm(new LangType(), $lang);
+        $form = $this->createForm(new LangType(), $lang);
         $form->handleRequest($request);
 
 

@@ -4,11 +4,17 @@ EcommerceBundle\Entity\Lang:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: lngCode
             message: "Code langue déjà existant"
-    properties:
-        lngCode:
-            - Choice:
-                choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
-                message:  "Sélectionnez un code valide"
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: lngLib
+            message: "Code lib déjà existant"
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: lngFlag
+            message: "Code flag déjà existant"
+#    properties:
+#        lngCode:
+#            - Choice:
+#                choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
+#                message:  "Sélectionnez un code valide"
 
 #EcommerceBundle\Entity\Lang:
 #    properties:
@@ -22,6 +28,15 @@ EcommerceBundle\Entity\Categorie:
     properties:
         catPhoto:
             - Image: ~
+
+EcommerceBundle\Entity\Produit:
+    properties:
+        phProdt:
+            - Image: ~
+        phPackag:
+            - Image: ~
+#        phProdt2:
+#            - Image: ~
 
 EcommerceBundle\Entity\Catlib:
     constraints:

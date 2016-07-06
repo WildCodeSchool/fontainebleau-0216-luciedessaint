@@ -8,6 +8,14 @@
             Créer une nouvelle entrée
         </a>
     </div>
+
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
@@ -15,11 +23,11 @@
                     <thead>
                     <tr>
                         {#<th>Id</th>#}
-                        <th>Etat</th>
-                        <th>A vendre</th>
+                        <th>Etat<br />(Actif/Inactif)</th>
+                        <th>A vendre (O/N)</th>
                         <th>Nom</th>
                         <th>Référence</th>
-                        <th>Prix unitaire TTC</th>
+                        <th>Prix TTC</th>
                         <th>Photo</th>
                         <th> </th>
                     </tr>
@@ -32,8 +40,9 @@
                             <td>{% if produit.pdtAvendre %}Oui{% else %}Non{% endif %}</td>
                             <td>{{ produit.pdtNom }}</td>
                             <td>{{ produit.pdtRef }}</td>
-                            <td>{{ produit.pdtPrixUnitTtc }}</td>
-                            <td>{{ produit.pdtPhoto }}</td>
+                            <td>{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</td>
+                            {#<td>{{ produit.pdtPhoto }}</td>#}
+                            <td><img class="image_produit" src="{{ asset('uploads/produits/')}}{{ produit.pdtPhoto }}"></td>
                             <td>
                                 <ul class="nopuce">
                                     <li>

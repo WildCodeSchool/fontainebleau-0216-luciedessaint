@@ -24,12 +24,13 @@ class ProduitType extends AbstractType
             ->add('pdtPrixUnitHt')
             ->add('pdtPrixUnitTtc')
             ->add('pdtPromoPct')
-            ->add('pdtPhoto', 'file', array('label' => 'Photo du produit', 'required' => false))
+            ->add('phProdt', 'file', array('label' => 'Photo du produit', 'required' => false))
+//            ->add('phProdt2', 'file', array('label' => 'Photo produit 2', 'required' => false))
             ->add('pdtPoids')
             ->add('pdtDim')
             ->add('pdtEmbPoids')
             ->add('pdtEmbDim')
-            ->add('pdtPckgPhoto', 'file', array('label' => 'Photo du packaging', 'required' => false))
+            ->add('phPackag', 'file', array('label' => 'Photo du packaging', 'required' => false))
             ->add('pdtIdtva')
         ;
     }

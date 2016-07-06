@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class LangRepository extends EntityRepository
 {
+
+    public function getLangByCode($Lng_Code)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM EcommerceBundle:Lang p
+                            WHERE (p.lngCode = :CodeLng)')
+            ->setParameter('CodeLng', $Lng_Code)
+            ->getResult();
+    }
+
 }

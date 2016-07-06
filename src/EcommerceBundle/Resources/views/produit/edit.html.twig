@@ -9,6 +9,13 @@
         </a>
     </div>
 
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     {{ form_start(edit_form) }}
 
     <div class="container">
@@ -78,14 +85,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Photo</p>
-                    </div>
-                    <div class="col-md-9">
-                        {{ form_widget(edit_form.pdtPhoto) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
                         <p class="text-right lib_champs">Poid</p>
                     </div>
                     <div class="col-md-9">
@@ -130,26 +129,26 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Photo du packaging</p>
-                    </div>
-                    <div class="col-md-9">
-                        {{ form_widget(edit_form.pdtPckgPhoto) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
                         <p class="text-right lib_champs">TVA du produit</p>
                     </div>
                     <div class="col-md-9">
                         {{ form_widget(edit_form.pdtIdtva) }}
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+
                 <input class="btn btn-success" type="submit" value="Enregistrer" />
 
-                {{ form_end(edit_form) }}
+
             </div>
         </div>
     </div>
+
     {#<h1>Produit edit</h1>
 
     {{ form_start(edit_form) }}

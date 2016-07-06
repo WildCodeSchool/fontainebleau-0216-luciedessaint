@@ -17,6 +17,132 @@ class Produit
         return $this->getPdtNom();
     }
 
+    public $phProdt;
+//    public $phProdt2;
+    public $phPackag;
+
+    protected function getUploadDir()
+    {
+        return 'uploads/produits';
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath_PhProdt()
+    {
+        return null === $this->pdtPhoto ? null : $this->getUploadDir().'/'.$this->pdtPhoto;
+    }
+    public function getAbsolutePath_Prodt()
+    {
+        return null === $this->pdtPhoto ? null : $this->getUploadRootDir().'/'.$this->pdtPhoto;
+    }
+
+/*    public function getWebPath_PhPdt2()
+    {
+        return null === $this->pdtPhoto2 ? null : $this->getUploadDir().'/'.$this->pdtPhoto2;
+    }
+    public function getAbsolutePath_PhPdt2()
+    {
+        return null === $this->pdtPhoto2 ? null : $this->getUploadRootDir().'/'.$this->pdtPhoto2;
+    }*/
+
+    public function getWebPath_PhPackg()
+    {
+        return null === $this->pdtPckgPhoto ? null : $this->getUploadDir().'/'.$this->pdtPckgPhoto;
+    }
+    public function getAbsolutePath_PhPackg()
+    {
+        return null === $this->pdtPckgPhoto ? null : $this->getUploadRootDir().'/'.$this->pdtPckgPhoto;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function preUpload()
+    {
+        if (null !== $this->phProdt) {
+            // do whatever you want to generate a unique name
+            $this->pdtPhoto = 'Pdt_'.uniqid().'.'.$this->phProdt->guessExtension();
+        }
+
+        /*        if (null !== $this->phProdt2) {
+                    $this->pdtPhoto2 = 'Pdt2_'.uniqid().'.'.$this->phProdt2->guessExtension();
+                }*/
+
+        if (null !== $this->phPackag) {
+            $this->pdtPckgPhoto = 'Pckg_'.uniqid().'.'.$this->phPackag->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setExpiresAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+    }
+
+    /**
+     * @ORM\PostPersist
+     */
+    public function upload()
+    {
+        if (null !== $this->phProdt) {
+            // if there is an error when moving the file, an exception will
+            // be automatically thrown by move(). This will properly prevent
+            // the entity from being persisted to the database on error
+
+            $this->phProdt->move($this->getUploadRootDir(), $this->pdtPhoto);
+
+            unset($this->phProdt);
+        }
+
+/*        if (null !== $this->phProdt2) {
+            $this->phProdt2->move($this->getUploadRootDir(), $this->pdtPhoto2);
+            unset($this->phProdt2);
+        }*/
+
+        if (null !== $this->phPackag) {
+            $this->phPackag->move($this->getUploadRootDir(), $this->pdtPckgPhoto);
+            unset($this->phPackag);
+        }
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        if ($phProdt = $this->getAbsolutePath_Prodt()) {
+            unlink($phProdt);
+        }
+
+/*        if ($phProdt2 = $this->getAbsolutePath_PhPdt2()) {
+            unlink($phProdt2);
+        }*/
+
+        if ($phPackag = $this->getAbsolutePath_PhPackg()) {
+            unlink($phPackag);
+        }
+    }
+
     ///////////////////////
     // GENERATED CODE
 
@@ -651,4 +777,5 @@ class Produit
     {
         return $this->pdtIdtva;
     }
+
 }

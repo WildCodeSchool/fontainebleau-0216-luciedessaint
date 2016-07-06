@@ -115,4 +115,9 @@ EcommerceBundle\Entity\Produit:
         joinColumn:
           name: pdt_idtva
           referencedColumnName: id
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+        preUpdate: [ preUpload, setUpdatedAtValue ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]

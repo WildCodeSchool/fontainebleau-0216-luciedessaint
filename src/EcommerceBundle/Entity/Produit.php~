@@ -17,6 +17,45 @@ class Produit
         return $this->getPdtNom();
     }
 
+    public $phProdt1;
+    public $phPackag;
+
+    protected function getUploadDir()
+    {
+        return 'uploads/produits';
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath_PhProdt()
+    {
+        return null === $this->pdtPhoto ? null : $this->getUploadDir().'/'.$this->pdtPhoto;
+    }
+    public function getAbsolutePath_Prodt()
+    {
+        return null === $this->pdtPhoto ? null : $this->getUploadRootDir().'/'.$this->pdtPhoto;
+    }
+
+/*    public function getWebPath_PhPdt2()
+    {
+        return null === $this->pdtPhoto2 ? null : $this->getUploadDir().'/'.$this->pdtPhoto2;
+    }
+    public function getAbsolutePath_PhPdt2()
+    {
+        return null === $this->pdtPhoto2 ? null : $this->getUploadRootDir().'/'.$this->pdtPhoto2;
+    }*/
+
+    public function getWebPath_PhPackg()
+    {
+        return null === $this->pdtPckgPhoto ? null : $this->getUploadDir().'/'.$this->pdtPckgPhoto;
+    }
+    public function getAbsolutePath_PhPackg()
+    {
+        return null === $this->pdtPckgPhoto ? null : $this->getUploadRootDir().'/'.$this->pdtPckgPhoto;
+    }
+
     ///////////////////////
     // GENERATED CODE
 

@@ -82,10 +82,37 @@ class ProduitController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            if($editForm->get('phProdt')->getData() != null) {
+                if($produit->getPdtPhoto() != null) {
+                    unlink(__DIR__.'/../../../web/uploads/produits/'.$produit->getPdtPhoto());
+                    $produit->setPdtPhoto(null);
+                }
+            }
+/*            if($editForm->get('phProdt2')->getData() != null) {
+                if($produit->getPdtPhoto2() != null) {
+                    unlink(__DIR__.'/../../../web/uploads/produits/'.$produit->getPdtPhoto2());
+                    $produit->setPdtPhoto2(null);
+                }
+            }*/
+            if($editForm->get('phPackag')->getData() != null) {
+                if($produit->getPdtPckgPhoto() != null) {
+                    unlink(__DIR__.'/../../../web/uploads/produits/'.$produit->getPdtPckgPhoto());
+                    $produit->setPdtPckgPhoto(null);
+                }
+            }
+            $produit->preUpload();
+
             $em->persist($produit);
             $em->flush();
 
-            return $this->redirectToRoute('produit_edit', array('id' => $produit->getId()));
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Modification enregistrée'
+            );
+
+            return $this->redirectToRoute('produit_show', array('id' => $produit->getId()));
+//            return $this->redirectToRoute('produit_index');
         }
 
         return $this->render('EcommerceBundle:produit:edit.html.twig', array(

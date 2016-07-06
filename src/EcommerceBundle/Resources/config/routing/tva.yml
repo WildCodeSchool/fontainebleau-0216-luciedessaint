@@ -21,4 +21,4 @@ tva_edit:
 tva_delete:
     path:     /{id}/delete
     defaults: { _controller: "EcommerceBundle:Tva:delete" }
-    methods:  DELETE
+    methods:  [GET, DELETE]

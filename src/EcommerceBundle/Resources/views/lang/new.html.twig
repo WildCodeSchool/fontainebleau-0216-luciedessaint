@@ -17,7 +17,7 @@
             <div class="col-md-offset-1 col-md-8">
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Code </p>
+                        <p class="text-right lib_champs">Code</p>
                     </div>
                     <div class="col-md-9">
                         {{ form_errors(form.lngCode) }}
@@ -35,6 +35,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(form.lngLib) }}
                             {{ form_widget(form.lngLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libelle de ce code langue' }}) }}
                         </div>
                     </div>
@@ -44,6 +45,7 @@
                         <p class="text-right lib_champs">Drapeaux des langues </p>
                     </div>
                     <div class="col-md-9">
+                        {{ form_errors(form.lngFlag) }}
                         {{ form_widget(form.lngFlag) }}
                     </div>
                 </div>
