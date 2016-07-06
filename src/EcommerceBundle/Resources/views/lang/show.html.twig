@@ -29,6 +29,10 @@
                         <th>Drapeau langue</th>
                         <td>{{ lang.lngFlag}} </td>
                     </tr>
+                    <tr>
+                        <th>Drapeau photo</th>
+                        <td>{{ form_widget(form.file) }} </td>
+                    </tr>
                     {#<tr>#}
                     {#<th>Désactivation</th>#}
                     {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}

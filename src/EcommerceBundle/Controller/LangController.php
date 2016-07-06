@@ -36,7 +36,7 @@ class LangController extends Controller
     public function newAction(Request $request)
     {
         $lang = new Lang();
-       // $request = $this->getRequest();
+        $request = $this->getRequest();
         $form    = $this->createForm(new LangType(), $lang);
         $form->handleRequest($request);
 
@@ -44,7 +44,6 @@ class LangController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            //$Langtype->file->move(__DIR__.'/../web/bundles/drapeaux', $LangType->file->getClientOriginalName());
             //$LangType->setLngFlag($LangType->file->getClientOriginalName());
             $em->persist($lang);
             $em->flush();
