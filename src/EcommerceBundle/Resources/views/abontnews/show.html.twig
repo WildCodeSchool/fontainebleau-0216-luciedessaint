@@ -26,8 +26,13 @@
                             <td>{{ abontnews.anlEmail }}</td>
                         </tr>
                         <tr>
-                            <th>Date d'activation</th>
+                            <th>Création</th>
                             <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>{% if abontnews.anlDteDesact and not abontnews.anlEtat %}
+                                <th>Désactivation</th>
+                                <td>{{ abontnews.anlDteDesact|date('d-m-Y H:i:s') }}</td>
+                            {% else %} &nbsp;{% endif %}
                         </tr>
                         {#<tr>#}
                             {#<th>Anldtedesact</th>#}

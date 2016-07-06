@@ -1,6 +1,9 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
+
+    {{ form_start(edit_form) }}
+
     <div id="header" class="jumbotron text-center">
         <h1>{{ abontnews.anlEmail }}</h1>
         <a class="btn btn-success btn-lg" href="{{ path('abontnews_index') }}">
@@ -8,8 +11,6 @@
             Retour à la liste
         </a>
     </div>
-
-    {{ form_start(edit_form) }}
 
     <div class="container">
         <div class="row">
@@ -29,19 +30,9 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(edit_form.anlEmail) }}
                             {{ form_widget(edit_form.anlEmail, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Adresse email' }}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <p class="text-right lib_champs">Date d'activation</p>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(edit_form.anlDteActif) }}
-                        </div>
+                       </div>
                     </div>
                 </div>
                 <input class="btn btn-success" type="submit" value="Enregistrer" />

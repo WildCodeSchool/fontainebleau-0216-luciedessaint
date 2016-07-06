@@ -18,11 +18,12 @@
                     <p class="text-right lib_champs">Code langue</p>
                     </div>
                     <div class="col-md-9">
-                    {{ form_widget(edit_form.lngCode) }}
-                    {#<div class="input-group">#}
-                    {#<span class="input-group-addon"><i class="glyphicon glyphicon-ok-sign"></i></span>#}
-                    {#{{ form_widget(edit_form.tvaEtat, { 'attr': {'class': 'form-control Actif', 'placeholder': 'Etat' }}) }}#}
-                    {#</div>#}
+                        {{ form_errors(edit_form.lngCode) }}
+                        {{ form_widget(edit_form.lngCode) }}
+                        {#<div class="input-group">#}
+                        {#<span class="input-group-addon"><i class="glyphicon glyphicon-ok-sign"></i></span>#}
+                        {#{{ form_widget(edit_form.tvaEtat, { 'attr': {'class': 'form-control Actif', 'placeholder': 'Etat' }}) }}#}
+                        {#</div>#}
                     </div>
                 </div>
                 <div class="row">

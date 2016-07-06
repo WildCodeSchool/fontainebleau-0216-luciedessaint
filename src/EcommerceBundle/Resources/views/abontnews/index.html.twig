@@ -24,8 +24,8 @@
                         {#<th>Id</th>#}
                         <th>Actif/inactif</th>
                         <th>Adresse email</th>
-                        <th>Date d'activation</th>
-                        {#<th>Date de désactivation</th>#}
+                        <th>Création</th>
+                        <th>Désactivation</th>
                         <th> </th>
                     </tr>
                     </thead>
@@ -35,8 +35,11 @@
                             {#<td><a href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">{{ abontnews.id }}</a></td>#}
                             <td>{% if abontnews.anlEtat %}Actif{% else %}Inactif{% endif %}</td>
                             <td>{{ abontnews.anlEmail }}</td>
-                            <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('d-m-Y H:i:s') }}{% endif %}</td>
-                            {#<td>{% if abontnews.anlDteDesact %}{{ abontnews.anlDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                            <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('d-m-Y') }}{% endif %}</td>
+                            <td>{% if abontnews.anlDteDesact and not abontnews.anlEtat %}
+                                    {{ abontnews.anlDteDesact|date('d-m-Y') }}
+                                    {% else %} &nbsp;
+                                {% endif %}</td>
                             <td>
                                 <ul class="nopuce">
                                     <li>

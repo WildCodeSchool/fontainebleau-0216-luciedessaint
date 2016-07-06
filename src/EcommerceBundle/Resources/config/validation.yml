@@ -1,14 +1,15 @@
 # EcommerceBundle/Resources/config/validation.yml
-#EcommerceBundle\Entity\Lang:
-#    constraints:
-#        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: lngCode
-#            message:  "Code langue déjà existant"
-#    properties:
-#        lngCode:
-#            - Choice:
-#                choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
-#                message:  "Sélectionnez un code valide"
-#
+EcommerceBundle\Entity\Lang:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: lngCode
+            message: "Code langue déjà existant"
+    properties:
+        lngCode:
+            - Choice:
+                choices:  [fr, en, de, it, es, pt, el, ja, zh, ko, ru]
+                message:  "Sélectionnez un code valide"
+
 #EcommerceBundle\Entity\Lang:
 #    properties:
 #        city: [New York, Berlin, Tokyo]
@@ -35,10 +36,10 @@ EcommerceBundle\Entity\Catlib:
             message:  "Langue déjà gérée pour cette catégorie"
 
 EcommerceBundle\Entity\Abontnews:
-    constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: anlEmail
-            message: 'trou du cul !!!'
+#    constraints:
+#        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+#            fields: anlEmail
+#            message: "Adresse mail déjà existante"
     properties:
         anlEmail:
             - Email: ~
