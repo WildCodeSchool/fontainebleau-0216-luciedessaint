@@ -12,12 +12,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-10">
-                <img class="img-responsive center-block imgbijou" src={{ asset('bundles/app/img/bijoux/1.png') }}>
+                {#<img class="img-responsive center-block imgbijou" src={{ asset('bundles/app/img/bijoux/1.png') }}>
                 <div class="space"></div>
                 <div class="col-md-3">
                     <img class="center-block img-responsive imgbijou" src={{ asset('bundles/app/img/bijoux/2.png') }}>
                     <div class="col-md-12">
                         <p>Moonstone on blue $145,00</p>
+
+                            <a class="#" id="#" href="{{ path('ecommerce_add_panier') }}">acheter</a>
+
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -37,7 +40,29 @@
                     <div class="col-md-12">
                         <p>Rose quartz $145,00</p>
                     </div>
-                </div>
+                </div>#}
+                {{ dump(paniers) }}
+
+                {% for produit in produits %}
+                    <tr>
+                        {#<td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>#}
+                        <td>{% if produit.pdtEtat %}Actif{% else %}Inactif{% endif %}</td>
+                        <td>{% if produit.pdtAvendre %}Oui{% else %}Non{% endif %}</td>
+                        <td>{{ produit.pdtNom }}</td>
+                        <td>{{ produit.pdtRef }}</td>
+                        <td>{{ produit.pdtPrixUnitTtc }}</td>
+                        <td>{{ produit.pdtPhoto }}</td>
+                        <td>
+                            <ul class="nopuce">
+                                <li>
+                                    <i class="glyphicon glyphicon-adjust"></i>
+                                    <a class="#" id="#" href="{{ path('ecommerce_add_panier', { 'id': produit.id }) }}">
+                                        acheter</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
             </div>
         </div>
     </div>

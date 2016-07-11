@@ -103,3 +103,15 @@ h2 {
 .imgbijou {
     width: 100%;
 }
+/* -------------------------------------------- *\
+                      Panier
+\* -------------------------------------------- */
+table {
+    border-collapse: collapse;
+}
+td, th /* Mettre une bordure sur les td ET les th */ {
+    border: 1px solid #ddd;
+}
+.prixtotal {
+    text-align: right;
+}

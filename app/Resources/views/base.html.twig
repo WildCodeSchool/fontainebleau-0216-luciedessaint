@@ -33,7 +33,7 @@
                         <li><a class="hvr-underline-from-left" href={{ path('ecommerce_tableau') }}>Art</a></li>
                         <li><a class="hvr-underline-from-left" href={{ path('ecommerce_bijou') }}>Bijoux KIFA</a></li>
                         <li><a class="hvr-underline-from-left" href={{ path('app_lucieactu') }}>Artiste</a></li>
-                        <li><a class="hvr-underline-from-left" href={{ path('ecommerce_panier') }}>Panier</a></li>
+                        <li><a class="hvr-underline-from-left" href={{ path('ecommerce_panier') }}>Panier {% if paniers!=null %}({{ paniers|length }}){% else %}{% endif %}</a></li>
                         <li><a class="hvr-underline-from-left" href="#">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

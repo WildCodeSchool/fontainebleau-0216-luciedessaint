@@ -51,10 +51,10 @@ EcommerceBundle\Entity\Catlib:
             message:  "Langue déjà gérée pour cette catégorie"
 
 EcommerceBundle\Entity\Abontnews:
-#    constraints:
-#        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-#            fields: anlEmail
-#            message: "Adresse mail déjà existante"
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: anlEmail
+            message: "Adresse mail déjà existante"
     properties:
         anlEmail:
             - Email: ~

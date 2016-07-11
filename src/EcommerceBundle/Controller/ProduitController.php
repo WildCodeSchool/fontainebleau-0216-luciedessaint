@@ -39,6 +39,9 @@ class ProduitController extends Controller
         $form = $this->createForm('EcommerceBundle\Form\ProduitType', $produit);
         $form->handleRequest($request);
 
+//        $session = $request->getSession();
+//        $session->set('nom', $produit->getPdtNom());
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($produit);

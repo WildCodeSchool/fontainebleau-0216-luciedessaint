@@ -1,15 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- Page d'acceuil -->
-
+    <header>
+        <div class="container-fluid"><!-- Top Bar noir -->
+            <div class="row">
+                <div class="col-md-3 rowblack text-center textwhite"><h1>Panier</h1></div>
+            </div>
+            <div class="row">
+                <img style="width: 100%; height: 100px; margin-bottom: 75px;" src="{{ asset('bundles/app/img/homepage/middlehp.png') }}">
+            </div>
+        </div><!-- Fin top bar noir -->
+    </header>
     <div class="container">
         <div class="row">
-            <div class="">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <tr>
+                        <h1 class="text-center">Votre panier</h1>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Aperçu</th>
+                        <th class="text-center">Nom - Référence</th>
+                        <th class="text-center">Prix</th>
+                    </tr>
+                    {{ dump(app.session.get('cartArray')) }}
+
+                    {% for panier in paniers %}
+                    <tr>
+                        <td class="text-center">{{ panier.photo }}</td>
+                        <td class="text-center">{{ panier.nom }} - {{ panier.ref }}</td>
+                        <td class="text-center">{{ panier.prix }} €</td>
+                        <td><a class="btn btn-danger text-center" href="{{ path('ecommerce_remove_panier', { 'id': panier.id }) }}">Supprimer</a></td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td><p class="prixtotal">Prix total :</p></td>
+                        <td><p class="text-center">{{ total }} €</p></td>
+                    </tr>
+                </table>
             </div>
+            <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 text-center">
+                <a class="btn btn-success" href="{{ path('ecommerce_comfirmer_panier') }}">Confirmer votre panier</a>
+            </div>
+        </div>
+        <div class="col-md-offset-2 col-md-8">
+            <p>Hello world this is a comment !</p>
         </div>
     </div>
     <footer style="height: 100px;">
 
     </footer>
 {% endblock %}
+
