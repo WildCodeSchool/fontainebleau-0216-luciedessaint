@@ -20,7 +20,7 @@ class BijouController extends Controller
 
         return $this->render('EcommerceBundle:Default:bijoux.html.twig', array(
             'produits'=> $produits,
-            'panieruser' => $panier,
+            'paniers' => $panier,
         ));
     }
 }

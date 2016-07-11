@@ -13,9 +13,16 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
+        $total=0;
 
+        if ($panieruser != null) {
+            foreach ($panieruser as $idx => $article) {
+                $total += $article["prix"];
+            }
+        }
         return $this->render('EcommerceBundle:Default:panier.html.twig', array(
-            'panieruser' => $panieruser,
+            'paniers' => $panieruser,
+            'total' => $total,
         ));
     }
     
@@ -60,12 +67,33 @@ class PanierController extends Controller
                 //ajout du nouveau produit dans CartArray de la session en cours
                 $session->set('cartArray', $panieruser);
             }
+            $total=0;
 
-         
+            if ($panieruser != null) {
+                foreach ($panieruser as $idx => $article) {
+                    $total += $article["prix"];
+                }
+            }
 
         }
         return $this->render('EcommerceBundle:Default:panier.html.twig', array(
             'paniers' => $session->get('cartArray'),
+            'total' => $total,
+        ));
+    }
+    public function removePanierAction(Request $request, $id)
+    {
+        $session = $request->getSession();
+        $panieruser = $session->get('cartArray');
+
+        //permet de retirer le produit du tableau
+        unset($panieruser[$id]);
+        // permet de faire la mise a jour du tableau
+        $session->set('cartArray', $panieruser);
+
+
+        return $this->redirectToRoute('ecommerce_panier', array(
+            'paniers' => $panieruser,
         ));
     }
 }

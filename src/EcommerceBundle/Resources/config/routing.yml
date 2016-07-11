@@ -62,3 +62,13 @@ ecommerce_add_panier:
     path:     /{id}/addpanier
     defaults: { _controller: EcommerceBundle:Panier:addPanier }
     methods:  GET
+
+ecommerce_remove_panier:
+    path:     /{id}/removepanier
+    defaults: { _controller: EcommerceBundle:Panier:removePanier }
+    methods:  GET
+
+ecommerce_comfirmer_panier:
+    path:     /confirmerpanier
+    defaults: { _controller: EcommerceBundle:Confirmerpanier:index }
+    methods:  GET

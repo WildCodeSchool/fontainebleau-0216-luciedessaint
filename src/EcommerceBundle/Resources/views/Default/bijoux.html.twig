@@ -41,7 +41,8 @@
                         <p>Rose quartz $145,00</p>
                     </div>
                 </div>#}
-                {{ dump(panieruser) }}
+                {{ dump(paniers) }}
+
                 {% for produit in produits %}
                     <tr>
                         {#<td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>#}
@@ -54,13 +55,9 @@
                         <td>
                             <ul class="nopuce">
                                 <li>
-                                    <a class="btn btn-primary" id="place-btn" href="{{ path('produit_show', { 'id': produit.id }) }}">
-                                        <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
-                                    <a class="btn btn-primary" id="place-btn" href="{{ path('produit_edit', { 'id': produit.id }) }}">
-                                        <i class="glyphicon glyphicon-edit"></i>Modifier</a>
-
+                                    <i class="glyphicon glyphicon-adjust"></i>
                                     <a class="#" id="#" href="{{ path('ecommerce_add_panier', { 'id': produit.id }) }}">
-                                        <i class="glyphicon glyphicon-magnet"></i>acheter</a>
+                                        acheter</a>
                                 </li>
                             </ul>
                         </td>
