@@ -54,6 +54,10 @@ ecommerce_bijou:
     path:     /bijoux
     defaults: { _controller: EcommerceBundle:Bijou:index }
 
+ecommerce_detail_produit:
+    path:     /{id}/produit
+    defaults: { _controller: EcommerceBundle:Detailproduit:index }
+
 ecommerce_panier:
     path:     /panier
     defaults: { _controller: EcommerceBundle:Panier:index }

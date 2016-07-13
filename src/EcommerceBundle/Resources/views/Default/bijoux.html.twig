@@ -16,11 +16,11 @@
                 {% for produit in produits %}
                     {% if produit.pdtEtat %}
                         <div class="col-md-3">
-                            <a href="{{ path('produit_show', { 'id': produit.id }) }}">
+                            <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
                             <img class="center-block img-responsive imgbijou" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}></a>
                             <div class="col-md-12">
-                                <a href="{{ path('produit_show', { 'id': produit.id }) }}">
-                                <p><span class="text-left">{{ produit.pdtNom }}</span></a><span class="text-right">{{ produit.pdtPrixUnitTtc }}</span></p>
+                                <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
+                                <p><span class="text-left">{{ produit.pdtNom }}</span></a><span class="text-right">{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }}</span></p>
                                 <ul class="nopuce">
                                     <li>
                                         <i class="glyphicon glyphicon-adjust"></i>
