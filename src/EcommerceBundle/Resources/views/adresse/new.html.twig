@@ -1,135 +1,138 @@
-{% extends 'baseadmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="header" class="jumbotron text-center">
-        <h1>Liste des adresses</h1>
-        <a class="btn btn-success btn-lg" href="{{ path('adresse_new') }}">
-            <i class="glyphicon glyphicon-plus"></i>
-            Créer une nouvelle entrée
-        </a>
-    </div>
-{{ form_start(form) }}
+    {{ form_start(form) }}
+    <div class="container">
+        <div class="row">
+            {{ dump(app.session) }}
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-5">
+                        <p class="text-right lib_champs">Nom</p>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-7">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.adrNom, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nom du commanditaire' }}) }}
+                            {{ form_errors(form.adrNom) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-5">
+                        <p class="text-right lib_champs">Prénom</p>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-7">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.adrPrenom, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Prenom du commanditaire' }}) }}
+                            {{ form_errors(form.adrPrenom) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-5">
+                        <p class="text-right lib_champs">Société</p>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-7">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.adrSoc, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Société commanditaire' }}) }}
+                            {{ form_errors(form.adrSoc) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-5">
+                        <p class="text-right lib_champs">Email</p>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-7">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.adrEmail, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Email du commanditaire' }}) }}
+                            {{ form_errors(form.adrEmail) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-5">
+                        <p class="text-right lib_champs">Adresse</p>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-7">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(form.adrAdr, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Adresse du commanditaire' }}) }}
+                            {{ form_errors(form.adrAdr) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-5">
+                        <p class="text-right lib_champs">Adresse de livraison diferente</p>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-7">
+                        <div class="input-group">
+                            <span id="show_adrlivraison"><a class="btn btn-success" action="" title="click !">Oui/non</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-8">
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Type </p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_widget(form.adrType) }}
-                    {#<div class="input-group">#}
-                    {#<span class="input-group-addon"><i class="glyphicon glyphicon-ok-sign"></i></span>#}
-                    {#{{ form_widget(form.adrType, { 'attr': {'class': 'form-control Actif', 'placeholder': 'Type' }}) }}#}
-                    {#</div>#}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Nom du commanditaire</p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrNom, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nom du commanditaire' }}) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Prenom du commanditaire </p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrPrenom, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Prenom du commanditaire' }}) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Société du commanditaire </p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrSoc, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Société commanditaire' }}) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Email du commanditaire </p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrEmail, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Email du commanditaire' }}) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Adresse du commanditaire </p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrAdr, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Adresse du commanditaire' }}) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Adresse de livraison </p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrAdr2, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Adresse de livraison' }}) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Code postal de livraison </p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrCp, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Code postal de livraison' }}) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Ville de livraison </p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrVille, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Ville de livraison' }}) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Pays de livraison </p>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                        {{ form_widget(form.adrPays, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Pays de livraison' }}) }}
-                    </div>
-                </div>
-            </div>
-            <input class="btn btn-success" type="submit" value="Enregistrer" />
 
-            {{ form_end(form) }}
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <span id="hide_adrlivraison">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="text-right lib_champs">{{ form_label(form.adrAdr2) }}</p>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(form.adrAdr2) }}
+                                {{ form_errors(form.adrAdr2) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="text-right lib_champs">Code postal de livraison </p>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(form.adrCp, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Code postal de livraison' }}) }}
+                                {{ form_errors(form.adrCp) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-5">
+                            <p class="text-right lib_champs">Ville de livraison </p>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-7">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(form.adrVille, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Ville de livraison' }}) }}
+                                {{ form_errors(form.adrVille) }}
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
         </div>
+        <input class="btn btn-success text-center" type="submit" value="Enregistrer" />
     </div>
-</div>
-
-
+    {{ form_end(form) }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#show_adrlivraison").click(function(){
+                $("#hide_adrlivraison").toggle();
+                $("#adresse_adrAdr2").prop('required',true);
+            });
+        });
+    </script>
 {% endblock %}

@@ -35,20 +35,38 @@ class AdresseController extends Controller
      */
     public function newAction(Request $request)
     {
-        $adresse = new Adresse();
-        $form = $this->createForm('EcommerceBundle\Form\AdresseType', $adresse);
+        $session = $request->getSession();
+        $panieruser = $session->get('cartArray');
+        $adresse1 = new Adresse();
+        $form = $this->createForm('EcommerceBundle\Form\AdresseType', $adresse1);
+        $adresse2 = new Adresse();
+        $form = $this->createForm('EcommerceBundle\Form\AdresseType', $adresse2);
+        $form->remove('adrIdcom');
         $form->handleRequest($request);
+        $adresse1->setAdrType(1);
 
+        if ($adresse1->getAdrType() != null) {
+            if ($adresse1->getAdrType() == 1){
+                $adresse1->setAdrType(2);
+            }
+            else {
+                $adresse1->setAdrType(1);
+            }
+        }
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($adresse);
-            $em->flush();
 
-            return $this->redirectToRoute('adresse_show', array('id' => $adresse->getId()));
+            $sessionadresse = $session->get('adresseArray1');
+            $session->set('adresseArray1', $adresse1);
+//            $em->persist($adresse1);
+//            $em->flush();
+
+            return $this->redirectToRoute('adresse_show');
         }
 
         return $this->render('EcommerceBundle:adresse:new.html.twig', array(
-            'adresse' => $adresse,
+            'adresse1' => $adresse1,
+            'paniers' => $panieruser,
             'form' => $form->createView(),
         ));
     }
@@ -57,13 +75,16 @@ class AdresseController extends Controller
      * Finds and displays a Adresse entity.
      *
      */
-    public function showAction(Adresse $adresse)
+    public function showAction(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($adresse);
+//        $deleteForm = $this->createDeleteForm($adresse);
+        $session = $request->getSession();
+        $panieruser = $session->get('cartArray');
+        $sessionadresse = $session->get('adresseArray');
 
         return $this->render('EcommerceBundle:adresse:show.html.twig', array(
-            'adresse' => $adresse,
-            'delete_form' => $deleteForm->createView(),
+            'paniers' => $panieruser,
+            'sessionadr' => $sessionadresse,
         ));
     }
 

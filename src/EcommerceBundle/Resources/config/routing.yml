@@ -40,7 +40,7 @@ ecommerce_commande:
 
 ecommerce_adresse:
     resource: "@EcommerceBundle/Resources/config/routing/adresse.yml"
-    prefix:   /admin/adresse
+    prefix:   /adresse
 
 ecommerce_admin:
     path:     /admin
@@ -70,9 +70,4 @@ ecommerce_add_panier:
 ecommerce_remove_panier:
     path:     /{id}/removepanier
     defaults: { _controller: EcommerceBundle:Panier:removePanier }
-    methods:  GET
-
-ecommerce_comfirmer_panier:
-    path:     /confirmerpanier
-    defaults: { _controller: EcommerceBundle:Confirmerpanier:index }
     methods:  GET

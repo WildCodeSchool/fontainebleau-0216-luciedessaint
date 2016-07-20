@@ -64,11 +64,16 @@ class Adresse
      */
     private $adrPays;
 
+    /**
+     * @var \EcommerceBundle\Entity\Commande
+     */
+    private $adrIdcom;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -79,6 +84,7 @@ class Adresse
      * Set adrType
      *
      * @param integer $adrType
+     *
      * @return Adresse
      */
     public function setAdrType($adrType)
@@ -91,7 +97,7 @@ class Adresse
     /**
      * Get adrType
      *
-     * @return integer 
+     * @return integer
      */
     public function getAdrType()
     {
@@ -102,6 +108,7 @@ class Adresse
      * Set adrNom
      *
      * @param string $adrNom
+     *
      * @return Adresse
      */
     public function setAdrNom($adrNom)
@@ -114,7 +121,7 @@ class Adresse
     /**
      * Get adrNom
      *
-     * @return string 
+     * @return string
      */
     public function getAdrNom()
     {
@@ -125,6 +132,7 @@ class Adresse
      * Set adrPrenom
      *
      * @param string $adrPrenom
+     *
      * @return Adresse
      */
     public function setAdrPrenom($adrPrenom)
@@ -137,7 +145,7 @@ class Adresse
     /**
      * Get adrPrenom
      *
-     * @return string 
+     * @return string
      */
     public function getAdrPrenom()
     {
@@ -148,6 +156,7 @@ class Adresse
      * Set adrSoc
      *
      * @param string $adrSoc
+     *
      * @return Adresse
      */
     public function setAdrSoc($adrSoc)
@@ -160,7 +169,7 @@ class Adresse
     /**
      * Get adrSoc
      *
-     * @return string 
+     * @return string
      */
     public function getAdrSoc()
     {
@@ -171,6 +180,7 @@ class Adresse
      * Set adrEmail
      *
      * @param string $adrEmail
+     *
      * @return Adresse
      */
     public function setAdrEmail($adrEmail)
@@ -183,7 +193,7 @@ class Adresse
     /**
      * Get adrEmail
      *
-     * @return string 
+     * @return string
      */
     public function getAdrEmail()
     {
@@ -194,6 +204,7 @@ class Adresse
      * Set adrAdr
      *
      * @param string $adrAdr
+     *
      * @return Adresse
      */
     public function setAdrAdr($adrAdr)
@@ -206,7 +217,7 @@ class Adresse
     /**
      * Get adrAdr
      *
-     * @return string 
+     * @return string
      */
     public function getAdrAdr()
     {
@@ -217,6 +228,7 @@ class Adresse
      * Set adrAdr2
      *
      * @param string $adrAdr2
+     *
      * @return Adresse
      */
     public function setAdrAdr2($adrAdr2)
@@ -229,7 +241,7 @@ class Adresse
     /**
      * Get adrAdr2
      *
-     * @return string 
+     * @return string
      */
     public function getAdrAdr2()
     {
@@ -240,6 +252,7 @@ class Adresse
      * Set adrCp
      *
      * @param string $adrCp
+     *
      * @return Adresse
      */
     public function setAdrCp($adrCp)
@@ -252,7 +265,7 @@ class Adresse
     /**
      * Get adrCp
      *
-     * @return string 
+     * @return string
      */
     public function getAdrCp()
     {
@@ -263,6 +276,7 @@ class Adresse
      * Set adrVille
      *
      * @param string $adrVille
+     *
      * @return Adresse
      */
     public function setAdrVille($adrVille)
@@ -275,7 +289,7 @@ class Adresse
     /**
      * Get adrVille
      *
-     * @return string 
+     * @return string
      */
     public function getAdrVille()
     {
@@ -286,6 +300,7 @@ class Adresse
      * Set adrPays
      *
      * @param string $adrPays
+     *
      * @return Adresse
      */
     public function setAdrPays($adrPays)
@@ -298,22 +313,18 @@ class Adresse
     /**
      * Get adrPays
      *
-     * @return string 
+     * @return string
      */
     public function getAdrPays()
     {
         return $this->adrPays;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Commande
-     */
-    private $adrIdcom;
-
 
     /**
      * Set adrIdcom
      *
      * @param \EcommerceBundle\Entity\Commande $adrIdcom
+     *
      * @return Adresse
      */
     public function setAdrIdcom(\EcommerceBundle\Entity\Commande $adrIdcom = null)
@@ -326,7 +337,7 @@ class Adresse
     /**
      * Get adrIdcom
      *
-     * @return \EcommerceBundle\Entity\Commande 
+     * @return \EcommerceBundle\Entity\Commande
      */
     public function getAdrIdcom()
     {

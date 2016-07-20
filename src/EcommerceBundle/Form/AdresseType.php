@@ -15,16 +15,21 @@ class AdresseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('adrType')
             ->add('adrNom')
             ->add('adrPrenom')
             ->add('adrSoc')
             ->add('adrEmail')
             ->add('adrAdr')
-            ->add('adrAdr2')
+            ->add('adrAdr2', 'text', array(
+                'required' => false,
+                'label' => 'Adresse de livraison',
+                'attr' => array(
+                    'class' => 'form-control libelle',
+                    'placeholder'=> 'Adresse de livraison'
+                )
+            ))
             ->add('adrCp')
             ->add('adrVille')
-            ->add('adrPays')
             ->add('adrIdcom')
         ;
     }
