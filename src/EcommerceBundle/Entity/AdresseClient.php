@@ -12,10 +12,11 @@ class AdresseClient
 {
     public function __construct()
     {
-        $this->adresse = new ArrayCollection();
+        $this->AdresseModele = new ArrayCollection();
     }
 
     // GENERATED CODE
+
 
     /**
      * @var integer
@@ -25,7 +26,7 @@ class AdresseClient
     /**
      * @var \EcommerceBundle\Entity\AdresseModele
      */
-    private $adresse;
+    private $AdresseModele;
 
 
     /**
@@ -39,25 +40,25 @@ class AdresseClient
     }
 
     /**
-     * Set adresse
+     * Set AdresseModele
      *
-     * @param \EcommerceBundle\Entity\AdresseModele $adresse
+     * @param \EcommerceBundle\Entity\AdresseModele $adresseModele
      * @return AdresseClient
      */
-    public function setAdresse(\EcommerceBundle\Entity\AdresseModele $adresse = null)
+    public function setAdresseModele(\EcommerceBundle\Entity\AdresseModele $adresseModele = null)
     {
-        $this->adresse = $adresse;
+        $this->AdresseModele = $adresseModele;
 
         return $this;
     }
 
     /**
-     * Get adresse
+     * Get AdresseModele
      *
      * @return \EcommerceBundle\Entity\AdresseModele 
      */
-    public function getAdresse()
+    public function getAdresseModele()
     {
-        return $this->adresse;
+        return $this->AdresseModele;
     }
 }

@@ -45,32 +45,35 @@ class AdresseController extends Controller
 
         $adresse1 = new AdresseModele();
         $adresse1->setAdrTypeName('Facturation');
-        $adresse_client->getAdresse()->add($adresse1);
+        $adresse_client->getAdresseModele()->add($adresse1);
 
         $adresse2 = new AdresseModele();
         $adresse2->setAdrTypeName('livraison');
-        $adresse_client->getAdresse()->add($adresse2);
+        $adresse_client->getAdresseModele()->add($adresse2);
 
         $form = $this->createForm(AdresseClientType::class, $adresse_client);
 
         $form->handleRequest($request);
         $adresse1->setAdrType(1);
 
-        if ($adresse1->getAdrType() != null) {
-            if ($adresse1->getAdrType() == 1){
-                $adresse1->setAdrType(2);
-            }
-            else {
-                $adresse1->setAdrType(1);
-            }
-        }
+//        if ($adresse1->getAdrType() != null) {
+//            if ($adresse1->getAdrType() == 1){
+//                $adresse1->setAdrType(2);
+//            }
+//            else {
+//                $adresse1->setAdrType(1);
+//            }
+//        }
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $sessionadresse = $session->get('adresseArray1');
-            $session->set('adresseArray1', $adresse1);
-//            $em->persist($adresse1);
-//            $em->flush();
+            $em->persist($adresse_client);
+            $em->flush();
+
+//            $sessionadresse = $session->get('adresseArray1');
+//            $session->set('adresseArray1', $adresse1);
+////            $em->persist($adresse1);
+////            $em->flush();
 
             return $this->redirectToRoute('adresse_show');
         }

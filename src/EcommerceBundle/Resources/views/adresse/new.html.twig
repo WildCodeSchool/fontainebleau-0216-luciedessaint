@@ -4,7 +4,7 @@
     {{ form_start(form) }}
     <div class="container">
         <div class="row">
-            {% for adresse in form.adresse %}
+            {% for adresse in form.adressemodele %}
                 {% if (adresse.vars.value.adrTypeName == 'Facturation') %}
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <h1>Adresse de {{ adresse.vars.value.adrTypeName }}</h1>

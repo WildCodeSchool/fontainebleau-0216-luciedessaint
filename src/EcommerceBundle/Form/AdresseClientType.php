@@ -16,7 +16,7 @@ class AdresseClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('adresse', CollectionType ::class, array(
+            ->add('adressemodele', CollectionType ::class, array(
             'entry_type' => AdresseModeleType::class
         ));
     }

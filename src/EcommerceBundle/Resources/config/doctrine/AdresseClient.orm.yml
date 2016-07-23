@@ -10,6 +10,6 @@ EcommerceBundle\Entity\AdresseClient:
                 strategy: AUTO
 
     manyToOne:
-        adresse:
+        AdresseModele:
             targetEntity: EcommerceBundle\Entity\AdresseModele
     lifecycleCallbacks: {  }
