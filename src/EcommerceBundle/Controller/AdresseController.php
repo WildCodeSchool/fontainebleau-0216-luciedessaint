@@ -55,23 +55,27 @@ class AdresseController extends Controller
 
         $form->handleRequest($request);
         $adresse1->setAdrType(1);
+        $adresse2->setAdrType(2);
 
-//        if ($adresse1->getAdrType() != null) {
-//            if ($adresse1->getAdrType() == 1){
-//                $adresse1->setAdrType(2);
-//            }
-//            else {
-//                $adresse1->setAdrType(1);
-//            }
-//        }
+        if ($adresse1->getAdrType() != null) {
+            if ($adresse1->getAdrType() == 1){
+                $adresse1->setAdrType(2);
+            }
+            else {
+                $adresse1->setAdrType(1);
+            }
+        }
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $em->persist($adresse_client);
+            $sessionadresse = $session->get('adresseArray');
+            $session->set('adresseArray', $adresse_client);
+            
+            //var_dump($adresse1); die;
+            $em->persist($adresse1);
+            $em->persist($adresse2);
             $em->flush();
 
-//            $sessionadresse = $session->get('adresseArray1');
-//            $session->set('adresseArray1', $adresse1);
 ////            $em->persist($adresse1);
 ////            $em->flush();
 
