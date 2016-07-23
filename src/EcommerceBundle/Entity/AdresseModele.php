@@ -2,20 +2,27 @@
 
 namespace EcommerceBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Adresse
  */
-class Adresse
+class AdresseModele
 {
+    public function __construct()
+    {
+        $this->adresse = new ArrayCollection();
+    }
+
+    // GENERATED CODE
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var int
+     * @var integer
      */
     private $adrType;
 
@@ -47,11 +54,6 @@ class Adresse
     /**
      * @var string
      */
-    private $adrAdr2;
-
-    /**
-     * @var string
-     */
     private $adrCp;
 
     /**
@@ -73,7 +75,7 @@ class Adresse
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -84,8 +86,7 @@ class Adresse
      * Set adrType
      *
      * @param integer $adrType
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrType($adrType)
     {
@@ -97,7 +98,7 @@ class Adresse
     /**
      * Get adrType
      *
-     * @return integer
+     * @return integer 
      */
     public function getAdrType()
     {
@@ -108,8 +109,7 @@ class Adresse
      * Set adrNom
      *
      * @param string $adrNom
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrNom($adrNom)
     {
@@ -121,7 +121,7 @@ class Adresse
     /**
      * Get adrNom
      *
-     * @return string
+     * @return string 
      */
     public function getAdrNom()
     {
@@ -132,8 +132,7 @@ class Adresse
      * Set adrPrenom
      *
      * @param string $adrPrenom
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrPrenom($adrPrenom)
     {
@@ -145,7 +144,7 @@ class Adresse
     /**
      * Get adrPrenom
      *
-     * @return string
+     * @return string 
      */
     public function getAdrPrenom()
     {
@@ -156,8 +155,7 @@ class Adresse
      * Set adrSoc
      *
      * @param string $adrSoc
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrSoc($adrSoc)
     {
@@ -169,7 +167,7 @@ class Adresse
     /**
      * Get adrSoc
      *
-     * @return string
+     * @return string 
      */
     public function getAdrSoc()
     {
@@ -180,8 +178,7 @@ class Adresse
      * Set adrEmail
      *
      * @param string $adrEmail
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrEmail($adrEmail)
     {
@@ -193,7 +190,7 @@ class Adresse
     /**
      * Get adrEmail
      *
-     * @return string
+     * @return string 
      */
     public function getAdrEmail()
     {
@@ -204,8 +201,7 @@ class Adresse
      * Set adrAdr
      *
      * @param string $adrAdr
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrAdr($adrAdr)
     {
@@ -217,7 +213,7 @@ class Adresse
     /**
      * Get adrAdr
      *
-     * @return string
+     * @return string 
      */
     public function getAdrAdr()
     {
@@ -225,35 +221,10 @@ class Adresse
     }
 
     /**
-     * Set adrAdr2
-     *
-     * @param string $adrAdr2
-     *
-     * @return Adresse
-     */
-    public function setAdrAdr2($adrAdr2)
-    {
-        $this->adrAdr2 = $adrAdr2;
-
-        return $this;
-    }
-
-    /**
-     * Get adrAdr2
-     *
-     * @return string
-     */
-    public function getAdrAdr2()
-    {
-        return $this->adrAdr2;
-    }
-
-    /**
      * Set adrCp
      *
      * @param string $adrCp
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrCp($adrCp)
     {
@@ -265,7 +236,7 @@ class Adresse
     /**
      * Get adrCp
      *
-     * @return string
+     * @return string 
      */
     public function getAdrCp()
     {
@@ -276,8 +247,7 @@ class Adresse
      * Set adrVille
      *
      * @param string $adrVille
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrVille($adrVille)
     {
@@ -289,7 +259,7 @@ class Adresse
     /**
      * Get adrVille
      *
-     * @return string
+     * @return string 
      */
     public function getAdrVille()
     {
@@ -300,8 +270,7 @@ class Adresse
      * Set adrPays
      *
      * @param string $adrPays
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrPays($adrPays)
     {
@@ -313,7 +282,7 @@ class Adresse
     /**
      * Get adrPays
      *
-     * @return string
+     * @return string 
      */
     public function getAdrPays()
     {
@@ -324,8 +293,7 @@ class Adresse
      * Set adrIdcom
      *
      * @param \EcommerceBundle\Entity\Commande $adrIdcom
-     *
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrIdcom(\EcommerceBundle\Entity\Commande $adrIdcom = null)
     {
@@ -337,10 +305,38 @@ class Adresse
     /**
      * Get adrIdcom
      *
-     * @return \EcommerceBundle\Entity\Commande
+     * @return \EcommerceBundle\Entity\Commande 
      */
     public function getAdrIdcom()
     {
         return $this->adrIdcom;
+    }
+    /**
+     * @var string
+     */
+    private $adrTypeName;
+
+
+    /**
+     * Set adrTypeName
+     *
+     * @param string $adrTypeName
+     * @return AdresseModele
+     */
+    public function setAdrTypeName($adrTypeName)
+    {
+        $this->adrTypeName = $adrTypeName;
+
+        return $this;
+    }
+
+    /**
+     * Get adrTypeName
+     *
+     * @return string 
+     */
+    public function getAdrTypeName()
+    {
+        return $this->adrTypeName;
     }
 }

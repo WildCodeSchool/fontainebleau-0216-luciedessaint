@@ -1,0 +1,15 @@
+EcommerceBundle\Entity\AdresseClient:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\AdresseClientRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        adresse:
+            targetEntity: EcommerceBundle\Entity\AdresseModele
+    lifecycleCallbacks: {  }

@@ -2,6 +2,9 @@
 
 namespace EcommerceBundle\Controller;
 
+use EcommerceBundle\Entity\AdresseClient;
+use EcommerceBundle\Entity\AdresseModele;
+use EcommerceBundle\Form\AdresseClientType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -37,11 +40,19 @@ class AdresseController extends Controller
     {
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
-        $adresse1 = new Adresse();
-        $form = $this->createForm('EcommerceBundle\Form\AdresseType', $adresse1);
-        $adresse2 = new Adresse();
-        $form = $this->createForm('EcommerceBundle\Form\AdresseType', $adresse2);
-        $form->remove('adrIdcom');
+
+        $adresse_client = new AdresseClient();
+
+        $adresse1 = new AdresseModele();
+        $adresse1->setAdrTypeName('Facturation');
+        $adresse_client->getAdresse()->add($adresse1);
+
+        $adresse2 = new AdresseModele();
+        $adresse2->setAdrTypeName('livraison');
+        $adresse_client->getAdresse()->add($adresse2);
+        
+        $form = $this->createForm(AdresseClientType::class, $adresse_client);
+
         $form->handleRequest($request);
         $adresse1->setAdrType(1);
 
@@ -65,7 +76,6 @@ class AdresseController extends Controller
         }
 
         return $this->render('EcommerceBundle:adresse:new.html.twig', array(
-            'adresse1' => $adresse1,
             'paniers' => $panieruser,
             'form' => $form->createView(),
         ));

@@ -2,13 +2,20 @@
 
 namespace EcommerceBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Adresse
  */
-class Adresse
+class AdresseModele
 {
+    public function __construct()
+    {
+        $this->adresse = new ArrayCollection();
+    }
+
+    // GENERATED CODE
     /**
      * @var integer
      */
@@ -79,7 +86,7 @@ class Adresse
      * Set adrType
      *
      * @param integer $adrType
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrType($adrType)
     {
@@ -102,7 +109,7 @@ class Adresse
      * Set adrNom
      *
      * @param string $adrNom
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrNom($adrNom)
     {
@@ -125,7 +132,7 @@ class Adresse
      * Set adrPrenom
      *
      * @param string $adrPrenom
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrPrenom($adrPrenom)
     {
@@ -148,7 +155,7 @@ class Adresse
      * Set adrSoc
      *
      * @param string $adrSoc
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrSoc($adrSoc)
     {
@@ -171,7 +178,7 @@ class Adresse
      * Set adrEmail
      *
      * @param string $adrEmail
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrEmail($adrEmail)
     {
@@ -194,7 +201,7 @@ class Adresse
      * Set adrAdr
      *
      * @param string $adrAdr
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrAdr($adrAdr)
     {
@@ -217,7 +224,7 @@ class Adresse
      * Set adrCp
      *
      * @param string $adrCp
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrCp($adrCp)
     {
@@ -240,7 +247,7 @@ class Adresse
      * Set adrVille
      *
      * @param string $adrVille
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrVille($adrVille)
     {
@@ -263,7 +270,7 @@ class Adresse
      * Set adrPays
      *
      * @param string $adrPays
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrPays($adrPays)
     {
@@ -286,7 +293,7 @@ class Adresse
      * Set adrIdcom
      *
      * @param \EcommerceBundle\Entity\Commande $adrIdcom
-     * @return Adresse
+     * @return AdresseModele
      */
     public function setAdrIdcom(\EcommerceBundle\Entity\Commande $adrIdcom = null)
     {
@@ -303,5 +310,33 @@ class Adresse
     public function getAdrIdcom()
     {
         return $this->adrIdcom;
+    }
+    /**
+     * @var string
+     */
+    private $adrTypeName;
+
+
+    /**
+     * Set adrTypeName
+     *
+     * @param string $adrTypeName
+     * @return AdresseModele
+     */
+    public function setAdrTypeName($adrTypeName)
+    {
+        $this->adrTypeName = $adrTypeName;
+
+        return $this;
+    }
+
+    /**
+     * Get adrTypeName
+     *
+     * @return string 
+     */
+    public function getAdrTypeName()
+    {
+        return $this->adrTypeName;
     }
 }

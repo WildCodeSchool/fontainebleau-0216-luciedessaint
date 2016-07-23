@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdresseType extends AbstractType
+class AdresseModeleType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -20,17 +20,9 @@ class AdresseType extends AbstractType
             ->add('adrSoc')
             ->add('adrEmail')
             ->add('adrAdr')
-            ->add('adrAdr2', 'text', array(
-                'required' => false,
-                'label' => 'Adresse de livraison',
-                'attr' => array(
-                    'class' => 'form-control libelle',
-                    'placeholder'=> 'Adresse de livraison'
-                )
-            ))
             ->add('adrCp')
             ->add('adrVille')
-            ->add('adrIdcom')
+//            ->add('adrIdcom')
         ;
     }
     
@@ -40,7 +32,7 @@ class AdresseType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EcommerceBundle\Entity\Adresse'
+            'data_class' => 'EcommerceBundle\Entity\AdresseModele'
         ));
     }
 }
