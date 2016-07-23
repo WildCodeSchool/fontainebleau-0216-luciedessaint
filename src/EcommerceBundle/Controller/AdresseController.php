@@ -50,7 +50,7 @@ class AdresseController extends Controller
         $adresse2 = new AdresseModele();
         $adresse2->setAdrTypeName('livraison');
         $adresse_client->getAdresse()->add($adresse2);
-        
+
         $form = $this->createForm(AdresseClientType::class, $adresse_client);
 
         $form->handleRequest($request);

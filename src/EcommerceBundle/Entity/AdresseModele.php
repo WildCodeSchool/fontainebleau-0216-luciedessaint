@@ -2,7 +2,6 @@
 
 namespace EcommerceBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,12 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AdresseModele
 {
-    public function __construct()
-    {
-        $this->adresse = new ArrayCollection();
-    }
-
-    // GENERATED CODE
     /**
      * @var integer
      */
