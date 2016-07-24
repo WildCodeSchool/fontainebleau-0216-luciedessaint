@@ -15,7 +15,7 @@
                             <div class="col-md-9 col-sm-9 col-xs-7">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    {{ form_widget(adresse.adrNom, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nom du commanditaire' }}) }}
+                                    {{ form_widget(adresse.adrNom, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nom du commanditaire', 'required': 'disable' }}) }}
                                     {{ form_errors(adresse.adrNom) }}
                                 </div>
                             </div>
@@ -209,10 +209,26 @@
     {{ parent() }}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script>
+        $("#adresse_client_adressemodele_1_adrNom").prop('required',false);
+        $("#adresse_client_adressemodele_1_adrPrenom").prop('required',false);
+        $("#adresse_client_adressemodele_1_adrSoc").prop('required',false);
+        $("#adresse_client_adressemodele_1_adrEmail").prop('required',false);
+        $("#adresse_client_adressemodele_1_adrAdr").prop('required',false);
+        $("#adresse_client_adressemodele_1_adrCp").prop('required',false);
+        $("#adresse_client_adressemodele_1_adrVille").prop('required',false);
+        $("#adresse_client_adressemodele_1_adrIdcom").prop('required',false);
         $(document).ready(function(){
+
             $("#show_adrlivraison").click(function(){
+
                 $("#hide_adrlivraison").toggle();
-                $("#adresse_adrAdr2").prop('required',true);
+                $("#adresse_client_adressemodele_1_adrNom").prop('required',true);
+                $("#adresse_client_adressemodele_1_adrPrenom").prop('required',true);
+                $("#adresse_client_adressemodele_1_adrAdr").prop('required',true);
+                $("#adresse_client_adressemodele_1_adrCp").prop('required',true);
+                $("#adresse_client_adressemodele_1_adrVille").prop('required',true);
+                $("#adresse_client_adressemodele_1_adrIdcom").prop('required',true);
+                $("#adresse_client_adressemodele_1_adrType").val(2);
             });
         });
     </script>
