@@ -34,6 +34,11 @@ EcommerceBundle\Entity\AdresseModele:
             length: '100'
             nullable: true
             column: adr_email
+        adrTel:
+            type: string
+            length: '20'
+            nullable: true
+            column: adr_tel
         adrAdr:
             type: string
             length: '100'

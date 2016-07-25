@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AdresseModele
 {
+   
     /**
      * @var integer
      */
@@ -18,6 +19,11 @@ class AdresseModele
      * @var integer
      */
     private $adrType;
+
+    /**
+     * @var string
+     */
+    private $adrTypeName;
 
     /**
      * @var string
@@ -38,6 +44,11 @@ class AdresseModele
      * @var string
      */
     private $adrEmail;
+
+    /**
+     * @var string
+     */
+    private $adrTel;
 
     /**
      * @var string
@@ -96,6 +107,29 @@ class AdresseModele
     public function getAdrType()
     {
         return $this->adrType;
+    }
+
+    /**
+     * Set adrTypeName
+     *
+     * @param string $adrTypeName
+     * @return AdresseModele
+     */
+    public function setAdrTypeName($adrTypeName)
+    {
+        $this->adrTypeName = $adrTypeName;
+
+        return $this;
+    }
+
+    /**
+     * Get adrTypeName
+     *
+     * @return string 
+     */
+    public function getAdrTypeName()
+    {
+        return $this->adrTypeName;
     }
 
     /**
@@ -188,6 +222,29 @@ class AdresseModele
     public function getAdrEmail()
     {
         return $this->adrEmail;
+    }
+
+    /**
+     * Set adrTel
+     *
+     * @param string $adrTel
+     * @return AdresseModele
+     */
+    public function setAdrTel($adrTel)
+    {
+        $this->adrTel = $adrTel;
+
+        return $this;
+    }
+
+    /**
+     * Get adrTel
+     *
+     * @return string 
+     */
+    public function getAdrTel()
+    {
+        return $this->adrTel;
     }
 
     /**
@@ -303,33 +360,5 @@ class AdresseModele
     public function getAdrIdcom()
     {
         return $this->adrIdcom;
-    }
-    /**
-     * @var string
-     */
-    private $adrTypeName;
-
-
-    /**
-     * Set adrTypeName
-     *
-     * @param string $adrTypeName
-     * @return AdresseModele
-     */
-    public function setAdrTypeName($adrTypeName)
-    {
-        $this->adrTypeName = $adrTypeName;
-
-        return $this;
-    }
-
-    /**
-     * Get adrTypeName
-     *
-     * @return string 
-     */
-    public function getAdrTypeName()
-    {
-        return $this->adrTypeName;
     }
 }

@@ -19,6 +19,7 @@ class AdresseModeleType extends AbstractType
             ->add('adrPrenom')
             ->add('adrSoc')
             ->add('adrEmail')
+            ->add('adrTel')
             ->add('adrAdr')
             ->add('adrCp')
             ->add('adrVille')

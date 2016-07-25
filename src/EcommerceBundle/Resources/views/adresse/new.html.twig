@@ -58,6 +58,18 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Téléphone</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrTel, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Numéro de téléphone' }}) }}
+                                    {{ form_errors(adresse.adrTel) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
                                 <p class="text-right lib_champs">Adresse</p>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-7">
@@ -157,6 +169,18 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-xs-5">
+                                    <p class="text-right lib_champs">Téléphone</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-7">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                        {{ form_widget(adresse.adrTel, { 'attr': {'class': 'form-control libelle', 'placeholder': 'Numéro de téléphone' }}) }}
+                                        {{ form_errors(adresse.adrTel) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-5">
                                     <p class="text-right lib_champs">Adresse de livraison</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-7">
@@ -197,8 +221,6 @@
 
             {% endfor %}
 
-
-
         </div>
         <input class="btn btn-success text-center" type="submit" value="Enregistrer" />
     </div>
@@ -210,27 +232,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- permet de changer tout les champs en required false a true.... -->
     <script>
-        $("#adresse_client_adressemodele_1_adrNom").prop('required',false);
-        $("#adresse_client_adressemodele_1_adrPrenom").prop('required',false);
-        $("#adresse_client_adressemodele_1_adrSoc").prop('required',false);
+        function form(property){
+            $("#adresse_client_adressemodele_1_adrNom").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrPrenom").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrAdr").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrTel").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrCp").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrVille").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrIdcom").prop('required',property);
+        }
+        form(false);
+        $("#adresse_client_adressemodele_0_adrEmail").prop('required',true);
         $("#adresse_client_adressemodele_1_adrEmail").prop('required',false);
-        $("#adresse_client_adressemodele_1_adrAdr").prop('required',false);
-        $("#adresse_client_adressemodele_1_adrCp").prop('required',false);
-        $("#adresse_client_adressemodele_1_adrVille").prop('required',false);
-        $("#adresse_client_adressemodele_1_adrIdcom").prop('required',false);
         $(document).ready(function(){
 
             $("#show_adrlivraison").click(function(){
 
-                $("#hide_adrlivraison").toggle();
-                $("#adresse_client_adressemodele_1_adrNom").prop('required',true);
-                $("#adresse_client_adressemodele_1_adrPrenom").prop('required',true);
-                $("#adresse_client_adressemodele_1_adrAdr").prop('required',true);
-                $("#adresse_client_adressemodele_1_adrCp").prop('required',true);
-                $("#adresse_client_adressemodele_1_adrVille").prop('required',true);
-                $("#adresse_client_adressemodele_1_adrIdcom").prop('required',true);
-                $("#adresse_client_adressemodele_1_adrType").val(1);
-                $("#adresse_client_adressemodele_0_adrType").val(2);
+                var display = $('#hide_adrlivraison').css('display');
+
+                if (display == 'none'){
+                    $("#hide_adrlivraison").toggle();
+                    form(true);
+                    $("#adresse_client_adressemodele_1_adrType").val(1);
+                    $("#adresse_client_adressemodele_0_adrType").val(2);
+                }
+                else {
+                    $("#hide_adrlivraison").toggle();
+                    form(false);
+                }
             });
         });
     </script>
