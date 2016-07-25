@@ -108,7 +108,7 @@ class ProduitController extends Controller
                 } else {
 //                    create a new object / persist the object / flush the entity manager
                     
-                    $id_cat = $produit->getId();
+                    $id_cat = $produit->getPdtIdcat();
                     var_dump($id_cat);
 
                     $Catlib4Lang = $em->getRepository('EcommerceBundle:Catlib')->getCatlib4CategLang($id_cat, $CodeLang);
@@ -139,7 +139,7 @@ class ProduitController extends Controller
                     $em->persist($prodlib);
                     $em->flush();
 
-                    $Prodlib4Lang = $em->getRepository('EcommerceBundle:Prodlib')->getCatlib4CategLang($id, $CodeLang);
+                    $Prodlib4Lang = $em->getRepository('EcommerceBundle:Prodlib')->getProdlib4ProdLang($id, $CodeLang);
                     $langue->LibProd = $Prodlib4Lang[0];
                 }
             }

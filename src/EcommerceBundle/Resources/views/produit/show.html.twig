@@ -86,14 +86,22 @@
                             <th>Photo du produit</th>
                             {#<td>{{ produit.pdtPhoto }}</td>#}
                             <td>
-                                <img class="image_produit" src="{{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}">
+                                {% if produit.pdtPhoto %}
+                                    <img class="image_show_produit" src="{{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}">
+                                {% else %}
+                                    <h3> </h3>
+                                {% endif %}
                             </td>
                         </tr>
                         <tr>
                             <th>Photo du packaging</th>
                             {#<td>{{ produit.pdtPckgPhoto }}</td>#}
                             <td>
-                                <img class="image_produit" src="{{ asset('uploads/produits/') }}{{ produit.pdtPckgPhoto }}">
+                                {% if produit.pdtPckgPhoto %}
+                                    <img class="image_show_produit" src="{{ asset('uploads/produits/') }}{{ produit.pdtPckgPhoto }}">
+                                {% else %}
+                                    <h3> </h3>
+                                {% endif %}
                             </td>
                         </tr>
 
