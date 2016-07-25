@@ -42,6 +42,9 @@ class ProduitController extends Controller
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('EcommerceBundle:Categorie')->findAll();
 
+//        $session = $request->getSession();
+//        $session->set('nom', $produit->getPdtNom());
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($produit);

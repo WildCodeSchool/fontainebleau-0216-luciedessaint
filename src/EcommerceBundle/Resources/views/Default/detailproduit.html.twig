@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Référence du produit</th>
+                            <td>{{ produit.pdtRef }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ produit.pdtNom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prix unitaire TTC</th>
+                            <td>{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                        <tr>
+                            <th>Poids du produit</th>
+                            <td>{% if produit.pdtPoids == null %}Non renseigné{% else %}{{ produit.pdtPoids }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Dimension du produit</th>
+                            <td>{% if produit.pdtDim == null %}Non renseigné{% else %}{{ produit.pdtDim }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Poids de l'emballage</th>
+                            <td>{% if produit.pdtEmbPoids == null %}Non renseigné{% else %}{{ produit.pdtEmbPoids }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Dimension de l'emballage</th>
+                            <td>{% if produit.pdtEmbDim == null %}Non renseigné{% else %}{{ produit.pdtEmbDim }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Photo du produit</th>
+                            {#<td>{{ produit.pdtPhoto }}</td>#}
+                            <td>
+                                <img class="image_produit" src="{{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

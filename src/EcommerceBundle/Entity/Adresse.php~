@@ -10,12 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Adresse
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var int
+     * @var integer
      */
     private $adrType;
 
@@ -47,11 +47,6 @@ class Adresse
     /**
      * @var string
      */
-    private $adrAdr2;
-
-    /**
-     * @var string
-     */
     private $adrCp;
 
     /**
@@ -63,6 +58,11 @@ class Adresse
      * @var string
      */
     private $adrPays;
+
+    /**
+     * @var \EcommerceBundle\Entity\Commande
+     */
+    private $adrIdcom;
 
 
     /**
@@ -214,29 +214,6 @@ class Adresse
     }
 
     /**
-     * Set adrAdr2
-     *
-     * @param string $adrAdr2
-     * @return Adresse
-     */
-    public function setAdrAdr2($adrAdr2)
-    {
-        $this->adrAdr2 = $adrAdr2;
-
-        return $this;
-    }
-
-    /**
-     * Get adrAdr2
-     *
-     * @return string 
-     */
-    public function getAdrAdr2()
-    {
-        return $this->adrAdr2;
-    }
-
-    /**
      * Set adrCp
      *
      * @param string $adrCp
@@ -304,11 +281,6 @@ class Adresse
     {
         return $this->adrPays;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Commande
-     */
-    private $adrIdcom;
-
 
     /**
      * Set adrIdcom

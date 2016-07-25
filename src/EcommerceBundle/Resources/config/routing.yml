@@ -6,10 +6,6 @@ ecommerce_tva:
     resource: "@EcommerceBundle/Resources/config/routing/tva.yml"
     prefix:   /admin/tva
 
-ecommerce_panier:
-    path:     /panier
-    defaults: { _controller: EcommerceBundle:Panier:index }
-
 ecommerce_abontnews:
     resource: "@EcommerceBundle/Resources/config/routing/abontnews.yml"
     prefix:   /admin/abontnews
@@ -44,7 +40,7 @@ ecommerce_commande:
 
 ecommerce_adresse:
     resource: "@EcommerceBundle/Resources/config/routing/adresse.yml"
-    prefix:   /admin/adresse
+    prefix:   /adresse
 
 ecommerce_admin:
     path:     /admin
@@ -57,3 +53,21 @@ ecommerce_tableau:
 ecommerce_bijou:
     path:     /bijoux
     defaults: { _controller: EcommerceBundle:Bijou:index }
+
+ecommerce_detail_produit:
+    path:     /{id}/produit
+    defaults: { _controller: EcommerceBundle:Detailproduit:index }
+
+ecommerce_panier:
+    path:     /panier
+    defaults: { _controller: EcommerceBundle:Panier:index }
+
+ecommerce_add_panier:
+    path:     /{id}/addpanier
+    defaults: { _controller: EcommerceBundle:Panier:addPanier }
+    methods:  GET
+
+ecommerce_remove_panier:
+    path:     /{id}/removepanier
+    defaults: { _controller: EcommerceBundle:Panier:removePanier }
+    methods:  GET

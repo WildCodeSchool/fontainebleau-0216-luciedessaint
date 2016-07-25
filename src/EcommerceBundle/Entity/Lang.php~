@@ -23,20 +23,22 @@ class Lang
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
     }
 
     public function getWebPath()
     {
-        return null === $this->file? null : $this->getUploadDir().'/'.$this->file;
+        return null === $this->lngFlag? null : $this->getUploadDir().'/'.$this->lngFlag;
     }
 
     public function getAbsolutePath()
     {
-        return null === $this->file ? null : $this->getUploadRootDir().'/'.$this->file;
+        return null === $this->lngFlag ? null : $this->getUploadRootDir().'/'.$this->lngFlag;
     }
 
     /*fin upload*/
+
+    // CODE AUTOMATIQUE
     /**
      * @var int
      */
@@ -145,7 +147,7 @@ class Lang
     {
         if (null !== $this->file) {
             // do whatever you want to generate a unique name
-            $this->file = uniqid() . '.' . $this->file->guessExtension();
+            $this->lngFlag = 'Flag_' . $this->getLngCode() . '.' . $this->file->guessExtension();
         }
     }
 
@@ -185,9 +187,9 @@ class Lang
         // if there is an error when moving the file, an exception will
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
-        $this->file->move($this->getUploadRootDir(), $this->file);
+        $this->file->move($this->getUploadRootDir(), $this->lngFlag);
 
-       /// unset($this->file);
+        unset($this->file);
     }
 
     /**

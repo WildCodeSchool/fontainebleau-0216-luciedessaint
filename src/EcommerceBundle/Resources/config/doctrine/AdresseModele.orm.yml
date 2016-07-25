@@ -1,7 +1,7 @@
-EcommerceBundle\Entity\Adresse:
+EcommerceBundle\Entity\AdresseModele:
     type: entity
     table: null
-    repositoryClass: EcommerceBundle\Repository\AdresseRepository
+    repositoryClass: EcommerceBundle\Repository\AdresseModeleRepository
     id:
         id:
             type: integer
@@ -12,6 +12,10 @@ EcommerceBundle\Entity\Adresse:
         adrType:
             type: smallint
             column: adr_type
+        adrTypeName:
+            type: string
+            length: '50'
+            column: adr_type_name
         adrNom:
             type: string
             length: '50'
@@ -30,15 +34,15 @@ EcommerceBundle\Entity\Adresse:
             length: '100'
             nullable: true
             column: adr_email
+        adrTel:
+            type: string
+            length: '20'
+            nullable: true
+            column: adr_tel
         adrAdr:
             type: string
             length: '100'
             column: adr_adr
-        adrAdr2:
-            type: string
-            length: '100'
-            nullable: true
-            column: adr_adr2
         adrCp:
             type: string
             length: '20'
@@ -53,9 +57,9 @@ EcommerceBundle\Entity\Adresse:
             nullable: true
             column: adr_pays
     manyToOne:
-      adrIdcom:
-        targetEntity: EcommerceBundle\Entity\Commande
-        joinColumn:
-          name: adr_idcom
-          referencedColumnName: id
+        adrIdcom:
+            targetEntity: EcommerceBundle\Entity\Commande
+            joinColumn:
+                name: adr_idcom
+                referencedColumnName: id
     lifecycleCallbacks: {  }

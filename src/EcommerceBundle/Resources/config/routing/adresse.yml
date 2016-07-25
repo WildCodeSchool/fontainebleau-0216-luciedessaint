@@ -4,7 +4,7 @@ adresse_index:
     methods:  GET
 
 adresse_show:
-    path:     /{id}/show
+    path:     /show
     defaults: { _controller: "EcommerceBundle:Adresse:show" }
     methods:  GET
 

@@ -2,6 +2,9 @@
 
 namespace EcommerceBundle\Controller;
 
+use EcommerceBundle\Entity\AdresseClient;
+use EcommerceBundle\Entity\AdresseModele;
+use EcommerceBundle\Form\AdresseClientType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -35,20 +38,54 @@ class AdresseController extends Controller
      */
     public function newAction(Request $request)
     {
-        $adresse = new Adresse();
-        $form = $this->createForm('EcommerceBundle\Form\AdresseType', $adresse);
+        // recup de la session
+        $session = $request->getSession();
+        $panieruser = $session->get('cartArray');
+
+        $adresse_client = new AdresseClient();
+
+        $adresse1 = new AdresseModele();
+        $adresse1->setAdrTypeName('Facturation');
+        $adresse_client->getAdresseModele()->add($adresse1);
+
+        $adresse2 = new AdresseModele();
+        $adresse2->setAdrTypeName('livraison');
+        $adresse_client->getAdresseModele()->add($adresse2);
+
+        $form = $this->createForm(AdresseClientType::class, $adresse_client);
+
         $form->handleRequest($request);
+        //adresse de livraison n'est pas définit. Et l'est si on click sur plusieur adresse (jquery)
+        // il est définit que si il a plusieurs adresse.
+        $adresse1->setAdrType(1);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($adresse);
+
+            $sessionadresse = $session->get('adresseArray1');
+            $sessionadresse = $session->get('adresseArray2');
+            $session->set('adresseArray1', $adresse1);
+            $session->set('adresseArray2', $adresse2);
+
+            //var_dump($adresse_client); die;
+            // si il y a une deuxieme adresse alors on persiste $adresse2 sinon $adresse 1 est l'adresse de livraison.
+            if ($adresse2->getAdrType() == 1)
+            {
+                $em->persist($adresse2);
+            }
+            else {
+                $adresse1->setAdrTypeName('livraison');
+            }
+
+            $em->persist($adresse1);
             $em->flush();
 
-            return $this->redirectToRoute('adresse_show', array('id' => $adresse->getId()));
+
+            return $this->redirectToRoute('adresse_show');
         }
 
         return $this->render('EcommerceBundle:adresse:new.html.twig', array(
-            'adresse' => $adresse,
+            'paniers' => $panieruser,
             'form' => $form->createView(),
         ));
     }
@@ -57,13 +94,16 @@ class AdresseController extends Controller
      * Finds and displays a Adresse entity.
      *
      */
-    public function showAction(Adresse $adresse)
+    public function showAction(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($adresse);
+//        $deleteForm = $this->createDeleteForm($adresse);
+        $session = $request->getSession();
+        $panieruser = $session->get('cartArray');
+        $sessionadresse = $session->get('adresseArray');
 
         return $this->render('EcommerceBundle:adresse:show.html.twig', array(
-            'adresse' => $adresse,
-            'delete_form' => $deleteForm->createView(),
+            'paniers' => $panieruser,
+            'sessionadr' => $sessionadresse,
         ));
     }
 

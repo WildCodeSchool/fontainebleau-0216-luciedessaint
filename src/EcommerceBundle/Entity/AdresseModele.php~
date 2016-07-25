@@ -1,0 +1,13 @@
+<?php
+
+namespace EcommerceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Adresse
+ */
+class AdresseModele
+{
+   
+}
