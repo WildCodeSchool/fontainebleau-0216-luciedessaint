@@ -1,4 +1,4 @@
-'<?php
+<?php
 
 namespace EcommerceBundle\Form;
 
@@ -15,12 +15,12 @@ class ProdlibType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pdlLocale')
-            ->add('pdlLib')
+//            ->add('pdlLocale')
+//            ->add('pdlLib')
             ->add('pdlDesc')
-            ->add('pdlCat')
-            ->add('pdlType')
-            ->add('pdlItem')
+//            ->add('pdlCat')
+//            ->add('pdlType')
+//            ->add('pdlItem')
             ->add('pdlInfoLib1')
             ->add('pdlInfoLib2')
             ->add('pdlInfoLib3')
@@ -40,10 +40,10 @@ class ProdlibType extends AbstractType
             ->add('pdlInfoVal8')
             ->add('pdlInfoVal9')
             ->add('pdlPckgComm')
-            ->add('pdlDispo')
-            ->add('pdlFabDelai')
+//            ->add('pdlDispo')
+//            ->add('pdlFabDelai')
             ->add('pdlLivDelai')
-            ->add('pdlIdpdt')
+//            ->add('pdlIdpdt')
         ;
     }
     

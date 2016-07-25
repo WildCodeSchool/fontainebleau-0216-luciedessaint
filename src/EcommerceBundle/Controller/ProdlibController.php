@@ -77,12 +77,32 @@ class ProdlibController extends Controller
         $editForm = $this->createForm('EcommerceBundle\Form\ProdlibType', $prodlib);
         $editForm->handleRequest($request);
 
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        $Code_lng = $prodlib->getPdlLocale();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération des infos 'langue'
+        $em = $this->getDoctrine()->getManager();
+        $lang = $em->getRepository('EcommerceBundle:Lang')->getLangByCode($Code_lng);
+        //var_dump($lang);
+
+        $langue = $lang[0];
+        $prodlib->langue = $langue;
+        //var_dump($langue);
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($prodlib);
             $em->flush();
 
-            return $this->redirectToRoute('prodlib_edit', array('id' => $prodlib->getId()));
+            //return $this->redirectToRoute('prodlib_edit', array('id' => $prodlib->getId()));
+
+            $prodId = $prodlib->getPdlIdpdt()->getId();
+            //var_dump($prodId);exit;
+            return $this->redirectToRoute('produit_show', array('id' => $prodId));
+
         }
 
         return $this->render('EcommerceBundle:prodlib:edit.html.twig', array(

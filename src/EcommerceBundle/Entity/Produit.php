@@ -145,6 +145,7 @@ class Produit
 
     ///////////////////////
     // GENERATED CODE
+    //
 
     /**
      * @var integer
@@ -260,6 +261,11 @@ class Produit
      * @var \EcommerceBundle\Entity\Tva
      */
     private $pdtIdtva;
+
+    /**
+     * @var \EcommerceBundle\Entity\Categorie
+     */
+    private $pdtIdcat;
 
 
     /**
@@ -778,4 +784,26 @@ class Produit
         return $this->pdtIdtva;
     }
 
+    /**
+     * Set pdtIdcat
+     *
+     * @param \EcommerceBundle\Entity\Categorie $pdtIdcat
+     * @return Produit
+     */
+    public function setPdtIdcat(\EcommerceBundle\Entity\Categorie $pdtIdcat = null)
+    {
+        $this->pdtIdcat = $pdtIdcat;
+
+        return $this;
+    }
+
+    /**
+     * Get pdtIdcat
+     *
+     * @return \EcommerceBundle\Entity\Categorie 
+     */
+    public function getPdtIdcat()
+    {
+        return $this->pdtIdcat;
+    }
 }

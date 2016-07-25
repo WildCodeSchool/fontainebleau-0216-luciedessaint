@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProdlibRepository extends EntityRepository
 {
+
+    public function getProdlib4ProdLang($id_prod, $langue)
+    {
+        $qb = $this
+            ->createQueryBuilder('c')
+            ->where('c.pdlIdpdt = :idProd')
+            ->setParameter('idProd', $id_prod)
+            ->andWhere('c.pdlLocale = :lang')
+            ->setParameter('lang', $langue)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
 }

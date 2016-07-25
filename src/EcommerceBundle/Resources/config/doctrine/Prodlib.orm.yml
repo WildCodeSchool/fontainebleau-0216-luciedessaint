@@ -16,13 +16,16 @@ EcommerceBundle\Entity\Prodlib:
         pdlLib:
             type: string
             length: '100'
+            nullable: true
             column: pdl_lib
         pdlDesc:
             type: text
+            nullable: true
             column: pdl_desc
         pdlCat:
             type: string
             length: '50'
+            nullable: true
             column: pdl_cat
         pdlType:
             type: string

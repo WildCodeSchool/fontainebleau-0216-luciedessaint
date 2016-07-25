@@ -1,6 +1,7 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
+
     <div id="header" class="jumbotron text-center">
         <h1>Modifier les paramètres généraux</h1>
         <a class="btn btn-success btn-lg" href="{{ path('ecommerce_admin') }}">
@@ -8,6 +9,13 @@
             Retour à la page d'accueil
         </a>
     </div>
+
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
 
     {{ form_start(edit_form) }}
 

@@ -115,6 +115,11 @@ EcommerceBundle\Entity\Produit:
             joinColumn:
                 name: pdt_idtva
                 referencedColumnName: id
+        pdtIdcat:
+            targetEntity: EcommerceBundle\Entity\Categorie
+            joinColumn:
+                name: pdt_idcat
+                referencedColumnName: id
     lifecycleCallbacks:
         prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
         preUpdate: [ preUpload, setUpdatedAtValue ]

@@ -2,6 +2,8 @@
 
 namespace EcommerceBundle\Controller;
 
+use EcommerceBundle\Entity\Prodlib;
+use EcommerceBundle\Entity\Catlib;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -66,7 +68,86 @@ class ProduitController extends Controller
      */
     public function showAction(Produit $produit)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $deleteForm = $this->createDeleteForm($produit);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        $id = $produit->getId();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération de la liste des codes 'langue' gérés sur le site
+        //
+        $langs = $em->getRepository('EcommerceBundle:Lang')->findAll();
+
+        //var_dump($langs);
+
+        if ($langs) {
+
+            $idx_lang = 0;
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            //
+            // Pour chaque langue gérée : Récupération du Prodlib correspondant
+            //
+            foreach ($langs as $idx_l => $langue) {
+                $idx_lang += 1;
+                $langue->NroLang = $idx_lang;
+                //var_dump($langue);
+                //$langues[] = $langue->getlngCode();
+                $CodeLang = $langue->getlngCode();
+                $Prodlib4Lang = $em->getRepository('EcommerceBundle:Prodlib')->getProdlib4ProdLang($id, $CodeLang);
+                //var_dump($Prodlib4Lang);
+
+                if ($Prodlib4Lang) {
+                    $langue->LibProd = $Prodlib4Lang[0];
+                    //
+                    // Si Prodlib inexistant : Création
+                    //
+                } else {
+//                    create a new object / persist the object / flush the entity manager
+                    
+                    $id_cat = $produit->getId();
+                    var_dump($id_cat);
+
+                    $Catlib4Lang = $em->getRepository('EcommerceBundle:Catlib')->getCatlib4CategLang($id_cat, $CodeLang);
+                    //var_dump($Catlib4Lang);
+                    //var_dump($Catlib4Lang[0]->getCtlCateg());
+
+                    $prodlib = new Prodlib();
+                    $prodlib->setPdlLocale($CodeLang);
+                    $prodlib->setPdlIdpdt($produit);
+                    
+                    $prodlib->setPdlCat($Catlib4Lang[0]->getCtlCateg());
+                    $prodlib->setPdlType($Catlib4Lang[0]->getCtlType());
+                    $prodlib->setPdlItem($Catlib4Lang[0]->getCtlItem());
+
+                    $prodlib->setPdlLib($Catlib4Lang[0]->getCtlLib());
+
+                    $prodlib->setPdlInfoLib1($Catlib4Lang[0]->getCtlInfoLib1());
+                    $prodlib->setPdlInfoLib2($Catlib4Lang[0]->getCtlInfoLib2());
+                    $prodlib->setPdlInfoLib3($Catlib4Lang[0]->getCtlInfoLib3());
+                    $prodlib->setPdlInfoLib4($Catlib4Lang[0]->getCtlInfoLib4());
+                    $prodlib->setPdlInfoLib5($Catlib4Lang[0]->getCtlInfoLib5());
+                    $prodlib->setPdlInfoLib6($Catlib4Lang[0]->getCtlInfoLib6());
+                    $prodlib->setPdlInfoLib7($Catlib4Lang[0]->getCtlInfoLib7());
+                    $prodlib->setPdlInfoLib8($Catlib4Lang[0]->getCtlInfoLib8());
+                    $prodlib->setPdlInfoLib9($Catlib4Lang[0]->getCtlInfoLib9());
+
+                    //var_dump($prodlib);
+                    $em->persist($prodlib);
+                    $em->flush();
+
+                    $Prodlib4Lang = $em->getRepository('EcommerceBundle:Prodlib')->getCatlib4CategLang($id, $CodeLang);
+                    $langue->LibProd = $Prodlib4Lang[0];
+                }
+            }
+
+            //var_dump($langs);
+            $produit->prodlibs = $langs;
+
+        }
 
         return $this->render('EcommerceBundle:produit:show.html.twig', array(
             'produit' => $produit,

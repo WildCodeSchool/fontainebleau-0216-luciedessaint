@@ -15,6 +15,7 @@ class ProduitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('pdtIdcat')
             ->add('pdtEtat')
             ->add('pdtAvendre')
 //            ->add('pdtAffNostock')

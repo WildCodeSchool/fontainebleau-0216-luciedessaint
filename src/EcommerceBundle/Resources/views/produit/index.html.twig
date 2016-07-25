@@ -24,6 +24,7 @@
                         <tr>
                             {#<th>Id</th>#}
                             <th>Etat<br />(Actif/Inactif)</th>
+                            <th>Catégorisation</th>
                             <th>A vendre (O/N)</th>
                             <th>Nom</th>
                             <th>Référence</th>
@@ -37,6 +38,7 @@
                             <tr>
                                 {#<td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>#}
                                 <td>{% if produit.pdtEtat %}Actif{% else %}Inactif{% endif %}</td>
+                                <td>{{ produit.pdtIdcat }}</td>
                                 <td>{% if produit.pdtAvendre %}Oui{% else %}Non{% endif %}</td>
                                 <td>{{ produit.pdtNom }}</td>
                                 <td>{{ produit.pdtRef }}</td>

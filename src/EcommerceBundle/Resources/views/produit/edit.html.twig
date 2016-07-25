@@ -24,10 +24,32 @@
             <div class="col-md-offset-1 col-md-8">
                 <div class="row">
                     <div class="col-md-3">
+                        <p class="text-right lib_champs">Catégorisation</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.pdtIdcat) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
                         <p class="text-right lib_champs">Nom</p>
                     </div>
                     <div class="col-md-9">
-                        {{ form_widget(edit_form.pdtNom, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nom du produit' }}) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtNom, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nom du produit' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Référence</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtRef, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Référence du produit' }}) }}
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -61,7 +83,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(edit_form.pdtPrixUnitHt) }}
+                            {{ form_widget(edit_form.pdtPrixUnitHt, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Prix HT' }}) }}
                         </div>
                     </div>
                 </div>
@@ -72,7 +94,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(edit_form.pdtPrixUnitTtc) }}
+                            {{ form_widget(edit_form.pdtPrixUnitTtc, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Prix TTC' }}) }}
                         </div>
                     </div>
                 </div>
@@ -81,7 +103,10 @@
                         <p class="text-right lib_champs">Promotion en pourcentage</p>
                     </div>
                     <div class="col-md-9">
-                        {{ form_widget(edit_form.pdtPromoPct) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.pdtPromoPct, { 'attr': {'class': 'form-control Libelle', 'placeholder': '% Promotion' }}) }}
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -91,7 +116,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(edit_form.pdtPoids) }}
+                            {{ form_widget(edit_form.pdtPoids, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Poids' }}) }}
                         </div>
                     </div>
                 </div>
@@ -102,7 +127,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(edit_form.pdtDim) }}
+                            {{ form_widget(edit_form.pdtDim, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Dimensions' }}) }}
                         </div>
                     </div>
                 </div>
@@ -113,7 +138,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(edit_form.pdtEmbPoids) }}
+                            {{ form_widget(edit_form.pdtEmbPoids, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Poids emballage' }}) }}
                         </div>
                     </div>
                 </div>
@@ -124,7 +149,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(edit_form.pdtEmbDim) }}
+                            {{ form_widget(edit_form.pdtEmbDim, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Dimensions emballage' }}) }}
                         </div>
                     </div>
                 </div>
@@ -143,7 +168,7 @@
                     </div>
                 </div>
 
-                <input class="btn btn-success" type="submit" value="Enregistrer" />
+                <input class="btn btn-success" type="submit" value="Enregistrer"/>
 
             </div>
         </div>

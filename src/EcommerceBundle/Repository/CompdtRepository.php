@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class CompdtRepository extends EntityRepository
 {
+    public function getProdts4Commande($id_comm)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM EcommerceBundle:Compdt p 
+                            WHERE (p.cxpIdcom = :idComm)')
+            ->setParameter('idComm', $id_comm)
+            ->getResult();
+    }
 }

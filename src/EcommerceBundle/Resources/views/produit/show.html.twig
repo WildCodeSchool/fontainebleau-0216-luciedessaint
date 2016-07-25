@@ -1,6 +1,7 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
+
     <div id="header" class="jumbotron text-center">
         <h1>{{ produit.pdtNom }}</h1>
         <a class="btn btn-success btn-lg" href="{{ path('produit_index') }}">
@@ -25,6 +26,10 @@
                             {#<th>Id</th>#}
                             {#<td>{{ produit.id }}</td>#}
                         {#</tr>#}
+                        <tr>
+                            <th>Catégorisation</th>
+                            <td>{{ produit.pdtIdcat }}</td>
+                        </tr>
                         <tr>
                             <th>Référence du produit</th>
                             <td>{{ produit.pdtRef }}</td>
@@ -100,4 +105,125 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                {% if produit.prodlibs %}
+                    {% for prodlib in produit.prodlibs %}
+                        <h3><img class="" height="20" src="{{ asset('uploads/drapeaux/') }}{{ prodlib.lngFlag }}"/> &nbsp;&nbsp;&nbsp; {{ prodlib.lngLib }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-success" href="{{ path('prodlib_edit', { 'id': prodlib.LibProd.id }) }}">
+                                <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Libellé</th>
+                                    <td>{{ prodlib.LibProd.pdlLib }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ prodlib.LibProd.pdlDesc }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Catégorie</th>
+                                    <td>{{ prodlib.LibProd.pdlCat }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Type</th>
+                                    <td>{{ prodlib.LibProd.pdlType }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Elément</th>
+                                    <td>{{ prodlib.LibProd.pdlItem }}</td>
+                                </tr>
+                                <tr>
+                                    <th>1) {{ prodlib.LibProd.pdlInfoLib1 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal1 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>2) {{ prodlib.LibProd.pdlInfoLib2 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal2 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>3) {{ prodlib.LibProd.pdlInfoLib3 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal3 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>4) {{ prodlib.LibProd.pdlInfoLib4 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal4 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>5) {{ prodlib.LibProd.pdlInfoLib5 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal5 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>6) {{ prodlib.LibProd.pdlInfoLib6 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal6 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>7) {{ prodlib.LibProd.pdlInfoLib7 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal7 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>8) {{ prodlib.LibProd.pdlInfoLib8 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal8 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>9) {{ prodlib.LibProd.pdlInfoLib9 }}</th>
+                                    <td>{{ prodlib.LibProd.pdlInfoVal9 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Commentaires packaging</th>
+                                    <td>{{ prodlib.LibProd.pdlPckgComm }}</td>
+                                </tr>
+{#
+                                <tr>
+                                    <th>Disponibilité</th>
+                                    <td>{{ prodlib.LibProd.pdlDispo }}</td>
+                                </tr>
+#}
+{#
+                                <tr>
+                                    <th>Délai de fabrication</th>
+                                    <td>{{ prodlib.LibProd.pdlFabDelai }}</td>
+                                </tr>
+#}
+                                <tr>
+                                    <th>Délai de livraison</th>
+                                    <td>{{ prodlib.LibProd.pdlLivDelai }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                &nbsp;
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h1>Aucune traduction de libellés trouvée</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
