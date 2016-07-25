@@ -39,6 +39,9 @@ class ProduitController extends Controller
         $form = $this->createForm('EcommerceBundle\Form\ProduitType', $produit);
         $form->handleRequest($request);
 
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('EcommerceBundle:Categorie')->findAll();
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($produit);
@@ -48,6 +51,7 @@ class ProduitController extends Controller
         }
 
         return $this->render('EcommerceBundle:produit:new.html.twig', array(
+            'categories' => $categories,
             'produit' => $produit,
             'form' => $form->createView(),
         ));

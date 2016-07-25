@@ -15,15 +15,17 @@ class ParamlibType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('prlLocale')
+//            ->add('prlLocale')
             ->add('prlDelaiLiv')
             ->add('prlLivRestrict')
-            ->add('prlFabDelai')
-            ->add('prlArtPhoto')
+//            ->add('prlFabDelai')
+//            ->add('prlArtPhoto')
+            ->add('phProdts', 'file', array('label' => 'Photo produits', 'required' => false))
             ->add('prlArtPres')
             ->add('prlArtComm')
             ->add('prlPanTitre')
-            ->add('prlPanPhoto')
+//            ->add('prlPanPhoto')
+            ->add('phPanier', 'file', array('label' => 'Photo Panier', 'required' => false))
             ->add('prlPanPres')
             ->add('prlPanComm')
             ->add('prlPanTabEnt')
@@ -31,7 +33,7 @@ class ParamlibType extends AbstractType
             ->add('prlPanTabCol2')
             ->add('prlPanTabCol3')
             ->add('prlPanTabSupp')
-            ->add('prlIdprm')
+//            ->add('prlIdprm')
         ;
     }
     

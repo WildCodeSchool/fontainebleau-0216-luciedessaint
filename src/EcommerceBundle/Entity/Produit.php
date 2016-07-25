@@ -34,7 +34,7 @@ class Produit
     {
         return null === $this->pdtPhoto ? null : $this->getUploadDir().'/'.$this->pdtPhoto;
     }
-    public function getAbsolutePath_Prodt()
+    public function getAbsolutePath_PhProdt()
     {
         return null === $this->pdtPhoto ? null : $this->getUploadRootDir().'/'.$this->pdtPhoto;
     }
@@ -130,7 +130,7 @@ class Produit
      */
     public function removeUpload()
     {
-        if ($phProdt = $this->getAbsolutePath_Prodt()) {
+        if ($phProdt = $this->getAbsolutePath_PhProdt()) {
             unlink($phProdt);
         }
 

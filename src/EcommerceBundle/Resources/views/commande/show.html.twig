@@ -1,105 +1,123 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Commande</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ commande.id }}</td>
-            </tr>
-            <tr>
-                <th>Comcode</th>
-                <td>{{ commande.comCode }}</td>
-            </tr>
-            <tr>
-                <th>Cometat</th>
-                <td>{{ commande.comEtat }}</td>
-            </tr>
-            <tr>
-                <th>Comcdebank</th>
-                <td>{{ commande.comCdebank }}</td>
-            </tr>
-            <tr>
-                <th>Comventedte</th>
-                <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Comexpeddte</th>
-                <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Commajdte</th>
-                <td>{% if commande.comMajDte %}{{ commande.comMajDte|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Commajwho</th>
-                <td>{{ commande.comMajWho }}</td>
-            </tr>
-            <tr>
-                <th>Commajlib</th>
-                <td>{{ commande.comMajLib }}</td>
-            </tr>
-            <tr>
-                <th>Comannuldte</th>
-                <td>{% if commande.comAnnulDte %}{{ commande.comAnnulDte|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Comannulwho</th>
-                <td>{{ commande.comAnnulWho }}</td>
-            </tr>
-            <tr>
-                <th>Comannullib</th>
-                <td>{{ commande.comAnnulLib }}</td>
-            </tr>
-            <tr>
-                <th>Comfact</th>
-                <td>{{ commande.comFact }}</td>
-            </tr>
-            <tr>
-                <th>Comfactdte</th>
-                <td>{% if commande.comFactDte %}{{ commande.comFactDte|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Comfactwho</th>
-                <td>{{ commande.comFactWho }}</td>
-            </tr>
-            <tr>
-                <th>Comnbarts</th>
-                <td>{{ commande.comNbArts }}</td>
-            </tr>
-            <tr>
-                <th>Comtvaunique</th>
-                <td>{% if commande.comTvaUnique %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Comprixtotht</th>
-                <td>{{ commande.comPrixTotHt }}</td>
-            </tr>
-            <tr>
-                <th>Comprixtotttc</th>
-                <td>{{ commande.comPrixTotTtc }}</td>
-            </tr>
-            <tr>
-                <th>Comembpoids</th>
-                <td>{{ commande.comEmbPoids }}</td>
-            </tr>
-            <tr>
-                <th>Comembdim</th>
-                <td>{{ commande.comEmbDim }}</td>
-            </tr>
-            <tr>
-                <th>Comlivdelai</th>
-                <td>{{ commande.comLivDelai }}</td>
-            </tr>
-            <tr>
-                <th>Comcomments</th>
-                <td>{{ commande.comComments }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div id="header" class="jumbotron text-center">
+        <h1>Commande :<br/>{{ commande.comCode }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('commande_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-1 col-md-offset-1 col-lg-9 col-md-9">
+                <h3>Commande - Code :
+                    <a class="btn btn-success" href="{{ path('commande_edit', { 'id': commande.id }) }}">
+                        <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
+                <table class="table table-hover">
+                    <tbody>
+                        {#<tr>#}
+                            {#<th>Id</th>#}
+                            {#<td>{{ commande.id }}</td>#}
+                        {#</tr>#}
+                        <tr>
+                            <th>Code commande</th>
+                            <td>{{ commande.comCode }}</td>
+                        </tr>
+                        <tr>
+                            <th>Etat</th>
+                            <td>{{ commande.comEtat }}</td>
+                        </tr>
+                        <tr>
+                            <th>Code bank</th>
+                            <td>{{ commande.comCdebank }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date de la vente</th>
+                            <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Date d'expédition</th>
+                            <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Date de dernière maj</th>
+                            <td>{% if commande.comMajDte %}{{ commande.comMajDte|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Auteur dernière maj</th>
+                            <td>{{ commande.comMajWho }}</td>
+                        </tr>
+                        <tr>
+                            <th>Libellé dernière maj</th>
+                            <td>{{ commande.comMajLib }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date d'annulation</th>
+                            <td>{% if commande.comAnnulDte %}{{ commande.comAnnulDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Auteur annulation</th>
+                            <td>{{ commande.comAnnulWho }}</td>
+                        </tr>
+                        <tr>
+                            <th>Libellé annulation</th>
+                            <td>{{ commande.comAnnulLib }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nro facture</th>
+                            <td>{{ commande.comFact }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date facture</th>
+                            <td>{% if commande.comFactDte %}{{ commande.comFactDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Auteur facture</th>
+                            <td>{{ commande.comFactWho }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nbre d'article(s)</th>
+                            <td>{{ commande.comNbArts }}</td>
+                        </tr>
+                        <tr>
+                            <th>TVA unique (O/N)</th>
+                            <td>{% if commande.comTvaUnique %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Prix total HT</th>
+                            <td>{{ commande.comPrixTotHt|number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                        <tr>
+                            <th>Prix total TTC</th>
+                            <td>{{ commande.comPrixTotTtc|number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                        <tr>
+                            <th>Poids total</th>
+                            <td>{{ commande.comEmbPoids }}</td>
+                        </tr>
+                        <tr>
+                            <th>Dimensions totales</th>
+                            <td>{{ commande.comEmbDim }}</td>
+                        </tr>
+                        <tr>
+                            <th>Délai de livraison</th>
+                            <td>{{ commande.comLivDelai }}</td>
+                        </tr>
+                        <tr>
+                            <th>Commentaires</th>
+                            <td>{{ commande.comComments }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{#
     <ul>
         <li>
             <a href="{{ path('commande_index') }}">Back to the list</a>
@@ -113,4 +131,6 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+#}
+
 {% endblock %}

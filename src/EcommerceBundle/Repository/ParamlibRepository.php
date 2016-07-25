@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ParamlibRepository extends EntityRepository
 {
+    public function getParamlib4ParamLang($id_param, $langue)
+    {
+        $qb = $this
+            ->createQueryBuilder('c')
+            ->where('c.prlIdprm = :idParam')
+            ->setParameter('idParam', $id_param)
+            ->andWhere('c.prlLocale = :lang')
+            ->setParameter('lang', $langue)
+        ;
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -4,6 +4,11 @@ img.image_categ {
     width: 100px;
 }
 
+.image_cat,
+.image_param {
+    width: 600px;
+}
+
 ul {
     margin: 0;
     padding: 0;

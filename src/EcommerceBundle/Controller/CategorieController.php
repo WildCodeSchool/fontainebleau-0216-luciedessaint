@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EcommerceBundle\Entity\Categorie;
 use EcommerceBundle\Form\CategorieType;
+use EcommerceBundle\Entity\Catlib;
+use EcommerceBundle\Form\CatlibType;
 
 /**
  * Categorie controller.
@@ -65,32 +67,56 @@ class CategorieController extends Controller
 
         /////////////////////////////////////////////////////////////////////////////////////////////
         //
-        // Récupération de la liste des codes 'langue' gérés sur le site
-        $langs = $em->getRepository('EcommerceBundle:Lang')->findAll();
-
-        var_dump($langs);
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        //
         $id = $categorie->getId();
 
         /////////////////////////////////////////////////////////////////////////////////////////////
         //
-        // Récupération de la liste des libellés 'localisés' pour une catégorie donnée ($id)
-
-        $catlibs_4_categ = $em->getRepository('EcommerceBundle:Catlib')->getCatlib4Categ($id);
-
-        $categorie->catlibs = $catlibs_4_categ;
-
-        // Récupération du nbre de libellés 'localisés' pour une catégorie donnée ($id)
-        //  => Count sur liste extraite précédemment
-        $nb_catlibs = count($catlibs_4_categ);
-
-        $categorie->nbcatlibs = $nb_catlibs;
-
-        var_dump($categorie);//exit;
-
+        // Récupération de la liste des codes 'langue' gérés sur le site
         //
-        /////////////////////////////////////////////////////////////////////////////////////////////
+        $langs = $em->getRepository('EcommerceBundle:Lang')->findAll();
+
+        //var_dump($langs);
+
+        if ($langs) {
+
+            $idx_lang = 0;
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            //
+            // Pour chaque langue gérée : Récupération du Catlib correspondant
+            //
+            foreach ($langs as $idx_l => $langue) {
+                $idx_lang += 1;
+                $langue->NroLang = $idx_lang;
+                //var_dump($langue);
+                //$langues[] = $langue->getlngCode();
+                $CodeLang = $langue->getlngCode();
+                $Catlib4Lang = $em->getRepository('EcommerceBundle:Catlib')->getCatlib4CategLang($id, $CodeLang);
+                //var_dump($Catlib4Lang);
+
+                if ($Catlib4Lang) {
+                    $langue->LibCat = $Catlib4Lang[0];
+                    //
+                    // Si Catlib inexistant : Création
+                    //
+                } else {
+//                    create a new object / persist the object / flush the entity manager
+
+                    $catlib = new Catlib();
+                    $catlib->setCtlLocale($CodeLang);
+                    $catlib->setCtlIdcat($categorie);
+                    //var_dump($catlib);
+                    $em->persist($catlib);
+                    $em->flush();
+                    
+                    $Catlib4Lang = $em->getRepository('EcommerceBundle:Catlib')->getCatlib4CategLang($id, $CodeLang);
+                    $langue->LibCat = $Catlib4Lang[0];
+                }
+            }
+
+            //var_dump($langs);
+            $categorie->catlibs = $langs;
+
+        }
 
         return $this->render('EcommerceBundle:categorie:show.html.twig', array(
             'categorie' => $categorie,
@@ -110,10 +136,19 @@ class CategorieController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            if ($editForm->get('phCateg')->getData() != null) {
+                if ($categorie->getCatPhoto() != null) {
+                    unlink(__DIR__ . '/../../../web/uploads/categ/' . $categorie->getCatPhoto());
+                    $categorie->setCatPhoto(null);
+                }
+            }
+            $categorie->preUpload();
+
             $em->persist($categorie);
             $em->flush();
 
-            return $this->redirectToRoute('categorie_edit', array('id' => $categorie->getId()));
+            return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
         }
 
         return $this->render('EcommerceBundle:categorie:edit.html.twig', array(
@@ -153,7 +188,51 @@ class CategorieController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('categorie_delete', array('id' => $categorie->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
+
+
+/*        if ($langs) {
+
+            foreach ($langs as $idx_l => $langue ) {
+                //var_dump($langue);
+                $langues[] = $langue->getlngCode();
+            }
+            //$langues = ["fr", "es"];
+            //var_dump($langues);
+
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            //
+            // Récupération de la liste des libellés 'localisés' pour une catégorie donnée ($id)
+
+            $catlibs_4_categ = $em->getRepository('EcommerceBundle:Catlib')->getCatlib4CategInLang($id, $langues);
+            //var_dump($catlibs_4_categ);
+            //$categorie->catlibs = $catlibs_4_categ;
+
+            foreach ($catlibs_4_categ as $idx_t => $catlibs ) {
+                //var_dump($catlibs);
+                $locale_catlib = $catlibs->getctlLocale();
+                var_dump($locale_catlib);
+                $key = array_search($locale_catlib, array_column($langs, 'lngCode'));
+                var_dump($key);
+                $catlibs->Locale = $langs[$key]->getlngLib();
+                //$catlibs->Locale = $langs[$key]["lngLib"];
+                $catlibs->Drapeau = $langs[$key]->getlngFlag();
+                //$catlibs->Drapeau = $langs[$key]["lngFlag"];
+                //var_dump($catlibs);
+
+            }
+
+            //var_dump($catlibs_4_categ);
+            //$categorie->catlibs = $catlibs_4_categ;
+
+            // Récupération du nbre de libellés 'localisés' pour une catégorie donnée ($id)
+            //  => Count sur liste extraite précédemment
+            //$nb_catlibs = count($catlibs_4_categ);
+            //$categorie->nbcatlibs = $nb_catlibs;
+
+
+            //
+            /////////////////////////////////////////////////////////////////////////////////////////////
+*/

@@ -16,6 +16,7 @@ EcommerceBundle\Entity\Catlib:
         ctlCateg:
             type: string
             length: '50'
+            nullable: true
             column: ctl_categ
         ctlType:
             type: string

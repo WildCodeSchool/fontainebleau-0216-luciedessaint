@@ -9,56 +9,65 @@
             Retour à la liste
         </a>
     </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-8">
+            <div class="col-lg-offset-1 col-md-offset-1 col-lg-9 col-md-9">
+                <h3>Informations générales &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-success" href="{{ path('categorie_edit', { 'id': categorie.id }) }}">
+                        <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
                 <table class="table table-hover">
                     <tbody>
-                    {#<tr>#}
-                        {#<th>Id</th>#}
-                        {#<td>{{ categorie.id }}</td>#}
-                    {#</tr>#}
-                    <tr>
-                        <th>Libellé administration</th>
-                        <td>{{ categorie.catLibAdmin }}</td>
-                    </tr>
-                    <tr>
-                        <th>Niveau (1/2/3)</th>
-                        <td>{{ categorie.catNiv }}</td>
-                    </tr>
-                    <tr>
-                        <th>A vendre (O/N)</th>
-                        <td>{% if categorie.catAvendre %}Oui{% else %}Non{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th>Affichage du prix (O/N)</th>
-                        <td>{% if categorie.catAffPrix %}Oui{% else %}Non{% endif %}</td>
-                    </tr>
-{#
-                    <tr>
-                        <th>Affichage si plus de stock (O/N)</th>
-                        <td>{% if categorie.catAffNostock %}Oui{% else %}Non{% endif %}</td>
-                    </tr>
-#}
-                    <tr>
-                        <th>Affichage 'Vendu' (O/N)</th>
-                        <td>{% if categorie.catAffVendu %}Oui{% else %}Non{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th>Taux de TVA associé</th>
-                        <td>{{ categorie.catIdtva }}</td>
-                    </tr>
-                    <tr>
-                        <th>Photo illustration</th>
-                        {#<td>{{ categorie.catPhoto }}</td>#}
-                        <td><img class="image_cat" src="{{ asset('uploads/photosCateg/') }}{{ categorie.catPhoto }}">
-                        </td>
-                    </tr>
+                        {#<tr>#}
+                            {#<th>Id</th>#}
+                            {#<td>{{ categorie.id }}</td>#}
+                        {#</tr>#}
+                        <tr>
+                            <th>Libellé administration</th>
+                            <td>{{ categorie.catLibAdmin }}</td>
+                        </tr>
+                        <tr>
+                            <th>Niveau (1/2/3)</th>
+                            <td>{{ categorie.catNiv }}</td>
+                        </tr>
+                        <tr>
+                            <th>A vendre (O/N)</th>
+                            <td>{% if categorie.catAvendre %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Affichage du prix (O/N)</th>
+                            <td>{% if categorie.catAffPrix %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+    {#
+                        <tr>
+                            <th>Affichage si plus de stock (O/N)</th>
+                            <td>{% if categorie.catAffNostock %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+    #}
+                        <tr>
+                            <th>Affichage 'Vendu' (O/N)</th>
+                            <td>{% if categorie.catAffVendu %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Taux de TVA associé</th>
+                            <td>{{ categorie.catIdtva }}</td>
+                        </tr>
+                        <tr>
+                            <th>Photo illustration</th>
+                            {#<td>{{ categorie.catPhoto }}</td>#}
+                            <td><img class="image_cat" width="600" src="{{ asset('uploads/categ/') }}{{ categorie.catPhoto }}"/>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <a class="btn btn-success" href="{{ path('categorie_edit', { 'id': categorie.id }) }}">
-                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
-              </div>
+            </div>
+
+            {#<div class="col-lg-1 col-md-1">#}
+                {#<a class="btn btn-success" href="{{ path('categorie_edit', { 'id': categorie.id }) }}">#}
+                    {#<i class="glyphicon glyphicon-edit"></i>Modifier</a>#}
+
+            {#</div>#}
+
         </div>
     </div>
 
@@ -112,5 +121,175 @@
         </li>
     </ul>
 #}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                {% if categorie.catlibs %}
+                    {% for catlib in categorie.catlibs %}
+                        <h3><img class="" height="20" src="{{ asset('uploads/drapeaux/') }}{{ catlib.lngFlag }}"/> &nbsp;&nbsp;&nbsp; {{ catlib.lngLib }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-success" href="{{ path('catlib_edit', { 'id': catlib.LibCat.id }) }}">
+                                <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Catégorie</th>
+                                    <td>{{ catlib.LibCat.ctlCateg }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Type</th>
+                                    <td>{{ catlib.LibCat.ctlType }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Elément</th>
+                                    <td>{{ catlib.LibCat.ctlItem }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Libellé</th>
+                                    <td>{{ catlib.LibCat.ctlLib }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 1</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib1 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 2</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib2 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 3</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib3 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 4</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib4 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 5</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib5 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 6</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib6 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 7</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib7 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 8</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib8 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Infos - Libellé 9</th>
+                                    <td>{{ catlib.LibCat.ctlInfoLib9 }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                &nbsp;
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h1>Aucune traduction de libellés trouvée</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{#
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                {% if categorie.catlibs %}
+                    <div id="tabs">
+                        <ul href="nav nav-tabs" role="tablist">
+                            {% for catlib in categorie.catlibs %}
+                                #}
+{#<li><a href="#tabs-{{ catlib.NroLang }}">{{ catlib.lngLib }}</a></li>#}{#
+
+                                <li role="presentation" class="active"><a href="#tabs-{{ catlib.NroLang }}" aria-controls="home" role="tab" data-toggle="tab">{{ catlib.lngLib }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        <div class="tab-content">
+                            {% for catlib in categorie.catlibs %}
+#}
+{#                                {% if catlib.NroLang == 1 %}
+                                    <div role="tabpanel" class="tab-pane active" id="tabs-{{ catlib.NroLang }}">
+                                {% else %}#}{#
+
+                                    <div role="tabpanel" class="tab-pane" id="tabs-{{ catlib.NroLang }}">
+                                #}
+{#{% endif %}#}{#
+
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th>Catégorie</th>
+                                                <td>{{ catlib.LibCat.ctlCateg }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Type</th>
+                                                <td>{{ catlib.LibCat.ctlType }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Elément</th>
+                                                <td>{{ catlib.LibCat.ctlItem }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Libellé</th>
+                                                <td>{{ catlib.LibCat.ctlLib }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Infos lib1</th>
+                                                <td>{{ catlib.LibCat.ctlInfoLib1 }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <h1>Aucune traduction de libellé trouvée</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+#}
+
+{#    <script>
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+        $('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+        $('#myTabs a:first').tab('show') // Select first tab
+        $('#myTabs a:last').tab('show') // Select last tab
+        $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
+    </script>#}
 
 {% endblock %}

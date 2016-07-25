@@ -5,72 +5,80 @@
 
     <table>
         <tbody>
+{#
             <tr>
                 <th>Id</th>
                 <td>{{ paramlib.id }}</td>
             </tr>
+#}
             <tr>
-                <th>Prllocale</th>
+                <th>Locale</th>
                 <td>{{ paramlib.prlLocale }}</td>
             </tr>
             <tr>
-                <th>Prldelailiv</th>
+                <th>Délai de livraison</th>
                 <td>{{ paramlib.prlDelaiLiv }}</td>
             </tr>
             <tr>
-                <th>Prllivrestrict</th>
+                <th>Restrictions de livraison</th>
                 <td>{{ paramlib.prlLivRestrict }}</td>
             </tr>
+{#
             <tr>
-                <th>Prlfabdelai</th>
+                <th>Délai de fabrication</th>
                 <td>{{ paramlib.prlFabDelai }}</td>
             </tr>
+#}
             <tr>
-                <th>Prlartphoto</th>
-                <td>{{ paramlib.prlArtPhoto }}</td>
+                <th>Page produits - Photo</th>
+                <td>
+                    <img class="image_param" src="{{ asset('uploads/param/') }}{{ paramlib.LibParam.prlArtPhoto }}">
+                </td>
             </tr>
             <tr>
-                <th>Prlartpres</th>
+                <th>Page produits - Présentation</th>
                 <td>{{ paramlib.prlArtPres }}</td>
             </tr>
             <tr>
-                <th>Prlartcomm</th>
+                <th>Page produits - Commentaire final</th>
                 <td>{{ paramlib.prlArtComm }}</td>
             </tr>
             <tr>
-                <th>Prlpantitre</th>
+                <th>Panier – Titre panier</th>
                 <td>{{ paramlib.prlPanTitre }}</td>
             </tr>
             <tr>
-                <th>Prlpanphoto</th>
-                <td>{{ paramlib.prlPanPhoto }}</td>
+                <th>Panier - Photo</th>
+                <td>
+                    <img class="image_param" src="{{ asset('uploads/param/') }}{{ paramlib.prlPanPhoto }}">
+                </td>
             </tr>
             <tr>
-                <th>Prlpanpres</th>
+                <th>Panier – Présentation</th>
                 <td>{{ paramlib.prlPanPres }}</td>
             </tr>
             <tr>
-                <th>Prlpancomm</th>
+                <th>Panier – Commentaire final</th>
                 <td>{{ paramlib.prlPanComm }}</td>
             </tr>
             <tr>
-                <th>Prlpantabent</th>
+                <th>Panier – Entête tableau</th>
                 <td>{{ paramlib.prlPanTabEnt }}</td>
             </tr>
             <tr>
-                <th>Prlpantabcol1</th>
+                <th>Panier – Entête colonne 1</th>
                 <td>{{ paramlib.prlPanTabCol1 }}</td>
             </tr>
             <tr>
-                <th>Prlpantabcol2</th>
+                <th>Panier – Entête colonne 2</th>
                 <td>{{ paramlib.prlPanTabCol2 }}</td>
             </tr>
             <tr>
-                <th>Prlpantabcol3</th>
+                <th>Panier – Entête colonne 3</th>
                 <td>{{ paramlib.prlPanTabCol3 }}</td>
             </tr>
             <tr>
-                <th>Prlpantabsupp</th>
+                <th>Panier – Entête col. suppression</th>
                 <td>{{ paramlib.prlPanTabSupp }}</td>
             </tr>
         </tbody>

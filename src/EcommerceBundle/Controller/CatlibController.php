@@ -77,12 +77,31 @@ class CatlibController extends Controller
         $editForm = $this->createForm('EcommerceBundle\Form\CatlibType', $catlib);
         $editForm->handleRequest($request);
 
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        $Code_lng = $catlib->getCtlLocale();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération des infos 'langue'
+        $em = $this->getDoctrine()->getManager();
+        $lang = $em->getRepository('EcommerceBundle:Lang')->getLangByCode($Code_lng);
+        //var_dump($lang);
+
+        $langue = $lang[0];
+        $catlib->langue = $langue;
+        //var_dump($langue);
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($catlib);
             $em->flush();
 
-            return $this->redirectToRoute('catlib_edit', array('id' => $catlib->getId()));
+            //return $this->redirectToRoute('catlib_edit', array('id' => $catlib->getId()));
+
+            $catId = $catlib->getCtlIdcat()->getId();
+            //var_dump($catId);exit;
+            return $this->redirectToRoute('categorie_show', array('id' => $catId));
         }
 
         return $this->render('EcommerceBundle:catlib:edit.html.twig', array(

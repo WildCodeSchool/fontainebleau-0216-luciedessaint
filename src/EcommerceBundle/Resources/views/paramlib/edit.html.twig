@@ -1,13 +1,189 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Paramlib edit</h1>
 
+    <div id="header" class="jumbotron text-center">
+        <h1>Paramétrage ( {{ paramlib.langue.lngLib }} <img class="" height="30" src="{{ asset('uploads/drapeaux/') }}{{ paramlib.langue.lngFlag }}"/> )</h1>
+        {#
+                <a class="btn btn-success btn-lg" href="{{ path('paramlib_index') }}">
+                    <i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i>
+                    Retour à la liste
+                </a>
+        #}
+    </div>
+
+    {{ form_start(edit_form) }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Délai de livraison</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlDelaiLiv, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Délai de livraison' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Restrictions de livraison</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlLivRestrict, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Restrictions de livraison' }}) }}
+                        </div>
+                    </div>
+                </div>
+{#
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Délai de fabrication</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlFabDelai, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Délai de fabrication' }}) }}
+                        </div>
+                    </div>
+                </div>
+#}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Page produits<br />Présentation</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlArtPres, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Page produits - Présentation' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Page produits<br />Commentaire final</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlArtComm, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Page produits - Commentaire final' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Panier<br />Titre panier</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlPanTitre, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Page produits - Panier – Titre panier' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Panier<br />Présentation</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlPanPres, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Panier – Présentation' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Panier<br />Commentaire final</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlPanComm, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Panier – Commentaire final' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Panier<br />Entête tableau</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlPanTabEnt, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Panier – Entête tableau' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Panier<br />Entête colonne 1</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlPanTabCol1, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Panier – Entête colonne 1' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Panier<br />Entête colonne 2</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlPanTabCol2, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Panier – Entête colonne 2' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Panier<br />Entête colonne 3</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlPanTabCol3, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Panier – Entête colonne 3' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Panier<br />Entête col. suppression</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.prlPanTabSupp, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Panier – Entête col. suppression' }}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+
+
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+
+            </div>
+        </div>
+    </div>
+
+{#
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
+#}
 
+{#
     <ul>
         <li>
             <a href="{{ path('paramlib_index') }}">Back to the list</a>
@@ -18,4 +194,6 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+#}
+
 {% endblock %}

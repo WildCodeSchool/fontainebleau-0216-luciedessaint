@@ -15,6 +15,26 @@ class Categorie
     {
         return $this->getCatLibAdmin();
     }
+    
+    public $phCateg;
+
+    protected function getUploadDir()
+    {
+        return 'uploads/categ';
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath_PhCateg()
+    {
+        return null === $this->catPhoto ? null : $this->getUploadDir().'/'.$this->catPhoto;
+    }
+    public function getAbsolutePath_PhCateg()
+    {
+        return null === $this->catPhoto ? null : $this->getUploadRootDir().'/'.$this->catPhoto;
+    }
 
     ///////////////////////
     // GENERATED CODE

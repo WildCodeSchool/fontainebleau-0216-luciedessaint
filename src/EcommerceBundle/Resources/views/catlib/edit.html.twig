@@ -1,13 +1,188 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
-    <h1>Catlib edit</h1>
 
+    <div id="header" class="jumbotron text-center">
+        <h1>Catégorisation ( {{ catlib.langue.lngLib }} <img class="" height="30" src="{{ asset('uploads/drapeaux/') }}{{ catlib.langue.lngFlag }}"/> )<br/>{{ catlib.ctlIdcat }}</h1>
+{#
+        <a class="btn btn-success btn-lg" href="{{ path('catlib_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+#}
+    </div>
+
+    {{ form_start(edit_form) }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Catégorie</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlCateg, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Catégorie' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Type<br/>(si niv > 1)</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlType, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Type' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Elémént<br/>(si niv > 2)</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlItem, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Elémént' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Libellé Catégorisation<br/>(affiché)</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libellé catégorie' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 1</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib1, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 1' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 2</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib2, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 2' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 3</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib3, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 3' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 4</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib4, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 4' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 5</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib5, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 5' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 6</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib6, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 6' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 7</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib7, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 7' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 8</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib8, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 8' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Infos - Libellé 9</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.ctlInfoLib9, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Infos libellé 9' }}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+
+
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+
+            </div>
+        </div>
+    </div>
+
+
+{#
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
+#}
 
+{#
     <ul>
         <li>
             <a href="{{ path('catlib_index') }}">Back to the list</a>
@@ -18,4 +193,6 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+#}
+
 {% endblock %}

@@ -9,6 +9,13 @@
         </a>
     </div>
 
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     {{ form_start(form) }}
 
     <div class="container">

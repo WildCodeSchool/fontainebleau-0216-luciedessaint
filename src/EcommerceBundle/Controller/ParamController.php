@@ -2,6 +2,7 @@
 
 namespace EcommerceBundle\Controller;
 
+use EcommerceBundle\Entity\Paramlib;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -59,7 +60,62 @@ class ParamController extends Controller
      */
     public function showAction(Param $param)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $deleteForm = $this->createDeleteForm($param);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        $id = $param->getId();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération de la liste des codes 'langue' gérés sur le site
+        //
+        $langs = $em->getRepository('EcommerceBundle:Lang')->findAll();
+
+        //var_dump($langs);
+
+        if ($langs) {
+
+            $idx_lang = 0;
+            /////////////////////////////////////////////////////////////////////////////////////////////
+            //
+            // Pour chaque langue gérée : Récupération du Paramlib correspondant
+            //
+            foreach ($langs as $idx_l => $langue) {
+                $idx_lang += 1;
+                $langue->NroLang = $idx_lang;
+                //var_dump($langue);
+                //$langues[] = $langue->getlngCode();
+                $CodeLang = $langue->getlngCode();
+                $Paramlib4Lang = $em->getRepository('EcommerceBundle:Paramlib')->getParamlib4ParamLang($id, $CodeLang);
+                //var_dump($Paramlib4Lang);
+
+                if ($Paramlib4Lang) {
+                    $langue->LibParam = $Paramlib4Lang[0];
+                    //
+                    // Si Paramlib inexistant : Création
+                    //
+                } else {
+//                    create a new object / persist the object / flush the entity manager
+
+                    $paramlib = new Paramlib();
+                    $paramlib->setPrlLocale($CodeLang);
+                    $paramlib->setPrlIdprm($param);
+                    //var_dump($catlib);
+                    $em->persist($paramlib);
+                    $em->flush();
+
+                    $Paramlib4Lang = $em->getRepository('EcommerceBundle:Paramlib')->getParamlib4ParamLang($id, $CodeLang);
+                    $langue->LibParam = $Paramlib4Lang[0];
+                }
+            }
+
+            //var_dump($langs);
+            $param->paramlibs = $langs;
+
+        }
 
         return $this->render('EcommerceBundle:param:show.html.twig', array(
             'param' => $param,
@@ -82,7 +138,7 @@ class ParamController extends Controller
             $em->persist($param);
             $em->flush();
 
-            return $this->redirectToRoute('param_edit', array('id' => $param->getId()));
+            return $this->redirectToRoute('param_show', array('id' => $param->getId()));
         }
 
         return $this->render('EcommerceBundle:param:edit.html.twig', array(

@@ -110,11 +110,11 @@ EcommerceBundle\Entity\Produit:
             nullable: true
             column: pdt_pckg_photo
     manyToOne:
-      pdtIdtva:
-        targetEntity: EcommerceBundle\Entity\Tva
-        joinColumn:
-          name: pdt_idtva
-          referencedColumnName: id
+        pdtIdtva:
+            targetEntity: EcommerceBundle\Entity\Tva
+            joinColumn:
+                name: pdt_idtva
+                referencedColumnName: id
     lifecycleCallbacks:
         prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
         preUpdate: [ preUpload, setUpdatedAtValue ]

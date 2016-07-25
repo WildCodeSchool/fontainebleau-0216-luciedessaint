@@ -2,7 +2,7 @@
 
 {% block body %}
     <div id="header" class="jumbotron text-center">
-        <h1>Paremètres généraux</h1>
+        <h1>Paramètres généraux</h1>
         <a class="btn btn-success btn-lg" href="{{ path('ecommerce_admin') }}">
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour à la page d'accueil
@@ -30,7 +30,7 @@
                             <td>{% if param.prmNewsletter %}Oui{% else %}Non{% endif %}</td>
                         </tr>
                         <tr>
-                            <th>Activer la facture généré</th>
+                            <th>Activer la génération de facture</th>
                             <td>{% if param.prmFactGen %}Oui{% else %}Non{% endif %}</td>
                         </tr>
                         <tr>
@@ -42,7 +42,7 @@
                             <td>{% if param.prmFactUpload %}Oui{% else %}Non{% endif %}</td>
                         </tr>
                         <tr>
-                            <th>TVA unique utilisé</th>
+                            <th>TVA unique utilisée</th>
                             <td>{{ param.prmIdtva }}</td>
                         </tr>
                     </tbody>
@@ -52,6 +52,119 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                {% if param.paramlibs %}
+                    {% for paramlib in param.paramlibs %}
+                        <h3><img class="" height="20" src="{{ asset('uploads/drapeaux/') }}{{ paramlib.lngFlag }}"/> &nbsp;&nbsp;&nbsp; {{ paramlib.lngLib }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-success" href="{{ path('paramlib_edit', { 'id': paramlib.LibParam.id }) }}">
+                                <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Délai de livraison</th>
+                                    <td>{{ paramlib.LibParam.prlDelaiLiv }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Restrictions de livraison</th>
+                                    <td>{{ paramlib.LibParam.prlLivRestrict }}</td>
+                                </tr>
+{#
+                                <tr>
+                                    <th>Délai de fabrication</th>
+                                    <td>{{ paramlib.LibParam.prlFabDelai }}</td>
+                                </tr>
+#}
+                                <tr>
+                                    <th>Page produits - Photo</th>
+                                    <td>
+                                        <img class="image_param" src="{{ asset('uploads/param/') }}{{ paramlib.LibParam.prlArtPhoto }}">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Page produits - Présentation</th>
+                                    <td>{{ paramlib.LibParam.prlArtPres }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Page produits - Commentaire final</th>
+                                    <td>{{ paramlib.LibParam.prlArtComm }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Panier - Photo</th>
+                                    <td>
+                                        <img class="image_param" src="{{ asset('uploads/param/') }}{{ paramlib.LibParam.prlPanPhoto }}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Panier – Titre panier</th>
+                                    <td>{{ paramlib.LibParam.prlPanTitre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Panier – Présentation</th>
+                                    <td>{{ paramlib.LibParam.prlPanPres }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Panier – Commentaire final</th>
+                                    <td>{{ paramlib.LibParam.prlPanComm }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Panier – Entête tableau</th>
+                                    <td>{{ paramlib.LibParam.prlPanTabEnt }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Panier – Entête colonne 1</th>
+                                    <td>{{ paramlib.LibParam.prlPanTabCol1 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Panier – Entête colonne 2</th>
+                                    <td>{{ paramlib.LibParam.prlPanTabCol2 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Panier – Entête colonne 3</th>
+                                    <td>{{ paramlib.LibParam.prlPanTabCol3 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Panier – Entête col. suppression</th>
+                                    <td>{{ paramlib.LibParam.prlPanTabSupp }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                &nbsp;
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h1>Aucune traduction de libellés trouvée</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
 {#
     <table>
         <tbody>

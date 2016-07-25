@@ -1,6 +1,7 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
+
     <div id="header" class="jumbotron text-center">
         <h1>Produit :<br/>{{ produit.pdtNom }} &nbsp;|&nbsp;&nbsp;réf: {{ produit.pdtRef }}</h1>
         <a class="btn btn-success btn-lg" href="{{ path('produit_index') }}">
@@ -85,7 +86,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Poid</p>
+                        <p class="text-right lib_champs">Poids</p>
                     </div>
                     <div class="col-md-9">
                         <div class="input-group">
@@ -107,7 +108,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Poid de l'emballage</p>
+                        <p class="text-right lib_champs">Poids de l'emballage</p>
                     </div>
                     <div class="col-md-9">
                         <div class="input-group">
@@ -143,7 +144,6 @@
                 </div>
 
                 <input class="btn btn-success" type="submit" value="Enregistrer" />
-
 
             </div>
         </div>

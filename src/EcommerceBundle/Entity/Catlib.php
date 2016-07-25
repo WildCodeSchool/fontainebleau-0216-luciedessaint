@@ -9,8 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Catlib
 {
+    
+
+    //
+    // GENERATED CODE
+    //
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -38,6 +43,56 @@ class Catlib
      * @var string
      */
     private $ctlLib;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib1;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib2;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib3;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib4;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib5;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib6;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib7;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib8;
+
+    /**
+     * @var string
+     */
+    private $ctlInfoLib9;
+
+    /**
+     * @var \EcommerceBundle\Entity\Categorie
+     */
+    private $ctlIdcat;
 
 
     /**
@@ -164,51 +219,6 @@ class Catlib
     {
         return $this->ctlLib;
     }
-    /**
-     * @var string
-     */
-    private $ctlInfoLib1;
-
-    /**
-     * @var string
-     */
-    private $ctlInfoLib2;
-
-    /**
-     * @var string
-     */
-    private $ctlInfoLib3;
-
-    /**
-     * @var string
-     */
-    private $ctlInfoLib4;
-
-    /**
-     * @var string
-     */
-    private $ctlInfoLib5;
-
-    /**
-     * @var string
-     */
-    private $ctlInfoLib6;
-
-    /**
-     * @var string
-     */
-    private $ctlInfoLib7;
-
-    /**
-     * @var string
-     */
-    private $ctlInfoLib8;
-
-    /**
-     * @var string
-     */
-    private $ctlInfoLib9;
-
 
     /**
      * Set ctlInfoLib1
@@ -416,11 +426,6 @@ class Catlib
     {
         return $this->ctlInfoLib9;
     }
-    /**
-     * @var \EcommerceBundle\Entity\Categorie
-     */
-    private $ctlIdcat;
-
 
     /**
      * Set ctlIdcat

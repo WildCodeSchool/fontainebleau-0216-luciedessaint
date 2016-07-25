@@ -32,4 +32,78 @@ class CatlibRepository extends EntityRepository
             ->getResult();
     }
 
+    public function getCatlib4CategLang($id_cat, $langue)
+    {
+        $qb = $this
+            ->createQueryBuilder('c')
+            ->where('c.ctlIdcat = :idCat')
+            ->setParameter('idCat', $id_cat)
+            ->andWhere('c.ctlLocale = :lang')
+            ->setParameter('lang', $langue)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getCatlib4CategInLang($id_cat, $langues)
+    {
+        $qb = $this
+            ->createQueryBuilder('c')
+            ->where('c.ctlIdcat = :idCat')
+            ->setParameter('idCat', $id_cat)
+            ->andWhere('c.ctlLocale IN(:langs)')
+            ->setParameter('langs', $langues)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+/*    public function createCatlib4CategLang($id_cat, $langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('INSERT INTO EcommerceBundle:Catlib p (p.ctlIdcat, p.ctlLocale) 
+                            VALUES (:idCat, :locale)')
+            ->setParameters('idCat', $id_cat)
+            ->setParameters('locale', $langue)
+            ->getResult();
+    }*/
+
+//$conn = $this->get(‘database_connection’);
+//$count = $conn->executeSelect("SELECT p FROM EcommerceBundle:Catlib p WHERE (p.ctlIdcat = :idCat)″);
+
+//    public function getCatlib4CategInLang3($id_cat, $langues)
+//    {
+//
+//        var_dump($langues);
+//        $toto = implode("', '", $langues);
+//        var_dump($toto);
+//        $toto = "'fr', 'en'";
+//
+//        $params = array('langs' => $langues);
+//
+//        return $this->getEntityManager()
+//            ->createQuery("SELECT p FROM EcommerceBundle:Catlib p
+//                                WHERE (p.ctlIdcat = :idCat AND p.ctlLocale IN (':langs'))")
+//            ->setParameters('idCat', $id_cat)
+//            ->setParameters(array('langs' => $langues))
+//            //->setParameters('lang', $params)
+//            ->getResult();
+//    }
+//
+//    public function getCatlib4CategInLang2($id_cat, $langues)
+//    {
+////        var_dump($langues);
+////        $toto = implode(', ?', array_keys($langues));
+////        var_dump($toto);
+//        $toto = implode("', '", $langues);
+//        var_dump($toto);
+//        //$toto = "''".$toto."''";
+//        //var_dump($toto);
+//
+//        return $this->getEntityManager()
+//            ->createQuery('SELECT p FROM EcommerceBundle:Catlib p
+//                                WHERE (p.ctlIdcat = :idCat AND p.ctlLocale IN (:langs))')
+//            ->setParameters('idCat', $id_cat)
+//            ->setParameters('langs', $toto)
+//            ->getResult();
+//    }
+
 }

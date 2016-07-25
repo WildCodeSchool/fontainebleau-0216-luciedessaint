@@ -39,9 +39,14 @@ EcommerceBundle\Entity\Categorie:
             nullable: true
             column: cat_photo
     manyToOne:
-      catIdtva:
-        targetEntity: EcommerceBundle\Entity\Tva
-        joinColumn:
-          name: cat_idtva
-          referencedColumnName: id
-    lifecycleCallbacks: {  }
+        catIdtva:
+            targetEntity: EcommerceBundle\Entity\Tva
+            joinColumn:
+                name: cat_idtva
+                referencedColumnName: id
+    lifecycleCallbacks:
+        prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+        preUpdate: [ preUpload, setUpdatedAtValue ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]

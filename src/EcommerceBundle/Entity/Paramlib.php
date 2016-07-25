@@ -9,6 +9,114 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Paramlib
 {
+
+    public $phProdts;
+    public $phPanier;
+
+    protected function getUploadDir()
+    {
+        return 'uploads/param';
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath_PhProdts()
+    {
+        return null === $this->prlArtPhoto ? null : $this->getUploadDir().'/'.$this->prlArtPhoto;
+    }
+    public function getAbsolutePath_PhProdts()
+    {
+        return null === $this->prlArtPhoto ? null : $this->getUploadRootDir().'/'.$this->prlArtPhoto;
+    }
+
+    public function getWebPath_PhPanier()
+    {
+        return null === $this->prlPanPhoto ? null : $this->getUploadDir().'/'.$this->prlPanPhoto;
+    }
+    public function getAbsolutePath_PhPanier()
+    {
+        return null === $this->prlPanPhoto ? null : $this->getUploadRootDir().'/'.$this->prlPanPhoto;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function preUpload()
+    {
+        if (null !== $this->phProdts) {
+            // do whatever you want to generate a unique name
+            $this->prlArtPhoto = 'Prodts_'.uniqid().'.'.$this->phProdts->guessExtension();
+        }
+
+        if (null !== $this->phPanier) {
+            $this->prlPanPhoto = 'Panier_'.uniqid().'.'.$this->phPanier->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setExpiresAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PostPersist
+     */
+    public function upload()
+    {
+        if (null !== $this->phProdts) {
+            // if there is an error when moving the file, an exception will
+            // be automatically thrown by move(). This will properly prevent
+            // the entity from being persisted to the database on error
+
+            $this->phProdts->move($this->getUploadRootDir(), $this->prlArtPhoto);
+
+            unset($this->phProdts);
+        }
+
+        if (null !== $this->phPanier) {
+            $this->phPanier->move($this->getUploadRootDir(), $this->prlPanPhoto);
+            unset($this->phPanier);
+        }
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        if ($phProdts = $this->getAbsolutePath_PhProdts()) {
+            unlink($phProdts);
+        }
+
+        if ($phPanier = $this->getAbsolutePath_PhPanier()) {
+            unlink($phPanier);
+        }
+    }
+
+    //
+    // GENERATED CODE
+    //
     /**
      * @var int
      */
@@ -500,4 +608,5 @@ class Paramlib
     {
         return $this->prlIdprm;
     }
+
 }

@@ -9,6 +9,40 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Paramlib
 {
+
+    public $phProdts;
+    public $phPanier;
+
+    protected function getUploadDir()
+    {
+        return 'uploads/param';
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath_PhProdts()
+    {
+        return null === $this->prlArtPhoto ? null : $this->getUploadDir().'/'.$this->prlArtPhoto;
+    }
+    public function getAbsolutePath_PhProdts()
+    {
+        return null === $this->prlArtPhoto ? null : $this->getUploadRootDir().'/'.$this->prlArtPhoto;
+    }
+
+    public function getWebPath_PhPanier()
+    {
+        return null === $this->prlPanPhoto ? null : $this->getUploadDir().'/'.$this->prlPanPhoto;
+    }
+    public function getAbsolutePath_PhPanier()
+    {
+        return null === $this->prlPanPhoto ? null : $this->getUploadRootDir().'/'.$this->prlPanPhoto;
+    }
+
+    //
+    // GENERATED CODE
+    //
     /**
      * @var int
      */

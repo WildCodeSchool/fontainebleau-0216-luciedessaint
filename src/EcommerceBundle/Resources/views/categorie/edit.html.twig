@@ -22,6 +22,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(edit_form.catLibAdmin) }}
                             {{ form_widget(edit_form.catLibAdmin, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libellé unique adminstration' }}) }}
                         </div>
                     </div>
@@ -33,6 +34,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(edit_form.catNiv) }}
                             {{ form_widget(edit_form.catNiv, { 'attr': {'class': 'form-control Niveau', 'placeholder': 'Niveau' }}) }}
                         </div>
                     </div>
@@ -76,22 +78,23 @@
                         <p class="text-right lib_champs">Taux de TVA associé</p>
                     </div>
                     <div class="col-md-9">
+                        {{ form_errors(edit_form.catIdtva) }}
                         {{ form_widget(edit_form.catIdtva) }}
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Photo illustration</p>
+                        <p class="text-right lib_champs">Image associée</p>
                     </div>
                     <div class="col-md-9">
-                        {{ form_widget(edit_form.catPhoto) }}
+                        {{ form_end(edit_form) }}
                     </div>
                 </div>
 
 
                 <input class="btn btn-success" type="submit" value="Enregistrer" />
 
-                {{ form_end(edit_form) }}
             </div>
         </div>
     </div>

@@ -10,6 +10,9 @@ EcommerceBundle\Entity\Lang:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: lngFlag
             message: "Code flag déjà existant"
+    properties:
+        file:
+            - Image: ~
 #    properties:
 #        lngCode:
 #            - Choice:
@@ -24,14 +27,17 @@ EcommerceBundle\Entity\Lang:
 #                choices:  [male, female]
 #                message:  Choose a valid gender.
 #
-EcommerceBundle\Entity\Lang:
-    properties:
-        file:
-            - Image: ~
 
 EcommerceBundle\Entity\Categorie:
     properties:
-        catPhoto:
+        phCateg:
+            - Image: ~
+
+EcommerceBundle\Entity\Paramlib:
+    properties:
+        phProdts:
+            - Image: ~
+        phPanier:
             - Image: ~
 
 EcommerceBundle\Entity\Produit:

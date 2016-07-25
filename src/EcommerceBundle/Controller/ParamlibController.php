@@ -77,12 +77,46 @@ class ParamlibController extends Controller
         $editForm = $this->createForm('EcommerceBundle\Form\ParamlibType', $paramlib);
         $editForm->handleRequest($request);
 
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        $Code_lng = $paramlib->getPrlLocale();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération des infos 'langue'
+        $em = $this->getDoctrine()->getManager();
+        $lang = $em->getRepository('EcommerceBundle:Lang')->getLangByCode($Code_lng);
+        //var_dump($lang);
+
+        $langue = $lang[0];
+        $paramlib->langue = $langue;
+        //var_dump($langue);
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            if($editForm->get('phProdts')->getData() != null) {
+                if($paramlib->getPrlArtPhoto() != null) {
+                    unlink(__DIR__.'/../../../web/uploads/param/'.$paramlib->getPrlArtPhoto());
+                    $paramlib->setPrlArtPhoto(null);
+                }
+            }
+
+            if($editForm->get('phPanier')->getData() != null) {
+                if($paramlib->getPrlPanPhoto() != null) {
+                    unlink(__DIR__.'/../../../web/uploads/param/'.$paramlib->getPrlPanPhoto());
+                    $paramlib->setPrlPanPhoto(null);
+                }
+            }
+            $paramlib->preUpload();
+            
             $em->persist($paramlib);
             $em->flush();
 
-            return $this->redirectToRoute('paramlib_edit', array('id' => $paramlib->getId()));
+            $paramId = $paramlib->getPrlIdprm()->getId();
+            //var_dump($paramId);exit;
+
+            return $this->redirectToRoute('param_show', array('id' => $paramId));
         }
 
         return $this->render('EcommerceBundle:paramlib:edit.html.twig', array(

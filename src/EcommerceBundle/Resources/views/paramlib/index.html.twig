@@ -6,41 +6,41 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Prllocale</th>
-                <th>Prldelailiv</th>
-                <th>Prllivrestrict</th>
-                <th>Prlfabdelai</th>
-                <th>Prlartphoto</th>
-                <th>Prlartpres</th>
-                <th>Prlartcomm</th>
-                <th>Prlpantitre</th>
-                <th>Prlpanphoto</th>
-                <th>Prlpanpres</th>
-                <th>Prlpancomm</th>
-                <th>Prlpantabent</th>
-                <th>Prlpantabcol1</th>
-                <th>Prlpantabcol2</th>
-                <th>Prlpantabcol3</th>
-                <th>Prlpantabsupp</th>
+                {#<th>Id</th>#}
+                <th>Locale</th>
+                {#<th>Prldelailiv</th>#}
+                {#<th>Prllivrestrict</th>#}
+                {#<th>Prlfabdelai</th>#}
+                {#<th>Prlartphoto</th>#}
+                {#<th>Prlartpres</th>#}
+                {#<th>Prlartcomm</th>#}
+                <th>Panier - Titre</th>
+                {#<th>Prlpanphoto</th>#}
+                {#<th>Prlpanpres</th>#}
+                {#<th>Prlpancomm</th>#}
+                <th>Panier - Entête</th>
+                <th>Panier - Col. 1</th>
+                <th>Panier - Col. 2</th>
+                <th>Panier - Col. 3</th>
+                <th>Panier - Col. Supp.</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for paramlib in paramlibs %}
             <tr>
-                <td><a href="{{ path('paramlib_show', { 'id': paramlib.id }) }}">{{ paramlib.id }}</a></td>
+                {#<td><a href="{{ path('paramlib_show', { 'id': paramlib.id }) }}">{{ paramlib.id }}</a></td>#}
                 <td>{{ paramlib.prlLocale }}</td>
-                <td>{{ paramlib.prlDelaiLiv }}</td>
-                <td>{{ paramlib.prlLivRestrict }}</td>
-                <td>{{ paramlib.prlFabDelai }}</td>
-                <td>{{ paramlib.prlArtPhoto }}</td>
-                <td>{{ paramlib.prlArtPres }}</td>
-                <td>{{ paramlib.prlArtComm }}</td>
+                {#<td>{{ paramlib.prlDelaiLiv }}</td>#}
+                {#<td>{{ paramlib.prlLivRestrict }}</td>#}
+                {#<td>{{ paramlib.prlFabDelai }}</td>#}
+                {#<td>{{ paramlib.prlArtPhoto }}</td>#}
+                {#<td>{{ paramlib.prlArtPres }}</td>#}
+                {#<td>{{ paramlib.prlArtComm }}</td>#}
                 <td>{{ paramlib.prlPanTitre }}</td>
-                <td>{{ paramlib.prlPanPhoto }}</td>
-                <td>{{ paramlib.prlPanPres }}</td>
-                <td>{{ paramlib.prlPanComm }}</td>
+                {#<td>{{ paramlib.prlPanPhoto }}</td>#}
+                {#<td>{{ paramlib.prlPanPres }}</td>#}
+                {#<td>{{ paramlib.prlPanComm }}</td>#}
                 <td>{{ paramlib.prlPanTabEnt }}</td>
                 <td>{{ paramlib.prlPanTabCol1 }}</td>
                 <td>{{ paramlib.prlPanTabCol2 }}</td>
@@ -61,9 +61,11 @@
         </tbody>
     </table>
 
+{#
     <ul>
         <li>
             <a href="{{ path('paramlib_new') }}">Create a new entry</a>
         </li>
     </ul>
+#}
 {% endblock %}

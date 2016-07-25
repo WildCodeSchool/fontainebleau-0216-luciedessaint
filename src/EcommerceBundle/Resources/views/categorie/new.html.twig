@@ -63,6 +63,7 @@
                         {{ form_widget(form.catIdtva) }}
                     </div>
                 </div>
+{#
                 <div class="row">
                     <div class="col-md-3">
                         <p class="text-right lib_champs">Photo illustration</p>
@@ -71,8 +72,18 @@
                         {{ form_widget(form.catPhoto) }}
                     </div>
                 </div>
+#}
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Image associée</p>
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
                 <input class="btn btn-success" type="submit" value="Enregistrer" />
-                {{ form_end(form) }}
             </div>
         </div>
     </div>

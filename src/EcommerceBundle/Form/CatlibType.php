@@ -15,7 +15,7 @@ class CatlibType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ctlLocale')
+//            ->add('ctlLocale')
             ->add('ctlCateg')
             ->add('ctlType')
             ->add('ctlItem')
@@ -29,7 +29,7 @@ class CatlibType extends AbstractType
             ->add('ctlInfoLib7')
             ->add('ctlInfoLib8')
             ->add('ctlInfoLib9')
-            ->add('ctlIdcat')
+//            ->add('ctlIdcat')
         ;
     }
     
