@@ -38,6 +38,7 @@ class AdresseController extends Controller
      */
     public function newAction(Request $request)
     {
+        // recup de la session
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
 
@@ -54,25 +55,20 @@ class AdresseController extends Controller
         $form = $this->createForm(AdresseClientType::class, $adresse_client);
 
         $form->handleRequest($request);
+        //adresse de livraison n'est pas définit. Et l'est si on click sur plusieur adresse (jquery)
+        // il est définit que si il a plusieurs adresse.
         $adresse1->setAdrType(1);
 
-//        if ($adresse1->getAdrType() != null) {
-//            if ($adresse1->getAdrType() == 1){
-//                $adresse1->setAdrType(2);
-//                $adresse2->setAdrType(1);
-//            }
-//            else {
-//                $adresse1->setAdrType(1);
-//                $adresse1->setAdrType(2);
-//            }
-//        }
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $sessionadresse = $session->get('adresseArray');
-            $session->set('adresseArray', $adresse_client);
+            $sessionadresse = $session->get('adresseArray1');
+            $sessionadresse = $session->get('adresseArray2');
+            $session->set('adresseArray1', $adresse1);
+            $session->set('adresseArray2', $adresse2);
 
             //var_dump($adresse_client); die;
+            // si il y a une deuxieme adresse alors on persiste $adresse2 sinon $adresse 1 est l'adresse de livraison.
             if ($adresse2->getAdrType() == 1)
             {
                 $em->persist($adresse2);
@@ -84,8 +80,6 @@ class AdresseController extends Controller
             $em->persist($adresse1);
             $em->flush();
 
-////            $em->persist($adresse1);
-////            $em->flush();
 
             return $this->redirectToRoute('adresse_show');
         }

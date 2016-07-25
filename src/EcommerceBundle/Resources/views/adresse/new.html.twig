@@ -208,6 +208,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- permet de changer tout les champs en required false a true.... -->
     <script>
         $("#adresse_client_adressemodele_1_adrNom").prop('required',false);
         $("#adresse_client_adressemodele_1_adrPrenom").prop('required',false);
@@ -228,7 +229,8 @@
                 $("#adresse_client_adressemodele_1_adrCp").prop('required',true);
                 $("#adresse_client_adressemodele_1_adrVille").prop('required',true);
                 $("#adresse_client_adressemodele_1_adrIdcom").prop('required',true);
-                $("#adresse_client_adressemodele_1_adrType").val(2);
+                $("#adresse_client_adressemodele_1_adrType").val(1);
+                $("#adresse_client_adressemodele_0_adrType").val(2);
             });
         });
     </script>
