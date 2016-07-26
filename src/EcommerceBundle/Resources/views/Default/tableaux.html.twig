@@ -13,8 +13,9 @@
     <div class="container">
         <div class="row">
             {% for produit in produits %}
-                {% if produit.pdtEtat %}
-                    {% if produit.pdtIdcat %}
+                {% if produit.pdtEtat == true %}
+                    <!-- ajouter dans la condition ou.... -->
+                    {% if produit.pdtIdcat != 'Bijoux' and produit.pdtIdcat != null and (produit.pdtIdcat == 'Portrait' or produit.pdtIdcat == 'Marine') %}
                         <div class="col-md-4">
                             <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
                                 <img class="center-block img-responsive imgbijou" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}></a>
