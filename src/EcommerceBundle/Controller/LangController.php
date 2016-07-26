@@ -35,19 +35,68 @@ class LangController extends Controller
      */
     public function newAction(Request $request)
     {
+
         $lang = new Lang();
-        $request = $this->getRequest();
-        $form    = $this->createForm(new LangType(), $lang);
+        $form = $this->createForm('EcommerceBundle\Form\LangType', $lang);
+        $form->remove('lngCode');
+        //$form->setData('lngCode', 'xx');
+        //$form->remove('lngFlag');
+        //$form->setData('lngFlag', 'xx');
         $form->handleRequest($request);
-
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             //$LangType->setLngFlag($LangType->file->getClientOriginalName());
+
+            //var_dump($form->getViewData()->getLngLib());exit;
+            $langue = $form->getViewData()->getLngLib();
+
+            switch ($langue) {
+                case "Français":
+                    $lang->setLngCode("fr"); break;
+                case "English":
+                    $lang->setLngCode("en"); break;
+                case "Deutsch":
+                    $lang->setLngCode("de"); break;
+                case "Italiano":
+                    $lang->setLngCode("it"); break;
+                case "Español":
+                    $lang->setLngCode("es"); break;
+                case "Português":
+                    $lang->setLngCode("pt"); break;
+                case "中国":
+                    $lang->setLngCode("zh"); break;
+                case "ελληνικά":
+                    $lang->setLngCode("el"); break;
+                case "日本の":
+                    $lang->setLngCode("ja"); break;
+                case "한국의":
+                    $lang->setLngCode("ko"); break;
+                case "русский":
+                    $lang->setLngCode("ru"); break;
+                default:
+                    exit;
+            }
+
+            $drapeau = "Flag_".$lang->getLngCode().".png";
+            $lang->setLngFlag($drapeau);
+
+            /*  "fr - Français" => "fr", "en - English" => "en", "de - Deutsch" => "de",
+                "it - Italiano" => "it", "es - Español" => "es", "pt - Português" => "pt",
+                "el - ελληνικά (Grec)" => "el", "ja - 日本の (Japonais)" => "ja",
+                "zh - 中国 (Chinois)" => "zh", "ko - 한국의 (Coréen)" => "ko",
+                "ru - русский (Russe)" => "ru"*/
+
             $em->persist($lang);
             $em->flush();
 
-            return $this->redirectToRoute('lang_show', array('id' => $lang->getId()));
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Création effectuée'
+            );
+
+            //return $this->redirectToRoute('lang_show', array('id' => $lang->getId()));
+            return $this->redirectToRoute('lang_index');
         }
 
         return $this->render('EcommerceBundle:lang:new.html.twig', array(
@@ -78,10 +127,41 @@ class LangController extends Controller
     {
         $deleteForm = $this->createDeleteForm($lang);
         $editForm = $this->createForm('EcommerceBundle\Form\LangType', $lang);
+        $editForm->remove('lngCode');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            //var_dump($editForm->getViewData()->getLngLib());exit;
+            $langue = $editForm->getViewData()->getLngLib();
+
+            switch ($langue) {
+                case "Français":
+                    $lang->setLngCode("fr"); break;
+                case "English":
+                    $lang->setLngCode("en"); break;
+                case "Deutsch":
+                    $lang->setLngCode("de"); break;
+                case "Italiano":
+                    $lang->setLngCode("it"); break;
+                case "Español":
+                    $lang->setLngCode("es"); break;
+                case "Português":
+                    $lang->setLngCode("pt"); break;
+                case "中国":
+                    $lang->setLngCode("zh"); break;
+                case "ελληνικά":
+                    $lang->setLngCode("el"); break;
+                case "日本の":
+                    $lang->setLngCode("ja"); break;
+                case "한국의":
+                    $lang->setLngCode("ko"); break;
+                case "русский":
+                    $lang->setLngCode("ru"); break;
+                default:
+                    exit;
+            }
 
             if($editForm->get('file')->getData() != null) {
 

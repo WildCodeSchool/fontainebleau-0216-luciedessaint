@@ -45,11 +45,13 @@
                                             <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
                                         <a class="btn btn-primary" id="place-btn" href="{{ path('lang_edit', { 'id': lang.id }) }}">
                                             <i class="glyphicon glyphicon-edit"></i>Modifier</a>
-                                        {#<a class="btn btn-primary" id="place-btn" href="{{ path('lang_delete', { 'id': lang.id }) }}">#}
-                                        <a class="btn btn-primary" id="place-btn" href="{{ path('lang_delete', { 'id': lang.id }) }}" onclick="return confirm('Confirmez-vous ?')">
-                                            <i class="glyphicon glyphicon-trash"></i> Supprimer</a>
-                                        {#<a title="" data-original-title="" class="btn btn-primary" id="place-btn" data-toggle="confirmation-popout" data-placement="right" href="{{ path('lang_delete', { 'id': lang.id }) }}">#}
-                                            {#<i class="glyphicon glyphicon-trash"></i> Supprimer</a>#}
+                                        {% if lang.lngCode != 'fr' %}
+                                            {#<a class="btn btn-primary" id="place-btn" href="{{ path('lang_delete', { 'id': lang.id }) }}">#}
+                                            <a class="btn btn-primary" id="place-btn" href="{{ path('lang_delete', { 'id': lang.id }) }}" onclick="return confirm('Confirmez-vous ?')">
+                                                <i class="glyphicon glyphicon-trash"></i> Supprimer</a>
+                                            {#<a title="" data-original-title="" class="btn btn-primary" id="place-btn" data-toggle="confirmation-popout" data-placement="right" href="{{ path('lang_delete', { 'id': lang.id }) }}">#}
+                                                {#<i class="glyphicon glyphicon-trash"></i> Supprimer</a>#}
+                                        {% endif %}
                                     </li>
                                 </ul>
                             </td>

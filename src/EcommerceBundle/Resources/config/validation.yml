@@ -2,14 +2,14 @@
 EcommerceBundle\Entity\Lang:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: lngCode
-            message: "Code langue déjà existant"
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: lngLib
             message: "Code lib déjà existant"
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: lngFlag
-            message: "Code flag déjà existant"
+#        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+#            fields: lngCode
+#            message: "Code langue déjà existant"
+#        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+#            fields: lngFlag
+#            message: "Code flag déjà existant"
     properties:
         file:
             - Image: ~

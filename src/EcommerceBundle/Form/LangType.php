@@ -53,11 +53,11 @@ class LangType extends AbstractType
                     "Italiano" => "Italiano",
                     "Español" => "Español",
                     "Português" => "Português",
-                    "ελληνικά (Grec)" => "ελληνικά",
-                    "日本の (Japonais)" => "日本の",
-                    "中国 (Chinois)" => "中国",
-                    "한국의 (Coréen)" => "한국의",
-                    "русский (Russe)" => "русский"
+                    "中国" => "中国 (Chinois)",
+                    "ελληνικά" => "ελληνικά (Grec)",
+                    "日本の" => "日本の (Japonais)",
+                    "한국의" => "한국의 (Coréen)",
+                    "русский" => "русский (Russe)"
                 )
             ))
             ->add('file', 'file', array('label' => ' ', 'required' => false))
