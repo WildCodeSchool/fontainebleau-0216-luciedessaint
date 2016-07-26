@@ -42,7 +42,7 @@ class AdresseController extends Controller
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
 
-        $adresse_client = new AdresseClient();
+        $adresse_client = new AdresseModele();
 
         $adresse1 = new AdresseModele();
         $adresse1->setAdrTypeName('Facturation');
@@ -69,7 +69,7 @@ class AdresseController extends Controller
 
             //var_dump($adresse_client); die;
             // si il y a une deuxieme adresse alors on persiste $adresse2 sinon $adresse 1 est l'adresse de livraison.
-            if ($adresse2->getAdrType() == 1)
+            if ($adresse2->getAdrAdr() != null)
             {
                 $em->persist($adresse2);
             }

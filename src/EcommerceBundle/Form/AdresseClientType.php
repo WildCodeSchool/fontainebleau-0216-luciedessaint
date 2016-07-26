@@ -27,7 +27,7 @@ class AdresseClientType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EcommerceBundle\Entity\AdresseClient'
+            'data_class' => 'EcommerceBundle\Entity\AdresseModele'
         ));
     }
 }
