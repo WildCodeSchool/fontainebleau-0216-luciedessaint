@@ -2,6 +2,7 @@
 
 namespace EcommerceBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AdresseModele
 {
-   
     /**
      * @var integer
      */
@@ -71,10 +71,22 @@ class AdresseModele
     private $adrPays;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $AdresseModele;
+
+    /**
      * @var \EcommerceBundle\Entity\Commande
      */
     private $adrIdcom;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->AdresseModele = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -337,6 +349,39 @@ class AdresseModele
     public function getAdrPays()
     {
         return $this->adrPays;
+    }
+
+    /**
+     * Add AdresseModele
+     *
+     * @param \EcommerceBundle\Entity\AdresseModele $adresseModele
+     * @return AdresseModele
+     */
+    public function addAdresseModele(\EcommerceBundle\Entity\AdresseModele $adresseModele)
+    {
+        $this->AdresseModele[] = $adresseModele;
+
+        return $this;
+    }
+
+    /**
+     * Remove AdresseModele
+     *
+     * @param \EcommerceBundle\Entity\AdresseModele $adresseModele
+     */
+    public function removeAdresseModele(\EcommerceBundle\Entity\AdresseModele $adresseModele)
+    {
+        $this->AdresseModele->removeElement($adresseModele);
+    }
+
+    /**
+     * Get AdresseModele
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdresseModele()
+    {
+        return $this->AdresseModele;
     }
 
     /**

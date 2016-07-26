@@ -16,6 +16,7 @@ class DetailproduitController extends Controller
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
         
+        
         return $this->render('EcommerceBundle:Default:detailproduit.html.twig', array(
             'paniers' => $panieruser,
             'produit' => $produit,

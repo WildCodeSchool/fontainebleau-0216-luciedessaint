@@ -15,20 +15,22 @@
                 {{ dump(paniers) }}
                 {% for produit in produits %}
                     {% if produit.pdtEtat %}
-                        <div class="col-md-3">
-                            <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
-                            <img class="center-block img-responsive imgbijou" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}></a>
-                            <div class="col-md-12">
+                        {% if produit.pdtIdcat == 'Bijoux' %}
+                            <div class="col-md-3">
                                 <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
-                                <p><span class="text-left">{{ produit.pdtNom }}</span></a><span class="text-right">{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }}</span></p>
-                                <ul class="nopuce">
-                                    <li>
-                                        <i class="glyphicon glyphicon-adjust"></i>
-                                        <a href="{{ path('ecommerce_add_panier', { 'id': produit.id }) }}">acheter</a>
-                                    </li>
-                                </ul>
+                                <img class="center-block img-responsive imgbijou" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}></a>
+                                <div class="col-md-12">
+                                    <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
+                                    <p><span class="text-left">{{ produit.pdtNom }}</span></a><span class="text-right">{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }}</span></p>
+                                    <ul class="nopuce">
+                                        <li>
+                                            <i class="glyphicon glyphicon-adjust"></i>
+                                            <a href="{{ path('ecommerce_add_panier', { 'id': produit.id }) }}">acheter</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             </div>

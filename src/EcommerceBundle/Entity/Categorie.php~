@@ -36,6 +36,62 @@ class Categorie
         return null === $this->catPhoto ? null : $this->getUploadRootDir().'/'.$this->catPhoto;
     }
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function preUpload()
+    {
+        if (null !== $this->phCateg) {
+            // do whatever you want to generate a unique name
+            $this->catPhoto = 'Cat_'.uniqid().'.'.$this->phCateg->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setExpiresAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PostPersist
+     */
+    public function upload()
+    {
+        if (null !== $this->phCateg) {
+            $this->phCateg->move($this->getUploadRootDir(), $this->catPhoto);
+            unset($this->phCateg);
+        }
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        if ($phCateg = $this->getAbsolutePath_PhCateg()) {
+            unlink($phCateg);
+        }
+    }
+
     ///////////////////////
     // GENERATED CODE
 
@@ -278,4 +334,5 @@ class Categorie
     {
         return $this->catIdtva;
     }
+
 }

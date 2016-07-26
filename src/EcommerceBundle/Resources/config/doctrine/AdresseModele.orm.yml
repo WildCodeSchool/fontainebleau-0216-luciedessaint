@@ -62,4 +62,10 @@ EcommerceBundle\Entity\AdresseModele:
             joinColumn:
                 name: adr_idcom
                 referencedColumnName: id
+    oneToMany:
+        AdresseModele:
+            targetEntity: EcommerceBundle\Entity\AdresseModele
+            mappedBy: AdresseModele
+            cascade: [persist]
+
     lifecycleCallbacks: {  }

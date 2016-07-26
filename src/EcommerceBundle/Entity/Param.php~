@@ -9,6 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Param
 {
+    // Code écrit
+
+    public function __toString()
+    {
+        return $this->getPrmDevise();
+    }
+
+    // GENERATED CODE
     /**
      * @var int
      */
