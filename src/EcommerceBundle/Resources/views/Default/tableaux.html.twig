@@ -12,45 +12,22 @@
     <div class="space"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-4"><img class="center-block img-responsive" src={{ asset('bundles/app/img/tableaux/1.png') }}>
-                <div class="col-md-12 text-center">
-                    <p>Sous un ciel d'or<br />
-                        36 x 36 cm 385€</p>
-                </div>
-            </div>
-            <div class="col-md-4"><img class="center-block img-responsive" src={{ asset('bundles/app/img/tableaux/2.png') }}>
-                <div class="col-md-12 text-center">
-                    <p>Ciel orange<br />
-                        13 x 13 cm 75€</p>
-                </div>
-            </div>
-            <div class="col-md-4"><img class="center-block img-responsive" src={{ asset('bundles/app/img/tableaux/3.png') }}>
-                <div class="col-md-12 text-center">
-                    <p>Sur un océan de turquoise<br />
-                        19 x 19 cm 130€</p>
-                </div>
-            </div>
+            {% for produit in produits %}
+                {% if produit.pdtEtat %}
+                    {% if produit.pdtIdcat %}
+                        <div class="col-md-4">
+                            <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
+                                <img class="center-block img-responsive imgbijou" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}></a>
+                            <div class="col-md-12 text-center">
+                                <p><a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
+                                    <span class="text-left">{{ produit.pdtNom }}</span></a>
+                                <span class="text-right">{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</span></p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
         </div>
         <div class="minspace"></div>
-        <div class="row">
-            <div class="col-md-4"><img class="center-block img-responsive" src={{ asset('bundles/app/img/tableaux/4.png') }}>
-                <div class="col-md-12 text-center">
-                    <p>A l'aube sur l'océan<br />
-                        19 x 19 cm 130€</p>
-                </div>
-            </div>
-            <div class="col-md-4"><img class="center-block img-responsive" src={{ asset('bundles/app/img/tableaux/5.png') }}>
-                <div class="col-md-12 text-center">
-                    <p>Sous un ciel rouge cuivré<br />
-                        13 x 13 cm 755€</p>
-                </div>
-            </div>
-            <div class="col-md-4"><img class="center-block img-responsive" src={{ asset('bundles/app/img/tableaux/6.png') }}>
-                <div class="col-md-12 text-center">
-                    <p>Lumière d'été<br />
-                        36 x 36 cm 385€</p>
-                </div>
-            </div>
-        </div>
     </div>
 {% endblock %}
