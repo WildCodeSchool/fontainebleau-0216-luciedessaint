@@ -18,10 +18,11 @@
                     {% if produit.pdtIdcat != 'Bijoux' and produit.pdtIdcat != null and (produit.pdtIdcat == 'Portrait' or produit.pdtIdcat == 'Marine') %}
                         <div class="col-md-4">
                             <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
-                                <img class="center-block img-responsive imgbijou" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}></a>
+                                <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }} />
+                            </a>
                             <div class="col-md-12 text-center">
                                 <p><a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
-                                    <span class="text-left">{{ produit.pdtNom }}</span></a>
+                                    <span class="text-left">{{ produit.pdtNom }}</span></a><br />
                                 <span class="text-right">{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</span></p>
                             </div>
                         </div>

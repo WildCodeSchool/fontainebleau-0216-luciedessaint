@@ -16,6 +16,11 @@ h1 {
 h2 {
     font-size: 20px;
 }
+.footerbck {
+    background-color: #2d2d2d;
+    margin-top: 50px;
+    height: 80px;
+}
 /* ------------------ Nav bar ------------------ */
 .navbar {
     margin-bottom: 0px;
@@ -36,6 +41,15 @@ h2 {
 }
 .navbar-default .navbar-nav > li > a:hover {
     color: #ffffff;
+}
+a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #ffffff;
+}
+.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse{
+    margin-right: 0px;
+}
+.navbar-default .navbar-brand{
+    margin-left: 10px;
 }
 /* ------------------ HomePage ------------------ */
 .container-fluid {
@@ -88,6 +102,67 @@ h2 {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.textlefthp, .textmiddlehp, .textrighthp {
+    text-align: center;
+    display: none;
+    position: relative;
+    top: 45%;
+}
+.textlefthp, .textmiddlehp, .textrighthp {
+    background-color: white;
+}
+a div p {
+    color: black;
+}
+@media screen and (max-width: 992px){
+    .divimgleft {
+        width: 300px;
+        height: 200px;
+    }
+    .divimgmiddle {
+        width: 270px;
+        height: 200px;
+    }
+    .divimgright {
+        width: 110px;
+        height: 200px;
+    }
+}
+@media screen and (max-width: 709px){
+    .divimgleft {
+        width: 400px;
+        height: 350px;
+    }
+    .divimgmiddle {
+        width: 400px;
+        height: 350px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .divimgright {
+        width: 300px;
+        height: 350px;
+    }
+}
+@media screen and (max-width: 430px){
+    .divimgleft {
+        width: 300px;
+        height: 200px;
+        left: 11%;
+    }
+    .divimgmiddle {
+        width: 300px;
+        height: 200px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        left: 11%;
+    }
+    .divimgright {
+        width: 110px;
+        height: 200px;
+        left: 40%;
+    }
+}
 /* ------------------ Lucie Actu ------------------ */
 .img_presentation {
     width: 100%;
@@ -106,6 +181,15 @@ h2 {
 }
 img.image_produit {
     width: 100%;
+}
+/* -------------------------------------------- *\
+                      Tableau
+\* -------------------------------------------- */
+.imgtableau {
+    width: 80%;
+    height: 200px;
+    box-shadow: 3px -3px 6px 2px rgba(0, 0, 0, 0.6);
+    margin-top: 30px;
 }
 /* -------------------------------------------- *\
                       Panier
