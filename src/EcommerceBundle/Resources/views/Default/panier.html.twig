@@ -20,6 +20,7 @@
                         <th class="text-center">Nom - Référence</th>
                         <th class="text-center">Prix</th>
                     </tr>
+                    {{ dump(app.session.getmetadataBag()) }}
                     {{ dump(app.session) }}
                     {{ dump(app.session.get('cartArray')) }}
 

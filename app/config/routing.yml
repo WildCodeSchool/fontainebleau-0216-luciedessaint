@@ -5,7 +5,3 @@ appun:
 ecommerce:
     resource: "@EcommerceBundle/Resources/config/routing.yml"
     prefix:   /eco
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation

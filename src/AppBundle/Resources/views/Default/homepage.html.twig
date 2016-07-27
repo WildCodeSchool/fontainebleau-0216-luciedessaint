@@ -11,27 +11,54 @@
         </header>
         <div class="container imgnav"><!-- Image navigation -->
             <div class="row">
-                <div class="col-md-offset-1 col-md-4 divimgleft">
+                <div class="col-md-offset-1 col-md-4 col-sm-12 col-xs-12 divimgleft">
                     <a href={{ path('ecommerce_tableau') }}>
                         <div class="img-responsive imgleft hvr-grow-shadow">
-                            <p class="">Entrer dans l'univers de l'Art</p>
+                            <p class="textlefthp center-block">Entrer dans l'univers de l'Art</p>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-4 divimgmiddle">
+                <div class="col-md-4 col-sm-12 col-xs-12 divimgmiddle">
                     <a href={{ path('ecommerce_bijou') }}>
                         <div class="img-responsive imgmiddle hvr-grow-shadow">
-                            <p class="">Entrer dans l'univers des Bijoux</p>
+                            <p class="textmiddlehp center-block">Entrer dans l'univers des Bijoux</p>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-2 divimgright">
+                <div class="col-md-2 col-sm-12 col-xs-12 divimgright">
                     <a href={{ path('app_lucieactu') }}>
                         <div class="img-responsive imgright hvr-grow-shadow">
-                            <p class="">Lucie DE SAINT</p>
+                            <p class="textrighthp center-block">Lucie DE SAINT</p>
                         </div>
                     </a>
                 </div>
             </div>
         </div> <!-- Fin image navigation -->
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- permet de changer tout les champs en required false a true.... -->
+    <script>
+        $(document).ready(function(){
+            $("div.divimgleft").mouseleave(function(){
+                $("p.textlefthp").hide();
+            });
+            $("div.divimgleft").mouseenter(function(){
+                $("p.textlefthp").show();
+            });
+            $("div.divimgmiddle").mouseleave(function(){
+                $("p.textmiddlehp").hide();
+            });
+            $("div.divimgmiddle").mouseenter(function(){
+                $("p.textmiddlehp").show();
+            });
+            $("div.divimgright").mouseleave(function(){
+                $("p.textrighthp").hide();
+            });
+            $("div.divimgright").mouseenter(function(){
+                $("p.textrighthp").show();
+            });
+        });
+    </script>
 {% endblock %}
