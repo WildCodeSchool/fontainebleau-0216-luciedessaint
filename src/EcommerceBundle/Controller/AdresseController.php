@@ -2,14 +2,11 @@
 
 namespace EcommerceBundle\Controller;
 
-use EcommerceBundle\Entity\AdresseClient;
 use EcommerceBundle\Entity\AdresseModele;
 use EcommerceBundle\Form\AdresseClientType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use EcommerceBundle\Entity\Adresse;
-use EcommerceBundle\Form\AdresseType;
 
 /**
  * Adresse controller.

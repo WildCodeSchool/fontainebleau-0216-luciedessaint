@@ -81,6 +81,7 @@ class PanierController extends Controller
             'total' => $total,
         ));
     }
+    
     public function removePanierAction(Request $request, $id)
     {
         $session = $request->getSession();

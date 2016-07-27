@@ -12,8 +12,11 @@ class ContactController extends Controller
     {
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
+        
+        $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
         return $this->render('AppBundle:Default:lucie&actu.html.twig', array(
+            'langues' => $langues,
             'paniers' => $panieruser,
         ));
     }

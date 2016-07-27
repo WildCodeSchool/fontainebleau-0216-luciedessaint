@@ -17,8 +17,13 @@ class BijouController extends Controller
 
         $session = $request->getSession();
         $panier = $session->get('cartArray');
+        
+        $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
+        //var_dump($produits);
+        
         return $this->render('EcommerceBundle:Default:bijoux.html.twig', array(
+            'langues' => $langues,
             'produits'=> $produits,
             'paniers' => $panier,
         ));

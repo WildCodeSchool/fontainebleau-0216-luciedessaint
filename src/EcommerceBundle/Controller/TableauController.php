@@ -15,8 +15,10 @@ class TableauController extends Controller
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
 
+        $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
         return $this->render('EcommerceBundle:Default:tableaux.html.twig', array(
+            'langues' => $langues,
             'paniers' => $panieruser,
             'produits' => $produits,
         ));

@@ -6,6 +6,7 @@ ecommerce:
     resource: "@EcommerceBundle/Resources/config/routing.yml"
     prefix:   /eco
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+changt_langue:
+    path:     /{id}/changtlangue
+    defaults: { _controller: AppBundle:Homepage:changtLangue }
+    methods:  GET
