@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class AdresseModeleRepository extends EntityRepository
 {
+
+    public function getAdresses4Commande($id_com)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM EcommerceBundle:AdresseModele p 
+                            WHERE (p.adrIdcom = :idCom)')
+            ->setParameter('idCom', $id_com)
+            ->getResult();
+    }
 }

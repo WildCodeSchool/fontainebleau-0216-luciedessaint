@@ -15,9 +15,10 @@ class CompdtRepository extends EntityRepository
     public function getProdts4Commande($id_comm)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM EcommerceBundle:Compdt p 
+            ->createQuery('SELECT p, a FROM EcommerceBundle:Compdt p JOIN p.cxpIdpdt a
                             WHERE (p.cxpIdcom = :idComm)')
             ->setParameter('idComm', $id_comm)
             ->getResult();
     }
+
 }

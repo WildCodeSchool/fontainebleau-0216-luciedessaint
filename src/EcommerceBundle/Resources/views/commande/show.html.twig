@@ -3,7 +3,7 @@
 {% block body %}
 
     <div id="header" class="jumbotron text-center">
-        <h1>Commande :<br/>{{ commande.comCode }}</h1>
+        <h1>Commande : {{ commande.comCode }}</h1>
         <a class="btn btn-success btn-lg" href="{{ path('commande_index') }}">
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour à la liste
@@ -14,7 +14,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-offset-1 col-md-offset-1 col-lg-9 col-md-9">
-                <h3>Commande - Code :
                     <a class="btn btn-success" href="{{ path('commande_edit', { 'id': commande.id }) }}">
                         <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
                 <table class="table table-hover">
@@ -23,10 +22,10 @@
                             {#<th>Id</th>#}
                             {#<td>{{ commande.id }}</td>#}
                         {#</tr>#}
-                        <tr>
-                            <th>Code commande</th>
-                            <td>{{ commande.comCode }}</td>
-                        </tr>
+                        {#<tr>#}
+                            {#<th>Code commande</th>#}
+                            {#<td>{{ commande.comCode }}</td>#}
+                        {#</tr>#}
                         <tr>
                             <th>Etat</th>
                             <td>{{ commande.comEtat }}</td>
@@ -132,5 +131,81 @@
         </li>
     </ul>
 #}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                {% if commande.adresses %}
+                    {% for adresse in commande.adresses %}
+                        <h3>Adresse de {{ adresse.adrTypeName }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-success" href="{{ path('adresse_edit', { 'id': adresse.id }) }}">
+                                <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ adresse.adrNom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ adresse.adrPrenom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ adresse.adrSoc }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ adresse.adrEmail }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ adresse.adrTel }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ adresse.adrAdr }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ adresse.adrCp }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ adresse.adrVille }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                &nbsp;
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h1>Aucune adresse trouvée</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

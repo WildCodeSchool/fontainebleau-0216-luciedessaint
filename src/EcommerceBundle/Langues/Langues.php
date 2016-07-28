@@ -6,14 +6,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Doctrine\ORM\EntityManager as EntityManager;
 
 class Langues
-
 {
-
     /**
      * Récupération des langues actives
-     *
-     * @param string $request
-     * @return strings & array
+     * @param string $session
+     * @return array $langues
      */
 
     private $em = null;
@@ -23,9 +20,7 @@ class Langues
     }
 
     public function RecupLangues($session)
-
     {
-
         //
         // s'il n'y a aucune session alors on en crée une
         //

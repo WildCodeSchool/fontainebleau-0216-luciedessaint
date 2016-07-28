@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EcommerceBundle\Entity\Commande;
 use EcommerceBundle\Form\CommandeType;
+use EcommerceBundle\Entity\AdresseModele;
+use EcommerceBundle\Form\AdresseModeleType;
+use EcommerceBundle\Entity\Compdt;
 
 /**
  * Commande controller.
@@ -59,11 +62,41 @@ class CommandeController extends Controller
      */
     public function showAction(Commande $commande)
     {
-        $deleteForm = $this->createDeleteForm($commande);
+        $em = $this->getDoctrine()->getManager();
+
+//        $deleteForm = $this->createDeleteForm($commande);
+
+        $idcom = $commande->getId();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération des adresses liées à la commande
+        //
+        $adresses = $em->getRepository('EcommerceBundle:AdresseModele')->getAdresses4Commande($idcom);
+
+        $nbAdresses = count($adresses);
+        var_dump($adresses);
+
+        $commande->nbadresses = $nbAdresses;
+        $commande->adresses = $adresses;
+        //
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération des produits liés à la commande
+        //
+        $produits = $em->getRepository('EcommerceBundle:Compdt')->getProdts4Commande($idcom);
+
+        $nbProduits = count($produits);
+        var_dump($produits);
+
+        $commande->nbProduits = $nbProduits;
+        $commande->produits = $produits;
+        //
+        /////////////////////////////////////////////////////////////////////////////////////////////
 
         return $this->render('EcommerceBundle:commande:show.html.twig', array(
             'commande' => $commande,
-            'delete_form' => $deleteForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -73,7 +106,7 @@ class CommandeController extends Controller
      */
     public function editAction(Request $request, Commande $commande)
     {
-        $deleteForm = $this->createDeleteForm($commande);
+//        $deleteForm = $this->createDeleteForm($commande);
         $editForm = $this->createForm('EcommerceBundle\Form\CommandeType', $commande);
         $editForm->handleRequest($request);
 
@@ -82,13 +115,13 @@ class CommandeController extends Controller
             $em->persist($commande);
             $em->flush();
 
-            return $this->redirectToRoute('commande_edit', array('id' => $commande->getId()));
+            return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
         }
 
         return $this->render('EcommerceBundle:commande:edit.html.twig', array(
             'commande' => $commande,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -96,7 +129,7 @@ class CommandeController extends Controller
      * Deletes a Commande entity.
      *
      */
-    public function deleteAction(Request $request, Commande $commande)
+/*    public function deleteAction(Request $request, Commande $commande)
     {
         $form = $this->createDeleteForm($commande);
         $form->handleRequest($request);
@@ -108,7 +141,7 @@ class CommandeController extends Controller
         }
 
         return $this->redirectToRoute('commande_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a Commande entity.
@@ -117,12 +150,12 @@ class CommandeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Commande $commande)
+/*    private function createDeleteForm(Commande $commande)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('commande_delete', array('id' => $commande->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }
+    }*/
 }
