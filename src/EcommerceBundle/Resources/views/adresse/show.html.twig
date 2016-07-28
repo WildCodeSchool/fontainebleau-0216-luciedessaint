@@ -1,5 +1,160 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ dump(app.session.get('adresseArray1')) }}
+    <header>
+        <div class="container-fluid"><!-- Top Bar noir -->
+            <div class="row">
+                <div class="col-md-3 rowblack text-center textwhite"><h1>Panier</h1></div>
+            </div>
+        </div><!-- Fin top bar noir -->
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <table class="table table-hover">
+                    <tr>
+                        <th class="text-center"> </th>
+                        <th class="text-center">Nom - Référence</th>
+                        <th class="text-center">Prix TTC</th>
+                    </tr>
+                    {% for panier in paniers %}
+                        <tr>
+                            <td class="text-center"><img class="imgpanier" src="{{ asset('uploads/produits/') }}{{ panier.photo }}"></td>
+                            <td class="text-center">{{ panier.nom }} <br /><br /> {{ panier.ref }}</td>
+                            <td class="text-center">{{ panier.prix|number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td><p class="prixtotal">Prix total TTC :</p></td>
+                        <td><p class="text-center">{{ total }} €</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% if app.session.get('adresseArray1').adrTypeName == 'livraison' %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-8">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Adresse de livraison</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ app.session.get('adresseArray1').adrNom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ app.session.get('adresseArray1').adrPrenom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Société</th>
+                                <td>{% if app.session.get('adresseArray1').adrSoc %}{{ app.session.get('adresseArray1').adrPrenom }}
+                                    {% else %}null
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ app.session.get('adresseArray1').adrEmail }}</td>
+                            </tr>
+                            <tr>
+                                <th>Téléphone</th>
+                                <td>{% if app.session.get('adresseArray1').adrTel %}{{ app.session.get('adresseArray1').adrTel }}
+                                    {% else %}null
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ app.session.get('adresseArray1').adrAdr }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code postal</th>
+                                <td>{{ app.session.get('adresseArray1').adrCp }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ville</th>
+                                <td>{{ app.session.get('adresseArray1').adrVille }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a class="btn btn-success" href="{{ path('adresse_edit') }}">Modifier</a>
+                    <a class="btn btn-primary floatright" href=""></i>plop</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-8">
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <th> </th>
+                            <th>Adresse de facturation</th>
+                            <th>Adresse de livraison</th>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ app.session.get('adresseArray1').adrNom }}</td>
+                            <td>{{ app.session.get('adresseArray2').adrNom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prénom</th>
+                            <td>{{ app.session.get('adresseArray1').adrPrenom }}</td>
+                            <td>{{ app.session.get('adresseArray2').adrPrenom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Société</th>
+                            <td>{% if app.session.get('adresseArray1').adrSoc %}{{ app.session.get('adresseArray1').adrPrenom }}
+                                {% else %}null
+                                {% endif %}
+                            </td>
+                            <td>{% if app.session.get('adresseArray2').adrSoc %}{{ app.session.get('adresseArray2').adrPrenom }}
+                                {% else %}null
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ app.session.get('adresseArray1').adrEmail }}</td>
+                            <td>{% if app.session.get('adresseArray2').adrEmail %}{{ app.session.get('adresseArray2').adrEmail }}
+                                {% else %}null
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Téléphone</th>
+                            <td>{% if app.session.get('adresseArray1').adrTel %}{{ app.session.get('adresseArray1').adrTel }}
+                                {% else %}null
+                                {% endif %}
+                            </td>
+                            <td>{{ app.session.get('adresseArray2').adrTel }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>{{ app.session.get('adresseArray1').adrAdr }}</td>
+                            <td>{{ app.session.get('adresseArray2').adrAdr }}</td>
+                        </tr>
+                        <tr>
+                            <th>Code postal</th>
+                            <td>{{ app.session.get('adresseArray1').adrCp }}</td>
+                            <td>{{ app.session.get('adresseArray2').adrCp }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ville</th>
+                            <td>{{ app.session.get('adresseArray1').adrVille }}</td>
+                            <td>{{ app.session.get('adresseArray2').adrVille }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a class="btn btn-success" href="{{ path('adresse_edit') }}"></i>Modifier</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

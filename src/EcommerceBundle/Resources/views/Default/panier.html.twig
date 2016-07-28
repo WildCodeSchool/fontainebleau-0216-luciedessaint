@@ -18,7 +18,7 @@
                     <tr>
                         <th class="text-center">Aperçu</th>
                         <th class="text-center">Nom - Référence</th>
-                        <th class="text-center">Prix</th>
+                        <th class="text-center">Prix TTC</th>
                     </tr>
                     {{ dump(app.session.getmetadataBag()) }}
                     {{ dump(app.session) }}
@@ -34,7 +34,7 @@
                     {% endfor %}
                     <tr>
                         <td></td>
-                        <td><p class="prixtotal">Prix total :</p></td>
+                        <td><p class="prixtotal">Prix total TTC :</p></td>
                         <td><p class="text-center">{{ total }} €</p></td>
                     </tr>
                 </table>
@@ -47,8 +47,5 @@
             <p>Hello world this is a comment !</p>
         </div>
     </div>
-    <footer style="height: 100px;">
-
-    </footer>
 {% endblock %}
 

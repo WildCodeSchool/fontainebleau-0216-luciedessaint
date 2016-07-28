@@ -14,7 +14,7 @@ adresse_new:
     methods:  [GET, POST]
 
 adresse_edit:
-    path:     /{id}/edit
+    path:     /edit
     defaults: { _controller: "EcommerceBundle:Adresse:edit" }
     methods:  [GET, POST]
 
