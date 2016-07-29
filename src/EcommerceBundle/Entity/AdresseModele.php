@@ -10,15 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AdresseModele
 {
+    
     /**
      * @var integer
      */
     private $id;
-
-    /**
-     * @var integer
-     */
-    private $adrType;
 
     /**
      * @var string
@@ -96,29 +92,6 @@ class AdresseModele
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set adrType
-     *
-     * @param integer $adrType
-     * @return AdresseModele
-     */
-    public function setAdrType($adrType)
-    {
-        $this->adrType = $adrType;
-
-        return $this;
-    }
-
-    /**
-     * Get adrType
-     *
-     * @return integer 
-     */
-    public function getAdrType()
-    {
-        return $this->adrType;
     }
 
     /**
