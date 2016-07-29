@@ -75,9 +75,9 @@ class CommandeController extends Controller
         $adresses = $em->getRepository('EcommerceBundle:AdresseModele')->getAdresses4Commande($idcom);
 
         $nbAdresses = count($adresses);
-        var_dump($adresses);
+        //var_dump($adresses);
 
-        $commande->nbadresses = $nbAdresses;
+        $commande->nbAdresses = $nbAdresses;
         $commande->adresses = $adresses;
         //
         /////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +87,7 @@ class CommandeController extends Controller
         $produits = $em->getRepository('EcommerceBundle:Compdt')->getProdts4Commande($idcom);
 
         $nbProduits = count($produits);
-        var_dump($produits);
+        //var_dump($produits);
 
         $commande->nbProduits = $nbProduits;
         $commande->produits = $produits;
