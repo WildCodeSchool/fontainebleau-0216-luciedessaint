@@ -64,5 +64,4 @@ EcommerceBundle\Entity\AdresseModele:
             targetEntity: EcommerceBundle\Entity\AdresseModele
             mappedBy: AdresseModele
             cascade: [persist]
-
     lifecycleCallbacks: {  }

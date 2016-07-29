@@ -17,11 +17,12 @@
                     {#<th>Id</th>#}
                     <th>Type</th>
                     <th>Nom</th>
-                    <th>Prenom</th>
+                    <th>Prénom</th>
                     <th>Société</th>
                     <th>Email</th>
-                    <th>Commanditaire adresse</th>
-                    <th>livraison adresse</th>
+                    <th>Téléphone</th>
+                    <th>Adresse</th>
+                    {#<th>Adresse comp.</th>#}
                     <th>Code postal</th>
                     <th>Ville</th>
                     <th>Pays</th>
@@ -32,26 +33,27 @@
                 <tbody>
         {% for adresse in adresses %}
             <tr>
-                <td>{{ adresse.adrType }}</td>
+                <td>{{ adresse.adrTypeName }}</td>
                 <td>{{ adresse.adrNom }}</td>
                 <td>{{ adresse.adrPrenom }}</td>
                 <td>{{ adresse.adrSoc }}</td>
                 <td>{{ adresse.adrEmail }}</td>
+                <td>{{ adresse.adrTel }}</td>
                 <td>{{ adresse.adrAdr }}</td>
-                <td>{{ adresse.adrAdr2 }}</td>
+                {#<td>{{ adresse.adrAdr2 }}</td>#}
                 <td>{{ adresse.adrCp }}</td>
                 <td>{{ adresse.adrVille }}</td>
                 <td>{{ adresse.adrPays }}</td>
-                <td>
-                    <ul class="nopuce">
-                        <li>
-                            <a class="btn btn-primary" id="place-btn" href="{{ path('adresse_show', { 'id': adresse.id }) }}">
-                                <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
-                            <a class="btn btn-primary" id="place-btn" href="{{ path('adresse_edit', { 'id': adresse.id }) }}">
-                                <i class="glyphicon glyphicon-edit"></i>Modifier</a>
-                        </li>
-                    </ul>
-                </td>
+                {#<td>#}
+                    {#<ul class="nopuce">#}
+                        {#<li>#}
+                            {#<a class="btn btn-primary" id="place-btn" href="{{ path('adresse_show', { 'id': adresse.id }) }}">#}
+                                {#<i class="glyphicon glyphicon-eye-open"></i>Voir</a>#}
+                            {#<a class="btn btn-primary" id="place-btn" href="{{ path('adresse_edit', { 'id': adresse.id }) }}">#}
+                                {#<i class="glyphicon glyphicon-edit"></i>Modifier</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
             </tr>
         {% endfor %}
         </tbody>
