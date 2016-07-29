@@ -23,7 +23,6 @@ class AdresseModeleType extends AbstractType
             ->add('adrAdr')
             ->add('adrCp')
             ->add('adrVille')
-            ->add('adrIdcom')
         ;
     }
     

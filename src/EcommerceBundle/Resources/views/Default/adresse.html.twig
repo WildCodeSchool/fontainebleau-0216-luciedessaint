@@ -1,0 +1,264 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ dump(app.session) }}
+        {{ form_start(form) }}
+    <div class="container">
+        <div class="row">
+            {% for adresse in form.adressemodele %}
+                {% if (adresse.vars.value.adrTypeName == 'Facturation') %}
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <h1>Adresse de {{ adresse.vars.value.adrTypeName }}</h1>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Nom</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrNom, { 'attr': {'class': 'form-control Libelle', 'value': app.session.get('adresseArray1').adrNom }}) }}
+                                    {{ form_errors(adresse.adrNom) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Prénom</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrPrenom, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray1').adrPrenom} }) }}
+                                    {{ form_errors(adresse.adrPrenom) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Société</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrSoc, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray1').adrSoc }}) }}
+                                    {{ form_errors(adresse.adrSoc) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Email</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrEmail, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray1').adrEmail }}) }}
+                                    {{ form_errors(adresse.adrEmail) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Téléphone</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrTel, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray1').adrTel }}) }}
+                                    {{ form_errors(adresse.adrTel) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Adresse</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrAdr, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray1').adrAdr }}) }}
+                                    {{ form_errors(adresse.adrAdr) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Code postal</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrCp, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray1').adrCp }}) }}
+                                    {{ form_errors(adresse.adrCp) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Ville</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    {{ form_widget(adresse.adrVille, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray1').adrVille }}) }}
+                                    {{ form_errors(adresse.adrVille) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-5">
+                                <p class="text-right lib_champs">Adresse de livraison diferente</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-7">
+                                <div class="input-group">
+                                    <span id="show_adrlivraison"><a class="btn btn-success" action="" title="click !">Oui/non</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elseif (adresse.vars.value.adrTypeName == 'livraison') %}
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                            <span id="hide_adrlivraison">
+                                <h1>Adresse de {{ adresse.vars.value.adrTypeName }}</h1>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-5">
+                                        <p class="text-right lib_champs">Nom</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            {{ form_widget(adresse.adrNom, { 'attr': {'class': 'form-control Libelle', 'value': app.session.get('adresseArray2').adrNom }}) }}
+                                            {{ form_errors(adresse.adrNom) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-5">
+                                        <p class="text-right lib_champs">Prénom</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            {{ form_widget(adresse.adrPrenom, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray2').adrPrenom }}) }}
+                                            {{ form_errors(adresse.adrPrenom) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-5">
+                                        <p class="text-right lib_champs">Société</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            {{ form_widget(adresse.adrSoc, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray2').adrSoc }}) }}
+                                            {{ form_errors(adresse.adrSoc) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-5">
+                                        <p class="text-right lib_champs">Email</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            {{ form_widget(adresse.adrEmail, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray2').adrEmail }}) }}
+                                            {{ form_errors(adresse.adrEmail) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-5">
+                                        <p class="text-right lib_champs">Téléphone</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            {{ form_widget(adresse.adrTel, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray2').adrTel }}) }}
+                                            {{ form_errors(adresse.adrTel) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-5">
+                                        <p class="text-right lib_champs">Adresse de livraison</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            {{ form_widget(adresse.adrAdr, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray2').adrAdr }}) }}
+                                            {{ form_errors(adresse.adrAdr) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-5">
+                                        <p class="text-right lib_champs">Code postal</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            {{ form_widget(adresse.adrCp, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray2').adrCp }}) }}
+                                            {{ form_errors(adresse.adrCp) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-5">
+                                        <p class="text-right lib_champs">Ville</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                            {{ form_widget(adresse.adrVille, { 'attr': {'class': 'form-control libelle', 'value': app.session.get('adresseArray2').adrVille }}) }}
+                                            {{ form_errors(adresse.adrVille) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+        <input class="btn btn-success text-center" type="submit" value="Enregistrer" />
+    </div>
+{{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- permet de changer tout les champs en required false a true.... -->
+    <script>
+        function form(property){
+            $("#adresse_client_adressemodele_1_adrNom").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrPrenom").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrAdr").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrTel").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrCp").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrVille").prop('required',property);
+            $("#adresse_client_adressemodele_1_adrIdcom").prop('required',property);
+        }
+        form(false);
+        $("#adresse_client_adressemodele_0_adrEmail").prop('required',true);
+        $("#adresse_client_adressemodele_1_adrEmail").prop('required',false);
+        $(document).ready(function(){
+
+            $("#show_adrlivraison").click(function(){
+
+                var display = $('#hide_adrlivraison').css('display');
+
+                if (display == 'none'){
+                    $("#hide_adrlivraison").toggle();
+                    form(true);
+                }
+                else {
+                    $("#hide_adrlivraison").toggle();
+                    form(false);
+                }
+            });
+        });
+    </script>
+{% endblock %}

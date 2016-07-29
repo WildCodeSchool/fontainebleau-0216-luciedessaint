@@ -9,9 +9,6 @@ EcommerceBundle\Entity\AdresseModele:
             generator:
                 strategy: AUTO
     fields:
-        adrType:
-            type: smallint
-            column: adr_type
         adrTypeName:
             type: string
             length: '50'

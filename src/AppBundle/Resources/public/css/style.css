@@ -218,3 +218,9 @@ td, th /* Mettre une bordure sur les td ET les th */ {
 #hide_adrlivraison {
     display:none;
 }
+/* -------------------------------------------- *\
+                      Adresse show
+\* -------------------------------------------- */
+.floatright{
+    float: right;
+}

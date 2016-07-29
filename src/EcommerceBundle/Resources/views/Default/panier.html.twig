@@ -18,7 +18,7 @@
                     <tr>
                         <th class="text-center">Aperçu</th>
                         <th class="text-center">Nom - Référence</th>
-                        <th class="text-center">Prix</th>
+                        <th class="text-center">Prix TTC</th>
                     </tr>
                     {{ dump(app.session.getmetadataBag()) }}
                     {{ dump(app.session) }}
@@ -34,21 +34,18 @@
                     {% endfor %}
                     <tr>
                         <td></td>
-                        <td><p class="prixtotal">Prix total :</p></td>
+                        <td><p class="prixtotal">Prix total TTC :</p></td>
                         <td><p class="text-center">{{ total }} €</p></td>
                     </tr>
                 </table>
             </div>
             <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 text-center">
-                <a class="btn btn-success" href="{{ path('adresse_new') }}">Confirmer votre panier</a>
+                <a class="btn btn-success" href="{{ path('ecommerce_adresse_new') }}">Confirmer votre panier</a>
             </div>
         </div>
         <div class="col-md-offset-2 col-md-8">
             <p>Hello world this is a comment !</p>
         </div>
     </div>
-    <footer style="height: 100px;">
-
-    </footer>
 {% endblock %}
 

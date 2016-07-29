@@ -40,7 +40,22 @@ ecommerce_commande:
 
 ecommerce_adresse:
     resource: "@EcommerceBundle/Resources/config/routing/adresse.yml"
-    prefix:   /adresse
+    prefix:   /admin/adresse
+
+ecommerce_adresse_show:
+    path:     /adresse/show
+    defaults: { _controller: "EcommerceBundle:Adresse:show" }
+    methods:  GET
+
+ecommerce_adresse_new:
+    path:     /adresse/new
+    defaults: { _controller: "EcommerceBundle:Adresse:new" }
+    methods:  [GET, POST]
+
+ecommerce_adresse_edit:
+    path:     /adresse/edit
+    defaults: { _controller: "EcommerceBundle:Adresse:editsession" }
+    methods:  [GET, POST]
 
 ecommerce_admin:
     path:     /admin

@@ -13,7 +13,13 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
+
+        $session->get('adresseArray1');
+        $session->get('adresseArray2');
+
         $total=0;
+
+        $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
         if ($panieruser != null) {
             foreach ($panieruser as $idx => $article) {
@@ -21,6 +27,7 @@ class PanierController extends Controller
             }
         }
         return $this->render('EcommerceBundle:Default:panier.html.twig', array(
+            'langues' => $langues,
             'paniers' => $panieruser,
             'total' => $total,
         ));
@@ -30,6 +37,10 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
+        $session->get('adresseArray1');
+        $session->get('adresseArray2');
+
+        $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
         // si il n'y a aucune session alors on en créé une
         if ($session->getID() == null) {
@@ -77,6 +88,7 @@ class PanierController extends Controller
 
         }
         return $this->render('EcommerceBundle:Default:panier.html.twig', array(
+            'langues' => $langues,
             'paniers' => $session->get('cartArray'),
             'total' => $total,
         ));
