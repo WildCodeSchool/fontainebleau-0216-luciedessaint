@@ -28,14 +28,14 @@
                     <tr>
                         <td class="text-center"><img class="imgpanier" src="{{ asset('uploads/produits/') }}{{ panier.photo }}"></td>
                         <td class="text-center">{{ panier.nom }} <br /><br /> {{ panier.ref }}</td>
-                        <td class="text-center">{{ panier.prix|number_format(2, ',', ' ') }} €</td>
+                        <td class="text-center">{{ panier.prixttc|number_format(2, ',', ' ') }} €</td>
                         <td><a class="btn btn-danger text-center supppanier" href="{{ path('ecommerce_remove_panier', { 'id': panier.id }) }}">Supprimer</a></td>
                     </tr>
                     {% endfor %}
                     <tr>
                         <td></td>
                         <td><p class="prixtotal">Prix total TTC :</p></td>
-                        <td><p class="text-center">{{ total }} €</p></td>
+                        <td><p class="text-center">{% if app.session.get('cartInfos') %}{{ app.session.get('cartInfos')[0] }}{% else %} 0 {% endif %} €</p></td>
                     </tr>
                 </table>
             </div>

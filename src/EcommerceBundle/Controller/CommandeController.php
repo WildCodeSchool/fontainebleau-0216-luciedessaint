@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EcommerceBundle\Entity\Commande;
 use EcommerceBundle\Form\CommandeType;
 use EcommerceBundle\Entity\AdresseModele;
+use EcommerceBundle\Entity\Produit;
 use EcommerceBundle\Form\AdresseModeleType;
 use EcommerceBundle\Entity\Compdt;
 
@@ -39,46 +40,12 @@ class CommandeController extends Controller
     public function newAction(Request $request)
     {
         $session = $request->getSession();
-        $panieruser = $session->get('panierArray');
-        $nb=0;
-        $prixttc=0;
-        $prixht=0;
+        $panieruser = $session->get('cartArray');
+        $infos = $session->get('cartInfos');
 
         $codebanque=1;
 
-        if ($panieruser != null) {
-            foreach ($panieruser as $idx => $article) {
-                $nb++;
-                $total += $article["prix"];
-            }
-        }
-
         $commande = new Commande();
-        $form = $this->createForm('EcommerceBundle\Form\CommandeType', $commande);
-        $form->remove('ComCode');
-        $form->remove('ComEtat');
-        $form->remove('ComCdebank');
-        $form->remove('ComVenteDte');
-        $form->remove('ComExpedDte');
-        $form->remove('ComMajDte');
-        $form->remove('ComMajWho');
-        $form->remove('ComMajLib');
-        $form->remove('ComAnnulDte');
-        $form->remove('ComAnnulWho');
-        $form->remove('ComAnnulLib');
-        $form->remove('ComFact');
-        $form->remove('ComFactDte');
-        $form->remove('ComFactWho');
-        $form->remove('ComNbArts');
-        $form->remove('ComTvaUnique');
-        $form->remove('ComPrixTotHt');
-        $form->remove('ComPrixTotTtc');
-        $form->remove('ComEmbPoids');
-        $form->remove('ComEmbDim');
-        $form->remove('ComLivDelai');
-        $form->remove('ComComments');
-        
-        $form->handleRequest($request);
 
         if ($codebanque == 1) {
             $em = $this->getDoctrine()->getManager();
@@ -90,36 +57,88 @@ class CommandeController extends Controller
             $commande->setComCode('C'.$count.$time->format('YmdHis').$count);
             $commande->setComEtat(1); // set
             $commande->setComCdebank($codebanque);
-            $commande->setComVenteDte(new \DateTime()); // set
+            $commande->setComVenteDte($time); // set
             $commande->setComExpedDte(null); // set
             $commande->setComMajDte(null); // set
-            $commande->getComMajWho();
-            $commande->getComMajLib();
+//            $commande->getComMajWho();
+//            $commande->getComMajLib();
             $commande->setComAnnulDte(null);
-            $commande->getComAnnulWho();
-            $commande->getComAnnulLib();
-            $commande->getComFact(); //generer
-            $commande->setComFactDte(new \DateTime());
+//            $commande->getComAnnulWho();
+//            $commande->getComAnnulLib();
+            $commande->setComFact('F'.$count.$time->format('YmdHis').$count); //generer
+            $commande->setComFactDte($time);
             $commande->setComFactWho('Auto');
-            $commande->setComNbArts($nb);
+            $commande->setComNbArts($infos[2]);
 //            $commande->getComTvaUnique();
-            $commande->getComPrixTotHt();
-            $commande->getComPrixTotTtc();
+            $commande->setComPrixTotHt($infos[1]);
+            $commande->setComPrixTotTtc($infos[0]);
 //            $commande->getComEmbPoids();
 //            $commande->getComEmbDim();
 //            $commande->getComLivDelai();
 //            $commande->getComComments();
-
-
             $em->persist($commande);
             $em->flush();
 
-            return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
+            // creation d'adresse
+            $adresseArray1 = $session->get('adresseArray1');
+            $adresseArray2 = $session->get('adresseArray2');
+
+            $adresse_client = new AdresseModele();
+
+            $adresse1 = new AdresseModele();
+            $adresse1->setAdrTypeName($adresseArray1->getAdrTypeName());
+            $adresse_client->getAdresseModele()->add($adresse1);
+
+            $adresse1->setAdrNom($adresseArray1->getAdrNom());
+            $adresse1->setAdrPrenom($adresseArray1->getAdrPrenom());
+            $adresse1->setAdrSoc($adresseArray1->getAdrSoc());
+            $adresse1->setAdrEmail($adresseArray1->getAdrEmail());
+            $adresse1->setAdrTel($adresseArray1->getAdrTel());
+            $adresse1->setAdrAdr($adresseArray1->getAdrAdr());
+            $adresse1->setAdrCp($adresseArray1->getAdrCp());
+            $adresse1->setAdrVille($adresseArray1->getAdrVille());
+            $adresse1->setAdrIdcom($commande);
+
+            if ($adresseArray1->getAdrTypeName() == "Facturation") {
+                $adresse2 = new AdresseModele();
+                $adresse2->setAdrTypeName('livraison');
+                $adresse_client->getAdresseModele()->add($adresse2);
+
+                $adresse2->setAdrNom($adresseArray2->getAdrNom());
+                $adresse2->setAdrPrenom($adresseArray2->getAdrPrenom());
+                $adresse2->setAdrSoc($adresseArray2->getAdrSoc());
+                $adresse2->setAdrEmail($adresseArray2->getAdrEmail());
+                $adresse2->setAdrTel($adresseArray2->getAdrTel());
+                $adresse2->setAdrAdr($adresseArray2->getAdrAdr());
+                $adresse2->setAdrCp($adresseArray2->getAdrCp());
+                $adresse2->setAdrVille($adresseArray2->getAdrVille());
+
+                $adresse2->setAdrIdcom($commande);
+
+                $em->persist($adresse2);
+            }
+            $em->persist($adresse1);
+            $em->flush();
+
+            
+            foreach ($panieruser as $key => $produit){
+                $produit_commande = null;
+                $compdt = new Compdt();
+                $id_produit = $produit['id'];
+                $produit_commande = $em->getRepository('EcommerceBundle:Produit')->findById($id_produit);
+                $compdt->setCxpIdcom($commande);
+                $compdt->setCxpIdpdt($produit_commande[0]);
+                $compdt->setCxpNbpdt(1);
+                $produit_commande[0]->setPdtEtat(false);
+                $em->persist($compdt);
+                $em->flush();
+            }
+
+            return $this->redirectToRoute('commande_index');
         }
 
         return $this->render('EcommerceBundle:commande:new.html.twig', array(
             'commande' => $commande,
-            'form' => $form->createView(),
         ));
     }
 

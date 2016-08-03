@@ -18,9 +18,17 @@ EcommerceBundle\Entity\Compdt:
             joinColumn:
                 name: cxp_idpdt
                 referencedColumnName: id
+                onDelete: CASCADE
+                nullable: false
+
+            cascade: ["persist"]
         cxpIdcom:
             targetEntity: EcommerceBundle\Entity\Commande
             joinColumn:
                 name: cxp_idcom
                 referencedColumnName: id
+                onDelete: CASCADE
+                nullable: false
+            cascade: ["persist"]
+
     lifecycleCallbacks: {  }

@@ -108,21 +108,13 @@ class AdresseController extends Controller
         $sessionadresse1 = $session->get('adresseArray1');
         $sessionadresse2 = $session->get('adresseArray2');
 
-        $total=0;
-
-        if ($panieruser != null) {
-            foreach ($panieruser as $idx => $article) {
-                $total += $article["prix"];
-            }
-        }
 
         return $this->render('EcommerceBundle:adresse:show.html.twig', array(
             'commande' => $commande->createView(),
             'paniers' => $panieruser,
             'langues' => $langues,
             'sessionadr1' => $sessionadresse1,
-            'sessionadr2' => $sessionadresse2,
-            'total' => $total
+            'sessionadr2' => $sessionadresse2
         ));
     }
 
