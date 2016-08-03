@@ -56,7 +56,7 @@
                         <tr>
                             {#<td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>#}
                             <td>{{ commande.comCode }}</td>
-                            <td>{{ commande.comEtat }}</td>
+                            <td>{{ commande.etatCom }}</td>
                             <td>{{ commande.comCdebank }}</td>
                             <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('d-m-Y H:i:s') }}{% endif %}</td>
                             <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('d-m-Y') }}{% endif %}</td>

@@ -28,7 +28,7 @@
                         {#</tr>#}
                         <tr>
                             <th>Etat</th>
-                            <td>{{ commande.comEtat }}</td>
+                            <td>{{ commande.etatCom }}</td>
                         </tr>
                         <tr>
                             <th>Code bank</th>
@@ -80,7 +80,7 @@
                         </tr>
                         <tr>
                             <th>Nbre d'article(s)</th>
-                            <td>{{ commande.comNbArts }}</td>
+                            <td>{{ commande.comNbArts }} &nbsp;&nbsp;&nbsp;&nbsp;(trouvés: {{ commande.nbProduits }})</td>
                         </tr>
                         <tr>
                             <th>TVA unique (O/N)</th>
@@ -140,7 +140,7 @@
         </div>
         <div class="row">
             <div class="col-md-offset-1 col-md-11">
-                &nbsp;
+                <h2>{{ commande.nbAdresses }} adresse(s) associée(s)</h2>
             </div>
         </div>
     </div>
@@ -160,31 +160,31 @@
                                     <td>{{ adresse.adrNom }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Nom</th>
+                                    <th>Prénom</th>
                                     <td>{{ adresse.adrPrenom }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Nom</th>
+                                    <th>Société</th>
                                     <td>{{ adresse.adrSoc }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Nom</th>
+                                    <th>Email</th>
                                     <td>{{ adresse.adrEmail }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Nom</th>
+                                    <th>Téléphone</th>
                                     <td>{{ adresse.adrTel }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Nom</th>
+                                    <th>Adresse</th>
                                     <td>{{ adresse.adrAdr }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Nom</th>
+                                    <th>Code postal</th>
                                     <td>{{ adresse.adrCp }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Nom</th>
+                                    <th>Ville</th>
                                     <td>{{ adresse.adrVille }}</td>
                                 </tr>
                             </tbody>
@@ -204,6 +204,67 @@
                 {% else %}
                     <h1>Aucune adresse trouvée</h1>
                 {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                <h2>{{ commande.nbProduits }} produit(s) commandé(s)</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        {#<th>Id</th>#}
+                        <th>Etat<br />(Actif/Inactif)</th>
+                        <th>Catégorisation</th>
+                        <th>A vendre (O/N)</th>
+                        <th>Nom</th>
+                        <th>Référence</th>
+                        <th>Prix TTC</th>
+                        <th>Photo</th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for produit in commande.produits %}
+                        <tr>
+                            {#<td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>#}
+                            <td>{% if produit.cxpIdpdt.pdtEtat %}Actif{% else %}Inactif{% endif %}</td>
+                            <td>{{ produit.cxpIdpdt.pdtIdcat }}</td>
+                            <td>{% if produit.cxpIdpdt.pdtAvendre %}<a class="alerte_vendu">Oui</a>{% else %}Non{% endif %}</td>
+                            <td>{{ produit.cxpIdpdt.pdtNom }}</td>
+                            <td>{{ produit.cxpIdpdt.pdtRef }}</td>
+                            <td>{{ produit.cxpIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</td>
+                            {#<td>{{ produit.pdtPhoto }}</td>#}
+                            <td><img class="image_produit" src="{{ asset('uploads/produits/')}}{{ produit.cxpIdpdt.pdtPhoto }}"></td>
+                            <td>
+                                <ul class="nopuce">
+                                    <li>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('produit_show', { 'id': produit.cxpIdpdt.id }) }}">
+                                            <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('produit_edit', { 'id': produit.cxpIdpdt.id }) }}">
+                                            <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>

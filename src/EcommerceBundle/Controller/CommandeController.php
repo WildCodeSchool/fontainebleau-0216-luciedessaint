@@ -28,6 +28,27 @@ class CommandeController extends Controller
 
         $commandes = $em->getRepository('EcommerceBundle:Commande')->findAll();
 
+        foreach ($commandes as $idx_c => $commande) {
+            $etatcom = $commande->getComEtat();
+            switch ($etatcom) {
+                case 1:
+                    $etatcomlib = "Confirmée"; break;
+                case 2:
+                    $etatcomlib = "En préparation"; break;
+                case 3:
+                    $etatcomlib = "Expédiée"; break;
+                case 4:
+                    $etatcomlib = "Reçue"; break;
+                case 5:
+                    $etatcomlib = "Close"; break;
+                case 9:
+                    $etatcomlib = "Annulée"; break;
+                default:
+                    $etatcomlib = "Saisie";
+            }
+            $commande->etatCom = $etatcomlib;
+        }
+
         return $this->render('EcommerceBundle:commande:index.html.twig', array(
             'commandes' => $commandes,
         ));
@@ -153,6 +174,24 @@ class CommandeController extends Controller
 //        $deleteForm = $this->createDeleteForm($commande);
 
         $idcom = $commande->getId();
+        $etatcom = $commande->getComEtat();
+        switch ($etatcom) {
+            case 1:
+                $etatcomlib = "Confirmée"; break;
+            case 2:
+                $etatcomlib = "En préparation"; break;
+            case 3:
+                $etatcomlib = "Expédiée"; break;
+            case 4:
+                $etatcomlib = "Reçue"; break;
+            case 5:
+                $etatcomlib = "Close"; break;
+            case 9:
+                $etatcomlib = "Annulée"; break;
+            default:
+                $etatcomlib = "Saisie";
+        }
+        $commande->etatCom = $etatcomlib;
 
         /////////////////////////////////////////////////////////////////////////////////////////////
         //
@@ -161,9 +200,9 @@ class CommandeController extends Controller
         $adresses = $em->getRepository('EcommerceBundle:AdresseModele')->getAdresses4Commande($idcom);
 
         $nbAdresses = count($adresses);
-        var_dump($adresses);
+        //var_dump($adresses);
 
-        $commande->nbadresses = $nbAdresses;
+        $commande->nbAdresses = $nbAdresses;
         $commande->adresses = $adresses;
         //
         /////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,7 +212,7 @@ class CommandeController extends Controller
         $produits = $em->getRepository('EcommerceBundle:Compdt')->getProdts4Commande($idcom);
 
         $nbProduits = count($produits);
-        var_dump($produits);
+        //var_dump($produits);
 
         $commande->nbProduits = $nbProduits;
         $commande->produits = $produits;
@@ -192,14 +231,57 @@ class CommandeController extends Controller
      */
     public function editAction(Request $request, Commande $commande)
     {
+        //Sauvegarde Etat en BDD de l'enregistrement
+        $EtatEnBdd = $commande->getComEtat();
+        switch ($EtatEnBdd) {
+            case 1:
+                $etatcomlib = "Confirmée"; break;
+            case 2:
+                $etatcomlib = "En préparation"; break;
+            case 3:
+                $etatcomlib = "Expédiée"; break;
+            case 4:
+                $etatcomlib = "Reçue"; break;
+            case 5:
+                $etatcomlib = "Close"; break;
+            case 9:
+                $etatcomlib = "Annulée"; break;
+            default:
+                $etatcomlib = "Saisie";
+        }
+        $commande->etatCom = $etatcomlib;
+
 //        $deleteForm = $this->createDeleteForm($commande);
         $editForm = $this->createForm('EcommerceBundle\Form\CommandeType', $commande);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            //Initialisation variable avec CurrentDateTime
+            $currentDte = new \DateTime();
+
+            // Si majs
+//            if ($YaUmaj == TRUE) {
+                // DateMaj passée à CurrentDateTime + Auteur
+                $commande->setComMajDte($currentDte);
+                $commande->setComMajWho("Administrateur");
+//            }
+
+            // Si Annulation
+            if ($EtatEnBdd != 9 && $editForm->getViewData()->getComEtat() == 9) {
+                // DateAnnulation passée à CurrentDateTime + Auteur
+                $commande->setComAnnulDte($currentDte);
+                $commande->setComAnnulWho("Administrateur");
+            }
+
             $em->persist($commande);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Modification enregistrée'
+            );
 
             return $this->redirectToRoute('commande_show', array('id' => $commande->getId()));
         }

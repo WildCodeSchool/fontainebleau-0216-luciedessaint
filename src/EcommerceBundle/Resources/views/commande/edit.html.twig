@@ -3,7 +3,7 @@
 {% block body %}
 
     <div id="header" class="jumbotron text-center">
-        <h1>Commande :<br/>{{ commande.comCode }}<br />Etat: {{ commande.comEtat }}<br />Nbre articles: {{ commande.comNbArts }}</h1>
+        <h1>Commande:{{ commande.comCode }}<br />Etat: {{ commande.etatCom }}<br />Nbre articles: {{ commande.comNbArts }}</h1>
         <a class="btn btn-success btn-lg" href="{{ path('commande_index') }}">
             </i><i class="glyphicon glyphicon-chevron-left"></i>
             Retour à la liste
@@ -19,228 +19,304 @@
 
     {{ form_start(edit_form) }}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-8">
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Code commande</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Code commande</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comCode) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comCode, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Code commande' }}) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comCode) }}
-                    {{ form_widget(edit_form.comCode, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Code commande' }}) }}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Etat</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comEtat) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comEtat, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Etat de la commande' }}) }}
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Etat</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Code banque</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comCdebank) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comCdebank, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Code banque' }}) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comEtat) }}
-                    {{ form_widget(edit_form.comEtat, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Etat de la commande' }}) }}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Nbre d'article(s)</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comNbArts) }}
+                        {{ form_widget(edit_form.comNbArts) }}
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Code banque</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comCdebank) }}
-                    {{ form_widget(edit_form.comCdebank, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Code banque' }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Date de la vente</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comVenteDte) }}
-                    {{ form_widget(edit_form.comVenteDte) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Date d'expédition</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comExpedDte) }}
-                    {{ form_widget(edit_form.comExpedDte) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Date de dernière maj</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comMajDte) }}
-                    {{ form_widget(edit_form.comMajDte) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Auteur dernière maj</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comMajWho) }}
-                    {{ form_widget(edit_form.comMajWho, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Auteur dernière maj' }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Libellé dernière maj</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comMajWho) }}
-                    {{ form_widget(edit_form.comMajLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libellé dernière maj' }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Date d'annulation</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comAnnulDte) }}
-                    {{ form_widget(edit_form.comAnnulDte) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Auteur annulation</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comAnnulWho) }}
-                    {{ form_widget(edit_form.comAnnulWho, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Auteur annulation' }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Libellé annulation</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comAnnulLib) }}
-                    {{ form_widget(edit_form.comAnnulLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libellé annulation' }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Nro facture</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comFact) }}
-                    {{ form_widget(edit_form.comFact, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nro facture' }}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Date facture</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comFactDte) }}
-                    {{ form_widget(edit_form.comFactDte) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Auteur facture</p>
-                </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comFactWho) }}
-                    {{ form_widget(edit_form.comFactWho, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Auteur facture' }}) }}
-                </div>
-            </div>
 {#
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Nbre d'article(s)</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Date de la vente</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comVenteDte) }}
+                        {{ form_widget(edit_form.comVenteDte) }}
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comNbArts) }}
-                    {{ form_widget(edit_form.comNbArts) }}
+#}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Date d'expédition</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comExpedDte) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            {{ form_widget(edit_form.comExpedDte) }}
+                        </div>
+                    </div>
+{#
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker2'>
+                                {{ form_widget(edit_form.comExpedDte, { 'attr': {'class': 'form-control' }}) }}
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker2').datetimepicker({
+                                locale: 'en'
+                            });
+                        });
+                    </script>
+#}
                 </div>
-            </div>
+{#
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Date de dernière maj</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comMajDte) }}
+                        {{ form_widget(edit_form.comMajDte) }}
+                    </div>
+                </div>
 #}
 {#
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">TVA unique (O/N)</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Auteur dernière maj</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comMajWho) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comMajWho, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Auteur dernière maj' }}) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comTvaUnique) }}
-                    {{ form_widget(edit_form.comTvaUnique) }}
-                </div>
-            </div>
 #}
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Prix total HT</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Libellé dernière maj</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comMajLib) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comMajLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libellé dernière maj' }}) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comPrixTotHt) }}
-                    {{ form_widget(edit_form.comPrixTotHt) }}
+{#
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Date d'annulation</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comAnnulDte) }}
+                        {{ form_widget(edit_form.comAnnulDte) }}
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Prix total TTC</p>
+#}
+{#
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Auteur annulation</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comAnnulWho) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comAnnulWho, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Auteur annulation' }}) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comPrixTotTtc) }}
-                    {{ form_widget(edit_form.comPrixTotTtc) }}
+#}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Libellé annulation</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comAnnulLib) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comAnnulLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libellé annulation' }}) }}
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Poids total</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Nro facture</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comFact) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comFact, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Nro facture' }}) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comEmbPoids) }}
-                    {{ form_widget(edit_form.comEmbPoids, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Poids total' }}) }}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Date facture</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comFactDte) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            {{ form_widget(edit_form.comFactDte) }}
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Dimensions totales</p>
+{#
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Auteur facture</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comFactWho) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comFactWho, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Auteur facture' }}) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comEmbDim) }}
-                    {{ form_widget(edit_form.comEmbDim, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Dimensions totales' }}) }}
+#}
+    {#
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">TVA unique (O/N)</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comTvaUnique) }}
+                        {{ form_widget(edit_form.comTvaUnique) }}
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Délai de livraison</p>
+    #}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Prix total HT</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comPrixTotHt) }}
+                        {{ form_widget(edit_form.comPrixTotHt) }}
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comLivDelai) }}
-                    {{ form_widget(edit_form.comLivDelai, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Délai de livraison' }}) }}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Prix total TTC</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comPrixTotTtc) }}
+                        {{ form_widget(edit_form.comPrixTotTtc) }}
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="text-right lib_champs">Commentaires</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Poids total</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comEmbPoids) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comEmbPoids, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Poids total' }}) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    {{ form_errors(edit_form.comComments) }}
-                    {{ form_widget(edit_form.comComments, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Commentaires' }}) }}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Dimensions totales</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comEmbDim) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comEmbDim, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Dimensions totales' }}) }}
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Délai de livraison</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comLivDelai) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comLivDelai, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Délai de livraison' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Commentaires</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.comComments) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.comComments, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Commentaires' }}) }}
+                        </div>
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="col-md-offset-3 col-md-9">
-                    {{ form_end(edit_form) }}
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        {{ form_end(edit_form) }}
+                    </div>
                 </div>
+
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+
             </div>
-
-            <input class="btn btn-success" type="submit" value="Enregistrer" />
-
         </div>
     </div>
-</div>
 
+{#
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
+#}
 
 {#
     <ul>

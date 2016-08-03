@@ -10,6 +10,13 @@
         </a>
     </div>
 
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     <div class="container">
         <div class="row">
             <div class="col-lg-offset-1 col-md-offset-1 col-lg-9 col-md-9">
@@ -55,7 +62,12 @@
                         <tr>
                             <th>Photo illustration</th>
                             {#<td>{{ categorie.catPhoto }}</td>#}
-                            <td><img class="image_cat" width="600" src="{{ asset('uploads/categ/') }}{{ categorie.catPhoto }}"/>
+                            <td>
+                                {% if categorie.catPhoto %}
+                                    <img class="image_cat" width="600" src="{{ asset('uploads/categ/') }}{{ categorie.catPhoto }}"/>
+                                {% else %}
+                                    Aucune image
+                                {% endif %}
                             </td>
                         </tr>
                     </tbody>

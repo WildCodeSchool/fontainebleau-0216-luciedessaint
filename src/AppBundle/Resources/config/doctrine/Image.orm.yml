@@ -1,0 +1,25 @@
+AppBundle\Entity\Image:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ImageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        imgTitre:
+            type: string
+            length: 255
+            column: img_titre
+        imgCat:
+            type: string
+            length: 255
+            column: img_cat
+    lifecycleCallbacks:
+        prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+        preUpdate: [ preUpload, setUpdatedAtValue ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]

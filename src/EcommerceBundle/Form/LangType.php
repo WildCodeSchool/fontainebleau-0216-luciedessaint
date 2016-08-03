@@ -15,6 +15,7 @@ class LangType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('lngEtat')
 //            ->add('lngCode')
             ->add("lngCode", "choice", array(
                 "label" => "Code langue :",

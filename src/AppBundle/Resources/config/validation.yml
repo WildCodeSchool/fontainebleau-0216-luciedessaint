@@ -1,0 +1,5 @@
+# AppBundle/Resources/config/validation.yml
+AppBundle\Entity\Image:
+    properties:
+        phImage:
+            - Image: ~

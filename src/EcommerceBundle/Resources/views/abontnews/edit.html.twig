@@ -35,6 +35,16 @@
                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Langue</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_errors(edit_form.anlLocale) }}
+                        {{ form_widget(edit_form.anlLocale, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Langue' }}) }}
+                    </div>
+                </div>
+
                 <input class="btn btn-success" type="submit" value="Enregistrer" />
 
                 {{ form_end(edit_form) }}

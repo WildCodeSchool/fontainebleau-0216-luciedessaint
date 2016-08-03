@@ -12,6 +12,11 @@ EcommerceBundle\Entity\Abontnews:
         anlEtat:
             type: boolean
             column: anl_etat
+        anlLocale:
+            type: string
+            length: '3'
+            nullable: true
+            column: anl_locale
         anlEmail:
             type: string
             length: '100'

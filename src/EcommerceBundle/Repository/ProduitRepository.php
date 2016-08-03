@@ -13,3 +13,4 @@ use Doctrine\ORM\EntityRepository;
 class ProduitRepository extends EntityRepository
 {
 }
+

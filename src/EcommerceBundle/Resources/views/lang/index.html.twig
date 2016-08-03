@@ -23,6 +23,7 @@
                     <thead>
                     <tr>
                         {#<th>Id</th>#}
+                        <th>Etat</th>
                         <th>Code</th>
                         <th>Libellé</th>
                         <th>Drapeaux</th>
@@ -34,6 +35,7 @@
                     {% for lang in langs %}
                         <tr>
                             {#<td><a href="{{ path('lang_show', { 'id': lang.id }) }}">{{ lang.id }}</a></td>#}
+                            <td>{% if lang.lngEtat %}Actif{% else %}Inactif{% endif %}</td>
                             <td>{{ lang.lngCode }}</td>
                             <td>{{ lang.lngLib }}</td>
                             {#<td>{{ lang.lngFlag }} </td>#}

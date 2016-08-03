@@ -1,6 +1,7 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block body %}
+
     <div id="header" class="jumbotron text-center">
         <h1>{{ lang.lngLib }}</h1>
         <a class="btn btn-success btn-lg" href="{{ path('lang_index') }}">
@@ -8,6 +9,7 @@
             Retour à la liste
         </a>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-8">
@@ -17,6 +19,10 @@
                     {#<th>Id</th>#}
                     {#<td>{{ lng.id }}</td>#}
                     {#</tr>#}
+                    <tr>
+                        <th>Etat</th>
+                        <td>{% if lang.lngEtat %}Actif{% else %}Inactif{% endif %}</td>
+                    </tr>
                     <tr>
                         <th>Code langue</th>
                         <td>{{ lang.lngCode }}</td>

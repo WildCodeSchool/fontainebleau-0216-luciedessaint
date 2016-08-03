@@ -1,0 +1,83 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Image
+ */
+class Image
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $imgTitre;
+
+    /**
+     * @var string
+     */
+    private $imgCat;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set imgTitre
+     *
+     * @param string $imgTitre
+     * @return Image
+     */
+    public function setImgTitre($imgTitre)
+    {
+        $this->imgTitre = $imgTitre;
+
+        return $this;
+    }
+
+    /**
+     * Get imgTitre
+     *
+     * @return string 
+     */
+    public function getImgTitre()
+    {
+        return $this->imgTitre;
+    }
+
+    /**
+     * Set imgCat
+     *
+     * @param string $imgCat
+     * @return Image
+     */
+    public function setImgCat($imgCat)
+    {
+        $this->imgCat = $imgCat;
+
+        return $this;
+    }
+
+    /**
+     * Get imgCat
+     *
+     * @return string 
+     */
+    public function getImgCat()
+    {
+        return $this->imgCat;
+    }
+}

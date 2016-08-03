@@ -109,7 +109,7 @@ class ProduitController extends Controller
 //                    create a new object / persist the object / flush the entity manager
                     
                     $id_cat = $produit->getPdtIdcat();
-                    var_dump($id_cat);
+                    //var_dump($id_cat);
 
                     $Catlib4Lang = $em->getRepository('EcommerceBundle:Catlib')->getCatlib4CategLang($id_cat, $CodeLang);
                     //var_dump($Catlib4Lang);
@@ -118,22 +118,39 @@ class ProduitController extends Controller
                     $prodlib = new Prodlib();
                     $prodlib->setPdlLocale($CodeLang);
                     $prodlib->setPdlIdpdt($produit);
-                    
-                    $prodlib->setPdlCat($Catlib4Lang[0]->getCtlCateg());
-                    $prodlib->setPdlType($Catlib4Lang[0]->getCtlType());
-                    $prodlib->setPdlItem($Catlib4Lang[0]->getCtlItem());
 
-                    $prodlib->setPdlLib($Catlib4Lang[0]->getCtlLib());
+                    if ($Catlib4Lang) {
+                        $prodlib->setPdlCat($Catlib4Lang[0]->getCtlCateg());
+                        $prodlib->setPdlType($Catlib4Lang[0]->getCtlType());
+                        $prodlib->setPdlItem($Catlib4Lang[0]->getCtlItem());
 
-                    $prodlib->setPdlInfoLib1($Catlib4Lang[0]->getCtlInfoLib1());
-                    $prodlib->setPdlInfoLib2($Catlib4Lang[0]->getCtlInfoLib2());
-                    $prodlib->setPdlInfoLib3($Catlib4Lang[0]->getCtlInfoLib3());
-                    $prodlib->setPdlInfoLib4($Catlib4Lang[0]->getCtlInfoLib4());
-                    $prodlib->setPdlInfoLib5($Catlib4Lang[0]->getCtlInfoLib5());
-                    $prodlib->setPdlInfoLib6($Catlib4Lang[0]->getCtlInfoLib6());
-                    $prodlib->setPdlInfoLib7($Catlib4Lang[0]->getCtlInfoLib7());
-                    $prodlib->setPdlInfoLib8($Catlib4Lang[0]->getCtlInfoLib8());
-                    $prodlib->setPdlInfoLib9($Catlib4Lang[0]->getCtlInfoLib9());
+                        $prodlib->setPdlLib($Catlib4Lang[0]->getCtlLib());
+
+                        $prodlib->setPdlInfoLib1($Catlib4Lang[0]->getCtlInfoLib1());
+                        $prodlib->setPdlInfoLib2($Catlib4Lang[0]->getCtlInfoLib2());
+                        $prodlib->setPdlInfoLib3($Catlib4Lang[0]->getCtlInfoLib3());
+                        $prodlib->setPdlInfoLib4($Catlib4Lang[0]->getCtlInfoLib4());
+                        $prodlib->setPdlInfoLib5($Catlib4Lang[0]->getCtlInfoLib5());
+                        $prodlib->setPdlInfoLib6($Catlib4Lang[0]->getCtlInfoLib6());
+                        $prodlib->setPdlInfoLib7($Catlib4Lang[0]->getCtlInfoLib7());
+                        $prodlib->setPdlInfoLib8($Catlib4Lang[0]->getCtlInfoLib8());
+                        $prodlib->setPdlInfoLib9($Catlib4Lang[0]->getCtlInfoLib9());
+                    }
+                    else {
+                        $prodlib->setPdlCat("Pas de libellé catégorie trouvé avec code langue ".$CodeLang);
+                        $prodlib->setPdlType("?");
+                        $prodlib->setPdlItem("?");
+                        $prodlib->setPdlLib("?");
+                        $prodlib->setPdlInfoLib1("?");
+                        $prodlib->setPdlInfoLib2("?");
+                        $prodlib->setPdlInfoLib3("?");
+                        $prodlib->setPdlInfoLib4("?");
+                        $prodlib->setPdlInfoLib5("?");
+                        $prodlib->setPdlInfoLib6("?");
+                        $prodlib->setPdlInfoLib7("?");
+                        $prodlib->setPdlInfoLib8("?");
+                        $prodlib->setPdlInfoLib9("?");
+                    }
 
                     //var_dump($prodlib);
                     $em->persist($prodlib);

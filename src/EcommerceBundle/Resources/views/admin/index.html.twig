@@ -3,6 +3,16 @@
 {% block body %}
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <p class="text-center"></p><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-left"><h1>E-Commerce</h1></p><br />
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-offset-2 col-md-4">
                 <p class="text-center">Commandes :</p><br />
                 <p><a href="{{ path('commande_index') }}">Liste des commandes</a></p>
@@ -27,6 +37,19 @@
                 <p>
                     <a href="{{ path('param_show', { 'id': 1 }) }}">Paramètres généraux</a>
                 </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center"></p><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-left"><h1>Images :</h1></p><br />
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                <p><a href="{{ path('images_index') }}">Liste des images</a></p>
             </div>
         </div>
     </div>

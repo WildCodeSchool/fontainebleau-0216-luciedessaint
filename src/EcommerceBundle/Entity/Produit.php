@@ -806,4 +806,32 @@ class Produit
     {
         return $this->pdtIdcat;
     }
+    /**
+     * @var string
+     */
+    private $pdtCatAdmin;
+
+
+    /**
+     * Set pdtCatAdmin
+     *
+     * @param string $pdtCatAdmin
+     * @return Produit
+     */
+    public function setPdtCatAdmin($pdtCatAdmin)
+    {
+        $this->pdtCatAdmin = $pdtCatAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get pdtCatAdmin
+     *
+     * @return string 
+     */
+    public function getPdtCatAdmin()
+    {
+        return $this->pdtCatAdmin;
+    }
 }
