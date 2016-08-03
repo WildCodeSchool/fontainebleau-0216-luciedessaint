@@ -38,12 +38,79 @@ class CommandeController extends Controller
      */
     public function newAction(Request $request)
     {
+        $session = $request->getSession();
+        $panieruser = $session->get('panierArray');
+        $nb=0;
+        $prixttc=0;
+        $prixht=0;
+
+        $codebanque=1;
+
+        if ($panieruser != null) {
+            foreach ($panieruser as $idx => $article) {
+                $nb++;
+                $total += $article["prix"];
+            }
+        }
+
         $commande = new Commande();
         $form = $this->createForm('EcommerceBundle\Form\CommandeType', $commande);
+        $form->remove('ComCode');
+        $form->remove('ComEtat');
+        $form->remove('ComCdebank');
+        $form->remove('ComVenteDte');
+        $form->remove('ComExpedDte');
+        $form->remove('ComMajDte');
+        $form->remove('ComMajWho');
+        $form->remove('ComMajLib');
+        $form->remove('ComAnnulDte');
+        $form->remove('ComAnnulWho');
+        $form->remove('ComAnnulLib');
+        $form->remove('ComFact');
+        $form->remove('ComFactDte');
+        $form->remove('ComFactWho');
+        $form->remove('ComNbArts');
+        $form->remove('ComTvaUnique');
+        $form->remove('ComPrixTotHt');
+        $form->remove('ComPrixTotTtc');
+        $form->remove('ComEmbPoids');
+        $form->remove('ComEmbDim');
+        $form->remove('ComLivDelai');
+        $form->remove('ComComments');
+        
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($codebanque == 1) {
             $em = $this->getDoctrine()->getManager();
+
+            $count = count($commandes = $em->getRepository('EcommerceBundle:Commande')->findAll());
+            $count+=1;
+            $time=new \DateTime();
+
+            $commande->setComCode('C'.$count.$time->format('YmdHis').$count);
+            $commande->setComEtat(1); // set
+            $commande->setComCdebank($codebanque);
+            $commande->setComVenteDte(new \DateTime()); // set
+            $commande->setComExpedDte(null); // set
+            $commande->setComMajDte(null); // set
+            $commande->getComMajWho();
+            $commande->getComMajLib();
+            $commande->setComAnnulDte(null);
+            $commande->getComAnnulWho();
+            $commande->getComAnnulLib();
+            $commande->getComFact(); //generer
+            $commande->setComFactDte(new \DateTime());
+            $commande->setComFactWho('Auto');
+            $commande->setComNbArts($nb);
+//            $commande->getComTvaUnique();
+            $commande->getComPrixTotHt();
+            $commande->getComPrixTotTtc();
+//            $commande->getComEmbPoids();
+//            $commande->getComEmbDim();
+//            $commande->getComLivDelai();
+//            $commande->getComComments();
+
+
             $em->persist($commande);
             $em->flush();
 

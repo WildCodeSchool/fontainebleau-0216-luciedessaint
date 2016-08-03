@@ -99,6 +99,10 @@ class AdresseController extends Controller
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
 
+        // creation d'un form pour le submit new commande
+        $commande = $this->createFormBuilder()->getForm();
+        $commande->handleRequest($request);
+
         $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
         $sessionadresse1 = $session->get('adresseArray1');
@@ -113,6 +117,7 @@ class AdresseController extends Controller
         }
 
         return $this->render('EcommerceBundle:adresse:show.html.twig', array(
+            'commande' => $commande->createView(),
             'paniers' => $panieruser,
             'langues' => $langues,
             'sessionadr1' => $sessionadresse1,

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ dump(app.session) }}
     <header>
         <div class="container-fluid"><!-- Top Bar noir -->
             <div class="row">
@@ -153,6 +154,7 @@
                         </tbody>
                     </table>
                     <a class="btn btn-success" href="{{ path('ecommerce_adresse_edit') }}"></i>Modifier</a>
+                    <a class="btn btn-primary floatright" href="{{ path('commande_new') }}"></i>plop</a>
                 </div>
             </div>
         </div>

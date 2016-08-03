@@ -11,7 +11,7 @@ EcommerceBundle\Entity\Commande:
     fields:
         comCode:
             type: string
-            length: '50'
+            length: 255
             nullable: true
             column: com_code
         comEtat:
