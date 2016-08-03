@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ dump(app.session) }}
     <header>
         <div class="container-fluid"><!-- Top Bar noir -->
             <div class="row">
@@ -21,13 +22,13 @@
                         <tr>
                             <td class="text-center"><img class="imgpanier" src="{{ asset('uploads/produits/') }}{{ panier.photo }}"></td>
                             <td class="text-center">{{ panier.nom }} <br /><br /> {{ panier.ref }}</td>
-                            <td class="text-center">{{ panier.prix|number_format(2, ',', ' ') }} €</td>
+                            <td class="text-center">{{ panier.prixttc|number_format(2, ',', ' ') }} €</td>
                         </tr>
                     {% endfor %}
                     <tr>
                         <td></td>
                         <td><p class="prixtotal">Prix total TTC :</p></td>
-                        <td><p class="text-center">{{ total }} €</p></td>
+                        <td><p class="text-center">{{ app.session.get('cartInfos')[0] }} €</p></td>
                     </tr>
                 </table>
             </div>
@@ -40,6 +41,7 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
+                                <th></th>
                                 <th>Adresse de livraison</th>
                             </tr>
                             <tr>
@@ -83,7 +85,7 @@
                         </tbody>
                     </table>
                     <a class="btn btn-success" href="{{ path('ecommerce_adresse_edit') }}">Modifier</a>
-                    <a class="btn btn-primary floatright" href=""></i>plop</a>
+                    <a class="btn btn-primary floatright" href="{{ path('commande_new') }}"></i>plop</a>
                 </div>
             </div>
         </div>
@@ -153,6 +155,7 @@
                         </tbody>
                     </table>
                     <a class="btn btn-success" href="{{ path('ecommerce_adresse_edit') }}"></i>Modifier</a>
+                    <a class="btn btn-primary floatright" href="{{ path('commande_new') }}"></i>plop</a>
                 </div>
             </div>
         </div>

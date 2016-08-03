@@ -19,8 +19,9 @@ class Commande
     ///////////////////////
     // GENERATED CODE
 
+ 
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -30,7 +31,7 @@ class Commande
     private $comCode;
 
     /**
-     * @var int
+     * @var integer
      */
     private $comEtat;
 
@@ -95,12 +96,12 @@ class Commande
     private $comFactWho;
 
     /**
-     * @var int
+     * @var integer
      */
     private $comNbArts;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $comTvaUnique;
 

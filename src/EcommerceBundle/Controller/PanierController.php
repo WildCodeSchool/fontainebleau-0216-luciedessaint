@@ -21,11 +21,6 @@ class PanierController extends Controller
 
         $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
-        if ($panieruser != null) {
-            foreach ($panieruser as $idx => $article) {
-                $total += $article["prix"];
-            }
-        }
         return $this->render('EcommerceBundle:Default:panier.html.twig', array(
             'langues' => $langues,
             'paniers' => $panieruser,
@@ -61,7 +56,7 @@ class PanierController extends Controller
                 $user = $session->getId();
                 //var_dump($panierUser); die;
 
-                $panierUser[$id] = ['id' => $id, 'photo' => $produits->getPdtPhoto(), 'nom' => $produits->getPdtNom(), 'ref' => $produits->getPdtRef(), 'prix' => $produits->getPdtPrixUnitTtc()];
+                $panierUser[$id] = ['id' => $id, 'photo' => $produits->getPdtPhoto(), 'nom' => $produits->getPdtNom(), 'ref' => $produits->getPdtRef(), 'prixttc' => $produits->getPdtPrixUnitTtc(), 'prixht' => $produits->getPdtPrixUnitHt()];
                 $session->set('cartArray', $panierUser);
             }
             else{
@@ -71,26 +66,31 @@ class PanierController extends Controller
                 //Recuperation de tout les champs du produit portant cette ID
                 $produits = $em->getRepository('EcommerceBundle:Produit')->find($id);
 
-                $prod = ['id' => $id, 'photo' => $produits->getPdtPhoto(), 'nom' => $produits->getPdtNom(), 'ref' => $produits->getPdtRef(), 'prix' => $produits->getPdtPrixUnitTtc()];
+                $prod = ['id' => $id, 'photo' => $produits->getPdtPhoto(), 'nom' => $produits->getPdtNom(), 'ref' => $produits->getPdtRef(), 'prixttc' => $produits->getPdtPrixUnitTtc(), 'prixht' => $produits->getPdtPrixUnitHt()];
                 
                 $panieruser[$id] = $prod;
 
                 //ajout du nouveau produit dans CartArray de la session en cours
                 $session->set('cartArray', $panieruser);
             }
-            $total=0;
+            $totalttc=0;
+            $totalht=0;
+            $nbprod=0;
+            $infos=[];
 
             if ($panieruser != null) {
                 foreach ($panieruser as $idx => $article) {
-                    $total += $article["prix"];
+                    $infos = [ $totalttc += $article["prixttc"],
+                    $totalht += $article["prixht"],
+                    $nbprod+=1 ];
                 }
             }
+            $session->set('cartInfos', $infos);
 
         }
         return $this->render('EcommerceBundle:Default:panier.html.twig', array(
             'langues' => $langues,
-            'paniers' => $session->get('cartArray'),
-            'total' => $total,
+            'paniers' => $session->get('cartArray')
         ));
     }
     
@@ -99,11 +99,17 @@ class PanierController extends Controller
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
 
+        $totalttc= $session->get('cartInfos')[0];
+        $totalht= $session->get('cartInfos')[1];
+        $nb= $session->get('cartInfos')[2];
+
+        $infos=[$totalttc -= $panieruser[$id]['prixttc'], $totalht -= $panieruser[$id]['prixht'], $nb -= 1];
+        $session->set('cartInfos', $infos);
+        
         //permet de retirer le produit du tableau
         unset($panieruser[$id]);
         // permet de faire la mise a jour du tableau
         $session->set('cartArray', $panieruser);
-
 
         return $this->redirectToRoute('ecommerce_panier', array(
             'paniers' => $panieruser,
