@@ -155,7 +155,7 @@ class CommandeController extends Controller
                 $em->flush();
             }
 
-            return $this->redirectToRoute('commande_index');
+            return $this->redirectToRoute('facture_show', array('id' => $commande->getId()));
         }
 
         return $this->render('EcommerceBundle:commande:new.html.twig', array(
@@ -163,6 +163,20 @@ class CommandeController extends Controller
         ));
     }
 
+    public function showFactureAction(Commande $id_commande)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $produits = $em->getRepository('EcommerceBundle:Compdt')->findBy(array('cxpIdcom' => $id_commande));
+        $commande = $em->getRepository('EcommerceBundle:Commande')->findOneBy(array('id' => $id_commande));
+        $adresses = $em->getRepository('EcommerceBundle:AdresseModele')->findBy(array('adrIdcom' => $id_commande));
+
+        return $this->render('@Ecommerce/facture/facture.html.twig', array(
+            'produits' => $produits,
+            'adresses' => $adresses,
+            'commande' => $commande
+        ));
+    }
+    
     /**
      * Finds and displays a Commande entity.
      *
