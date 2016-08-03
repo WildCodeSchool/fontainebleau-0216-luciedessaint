@@ -186,8 +186,8 @@ a div p {
     height: 150px;
 }
 .img_bijou_det {
-    width: 80%;
-    height: 200px;
+    width: 250px;
+    height: 100%;
 }
 .img_bij_cat {
     width: 100%;
@@ -210,6 +210,10 @@ img.imgchariot {
     height: 200px;
     box-shadow: 3px -3px 6px 2px rgba(0, 0, 0, 0.6);
     margin-top: 10px;
+}
+.img_tableau_det {
+    width: 250px;
+    height: 100%;
 }
 .img_tab_cat {
     width: 100%;
