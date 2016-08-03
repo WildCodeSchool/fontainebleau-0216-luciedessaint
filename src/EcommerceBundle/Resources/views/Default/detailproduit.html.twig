@@ -7,8 +7,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
+{#
                 <div class="row">
                     <div class="space"></div>
+                </div>
+#}
+                <div class="row">
+                    <span class="text-center">
+                        <h2>
+                            {#{{ produit.pdlCat }} / {{ produit.pdlType }}{% if produit.pdlItem != null %} / {{ produit.pdlItem }}{% endif %}#}
+                            {% if produit.pdlItem != null %}
+                                {{ produit.pdlItem }}
+                            {% elseif produit.pdlType != null %}
+                                {{ produit.pdlType }}
+                            {% else %}
+                                {{ produit.pdlCat }}
+                            {% endif %}
+                        </h2>
+                    </span>
                 </div>
                 <div class="row">
                     <tr>
@@ -17,18 +33,29 @@
                 </div>
             </div>
             <div class="col-md-offset-1 col-md-6">
+                <div class="row">
+                    <span class="text-center">
+                        <h1>
+                            {{ produit.pdlIdpdt.pdtNom }}
+                        </h1>
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="text-center">
+                        <h2>
+                            {{ produit.pdlDesc }}<br/><br/>
+                        </h2>
+                    </span>
+                </div>
                 <table class="table table-hover">
                     <tbody>
                         <tr>
-                            <span class="text-center"><h2>{{ produit.pdlCat }} / {{ produit.pdlType }}{% if produit.pdlItem != null %} / {{ produit.pdlItem }}{% endif %}</h2></span>
+                            <th>Ref.</th>
+                            <td><h2>{{ produit.pdlIdpdt.pdtRef }}</h2></td>
                         </tr>
                         <tr>
-                            <th>Ref </th>
-                            <td>{{ produit.pdlIdpdt.pdtNom }} ({{ produit.pdlIdpdt.pdtRef }})</td>
-                        </tr>
-                        <tr>
-                            <th><h2>TTC €</h2></th>
-                            <td>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }}</td>
+                            <th><h2>TTC</h2></th>
+                            <td><h2>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</h2></td>
                         </tr>
 {#
                         <tr>

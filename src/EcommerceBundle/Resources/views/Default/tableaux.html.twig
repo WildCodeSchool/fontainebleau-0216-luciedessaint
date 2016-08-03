@@ -20,34 +20,9 @@
 
     <div class="space"></div>
 
-{#
-    <div class="container">
-        <div class="row">
-            {% for produit in produits %}
-                {% if produit.pdtEtat == true %}
-                    <!-- ajouter dans la condition ou.... -->
-                    {% if produit.pdtIdcat != 'Bijoux' and produit.pdtIdcat != null and (produit.pdtIdcat == 'Portrait' or produit.pdtIdcat == 'Marine') %}
-                        <div class="col-md-4">
-                            <a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
-                                <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }} />
-                            </a>
-                            <div class="col-md-12 text-center">
-                                <p><a href="{{ path('ecommerce_detail_produit', { 'id': produit.id }) }}">
-                                    <span class="text-left">{{ produit.pdtNom }}</span></a><br />
-                                <span class="text-right">{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</span></p>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div class="minspace"></div>
-    </div>
-#}
-
     {% if tri == 'prix' %}
 
-        <div class="container">
+        <div class="container" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
             <div class="row">
                 <div class="col-md-offset-1 col-md-10">
                     {% for produit in produits %}
@@ -63,6 +38,7 @@
                                     {% endif %}
                                 </h4>
                             </div>
+{#
                             <div class="row">
                                 <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}">
                                     <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
@@ -70,6 +46,15 @@
                             </div>
                             <div class="row">
                                 <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
+                            </div>
+#}
+                            <div class="row">
+                                <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}" href="#">
+                                    <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
+                                </a>
+                            </div>
+                            <div class="row">
+                                <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -87,6 +72,139 @@
                                 </div>
                             </div>
                         </div>
+
+                        {# ---------------------------------- MODAL ----------------------------------- #}
+
+                        <div class="modal fade" id="myModal{{ produit.pdlIdpdt.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" width="80%">
+                            <div class="modal-dialog modal-lg" role="document" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">{{ produit.pdlIdpdt.pdtNom }}</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="row">
+                                                        <span class="text-center">
+                                                            <h2>
+                                                                {% if produit.pdlItem != null %}
+                                                                    {{ produit.pdlItem }}
+                                                                {% elseif produit.pdlType != null %}
+                                                                    {{ produit.pdlType }}
+                                                                {% else %}
+                                                                    {{ produit.pdlCat }}
+                                                                {% endif %}
+                                                            </h2>
+                                                        </span>
+                                                    </div>
+                                                    <div class="row">
+                                                        <tr>
+                                                            {#<img class="img_tableau_det" src="{{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}">#}
+                                                            <img class="img_tableau_det" src="{{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}">
+                                                        </tr>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <span class="text-center">
+                                                            <h1>
+                                                                {{ produit.pdlIdpdt.pdtNom }}
+                                                            </h1>
+                                                        </span>
+                                                    </div>
+                                                    <div class="row">
+                                                        <span class="text-center">
+                                                            <h2>
+                                                                {{ produit.pdlDesc }}<br/><br/>
+                                                            </h2>
+                                                        </span>
+                                                    </div>
+                                                    <table class="table table-hover">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th>Ref.</th>
+                                                            <td><h2>{{ produit.pdlIdpdt.pdtRef }}</h2></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><h2>TTC</h2></th>
+                                                            <td><h2>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</h2></td>
+                                                        </tr>
+                                                        {% if produit.pdlInfoLib1 != null %}
+                                                            <tr>
+                                                                <th>{{ produit.pdlInfoLib1 }}</th>
+                                                                <td>{{ produit.pdlInfoVal1 }}</td>
+                                                            </tr>
+                                                            {% if produit.pdlInfoLib2 != null %}
+                                                                <tr>
+                                                                    <th>{{ produit.pdlInfoLib2 }}</th>
+                                                                    <td>{{ produit.pdlInfoVal2 }}</td>
+                                                                </tr>
+                                                                {% if produit.pdlInfoLib3 != null %}
+                                                                    <tr>
+                                                                        <th>{{ produit.pdlInfoLib3 }}</th>
+                                                                        <td>{{ produit.pdlInfoVal3 }}</td>
+                                                                    </tr>
+                                                                    {% if produit.pdlInfoLib4 != null %}
+                                                                        <tr>
+                                                                            <th>{{ produit.pdlInfoLib4 }}</th>
+                                                                            <td>{{ produit.pdlInfoVal4 }}</td>
+                                                                        </tr>
+                                                                        {% if produit.pdlInfoLib5 != null %}
+                                                                            <tr>
+                                                                                <th>{{ produit.pdlInfoLib5 }}</th>
+                                                                                <td>{{ produit.pdlInfoVal5 }}</td>
+                                                                            </tr>
+                                                                            {% if produit.pdlInfoLib6 != null %}
+                                                                                <tr>
+                                                                                    <th>{{ produit.pdlInfoLib6 }}</th>
+                                                                                    <td>{{ produit.pdlInfoVal6 }}</td>
+                                                                                </tr>
+                                                                                {% if produit.pdlInfoLib7 != null %}
+                                                                                    <tr>
+                                                                                        <th>{{ produit.pdlInfoLib7 }}</th>
+                                                                                        <td>{{ produit.pdlInfoVal7 }}</td>
+                                                                                    </tr>
+                                                                                    {% if produit.pdlInfoLib58 != null %}
+                                                                                        <tr>
+                                                                                            <th>{{ produit.pdlInfoLib8 }}</th>
+                                                                                            <td>{{ produit.pdlInfoVal8 }}</td>
+                                                                                        </tr>
+                                                                                        {% if produit.pdlInfoLib9 != null %}
+                                                                                            <tr>
+                                                                                                <th>{{ produit.pdlInfoLib9 }}</th>
+                                                                                                <td>{{ produit.pdlInfoVal9 }}</td>
+                                                                                            </tr>
+                                                                                        {% endif %}
+                                                                                    {% endif %}
+                                                                                {% endif %}
+                                                                            {% endif %}
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                            {% endif %}
+                                                        {% endif %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                     {% endfor %}
                 </div>
             </div>
@@ -94,7 +212,7 @@
 
     {% else %}
 
-        <div class="container">
+        <div class="container" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
             {% for catproduit in catproduits %}
                 <div class="row col-md-12">
                     <div class="row col-md-12">
@@ -122,12 +240,18 @@
                             {% if catproduit.catLibAdmin == produit.pdlIdpdt.pdtIdcat.catLibAdmin %}
                                 <div class="col-md-3 text-center">
                                     <div class="row">
+{#
                                         <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}">
+                                            <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
+                                        </a>
+#}
+                                        <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}" href="#">
                                             <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
                                         </a>
                                     </div>
                                     <div class="row">
-                                        <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
+                                        {#<a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>#}
+                                        <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -145,6 +269,139 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                {# ---------------------------------- MODAL ----------------------------------- #}
+
+                                <div class="modal fade" id="myModal{{ produit.pdlIdpdt.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" width="80%">
+                                    <div class="modal-dialog modal-lg" role="document" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">{{ produit.pdlIdpdt.pdtNom }}</h4>
+                                            </div>
+
+                                            <div class="modal-body">
+
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <div class="row">
+                                                        <span class="text-center">
+                                                            <h2>
+                                                                {% if produit.pdlItem != null %}
+                                                                    {{ produit.pdlItem }}
+                                                                {% elseif produit.pdlType != null %}
+                                                                    {{ produit.pdlType }}
+                                                                {% else %}
+                                                                    {{ produit.pdlCat }}
+                                                                {% endif %}
+                                                            </h2>
+                                                        </span>
+                                                            </div>
+                                                            <div class="row">
+                                                                <tr>
+                                                                    {#<img class="img_tableau_det" src="{{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}">#}
+                                                                    <img class="img_tableau_det" src="{{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}">
+                                                                </tr>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="row">
+                                                        <span class="text-center">
+                                                            <h1>
+                                                                {{ produit.pdlIdpdt.pdtNom }}
+                                                            </h1>
+                                                        </span>
+                                                            </div>
+                                                            <div class="row">
+                                                        <span class="text-center">
+                                                            <h2>
+                                                                {{ produit.pdlDesc }}<br/><br/>
+                                                            </h2>
+                                                        </span>
+                                                            </div>
+                                                            <table class="table table-hover">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <th>Ref.</th>
+                                                                    <td><h2>{{ produit.pdlIdpdt.pdtRef }}</h2></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><h2>TTC</h2></th>
+                                                                    <td><h2>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</h2></td>
+                                                                </tr>
+                                                                {% if produit.pdlInfoLib1 != null %}
+                                                                    <tr>
+                                                                        <th>{{ produit.pdlInfoLib1 }}</th>
+                                                                        <td>{{ produit.pdlInfoVal1 }}</td>
+                                                                    </tr>
+                                                                    {% if produit.pdlInfoLib2 != null %}
+                                                                        <tr>
+                                                                            <th>{{ produit.pdlInfoLib2 }}</th>
+                                                                            <td>{{ produit.pdlInfoVal2 }}</td>
+                                                                        </tr>
+                                                                        {% if produit.pdlInfoLib3 != null %}
+                                                                            <tr>
+                                                                                <th>{{ produit.pdlInfoLib3 }}</th>
+                                                                                <td>{{ produit.pdlInfoVal3 }}</td>
+                                                                            </tr>
+                                                                            {% if produit.pdlInfoLib4 != null %}
+                                                                                <tr>
+                                                                                    <th>{{ produit.pdlInfoLib4 }}</th>
+                                                                                    <td>{{ produit.pdlInfoVal4 }}</td>
+                                                                                </tr>
+                                                                                {% if produit.pdlInfoLib5 != null %}
+                                                                                    <tr>
+                                                                                        <th>{{ produit.pdlInfoLib5 }}</th>
+                                                                                        <td>{{ produit.pdlInfoVal5 }}</td>
+                                                                                    </tr>
+                                                                                    {% if produit.pdlInfoLib6 != null %}
+                                                                                        <tr>
+                                                                                            <th>{{ produit.pdlInfoLib6 }}</th>
+                                                                                            <td>{{ produit.pdlInfoVal6 }}</td>
+                                                                                        </tr>
+                                                                                        {% if produit.pdlInfoLib7 != null %}
+                                                                                            <tr>
+                                                                                                <th>{{ produit.pdlInfoLib7 }}</th>
+                                                                                                <td>{{ produit.pdlInfoVal7 }}</td>
+                                                                                            </tr>
+                                                                                            {% if produit.pdlInfoLib58 != null %}
+                                                                                                <tr>
+                                                                                                    <th>{{ produit.pdlInfoLib8 }}</th>
+                                                                                                    <td>{{ produit.pdlInfoVal8 }}</td>
+                                                                                                </tr>
+                                                                                                {% if produit.pdlInfoLib9 != null %}
+                                                                                                    <tr>
+                                                                                                        <th>{{ produit.pdlInfoLib9 }}</th>
+                                                                                                        <td>{{ produit.pdlInfoVal9 }}</td>
+                                                                                                    </tr>
+                                                                                                {% endif %}
+                                                                                            {% endif %}
+                                                                                        {% endif %}
+                                                                                    {% endif %}
+                                                                                {% endif %}
+                                                                            {% endif %}
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -153,5 +410,32 @@
         </div>
 
     {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        //Popup Modal
+
+        $('#myModal').on('show', function() {
+        var link = $(this).data('link'), agreeBtn = $(this).find('.agree');
+        })
+
+        $('.confirm-link').on('click', function(e) {
+        e.preventDefault();
+
+        var link = $(this).data('link');
+        $('#myModal').data('link',link).modal('show');
+        });
+
+        $('#btnYes').click(function() {
+        // handle redirect here
+        var link = $('#myModal').data('link');
+        location.href = link;
+        $('#myModal').modal('hide');
+        });
+
+    </script>
 
 {% endblock %}
