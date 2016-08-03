@@ -2,70 +2,62 @@
 
 {% block body %}
 
-    {{ form_start(edit_form) }}
-
     <div id="header" class="jumbotron text-center">
-        <h1>{{ abontnews.anlEmail }}</h1>
-        <a class="btn btn-success btn-lg" href="{{ path('abontnews_index') }}">
+        <h1>Catégorie {{ image.imgCat }} => <img class="image_lang" src="{{ asset('uploads/aleatoire/') }}{{ image.imgTitre }}"></h1>
+        <a class="btn btn-success btn-lg" href="{{ path('images_index') }}">
             <i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i>
             Retour à la liste
         </a>
     </div>
 
+    {{ form_start(edit_form) }}
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-8">
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Etat (actif/inactif)</p>
-                    </div>
-                    <div class="col-md-9">
-                        {{ form_widget(edit_form.anlEtat) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <p class="text-right lib_champs">Adresse email</p>
+                        <p class="text-right lib_champs">Catégorie</p>
                     </div>
                     <div class="col-md-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_errors(edit_form.anlEmail) }}
-                            {{ form_widget(edit_form.anlEmail, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Adresse email' }}) }}
-                       </div>
+                            {{ form_widget(edit_form.imgCat, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Catégorie' }}) }}
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Langue</p>
+                        <p class="text-right lib_champs">Image</p>
                     </div>
                     <div class="col-md-9">
-                        {{ form_errors(edit_form.anlLocale) }}
-                        {{ form_widget(edit_form.anlLocale, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Langue' }}) }}
+                        {{ form_end(edit_form) }}
                     </div>
                 </div>
 
                 <input class="btn btn-success" type="submit" value="Enregistrer" />
 
-                {{ form_end(edit_form) }}
             </div>
         </div>
     </div>
-{#    <h1>Abontnews edit</h1>
 
+{#
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
+#}
 
+{#
     <ul>
         <li>
-            <a href="{{ path('abontnews_index') }}">Back to the list</a>
+            <a href="{{ path('images_index') }}">Retour à la liste</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
-    </ul>#}
+    </ul>
+#}
+
 {% endblock %}

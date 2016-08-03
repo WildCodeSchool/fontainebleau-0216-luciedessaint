@@ -21,8 +21,177 @@ class ProdlibRepository extends EntityRepository
             ->setParameter('idProd', $id_prod)
             ->andWhere('c.pdlLocale = :lang')
             ->setParameter('lang', $langue)
+            //->sort('c.pdlLocale', 'ASC')
         ;
         return $qb->getQuery()->getResult();
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  BIJOUX
+    //
+    public function getCatBijouxAvendre4LangByCat($langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p.pdlLib, p.pdlCat, p.pdlType, p.pdlItem, b.catLibAdmin, b.catPhoto 
+                            FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a JOIN a.pdtIdcat b 
+                            WHERE ((b.catLibAdmin LIKE :CatP1 OR b.catLibAdmin LIKE :CatP2) 
+                             AND p.pdlLocale = :locale 
+                             AND a.pdtEtat = :EtatP AND a.pdtAvendre = :AvendreP) 
+                            GROUP BY b.catLibAdmin 
+                            ORDER BY b.catLibAdmin ASC')
+            ->setParameter('CatP1', 'Bijou%')
+            ->setParameter('CatP2', 'bijou%')
+            ->setParameter('locale', $langue)
+            ->setParameter('EtatP', true)
+            ->setParameter('AvendreP', true)
+            ->getResult();
+    }
+
+    public function getBijouxAvendre4LangByCat($langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p, a, b 
+                            FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a JOIN a.pdtIdcat b 
+                            WHERE ((b.catLibAdmin LIKE :CatP1 OR b.catLibAdmin LIKE :CatP2) 
+                             AND p.pdlLocale = :locale 
+                             AND a.pdtEtat = :EtatP AND a.pdtAvendre = :AvendreP) 
+                            ORDER BY b.catLibAdmin ASC,  a.pdtPrixUnitTtc ASC')
+            ->setParameter('CatP1', 'Bijou%')
+            ->setParameter('CatP2', 'bijou%')
+            ->setParameter('locale', $langue)
+            ->setParameter('EtatP', true)
+            ->setParameter('AvendreP', true)
+            ->getResult();
+    }
+
+    public function getBijou4Lang($idpdt, $langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p, a FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a
+                            WHERE (p.pdlLocale = :locale AND p.pdlIdpdt = :idpdt)')
+            ->setParameter('locale', $langue)
+            ->setParameter('idpdt', $idpdt)
+            ->getResult();
+    }
+
+    public function getBijouxAvendre4LangByPrix($langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p, a, b 
+                            FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a JOIN a.pdtIdcat b 
+                            WHERE ((b.catLibAdmin LIKE :CatP1 OR b.catLibAdmin LIKE :CatP2) 
+                             AND p.pdlLocale = :locale 
+                             AND a.pdtEtat = :EtatP AND a.pdtAvendre = :AvendreP) 
+                            ORDER BY a.pdtPrixUnitTtc ASC')
+            ->setParameter('CatP1', 'Bijou%')
+            ->setParameter('CatP2', 'bijou%')
+            ->setParameter('locale', $langue)
+            ->setParameter('EtatP', true)
+            ->setParameter('AvendreP', true)
+            ->getResult();
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  TABLEAUX
+    //
+    public function getCatTableaux4LangByCat($langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p.pdlLib, p.pdlCat, p.pdlType, p.pdlItem, b.catLibAdmin, b.catPhoto 
+                            FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a JOIN a.pdtIdcat b 
+                            WHERE ((b.catLibAdmin LIKE :CatP1 OR b.catLibAdmin LIKE :CatP2) 
+                             AND p.pdlLocale = :locale 
+                             AND a.pdtEtat = :EtatP) 
+                            GROUP BY b.catLibAdmin 
+                            ORDER BY b.catLibAdmin ASC')
+            ->setParameter('CatP1', 'Tableau%')
+            ->setParameter('CatP2', 'tableau%')
+            ->setParameter('locale', $langue)
+            ->setParameter('EtatP', true)
+            ->getResult();
+    }
+
+    public function getTableaux4LangByCat($langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p, a, b 
+                            FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a JOIN a.pdtIdcat b 
+                            WHERE ((b.catLibAdmin LIKE :CatP1 OR b.catLibAdmin LIKE :CatP2) 
+                             AND p.pdlLocale = :locale 
+                             AND a.pdtEtat = :EtatP) 
+                            ORDER BY b.catLibAdmin ASC,  a.pdtPrixUnitTtc ASC')
+            ->setParameter('CatP1', 'Tableau%')
+            ->setParameter('CatP2', 'tableau%')
+            ->setParameter('locale', $langue)
+            ->setParameter('EtatP', true)
+            ->getResult();
+    }
+
+    public function getTableau4Lang($idpdt, $langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p, a FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a
+                            WHERE (p.pdlLocale = :locale AND p.pdlIdpdt = :idpdt)')
+            ->setParameter('locale', $langue)
+            ->setParameter('idpdt', $idpdt)
+            ->getResult();
+    }
+
+    public function getTableaux4LangByPrix($langue)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p, a, b 
+                            FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a JOIN a.pdtIdcat b 
+                            WHERE ((b.catLibAdmin LIKE :CatP1 OR b.catLibAdmin LIKE :CatP2) 
+                             AND p.pdlLocale = :locale 
+                             AND a.pdtEtat = :EtatP) 
+                            ORDER BY a.pdtPrixUnitTtc ASC')
+            ->setParameter('CatP1', 'Tableau%')
+            ->setParameter('CatP2', 'tableau%')
+            ->setParameter('locale', $langue)
+            ->setParameter('EtatP', true)
+            ->getResult();
+    }
+
+
+    /*
+    
+    
+    //                            WHERE ((p.pdlCat = :CatP1 OR p.pdlCat = :CatP2 OR p.pdlCat = :CatP3 OR p.pdlCat = :CatP4)
+    //->setParameter('CatP1', 'Bijou*')
+    //->setParameter('CatP2', 'Bijoux')
+    //->setParameter('CatP3', 'bijou')
+    //->setParameter('CatP4', 'bijoux')
+    //->setParameter('CatP1', $bijoux1['search'].'%')
+    //->setParameter('CatP2', $bijoux2['search'].'%')
+    
+        public function getBijouxAvendre2($langue)
+        {
+            $bijoux = ['Bijou', 'Bijoux', 'bijou', 'bijoux'];
+            return $this->getEntityManager()
+                ->createQuery('SELECT p, a FROM EcommerceBundle:Prodlib p JOIN p.pdlIdpdt a
+                                WHERE ((p.pdlCat = IN (:CatP) AND p.pdlLocale = :locale
+                                 AND a.pdtEtat = :EtatP AND a.pdtAvendre = :AvendreP)
+                                ORDER BY p.pdlType ASC,  a.pdtPrixUnitTtc ASC')
+                ->setParameter('CatP', $bijoux)
+                ->setParameter('locale', $langue)
+                ->setParameter('EtatP', true)
+                ->setParameter('AvendreP', true)
+                ->getResult();
+        }
+    
+        public function getBijouxAvendre2($langue)
+        {
+            $qb = $this
+                ->createQueryBuilder('c')
+                ->where('c.ctlIdcat = :idCat')
+                ->setParameter('idCat', $id_cat)
+                ->andWhere('c.ctlLocale IN(:langs)')
+                ->setParameter('langs', $langues)
+            ;
+            return $qb->getQuery()->getResult();
+        }*/
 
 }

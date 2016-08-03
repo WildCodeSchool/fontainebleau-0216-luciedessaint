@@ -65,9 +65,19 @@ ecommerce_tableau:
     path:     /tableaux
     defaults: { _controller: EcommerceBundle:Tableau:index }
 
+ecommerce_triTableaux:
+    path:     /{id}/tritableaux
+    defaults: { _controller: EcommerceBundle:Tableau:triTableaux }
+    methods:  GET
+
 ecommerce_bijou:
     path:     /bijoux
     defaults: { _controller: EcommerceBundle:Bijou:index }
+
+ecommerce_triBijoux:
+    path:     /{id}/tribijoux
+    defaults: { _controller: EcommerceBundle:Bijou:triBijoux }
+    methods:  GET
 
 ecommerce_detail_produit:
     path:     /{id}/produit

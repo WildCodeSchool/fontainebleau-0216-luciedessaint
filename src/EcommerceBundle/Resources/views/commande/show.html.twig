@@ -28,7 +28,7 @@
                         {#</tr>#}
                         <tr>
                             <th>Etat</th>
-                            <td>{{ commande.comEtat }}</td>
+                            <td>{{ commande.etatCom }}</td>
                         </tr>
                         <tr>
                             <th>Code bank</th>
@@ -80,7 +80,7 @@
                         </tr>
                         <tr>
                             <th>Nbre d'article(s)</th>
-                            <td>{{ commande.comNbArts }}</td>
+                            <td>{{ commande.comNbArts }} &nbsp;&nbsp;&nbsp;&nbsp;(trouvés: {{ commande.nbProduits }})</td>
                         </tr>
                         <tr>
                             <th>TVA unique (O/N)</th>
@@ -244,7 +244,7 @@
                             {#<td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>#}
                             <td>{% if produit.cxpIdpdt.pdtEtat %}Actif{% else %}Inactif{% endif %}</td>
                             <td>{{ produit.cxpIdpdt.pdtIdcat }}</td>
-                            <td>{% if produit.cxpIdpdt.pdtAvendre %}Oui{% else %}Non{% endif %}</td>
+                            <td>{% if produit.cxpIdpdt.pdtAvendre %}<a class="alerte_vendu">Oui</a>{% else %}Non{% endif %}</td>
                             <td>{{ produit.cxpIdpdt.pdtNom }}</td>
                             <td>{{ produit.cxpIdpdt.pdtRef }}</td>
                             <td>{{ produit.cxpIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</td>

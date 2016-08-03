@@ -46,6 +46,11 @@ class CategorieController extends Controller
             $em->persist($categorie);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Création effectuée'
+            );
+
             return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
         }
 
@@ -148,6 +153,11 @@ class CategorieController extends Controller
             $em->persist($categorie);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Modification enregistrée'
+            );
+
             return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
         }
 
@@ -172,6 +182,11 @@ class CategorieController extends Controller
             $em->remove($categorie);
             $em->flush();
         }
+
+        $this->get('session')->getFlashBag()->add(
+            'mesModifs',
+            'Suppression effectuée'
+        );
 
         return $this->redirectToRoute('categorie_index');
     }

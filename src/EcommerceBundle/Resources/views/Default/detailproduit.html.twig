@@ -1,46 +1,107 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <div class="space"></div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-8">
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="space"></div>
+                </div>
+                <div class="row">
+                    <tr>
+                        <img class="img_bijou_det" src="{{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}">
+                    </tr>
+                </div>
+            </div>
+            <div class="col-md-offset-1 col-md-6">
                 <table class="table table-hover">
                     <tbody>
                         <tr>
-                            <th>Référence du produit</th>
-                            <td>{{ produit.pdtRef }}</td>
+                            <span class="text-center"><h2>{{ produit.pdlCat }} / {{ produit.pdlType }}{% if produit.pdlItem != null %} / {{ produit.pdlItem }}{% endif %}</h2></span>
                         </tr>
                         <tr>
-                            <th>Nom</th>
-                            <td>{{ produit.pdtNom }}</td>
+                            <th>Ref </th>
+                            <td>{{ produit.pdlIdpdt.pdtNom }} ({{ produit.pdlIdpdt.pdtRef }})</td>
                         </tr>
                         <tr>
-                            <th>Prix unitaire TTC</th>
-                            <td>{{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</td>
+                            <th><h2>TTC €</h2></th>
+                            <td>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }}</td>
                         </tr>
+{#
                         <tr>
                             <th>Poids du produit</th>
-                            <td>{% if produit.pdtPoids == null %}Non renseigné{% else %}{{ produit.pdtPoids }}{% endif %}</td>
+                            <td>{% if produit.pdlIdpdt.pdtPoids == null %}Non renseigné{% else %}{{ produit.pdlIdpdt.pdtPoids }}{% endif %}</td>
                         </tr>
                         <tr>
                             <th>Dimension du produit</th>
-                            <td>{% if produit.pdtDim == null %}Non renseigné{% else %}{{ produit.pdtDim }}{% endif %}</td>
+                            <td>{% if produit.pdlIdpdt.pdtDim == null %}Non renseigné{% else %}{{ produit.pdlIdpdt.pdtDim }}{% endif %}</td>
                         </tr>
                         <tr>
                             <th>Poids de l'emballage</th>
-                            <td>{% if produit.pdtEmbPoids == null %}Non renseigné{% else %}{{ produit.pdtEmbPoids }}{% endif %}</td>
+                            <td>{% if produit.pdlIdpdt.pdtEmbPoids == null %}Non renseigné{% else %}{{ produit.pdlIdpdt.pdtEmbPoids }}{% endif %}</td>
                         </tr>
                         <tr>
                             <th>Dimension de l'emballage</th>
-                            <td>{% if produit.pdtEmbDim == null %}Non renseigné{% else %}{{ produit.pdtEmbDim }}{% endif %}</td>
+                            <td>{% if produit.pdlIdpdt.pdtEmbDim == null %}Non renseigné{% else %}{{ produit.pdlIdpdt.pdtEmbDim }}{% endif %}</td>
                         </tr>
-                        <tr>
-                            <th>Photo du produit</th>
-                            {#<td>{{ produit.pdtPhoto }}</td>#}
-                            <td>
-                                <img class="image_produit" src="{{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}">
-                            </td>
-                        </tr>
+#}
+                        {% if produit.pdlInfoLib1 != null %}
+                            <tr>
+                                <th>{{ produit.pdlInfoLib1 }}</th>
+                                <td>{{ produit.pdlInfoVal1 }}</td>
+                            </tr>
+                            {% if produit.pdlInfoLib2 != null %}
+                                <tr>
+                                    <th>{{ produit.pdlInfoLib2 }}</th>
+                                    <td>{{ produit.pdlInfoVal2 }}</td>
+                                </tr>
+                                {% if produit.pdlInfoLib3 != null %}
+                                    <tr>
+                                        <th>{{ produit.pdlInfoLib3 }}</th>
+                                        <td>{{ produit.pdlInfoVal3 }}</td>
+                                    </tr>
+                                    {% if produit.pdlInfoLib4 != null %}
+                                        <tr>
+                                            <th>{{ produit.pdlInfoLib4 }}</th>
+                                            <td>{{ produit.pdlInfoVal4 }}</td>
+                                        </tr>
+                                        {% if produit.pdlInfoLib5 != null %}
+                                            <tr>
+                                                <th>{{ produit.pdlInfoLib5 }}</th>
+                                                <td>{{ produit.pdlInfoVal5 }}</td>
+                                            </tr>
+                                            {% if produit.pdlInfoLib6 != null %}
+                                                <tr>
+                                                    <th>{{ produit.pdlInfoLib6 }}</th>
+                                                    <td>{{ produit.pdlInfoVal6 }}</td>
+                                                </tr>
+                                                {% if produit.pdlInfoLib7 != null %}
+                                                    <tr>
+                                                        <th>{{ produit.pdlInfoLib7 }}</th>
+                                                        <td>{{ produit.pdlInfoVal7 }}</td>
+                                                    </tr>
+                                                    {% if produit.pdlInfoLib58 != null %}
+                                                        <tr>
+                                                            <th>{{ produit.pdlInfoLib8 }}</th>
+                                                            <td>{{ produit.pdlInfoVal8 }}</td>
+                                                        </tr>
+                                                        {% if produit.pdlInfoLib9 != null %}
+                                                            <tr>
+                                                                <th>{{ produit.pdlInfoLib9 }}</th>
+                                                                <td>{{ produit.pdlInfoVal9 }}</td>
+                                                            </tr>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
                     </tbody>
                 </table>
             </div>

@@ -1,0 +1,41 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+    <div id="header" class="jumbotron text-center">
+        <h1>Image de la catégorie {{ image.imgCat }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('images_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                        {#<tr>#}
+                            {#<th>Id</th>#}
+                            {#<td>{{ image.id }}</td>#}
+                        {#</tr>#}
+                        <tr>
+                            <th>Catégorie</th>
+                            <td>{{ image.imgCat }}</td>
+                        </tr>
+                        <tr>
+                            <th>Image</th>
+                            {#<td>{{ image.imgTitre }}</td>#}
+                            <td>
+                                <img class="image_lang" src="{{ asset('uploads/aleatoire/') }}{{ image.imgTitre }}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('images_edit', { 'id': image.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

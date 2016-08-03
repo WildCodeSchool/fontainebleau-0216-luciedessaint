@@ -5,11 +5,22 @@
         <div class="container-fluid"><!-- Top Bar noir -->
             <div class="row">
                 <div class="col-md-6 rowblack text-center textwhite"><h1>Bienvenue dans l'univers ART</h1></div>
-                <div class="col-md-6 text-center"><h1>Trier Prix/Taille</h1></div>
+                <div class="col-md-6 text-center">
+                    <h2>Tri par / Sort by :
+                        {% if tri == 'prix' %}
+                            <a class="btn btn-success" href="{{ path('ecommerce_triTableaux', { 'id': libTri2 }) }}"> {{ libTri1 }} </a>
+                        {% else %}
+                            <a class="btn btn-success" href="{{ path('ecommerce_triTableaux', { 'id': libTri2 }) }}"> {{ libTri1 }} </a>
+                        {% endif %}
+                    </h2>
+                </div>
             </div>
         </div><!-- Fin top bar noir -->
     </header>
+
     <div class="space"></div>
+
+{#
     <div class="container">
         <div class="row">
             {% for produit in produits %}
@@ -32,4 +43,115 @@
         </div>
         <div class="minspace"></div>
     </div>
+#}
+
+    {% if tri == 'prix' %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    {% for produit in produits %}
+                        <div class="col-md-3 text-center">
+                            <div class="row">
+                                <h4>
+                                    {% if produit.pdlItem != null %}
+                                        {{ produit.pdlItem }}
+                                    {% elseif produit.pdlType != null %}
+                                        {{ produit.pdlType }}
+                                    {% else %}
+                                        {{ produit.pdlCat }}
+                                    {% endif %}
+                                </h4>
+                            </div>
+                            <div class="row">
+                                <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}">
+                                    <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
+                                </a>
+                            </div>
+                            <div class="row">
+                                <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><h5>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</h5></p>
+                                </div>
+{#
+                                <div class="col-md-6">
+                                    <a href="{{ path('ecommerce_add_panier', { 'id': produit.pdlIdpdt.id }) }}">
+                                        <img class="center-block img-responsive imgchariot" src={{ asset('uploads/param/') }}{{ chariot }}>
+                                    </a>
+                                </div>
+#}
+                                <div class="row col-md-6">
+                                    <p><h5>{{ produit.pdlIdpdt.pdtDim }}</h5></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="container">
+            {% for catproduit in catproduits %}
+                <div class="row col-md-12">
+                    <div class="row col-md-12">
+                        <span class="text-center"><h1>&nbsp;</h1></span>
+                    </div>
+                    <div class="row col-md-12 txt_bij_cat">
+                        <div class="row col-md-12">
+                            {% if catproduit.catPhoto %}
+                                <img class="center-block img-responsive img_tab_cat txt_tab_cat" src='{{ asset('uploads/categ/') }}{{ catproduit.catPhoto }}'/>
+                            {% endif %}
+                        </div>
+                        <div class="row col-md-12">
+                            <span class="text-center"><h2>{{ catproduit.pdlLib }}</h2></span>
+                            {#<span class="text-center"><h1>{{ catproduit.pdlCat }} / {{ catproduit.pdlType }}{% if catproduit.pdlItem != null %} / {{ catproduit.pdlItem }}{% endif %}</h1></span>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <span class="text-center"><h1> </h1></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        {% for produit in produits %}
+                            {#{{ dump(produit.pdlIdpdt.pdtIdcat.catLibAdmin) }}#}
+                            {% if catproduit.catLibAdmin == produit.pdlIdpdt.pdtIdcat.catLibAdmin %}
+                                <div class="col-md-3 text-center">
+                                    <div class="row">
+                                        <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}">
+                                            <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
+                                        </a>
+                                    </div>
+                                    <div class="row">
+                                        <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><h5>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</h5></p>
+                                        </div>
+{#
+                                        <div class="col-md-6">
+                                            <a href="{{ path('ecommerce_add_panier', { 'id': produit.pdlIdpdt.id }) }}">
+                                                <img class="center-block img-responsive imgchariot" src={{ asset('uploads/param/') }}{{ chariot }}>
+                                            </a>
+                                        </div>
+#}
+                                        <div class="row col-md-6">
+                                            <p><h5>{{ produit.pdlIdpdt.pdtDim }}</h5></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
+
 {% endblock %}

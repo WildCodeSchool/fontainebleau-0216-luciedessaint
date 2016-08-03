@@ -22,4 +22,14 @@ class LangRepository extends EntityRepository
             ->getResult();
     }
 
+    public function getLangActives()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM EcommerceBundle:Lang p
+                            WHERE (p.lngEtat = :Etat OR p.lngCode = :CodeLng)')
+            ->setParameter('Etat', true)
+            ->setParameter('CodeLng', "fr")
+            ->getResult();
+    }
+
 }

@@ -21,4 +21,4 @@ abontnews_edit:
 abontnews_delete:
     path:     /{id}/delete
     defaults: { _controller: "EcommerceBundle:Abontnews:delete" }
-    methods:  DELETE
+    methods:  [GET, DELETE]

@@ -41,6 +41,8 @@ class AbontnewsController extends Controller
         $form->remove('anlEtat');
         $form->handleRequest($request);
 
+        $abontnews->setAnlLocale("fr");
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
@@ -51,7 +53,7 @@ class AbontnewsController extends Controller
 //            if ($mail){
 //                $request->getSession()
 //                    ->getFlashbag()
-//                    ->add('fail', 'trou du cul')
+//                    ->add('fail', 'blaireau')
 //                ;
 //                return $this->render('EcommerceBundle:abontnews:index.html.twig', array(
 //                    'abontnews' => $newsletter,
@@ -78,7 +80,14 @@ class AbontnewsController extends Controller
             $em->persist($abontnews);
             $em->flush();
 
-            return $this->redirectToRoute('abontnews_show', array('id' => $abontnews->getId()));
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Création effectuée'
+            );
+
+            //return $this->redirectToRoute('abontnews_show', array('id' => $abontnews->getId()));
+            return $this->redirectToRoute('abontnews_index');
+
         }
 
         return $this->render('EcommerceBundle:abontnews:new.html.twig', array(
@@ -132,7 +141,14 @@ class AbontnewsController extends Controller
             $em->persist($abontnews);
             $em->flush();
 
-            return $this->redirectToRoute('abontnews_edit', array('id' => $abontnews->getId()));
+            $this->get('session')->getFlashBag()->add(
+                'mesModifs',
+                'Modification effectuée'
+            );
+
+            //return $this->redirectToRoute('abontnews_edit', array('id' => $abontnews->getId()));
+            return $this->redirectToRoute('abontnews_index');
+
         }
 
         return $this->render('EcommerceBundle:abontnews:edit.html.twig', array(
@@ -146,16 +162,18 @@ class AbontnewsController extends Controller
      * Deletes a Abontnews entity.
      *
      */
-    public function deleteAction(Request $request, Abontnews $abontnews)
+    public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($abontnews);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $abontnews = $em->getRepository('EcommerceBundle:Abontnews')->find($id);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($abontnews);
-            $em->flush();
-        }
+        $em->remove($abontnews);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'mesModifs',
+            'Suppression effectuée'
+        );
 
         return $this->redirectToRoute('abontnews_index');
     }

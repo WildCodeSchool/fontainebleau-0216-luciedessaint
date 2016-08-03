@@ -15,6 +15,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Etat</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            {{ form_errors(form.lngEtat) }}
+                            {{ form_widget(form.lngEtat) }}
+                        </div>
+                    </div>
+                </div>
 {#
                 <div class="row">
                     <div class="col-md-3">

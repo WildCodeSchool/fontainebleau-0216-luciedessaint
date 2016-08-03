@@ -27,14 +27,18 @@ class Langues
         if ($session->getID() == null) {
             $session = new Session();
             $session->set('codeLang', 'fr');
+            $session->set('triTableaux', 'cat');
+            $session->set('triBijoux', 'cat');
         }
 
-        //var_dump($session->get('codeLang'));
-        $CodeLangActif = $session->get('codeLang');
+        if ($session->get('triTableaux') == null)
+            $session->set('triTableaux', 'cat');
 
-        if ($CodeLangActif == null) {
+        if ($session->get('triBijoux') == null)
+            $session->set('triBijoux', 'cat');
+
+        if ($session->get('codeLang') == null) 
             $session->set('codeLang', 'fr');
-        }
 
         $CodeLangActif = $session->get('codeLang');
         $drapeauActif = "Flag_fr.png";
@@ -46,7 +50,8 @@ class Langues
         //
         // Récupération de la liste des langues gérées sur le site
         //
-        $langs = $this->em->getRepository('EcommerceBundle:Lang')->findAll();
+//        $langs = $this->em->getRepository('EcommerceBundle:Lang')->findAll();
+        $langs = $this->em->getRepository('EcommerceBundle:Lang')->getLangActives();
 
         //var_dump($langs);
 

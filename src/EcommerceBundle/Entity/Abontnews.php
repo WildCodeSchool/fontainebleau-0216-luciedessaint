@@ -34,6 +34,11 @@ class Abontnews
      */
     private $anlDteDesact;
 
+    /**
+     * @var string
+     */
+    private $anlLocale;
+
 
     /**
      * Get id
@@ -135,5 +140,28 @@ class Abontnews
     public function getAnlDteDesact()
     {
         return $this->anlDteDesact;
+    }
+
+    /**
+     * Set anlLocale
+     *
+     * @param string $anlLocale
+     * @return Abontnews
+     */
+    public function setAnlLocale($anlLocale)
+    {
+        $this->anlLocale = $anlLocale;
+
+        return $this;
+    }
+
+    /**
+     * Get anlLocale
+     *
+     * @return string 
+     */
+    public function getAnlLocale()
+    {
+        return $this->anlLocale;
     }
 }

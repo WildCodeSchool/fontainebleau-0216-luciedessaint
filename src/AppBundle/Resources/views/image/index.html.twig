@@ -1,0 +1,112 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+    <div id="header" class="jumbotron text-center">
+        <h1>Liste des Images</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('images_new') }}">
+            <i class="glyphicon glyphicon-plus"></i>
+            Ajouter une image
+        </a>
+    </div>
+
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            {#<th>Id</th>#}
+                            <th>Catégorie</th>
+                            <th>Image</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for image in images %}
+                            <tr>
+                                {#<td><a href="{{ path('images_show', { 'id': image.id }) }}">{{ image.id }}</a></td>#}
+                                <td>{{ image.imgCat }}</td>
+                                {#<td>{{ image.imgTitre }} </td>#}
+                                <td><img class="image_lang" src="{{ asset('uploads/aleatoire/')}}{{ image.imgTitre }}"></td>
+                                <td>
+                                    <ul class="nopuce">
+                                        <li>
+                                            <a class="btn btn-primary" id="place-btn" href="{{ path('images_show', { 'id': image.id }) }}">
+                                                <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                            <a class="btn btn-primary" id="place-btn" href="{{ path('images_edit', { 'id': image.id }) }}">
+                                                <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                            <a class="btn btn-primary" id="place-btn" href="{{ path('images_delete', { 'id': image.id }) }}" onclick="return confirm('Confirmez-vous ?')">
+                                                <i class="glyphicon glyphicon-trash"></i> Supprimer</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{#
+    <table>
+        <thead>
+            <tr>
+                #}
+{#<th>Id</th>#}{#
+
+                <th>Image</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            <tr>
+                #}
+{#<td><a href="{{ path('images_show', { 'id': image.id }) }}">{{ image.id }}</a></td>#}{#
+
+                <td>{{ image.imgTitre }}</td>
+                <td>{{ image.imgCat }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('images_show', { 'id': image.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('images_edit', { 'id': image.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+#}
+
+{#
+    <ul>
+        <li>
+            <a href="{{ path('images_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+#}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $('[data-toggle="confirmation-popout"]').confirmation(options)
+    </script>
+
+{% endblock %}

@@ -24,7 +24,7 @@
                     <thead>
                     <tr>
                         {#<th>Id</th>#}
-                        <th>Actif/inactif</th>
+                        <th>Etat</th>
                         <th>Libellé</th>
                         <th>Taux de TVA</th>
                         {#<th>Désactivation</th>#}
@@ -35,7 +35,7 @@
                     {% for tva in tvas %}
                         <tr>
                             {#<td><a href="{{ path('tva_show', { 'id': tva.id }) }}">{{ tva.id }}</a></td>#}
-                            <td>{% if tva.tvaEtat %}Oui{% else %}Non{% endif %}</td>
+                            <td>{% if tva.tvaEtat %}Actif{% else %}Inactif{% endif %}</td>
                             <td>{{ tva.tvaLib }}</td>
                             <td>{{ tva.tvaTaux|number_format(2, ',', ' ') }} %</td>
                             {#<td>{% if tva.tvaDteDesact %}{{ tva.tvaDteDesact|date('Y-m-d H:i:s') }}{% endif %}</td>#}

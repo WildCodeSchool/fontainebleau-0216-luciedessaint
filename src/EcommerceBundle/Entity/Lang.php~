@@ -201,4 +201,32 @@ class Lang
         return $this->lngFlag;
     }
 
+    /**
+     * @var boolean
+     */
+    private $lngEtat;
+
+
+    /**
+     * Set lngEtat
+     *
+     * @param boolean $lngEtat
+     * @return Lang
+     */
+    public function setLngEtat($lngEtat)
+    {
+        $this->lngEtat = $lngEtat;
+
+        return $this;
+    }
+
+    /**
+     * Get lngEtat
+     *
+     * @return boolean 
+     */
+    public function getLngEtat()
+    {
+        return $this->lngEtat;
+    }
 }

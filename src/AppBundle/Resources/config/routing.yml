@@ -1,3 +1,7 @@
+app_admin_images:
+    resource: "@AppBundle/Resources/config/routing/image.yml"
+    prefix:   /admin/images
+
 app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Homepage:index }

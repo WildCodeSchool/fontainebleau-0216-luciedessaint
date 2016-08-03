@@ -9,6 +9,9 @@ EcommerceBundle\Entity\Lang:
             generator:
                 strategy: AUTO
     fields:
+        lngEtat:
+            type: boolean
+            column: lng_etat
         lngCode:
             type: string
             length: '2'

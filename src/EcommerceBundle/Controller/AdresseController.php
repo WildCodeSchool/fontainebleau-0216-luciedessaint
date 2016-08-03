@@ -131,7 +131,7 @@ class AdresseController extends Controller
         $editForm = $this->createForm('EcommerceBundle\Form\AdresseModeleType', $adresse);
         $editForm->handleRequest($request);
 
-        var_dump($adresse);
+        //var_dump($adresse);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
