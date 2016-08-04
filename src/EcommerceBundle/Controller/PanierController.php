@@ -17,14 +17,11 @@ class PanierController extends Controller
         $session->get('adresseArray1');
         $session->get('adresseArray2');
 
-        $total=0;
-
         $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
         return $this->render('EcommerceBundle:Default:panier.html.twig', array(
             'langues' => $langues,
             'paniers' => $panieruser,
-            'total' => $total,
         ));
     }
     
@@ -54,10 +51,10 @@ class PanierController extends Controller
 
                 //Recuperation de l'ID de la SESSION
                 $user = $session->getId();
-                //var_dump($panierUser); die;
+                //var_dump($panieruser); die;
 
-                $panierUser[$id] = ['id' => $id, 'photo' => $produits->getPdtPhoto(), 'nom' => $produits->getPdtNom(), 'ref' => $produits->getPdtRef(), 'prixttc' => $produits->getPdtPrixUnitTtc(), 'prixht' => $produits->getPdtPrixUnitHt()];
-                $session->set('cartArray', $panierUser);
+                $panieruser[$id] = ['id' => $id, 'photo' => $produits->getPdtPhoto(), 'nom' => $produits->getPdtNom(), 'ref' => $produits->getPdtRef(), 'prixttc' => $produits->getPdtPrixUnitTtc(), 'prixht' => $produits->getPdtPrixUnitHt()];
+                $session->set('cartArray', $panieruser);
             }
             else{
 
@@ -73,21 +70,21 @@ class PanierController extends Controller
                 //ajout du nouveau produit dans CartArray de la session en cours
                 $session->set('cartArray', $panieruser);
             }
-            $totalttc=0;
-            $totalht=0;
-            $nbprod=0;
-            $infos=[];
-
-            if ($panieruser != null) {
-                foreach ($panieruser as $idx => $article) {
-                    $infos = [ $totalttc += $article["prixttc"],
-                    $totalht += $article["prixht"],
-                    $nbprod+=1 ];
-                }
-            }
-            $session->set('cartInfos', $infos);
 
         }
+        $totalttc=0;
+        $totalht=0;
+        $nbprod=0;
+        $infos=[];
+
+        foreach ($panieruser as $idx => $article) {
+            $infos = [ $totalttc += $article["prixttc"],
+                $totalht += $article["prixht"],
+                $nbprod+=1 ];
+        }
+
+        $session->set('cartInfos', $infos);
+
         return $this->render('EcommerceBundle:Default:panier.html.twig', array(
             'langues' => $langues,
             'paniers' => $session->get('cartArray')
