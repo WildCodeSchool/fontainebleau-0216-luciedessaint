@@ -64,19 +64,19 @@ class CommandeController extends Controller
         $panieruser = $session->get('cartArray');
         $infos = $session->get('cartInfos');
 
-        $codebanque=1;
+        $codebanque=2;
 
         $commande = new Commande();
 
-        if ($codebanque == 1) {
+        if ($codebanque == 2) {
             $em = $this->getDoctrine()->getManager();
 
             $count = count($commandes = $em->getRepository('EcommerceBundle:Commande')->findAll());
             $count+=1;
             $time=new \DateTime();
 
-            $commande->setComCode('C'.$count.$time->format('YmdHis').$count);
-            $commande->setComEtat(1); // set
+            $commande->setComCode('C'.$count.$time->format('YmdHis'));
+            $commande->setComEtat(2); // set
             $commande->setComCdebank($codebanque);
             $commande->setComVenteDte($time); // set
             $commande->setComExpedDte(null); // set
@@ -86,7 +86,7 @@ class CommandeController extends Controller
             $commande->setComAnnulDte(null);
 //            $commande->getComAnnulWho();
 //            $commande->getComAnnulLib();
-            $commande->setComFact('F'.$count.$time->format('YmdHis').$count); //generer
+            $commande->setComFact('F'.$count.$time->format('YmdHis')); //generer
             $commande->setComFactDte($time);
             $commande->setComFactWho('Auto');
             $commande->setComNbArts($infos[2]);

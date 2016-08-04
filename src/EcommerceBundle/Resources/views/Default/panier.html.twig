@@ -40,7 +40,10 @@
                 </table>
             </div>
             <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 text-center">
-                <a class="btn btn-success" href="{{ path('ecommerce_adresse_new') }}">Confirmer votre panier</a>
+                {% if paniers %}
+                    <a class="btn btn-success" href="{{ path('ecommerce_adresse_new') }}">Confirmer votre panier</a>
+                {% else %}
+                {% endif %}
             </div>
         </div>
         <div class="col-md-offset-2 col-md-8">
