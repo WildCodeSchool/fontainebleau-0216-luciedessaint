@@ -221,7 +221,7 @@
                     <div class="row col-md-12 txt_bij_cat">
                         <div class="row col-md-12">
                             {% if catproduit.catPhoto %}
-                                <img class="center-block img-responsive img_tab_cat txt_tab_cat" src='{{ asset('uploads/categ/') }}{{ catproduit.catPhoto }}'/>
+                                <img class="center-block img-responsive img_tab_cat txt_tab_cat" src="{{ asset('uploads/categ/') }}{{ catproduit.catPhoto }}">
                             {% endif %}
                         </div>
                         <div class="row col-md-12">
@@ -246,7 +246,7 @@
                                         </a>
 #}
                                         <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}" href="#">
-                                            <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
+                                            <img class="center-block img-responsive imgtableau" src="{{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}">
                                         </a>
                                     </div>
                                     <div class="row">
