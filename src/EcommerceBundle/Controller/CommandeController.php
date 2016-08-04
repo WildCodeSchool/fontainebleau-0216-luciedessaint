@@ -176,32 +176,19 @@ class CommandeController extends Controller
             'adresses' => $adresses,
             'commande' => $commande
         ));*/
-        $this->get('knp_snappy.pdf')->generateFromHtml(
-            $this->renderView(
-                'EcommerceBundle:facture:facture.html.twig',
-                array(
-                    'produits' => $produits,
-                    'adresses' => $adresses,
-                    'commande' => $commande
-                )
-            ),
-            '/web/uploads/pdf'
-        );
         $html = $this->renderView('EcommerceBundle:facture:facture.html.twig', array(
             'produits' => $produits,
             'adresses' => $adresses,
             'commande' => $commande
         ));
 
-        $filename = sprintf('test-%s.pdf', date('Y-m-d'));
-
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             200,
-            [
-                'Content-Type'        => 'application/pdf',
-                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
-            ]
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="file.pdf"'
+            )
         );
     }
     
