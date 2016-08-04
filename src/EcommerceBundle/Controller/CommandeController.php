@@ -4,6 +4,7 @@ namespace EcommerceBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 use EcommerceBundle\Entity\Commande;
 use EcommerceBundle\Form\CommandeType;
@@ -170,11 +171,38 @@ class CommandeController extends Controller
         $commande = $em->getRepository('EcommerceBundle:Commande')->findOneBy(array('id' => $id_commande));
         $adresses = $em->getRepository('EcommerceBundle:AdresseModele')->findBy(array('adrIdcom' => $id_commande));
 
-        return $this->render('@Ecommerce/facture/facture.html.twig', array(
+        /*return $this->render('@Ecommerce/facture/facture.html.twig', array(
+            'produits' => $produits,
+            'adresses' => $adresses,
+            'commande' => $commande
+        ));*/
+        $this->get('knp_snappy.pdf')->generateFromHtml(
+            $this->renderView(
+                'EcommerceBundle:facture:facture.html.twig',
+                array(
+                    'produits' => $produits,
+                    'adresses' => $adresses,
+                    'commande' => $commande
+                )
+            ),
+            '/web/uploads/pdf'
+        );
+        $html = $this->renderView('EcommerceBundle:facture:facture.html.twig', array(
             'produits' => $produits,
             'adresses' => $adresses,
             'commande' => $commande
         ));
+
+        $filename = sprintf('test-%s.pdf', date('Y-m-d'));
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            200,
+            [
+                'Content-Type'        => 'application/pdf',
+                'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
+            ]
+        );
     }
     
     /**
