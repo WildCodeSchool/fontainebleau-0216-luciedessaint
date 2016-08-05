@@ -1,3 +1,8 @@
+download_nwl:
+    path:     /{id}/download
+    defaults: { _controller: EcommerceBundle:Newsletter:download }
+    methods:  GET
+
 ecommerce_lang:
     resource: "@EcommerceBundle/Resources/config/routing/lang.yml"
     prefix:   /admin/lng
@@ -9,6 +14,10 @@ ecommerce_tva:
 ecommerce_abontnews:
     resource: "@EcommerceBundle/Resources/config/routing/abontnews.yml"
     prefix:   /admin/abontnews
+
+ecommerce_newsletter:
+    resource: "@EcommerceBundle/Resources/config/routing/newsletter.yml"
+    prefix:   /admin/newsletter
 
 ecommerce_param:
     resource: "@EcommerceBundle/Resources/config/routing/param.yml"

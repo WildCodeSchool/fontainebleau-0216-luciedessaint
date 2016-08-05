@@ -1,0 +1,96 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+    <div id="header" class="jumbotron text-center">
+        <h1>{{ newsletter.nwlLib }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('newsletter_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+    {{ form_start(edit_form) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Libellé</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.nwlLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libellé newsletter' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Pour langue</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_widget(edit_form.nwlLocale) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Objet du mail</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.nwlMailObjet, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Objet du mail' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Texte du mail</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_widget(edit_form.nwlMailTexte, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Texte du mail' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Date d'envoi prévue</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            {{ form_widget(edit_form.nwlDatePrev) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Fichier PDF</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+
+            </div>
+        </div>
+    </div>
+
+{#
+    <ul>
+        <li>
+            <a href="{{ path('newsletter_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+#}
+
+{% endblock %}

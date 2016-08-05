@@ -1,0 +1,77 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+    <div id="header" class="jumbotron text-center">
+        <h1>Liste des newsletters</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('newsletter_new') }}">
+            <i class="glyphicon glyphicon-plus"></i>
+            Créer une nouvelle newsletter
+        </a>
+    </div>
+
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        {#<th>Id</th>#}
+                        <th>Libellé</th>
+                        <th>Langue</th>
+                        <th>Objet mail</th>
+                        {#<th>Mail / Texte</th>#}
+                        <th>Pièce jointe (O/N)</th>
+                        <th>Date envoi prévue</th>
+                        <th>Envoyée (O/N)</th>
+                        <th>Envoyée le</th>
+                        <th>Destinataires (O/N)</th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for newsletter in newsletters %}
+                        <tr>
+                            {#<td><a href="{{ path('newsletter_show', { 'id': newsletter.id }) }}">{{ newsletter.id }}</a></td>#}
+                            <td>{{ newsletter.nwlLib }}</td>
+                            <td>{{ newsletter.nwlLocale }}</td>
+                            <td>{{ newsletter.nwlMailObjet }}</td>
+                            {#<td>{{ newsletter.nwlMailTexte }}</td>#}
+                            {#<td>{{ newsletter.nwlMailPj }}</td>#}
+                            <td>{% if newsletter.nwlMailPj %}
+                                    <img class="center-block img-responsive icode_pdf" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                {% endif %}</td>
+                            <td>{% if newsletter.nwlDatePrev %}{{ newsletter.nwlDatePrev|date('d-m-Y') }}{% endif %}</td>
+                            <td>{% if newsletter.nwlEnvoyee %}Oui{% else %}Non{% endif %}</td>
+                            <td>{% if newsletter.nwlEnvDate %}{{ newsletter.nwlEnvDate|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            {#<td>{{ newsletter.nwlMailDests }}</td>#}
+                            <td>{% if newsletter.nwlMailDests %}Oui{% else %}Non{% endif %}</td>
+                            <td>
+                                <ul class="nopuce">
+                                    <li>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('newsletter_show', { 'id': newsletter.id }) }}">
+                                            <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('newsletter_edit', { 'id': newsletter.id }) }}">
+                                            <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                        <a class="btn btn-primary" id="place-btn" href="{{ path('newsletter_delete', { 'id': newsletter.id }) }}" onclick="return confirm('Confirmez-vous ?')">
+                                            <i class="glyphicon glyphicon-trash"></i> Supprimer</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

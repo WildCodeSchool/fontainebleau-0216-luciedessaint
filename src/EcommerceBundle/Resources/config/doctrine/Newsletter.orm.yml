@@ -1,0 +1,53 @@
+EcommerceBundle\Entity\Newsletter:
+    type: entity
+    table: null
+    repositoryClass: EcommerceBundle\Repository\NewsletterRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nwlLib:
+            type: string
+            length: '100'
+            column: nwl_lib
+        nwlLocale:
+            type: string
+            length: '2'
+            column: nwl_locale
+        nwlMailObjet:
+            type: string
+            length: '100'
+            column: nwl_mail_objet
+        nwlMailTexte:
+            type: text
+            column: nwl_mail_texte
+        nwlMailPj:
+            type: string
+            length: '100'
+            nullable: true
+            column: nwl_mail_pj
+        nwlDatePrev:
+            type: date
+            nullable: true
+            column: nwl_date_prev
+        nwlEnvoyee:
+            type: boolean
+            nullable: true
+            column: nwl_envoyee
+        nwlEnvDate:
+            type: datetime
+            nullable: true
+            column: nwl_env_date
+        nwlMailDests:
+            type: text
+            nullable: true
+            column: nwl_mail_dests
+    lifecycleCallbacks:
+        prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
+        preUpdate: [ preUpload, setUpdatedAtValue ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]
