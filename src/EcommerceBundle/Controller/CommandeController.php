@@ -65,11 +65,11 @@ class CommandeController extends Controller
         $panieruser = $session->get('cartArray');
         $infos = $session->get('cartInfos');
 
-        $codebanque=2;
+        $codebanque=1;
 
         $commande = new Commande();
 
-        if ($codebanque == 2) {
+        if ($codebanque == 1) {
             $em = $this->getDoctrine()->getManager();
 
             $count = count($commandes = $em->getRepository('EcommerceBundle:Commande')->findAll());
@@ -181,12 +181,30 @@ class CommandeController extends Controller
             'uploads/pdf/' . $commande->getComFact() . '.pdf'
         );
 
+        $mailcommande = $adresses[0]->getAdrEmail();
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Kiffa facture')
+            ->setFrom($this->container->getParameter('mailer_user'))
+            ->setTo('q.dutrevis@gmail.com')
+            ->setBcc('q.dutrevis@gmail.com')
+            ->setBody(
+                $this->renderView('@Ecommerce/facture/confirmation.html.twig', array(
+                        'produits' => $produits,
+                        'adresses' => $adresses,
+                        'commande' => $commande
+
+                )),
+                'text/html'
+            );
+        $this->get('mailer')->send($message);
+
 
 
         return $this->render('@Ecommerce/facture/confirmation.html.twig', array(
             'produits' => $produits,
             'adresses' => $adresses,
             'commande' => $commande
+
         ));
     }
     
