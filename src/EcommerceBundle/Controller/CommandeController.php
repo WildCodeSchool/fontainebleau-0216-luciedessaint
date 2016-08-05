@@ -4,6 +4,7 @@ namespace EcommerceBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 use EcommerceBundle\Entity\Commande;
 use EcommerceBundle\Form\CommandeType;
@@ -163,14 +164,26 @@ class CommandeController extends Controller
         ));
     }
 
-    public function showFactureAction(Commande $id_commande)
+    public function generateFactureAction(Commande $id_commande)
     {
         $em = $this->getDoctrine()->getManager();
         $produits = $em->getRepository('EcommerceBundle:Compdt')->findBy(array('cxpIdcom' => $id_commande));
         $commande = $em->getRepository('EcommerceBundle:Commande')->findOneBy(array('id' => $id_commande));
         $adresses = $em->getRepository('EcommerceBundle:AdresseModele')->findBy(array('adrIdcom' => $id_commande));
 
-        return $this->render('@Ecommerce/facture/facture.html.twig', array(
+        $this->get('knp_snappy.pdf')->generateFromHtml(
+            $this->renderView('EcommerceBundle:facture:facture.html.twig', array(
+                    'produits' => $produits,
+                    'adresses' => $adresses,
+                    'commande' => $commande
+                )),
+
+            'uploads/pdf/' . $commande->getComFact() . '.pdf'
+        );
+
+
+
+        return $this->render('@Ecommerce/facture/confirmation.html.twig', array(
             'produits' => $produits,
             'adresses' => $adresses,
             'commande' => $commande

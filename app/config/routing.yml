@@ -10,4 +10,3 @@ changt_langue:
     path:     /{id}/changtlangue
     defaults: { _controller: AppBundle:Homepage:changtLangue }
     methods:  GET
-
