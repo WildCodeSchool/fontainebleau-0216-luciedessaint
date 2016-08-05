@@ -1,0 +1,104 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+    <div id="header" class="jumbotron text-center">
+        <h1>Création Newsletter</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('newsletter_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+    {{ form_start(form) }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Libellé</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(form.nwlLib) }}
+                            {{ form_widget(form.nwlLib, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Libellé' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Langue</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            {{ form_errors(form.nwlLocale) }}
+                            {{ form_widget(form.nwlLocale) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Objet du mail</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(form.nwlMailObjet) }}
+                            {{ form_widget(form.nwlMailObjet, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Objet du mail' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Texte du mail</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(form.nwlMailTexte) }}
+                            {{ form_widget(form.nwlMailTexte, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Texte du mail' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Date d'envoi prévue</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            {{ form_errors(form.nwlDatePrev) }}
+                            {{ form_widget(form.nwlDatePrev) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Fichier PDF</p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+                <input class="btn btn-success" type="submit" value="Enregistrer" />
+
+            </div>
+        </div>
+    </div>
+
+{#
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('newsletter_index') }}">Back to the list</a>
+        </li>
+    </ul>
+#}
+
+{% endblock %}

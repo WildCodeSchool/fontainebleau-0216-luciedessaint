@@ -7,3 +7,8 @@ services:
     recup.langues:
         class: EcommerceBundle\Langues\Langues
         arguments: [@doctrine.orm.entity_manager]
+
+    download.pdf:
+        class: EcommerceBundle\Downloads\Pdf
+
+#        arguments: [@doctrine.orm.entity_manager]

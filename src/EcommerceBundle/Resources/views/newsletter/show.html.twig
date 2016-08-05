@@ -1,0 +1,148 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+    <div id="header" class="jumbotron text-center">
+        <h1>{{ newsletter.nwlLib }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('newsletter_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Libellé</th>
+                            <td>{{ newsletter.nwlLib }}</td>
+                        </tr>
+                        <tr>
+                            <th>Code langue</th>
+                            <td>{{ newsletter.nwlLocale }}</td>
+                        </tr>
+                        <tr>
+                            <th>Objet mail</th>
+                            <td>{{ newsletter.nwlMailObjet }}</td>
+                        </tr>
+                        <tr>
+                            <th>Texte du mail</th>
+                            <td>{{ newsletter.nwlMailTexte }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date envoi prévue</th>
+                            <td>{% if newsletter.nwlDatePrev %}{{ newsletter.nwlDatePrev|date('d-m-Y') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Newsletter envoyée (O/N)</th>
+                            <td>{% if newsletter.nwlEnvoyee %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Envoyée le</th>
+                            <td>{% if newsletter.nwlEnvDate %}{{ newsletter.nwlEnvDate|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Destinataires</th>
+                            <td>{{ newsletter.nwlMailDests }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pièce jointe (pdf)</th>
+                            <td>
+                                {#<a href="{{ path('uploads/newsletter/', { 'id': newsletter.nwlMailPj }) }}">#}
+                                {#<a href="http://www.economie.gouv.fr/files/files/directions_services/dgccrf/documentation/fiches_pratiques/fiches/conditions-generales-vente.pdf" target="_blank"><strong>Conditions générales de vente</strong> - application/pdf - 262.81 Ko - 05/10/2015</a>#}
+                                {#<a href="{{ path('uploads/newsletter/') }}{{ newsletter.nwlMailPj }}" title="Newsletter">#}
+                                {#<a href="{{ asset('uploads/newsletter/') }}{{ newsletter.nwlMailPj }}" title="Newsletter">#}
+                                {#<a href="{{ asset(file.webPath) }}" download="{{ file.downloadFileName }}">#}
+{#
+                                <a href="{{ asset('uploads/newsletter/') }}" download="{{ newsletter.nwlMailPj }}">
+                                    <img class="center-block img-responsive icode_pdf_show" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                </a>
+#}
+{#
+                                <a class='north' href="{{ asset('bundles/TP/Resume.pdf') }}" target="_blank" title="Download.pdf">
+                                    <img src="{{ asset('bundles/TP/images/icn-save.jpg') }}" alt="Download the pdf version" />
+                                </a>
+#}
+{#
+                                <a class='north' href="{{ asset('uploads/newsletter/') }}{{ newsletter.nwlMailPj }}" target="_blank" title="Download.pdf">
+                                    <img class="center-block img-responsive icode_pdf_show" src="{{ asset('uploads/param/') }}{{ iconePDF }}" alt="Télécharger la version PDF" />
+                                </a>
+#}
+{#
+                                <a href="{{ asset('uploads/newsletter/') }}" download="{{ newsletter.nwlMailPj }}">
+                                    <img class="center-block img-responsive icode_pdf_show" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                </a>
+#}
+                                {#<a href="{{ path('changt_langue', { 'id': lang.lngCode }) }}"><img class="" width="30" height="20" src="{{ asset('uploads/drapeaux/') }}{{ lang.lngFlag }}"/>&nbsp;{{ lang.lngLib }}</a>#}
+                                <a href="{{ path('download_nwl', { 'id': downloadfile }) }}">
+                                    <img class="center-block img-responsive icode_pdf_show" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('newsletter_edit', { 'id': newsletter.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+            </div>
+        </div>
+    </div>
+{#
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nwllib</th>
+                <td>{{ newsletter.nwlLib }}</td>
+            </tr>
+            <tr>
+                <th>Nwllocale</th>
+                <td>{{ newsletter.nwlLocale }}</td>
+            </tr>
+            <tr>
+                <th>Nwlmailobjet</th>
+                <td>{{ newsletter.nwlMailObjet }}</td>
+            </tr>
+            <tr>
+                <th>Nwlmailtexte</th>
+                <td>{{ newsletter.nwlMailTexte }}</td>
+            </tr>
+            <tr>
+                <th>Nwlmailpj</th>
+                <td>{{ newsletter.nwlMailPj }}</td>
+            </tr>
+            <tr>
+                <th>Nwldateenvoi</th>
+                <td>{% if newsletter.nwlDatePrev %}{{ newsletter.nwlDatePrev|date('d-m-Y') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nwlenvoyee</th>
+                <td>{% if newsletter.nwlEnvoyee %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nwlenvdate</th>
+                <td>{% if newsletter.nwlEnvDate %}{{ newsletter.nwlEnvDate|date('d-m-Y H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nwlmaildests</th>
+                <td>{{ newsletter.nwlMailDests }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('newsletter_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('newsletter_edit', { 'id': newsletter.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+#}
+{% endblock %}

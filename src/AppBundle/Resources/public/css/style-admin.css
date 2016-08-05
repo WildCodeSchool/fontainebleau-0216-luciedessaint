@@ -9,6 +9,12 @@ img.image_show_produit,
 .image_param {
     width: 600px;
 }
+.icode_pdf {
+    width: 30px;
+}
+.icode_pdf_show {
+    width: 60px;
+}
 
 ul {
     margin: 0;

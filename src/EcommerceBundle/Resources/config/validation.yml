@@ -28,6 +28,14 @@ EcommerceBundle\Entity\Lang:
 #                message:  Choose a valid gender.
 #
 
+EcommerceBundle\Entity\Newsletter:
+    properties:
+        maPJ:
+            - File:
+                maxSize: 2048k
+                mimeTypes: [application/pdf, application/x-pdf]
+                mimeTypesMessage: "Merci de proposer un fichier PDF"
+
 EcommerceBundle\Entity\Categorie:
     properties:
         phCateg:
