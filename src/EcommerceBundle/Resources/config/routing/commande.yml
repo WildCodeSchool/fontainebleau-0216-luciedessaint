@@ -25,5 +25,5 @@ commande_delete:
 
 facture_show:
     path:     /{id}/showfacture
-    defaults: { _controller: "EcommerceBundle:Commande:showFacture" }
+    defaults: { _controller: "EcommerceBundle:Commande:generateFacture" }
     methods:  GET
