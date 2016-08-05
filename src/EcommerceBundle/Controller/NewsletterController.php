@@ -108,16 +108,7 @@ class NewsletterController extends Controller
 
         //$this->generateUrl('blog_show', array('slug' => 'my-blog-post'), UrlGeneratorInterface::ABSOLUTE_URL);
 
-        // /var/www/html/symfony/Ecommerce/app/../../../web/uploads/newsletters/PJ_57a43b1c60b38.pdf
-        // /var/www/html/symfony/Ecommerce/src/EcommerceBundle/Controller/../../../web/uploads/newsletters/PJ_57a43b1c60b38.pdf
-        //$path =  __DIR__.'/../../../web/uploads/newsletters/';
         //$path = $this->get('kernel')->getRootDir(). "/../../../web/uploads/newsletters/";
-        //$path =  '/../../../web/uploads/newsletters/';
-        //$filename = $newsletter->getNwlMailPj();
-        //$downloadfile = $path.$filename;
-
-        //$path = $this->get('kernel')->getRootDir(). "/../../../web/uploads/newsletters/";
-        //$content = file_get_contents($path.$id);
 
         //$content = file_get_contents("/var/www/html/symfony/Ecommerce/web/uploads/newsletters/PJ_57a43b1c60b38.pdf");
 

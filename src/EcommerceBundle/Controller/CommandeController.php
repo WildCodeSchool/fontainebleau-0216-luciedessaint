@@ -68,7 +68,7 @@ class CommandeController extends Controller
         $codebanque=1;
 
         $commande = new Commande();
-
+        $codebanque = 1;
         if ($codebanque == 1) {
             $em = $this->getDoctrine()->getManager();
 
@@ -78,7 +78,8 @@ class CommandeController extends Controller
 
             $commande->setComCode('C'.$count.$time->format('YmdHis'));
             $commande->setComEtat(2); // set
-            $commande->setComCdebank($codebanque);
+            //$commande->setComCdebank(1);
+            $commande->setComCdebank('B'.$count.$time->format('YmdHis'));
             $commande->setComVenteDte($time); // set
             $commande->setComExpedDte(null); // set
             $commande->setComMajDte(null); // set
@@ -164,9 +165,15 @@ class CommandeController extends Controller
         ));
     }
 
-    public function generateFactureAction(Commande $id_commande)
+    public function generateFactureAction(Request $request, Commande $id_commande)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $session = $request->getSession();
+        $panier = $session->get('cartArray');
+
+        $langues = $this->container->get('recup.langues')->RecupLangues($session);
+
         $produits = $em->getRepository('EcommerceBundle:Compdt')->findBy(array('cxpIdcom' => $id_commande));
         $commande = $em->getRepository('EcommerceBundle:Commande')->findOneBy(array('id' => $id_commande));
         $adresses = $em->getRepository('EcommerceBundle:AdresseModele')->findBy(array('adrIdcom' => $id_commande));
@@ -175,7 +182,9 @@ class CommandeController extends Controller
             $this->renderView('EcommerceBundle:facture:facture.html.twig', array(
                     'produits' => $produits,
                     'adresses' => $adresses,
-                    'commande' => $commande
+                    'commande' => $commande,
+                    'paniers' => $panier,
+                    'langues' => $langues,
                 )),
 
             'uploads/pdf/' . $commande->getComFact() . '.pdf'
@@ -184,26 +193,36 @@ class CommandeController extends Controller
         $mailcommande = $adresses[0]->getAdrEmail();
         $message = \Swift_Message::newInstance()
             ->setSubject('Kiffa facture')
-            ->setFrom($this->container->getParameter('mailer_user'))
-            ->setTo('q.dutrevis@gmail.com')
+            ->setFrom('q.dutrevis@gmail.com')
+            ->setTo($mailcommande)
             ->setBcc('q.dutrevis@gmail.com')
             ->setBody(
                 $this->renderView('@Ecommerce/facture/confirmation.html.twig', array(
                         'produits' => $produits,
                         'adresses' => $adresses,
-                        'commande' => $commande
+                        'commande' => $commande,
+                        'langues' => $langues,
+                        'paniers' => $panier,
 
                 )),
                 'text/html'
-            );
+            )
+            //->attach(\Swift_Attachment::fromPath('uploads/pdf/'.$commande->getComFact().'.pdf'));
+        ;
+/*        $message->attach(
+            \Swift_Attachment::fromPath('/path/to/image.jpg')->setDisposition('inline')
+        );*/
+
         $this->get('mailer')->send($message);
 
 
 
         return $this->render('@Ecommerce/facture/confirmation.html.twig', array(
+            'langues' => $langues,
             'produits' => $produits,
             'adresses' => $adresses,
-            'commande' => $commande
+            'commande' => $commande,
+            'paniers' => $panier,
 
         ));
     }
