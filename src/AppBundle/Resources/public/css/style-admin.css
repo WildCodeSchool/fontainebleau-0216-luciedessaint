@@ -80,6 +80,16 @@ label {
     color: red;
     font-weight: bold;
 }
+.rowblack {
+    background-color: #5f5f5f;
+}
+.txt_com_etat {
+    background-color: grey;
+    color: white;
+}
+.textwhite {
+    color: white;
+}
 
 /*--------------------------------------*\
                 Admin boutons
@@ -124,4 +134,9 @@ li {
 }
 .navbar-default .navbar-nav > li > a:hover {
     color: #ffffff;
+}
+
+/* td, th /* Mettre une bordure sur les td ET les th */
+.tab_adresses {
+    border: 1px solid #ddd;
 }

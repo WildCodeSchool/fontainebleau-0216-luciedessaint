@@ -13,7 +13,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-offset-1 col-md-offset-1 col-lg-9 col-md-9">
+            <div class="col-lg-offset-1 col-md-offset-1 col-lg-9 col-md-9 text-left">
                     <a class="btn btn-success" href="{{ path('commande_edit', { 'id': commande.id }) }}">
                         <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
                 <table class="table table-hover">
@@ -139,84 +139,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-offset-1 col-md-11">
-                <h2>{{ commande.nbAdresses }} adresse(s) associée(s)</h2>
+            <div class="col-md-offset-1 col-md-11 text-center">
+                <h2>{{ commande.nbProduits }} produit(s) commandé(s)</h2>
             </div>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                {% if commande.adresses %}
-                    {% for adresse in commande.adresses %}
-                        <h3>Adresse de {{ adresse.adrTypeName }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a class="btn btn-success" href="{{ path('adresse_edit', { 'id': adresse.id }) }}">
-                                <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <th>Nom</th>
-                                    <td>{{ adresse.adrNom }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Prénom</th>
-                                    <td>{{ adresse.adrPrenom }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Société</th>
-                                    <td>{{ adresse.adrSoc }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td>{{ adresse.adrEmail }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Téléphone</th>
-                                    <td>{{ adresse.adrTel }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Adresse</th>
-                                    <td>{{ adresse.adrAdr }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Code postal</th>
-                                    <td>{{ adresse.adrCp }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Ville</th>
-                                    <td>{{ adresse.adrVille }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="row">
-                            <div class="col-md-offset-1 col-md-11">
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-offset-1 col-md-11">
-                                &nbsp;
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <h1>Aucune adresse trouvée</h1>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-11">
                 &nbsp;
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-offset-1 col-md-11">
-                <h2>{{ commande.nbProduits }} produit(s) commandé(s)</h2>
             </div>
         </div>
     </div>
@@ -267,6 +196,157 @@
 
             </div>
         </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+{#
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11 text-center">
+                <h2>{{ commande.nbAdresses }} adresse(s) associée(s)</h2>
+            </div>
+        </div>
+#}
+    </div>
+
+    {% if commande.adresses %}
+        {#{% if app.session.get('adresseArray1').adrTypeName == 'livraison' %}#}
+        {% if commande.nbAdresses == 1 %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-8 tab_adresses">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th></th>
+                                <th>Adresse</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ commande.adresses[0].adrNom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ commande.adresses[0].adrPrenom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Société</th>
+                                <td>{{ commande.adresses[0].adrSoc }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ commande.adresses[0].adrEmail }}</td>
+                            </tr>
+                            <tr>
+                                <th>Téléphone</th>
+                                <td>{{ commande.adresses[0].adrTel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ commande.adresses[0].adrAdr }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code postal</th>
+                                <td>{{ commande.adresses[0].adrCp }}</td>
+                                <td>{{ app.session.get('adresseArray1').adrCp }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ville</th>
+                                <td>{{ commande.adresses[0].adrVille }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-8 tab_adresses">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th> </th>
+                                <th>Adresse de {{ commande.adresses[0].adrTypeName }}</th>
+                                <th>Adresse de {{ commande.adresses[1].adrTypeName }}</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ commande.adresses[0].adrNom }}</td>
+                                <td>{{ commande.adresses[1].adrNom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ commande.adresses[0].adrPrenom }}</td>
+                                <td>{{ commande.adresses[1].adrPrenom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Société</th>
+                                <td>{{ commande.adresses[0].adrSoc }}</td>
+                                <td>{{ commande.adresses[1].adrSoc }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ commande.adresses[0].adrEmail }}</td>
+                                <td>{{ commande.adresses[1].adrEmail }}</td>
+                            </tr>
+                            <tr>
+                                <th>Téléphone</th>
+                                <td>{{ commande.adresses[0].adrTel }}</td>
+                                <td>{{ commande.adresses[1].adrTel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ commande.adresses[0].adrAdr }}</td>
+                                <td>{{ commande.adresses[1].adrAdr }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code postal</th>
+                                <td>{{ commande.adresses[0].adrCp }}</td>
+                                <td>{{ commande.adresses[1].adrCp }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ville</th>
+                                <td>{{ commande.adresses[0].adrVille }}</td>
+                                <td>{{ commande.adresses[1].adrVille }}</td>
+                            </tr>
+                            <tr>
+                                <th> </th>
+                                <th>
+                                    <a class="btn btn-success" href="{{ path('adresse_edit', { 'id': commande.adresses[0].id }) }}">
+                                        <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                </th>
+                                <th>
+                                    <a class="btn btn-success" href="{{ path('adresse_edit', { 'id': commande.adresses[1].id }) }}">
+                                        <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                </th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+        {% if commande.nbAdresses < 1 or commande.nbAdresses > 2 %}
+            <div class="row">
+                <div class="col-md-offset-1 col-md-11 text-center">
+                    <h2 class="alerte_vendu">Nombre d'adresse(s) trouvée(s) : {{ commande.nbAdresses }} !!!</h2>
+                </div>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}

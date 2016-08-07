@@ -1,3 +1,8 @@
+ecommerce_triComm:
+    path:     /{id}/triCommandes
+    defaults: { _controller: EcommerceBundle:Commande:triCommandes }
+    methods:  GET
+
 commande_index:
     path:     /
     defaults: { _controller: "EcommerceBundle:Commande:index" }

@@ -12,6 +12,23 @@
 #}
     </div>
 
+    <header>
+        <div class="container-fluid"><!-- Top Bar noir -->
+            <div class="row">
+                <div class="col-md-6 rowblack text-center textwhite"><h1>{{ commandes|length }} commande(s) passée(s)</h1></div>
+                <div class="col-md-6 text-center">
+                    <h3>Trier par &nbsp;&nbsp;
+                        {% if tri == 'date' %}
+                            <a class="btn btn-success" href="{{ path('ecommerce_triComm', { 'id': libTri2 }) }}"> {{ libTri1 }} </a>
+                        {% else %}
+                            <a class="btn btn-success" href="{{ path('ecommerce_triComm', { 'id': libTri2 }) }}"> {{ libTri1 }} </a>
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+        </div><!-- Fin top bar noir -->
+    </header>
+
     {% for flashMessage in app.session.flashbag.get('mesModifs') %}
         <div class="alert alert-success">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -19,81 +36,186 @@
         </div>
     {% endfor %}
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        {#<th>Id</th>#}
-                        <th>Commande</th>
-                        <th>Etat</th>
-                        <th>Code bank</th>
-                        <th>Date de vente</th>
-                        <th>Date d'expédition</th>
-                        <th>Comm. : Dern. maj date</th>
-                        {#<th>Comm. : Dern. maj par</th>#}
-                        {#<th>Comm. : Dern. maj libellé</th>#}
-                        <th>Annul. Comm. : Date</th>
-                        {#<th>Annul. Comm. : Par</th>#}
-                        {#<th>Annul. Comm. : Libellé</th>#}
-                        <th>Nro Facture</th>
-                        {#<th>Facture : Date</th>#}
-                        {#<th>Facture : Par</th>#}
-                        <th>Nbre d'article(s)</th>
-                        {#<th>Tva unique</th>#}
-                        {#<th>Prix total HT</th>#}
-                        <th>Prix total TTC</th>
-                        {#<th>Poids total</th>#}
-                        {#<th>Dim. totales</th>#}
-                        {#<th>Délai de livraison</th>#}
-                        {#<th>Commentaires</th>#}
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for commande in commandes %}
-                        <tr>
-                            {#<td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>#}
-                            <td>{{ commande.comCode }}</td>
-                            <td>{{ commande.etatCom }}</td>
-                            <td>{{ commande.comCdebank }}</td>
-                            <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('d-m-Y H:i:s') }}{% endif %}</td>
-                            <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('d-m-Y') }}{% endif %}</td>
-                            <td>{% if commande.comMajDte %}{{ commande.comMajDte|date('d-m-Y') }}{% endif %}</td>
-                            {#<td>{{ commande.comMajWho }}</td>#}
-                            {#<td>{{ commande.comMajLib }}</td>#}
-                            <td>{% if commande.comAnnulDte %}{{ commande.comAnnulDte|date('d-m-Y') }}{% endif %}</td>
-                            {#<td>{{ commande.comAnnulWho }}</td>#}
-                            {#<td>{{ commande.comAnnulLib }}</td>#}
-                            <td>{{ commande.comFact }}</td>
-                            {#<td>{% if commande.comFactDte %}{{ commande.comFactDte|date('d-m-Y') }}{% endif %}</td>#}
-                            {#<td>{{ commande.comFactWho }}</td>#}
-                            <td>{{ commande.comNbArts }}</td>
-                            {#<td>{% if commande.comTvaUnique %}Oui{% else %}Non{% endif %}</td>#}
-                            {#<td>{{ commande.comPrixTotHt|number_format(2, ',', ' ') }} €</td>#}
-                            <td>{{ commande.comPrixTotTtc|number_format(2, ',', ' ') }} €</td>
-                            {#<td>{{ commande.comEmbPoids }}</td>#}
-                            {#<td>{{ commande.comEmbDim }}</td>#}
-                            {#<td>{{ commande.comLivDelai }}</td>#}
-                            {#<td>{{ commande.comComments }}</td>#}
-                            <td>
-                                <ul class="nopuce">
-                                    <li>
-                                        <a class="btn btn-primary" id="place-btn" href="{{ path('commande_show', { 'id': commande.id }) }}">
-                                            <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
-                                        <a class="btn btn-primary" id="place-btn" href="{{ path('commande_edit', { 'id': commande.id }) }}">
-                                            <i class="glyphicon glyphicon-edit"></i>Modifier</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <div class="space"></div>
+
+    {% if tri == 'date' %}
+
+        <div class="container-fluid">
+            <div class="row col-md-12">
+                <div class="space"> </div>
+            </div>
+            <div class="row col-md-12">
+                <span class="text-center"><h1>&nbsp;</h1></span>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                {#<th>Id</th>#}
+                                <th>Commande</th>
+                                <th>Etat</th>
+                                {#<th>Code bank</th>#}
+                                <th>Date de vente</th>
+                                <th>Date d'expédition</th>
+                                {#<th>Comm. : Dern. maj date</th>#}
+                                {#<th>Comm. : Dern. maj par</th>#}
+                                {#<th>Comm. : Dern. maj libellé</th>#}
+                                {#<th>Annul. Comm. : Date</th>#}
+                                {#<th>Annul. Comm. : Par</th>#}
+                                {#<th>Annul. Comm. : Libellé</th>#}
+                                <th>Nro Facture</th>
+                                {#<th>Facture : Date</th>#}
+                                {#<th>Facture : Par</th>#}
+                                <th>Nbre d'article(s)</th>
+                                {#<th>Tva unique</th>#}
+                                {#<th>Prix total HT</th>#}
+                                <th>Prix total TTC</th>
+                                {#<th>Poids total</th>#}
+                                {#<th>Dim. totales</th>#}
+                                {#<th>Délai de livraison</th>#}
+                                {#<th>Commentaires</th>#}
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for commande in commandes %}
+                                <tr>
+                                    {#<td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>#}
+                                    <td>{{ commande.comCode }}</td>
+                                    <td>{{ commande.etatCom }}</td>
+                                    {#<td>{{ commande.comCdebank }}</td>#}
+                                    <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('d-m-Y H:i:s') }}{% endif %}</td>
+                                    <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('d-m-Y') }}{% endif %}</td>
+                                    {#<td>{% if commande.comMajDte %}{{ commande.comMajDte|date('d-m-Y') }}{% endif %}</td>#}
+                                    {#<td>{{ commande.comMajWho }}</td>#}
+                                    {#<td>{{ commande.comMajLib }}</td>#}
+                                    {#<td>{% if commande.comAnnulDte %}{{ commande.comAnnulDte|date('d-m-Y') }}{% endif %}</td>#}
+                                    {#<td>{{ commande.comAnnulWho }}</td>#}
+                                    {#<td>{{ commande.comAnnulLib }}</td>#}
+                                    <td>{{ commande.comFact }}</td>
+                                    {#<td>{% if commande.comFactDte %}{{ commande.comFactDte|date('d-m-Y') }}{% endif %}</td>#}
+                                    {#<td>{{ commande.comFactWho }}</td>#}
+                                    <td>{{ commande.comNbArts }}</td>
+                                    {#<td>{% if commande.comTvaUnique %}Oui{% else %}Non{% endif %}</td>#}
+                                    {#<td>{{ commande.comPrixTotHt|number_format(2, ',', ' ') }} €</td>#}
+                                    <td>{{ commande.comPrixTotTtc|number_format(2, ',', ' ') }} €</td>
+                                    {#<td>{{ commande.comEmbPoids }}</td>#}
+                                    {#<td>{{ commande.comEmbDim }}</td>#}
+                                    {#<td>{{ commande.comLivDelai }}</td>#}
+                                    {#<td>{{ commande.comComments }}</td>#}
+                                    <td>
+                                        <ul class="nopuce">
+                                            <li>
+                                                <a class="btn btn-primary" id="place-btn" href="{{ path('commande_show', { 'id': commande.id }) }}">
+                                                    <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                                <a class="btn btn-primary" id="place-btn" href="{{ path('commande_edit', { 'id': commande.id }) }}">
+                                                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+
+    {% else %}
+
+        <div class="container-fluid">
+            {% for etatComm in etatsComm %}
+                <div class="row col-md-offset-1 col-md-10">
+                    <div class="row col-md-12">
+                        <span class="text-center"><h1>&nbsp;</h1></span>
+                    </div>
+                    <div class="row col-md-offset-1 col-md-10 txt_com_etat">
+                        <div class="row col-md-12">
+                            <span class="text-center"><h2>Commande(s) à l'état&nbsp;&nbsp;&nbsp;<< {{ etatComm.Lib }} >></h2></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-offset-1 col-md-10">
+                    <span class="text-center"><h1> </h1></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    {#<th>Id</th>#}
+                                    <th>Commande</th>
+                                    {#<th>Code bank</th>#}
+                                    <th>Date de vente</th>
+                                    <th>Date d'expédition</th>
+                                    {#<th>Comm. : Dern. maj date</th>#}
+                                    {#<th>Comm. : Dern. maj par</th>#}
+                                    {#<th>Comm. : Dern. maj libellé</th>#}
+                                    {#<th>Annul. Comm. : Date</th>#}
+                                    {#<th>Annul. Comm. : Par</th>#}
+                                    {#<th>Annul. Comm. : Libellé</th>#}
+                                    <th>Nro Facture</th>
+                                    {#<th>Facture : Date</th>#}
+                                    {#<th>Facture : Par</th>#}
+                                    <th>Nbre d'article(s)</th>
+                                    {#<th>Tva unique</th>#}
+                                    {#<th>Prix total HT</th>#}
+                                    <th>Prix total TTC</th>
+                                    {#<th>Poids total</th>#}
+                                    {#<th>Dim. totales</th>#}
+                                    {#<th>Délai de livraison</th>#}
+                                    {#<th>Commentaires</th>#}
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for commande in commandes %}
+                                    {% if etatComm.comEtat == commande.comEtat %}
+                                        <tr>
+                                            {#<td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>#}
+                                            <td>{{ commande.comCode }}</td>
+                                            {#<td>{{ commande.comCdebank }}</td>#}
+                                            <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('d-m-Y H:i:s') }}{% endif %}</td>
+                                            <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('d-m-Y') }}{% endif %}</td>
+                                            {#<td>{% if commande.comMajDte %}{{ commande.comMajDte|date('d-m-Y') }}{% endif %}</td>#}
+                                            {#<td>{{ commande.comMajWho }}</td>#}
+                                            {#<td>{{ commande.comMajLib }}</td>#}
+                                            {#<td>{% if commande.comAnnulDte %}{{ commande.comAnnulDte|date('d-m-Y') }}{% endif %}</td>#}
+                                            {#<td>{{ commande.comAnnulWho }}</td>#}
+                                            {#<td>{{ commande.comAnnulLib }}</td>#}
+                                            <td>{{ commande.comFact }}</td>
+                                            {#<td>{% if commande.comFactDte %}{{ commande.comFactDte|date('d-m-Y') }}{% endif %}</td>#}
+                                            {#<td>{{ commande.comFactWho }}</td>#}
+                                            <td>{{ commande.comNbArts }}</td>
+                                            {#<td>{% if commande.comTvaUnique %}Oui{% else %}Non{% endif %}</td>#}
+                                            {#<td>{{ commande.comPrixTotHt|number_format(2, ',', ' ') }} €</td>#}
+                                            <td>{{ commande.comPrixTotTtc|number_format(2, ',', ' ') }} €</td>
+                                            {#<td>{{ commande.comEmbPoids }}</td>#}
+                                            {#<td>{{ commande.comEmbDim }}</td>#}
+                                            {#<td>{{ commande.comLivDelai }}</td>#}
+                                            {#<td>{{ commande.comComments }}</td>#}
+                                            <td>
+                                                <ul class="nopuce">
+                                                    <li>
+                                                        <a class="btn btn-primary" id="place-btn" href="{{ path('commande_show', { 'id': commande.id }) }}">
+                                                            <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                                        <a class="btn btn-primary" id="place-btn" href="{{ path('commande_edit', { 'id': commande.id }) }}">
+                                                            <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
 
 {#
     <ul>

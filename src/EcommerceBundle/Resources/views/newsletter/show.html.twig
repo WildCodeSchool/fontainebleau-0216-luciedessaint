@@ -10,6 +10,13 @@
         </a>
     </div>
 
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-8">
@@ -45,8 +52,21 @@
                         </tr>
                         <tr>
                             <th>Destinataires</th>
-                            <td>{{ newsletter.nwlMailDests }}</td>
+                            <td>
+                                {{ newsletter.nwlMailDests }}
+                            </td>
                         </tr>
+{#
+                        <tr>
+                            <th> </th>
+                            <td>
+                                <a class="btn btn-success btn-lg" href="{{ path('destinataires_nwl', { 'id': newsletter.id }) }}">
+                                    <i class="glyphicon glyphicon-chevron-left"></i>
+                                    Maj liste des Destinataires
+                                </a>
+                            </td>
+                        </tr>
+#}
                         <tr>
                             <th>Pièce jointe (pdf)</th>
                             <td>
@@ -58,7 +78,16 @@
                     </tbody>
                 </table>
                 <a class="btn btn-success" href="{{ path('newsletter_edit', { 'id': newsletter.id }) }}">
-                    <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                    <i class="glyphicon glyphicon-edit"></i>&nbsp;Modifier Newsletter
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" href="{{ path('destinataires_nwl', { 'id': newsletter.id }) }}">
+                    <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Maj liste des Destinataires
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" href="{{ path('envoi_nwl', { 'id': newsletter.id }) }}">
+                    Envoi Newsletter&nbsp;&nbsp;<i class="glyphicon glyphicon-export"></i>
+                </a>
             </div>
         </div>
     </div>

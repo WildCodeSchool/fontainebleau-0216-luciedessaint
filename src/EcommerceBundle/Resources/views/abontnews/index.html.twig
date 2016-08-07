@@ -16,54 +16,76 @@
         </div>
     {% endfor %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        {#<th>Id</th>#}
-                        <th>Etat</th>
-                        <th>Adresse email</th>
-                        <th>Création</th>
-                        <th>Désactivation</th>
-                        <th>Langue</th>
-                        <th> </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for abontnews in abontnews %}
-                        <tr>
-                            {#<td><a href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">{{ abontnews.id }}</a></td>#}
-                            <td>{% if abontnews.anlEtat %}Actif{% else %}Inactif{% endif %}</td>
-                            <td>{{ abontnews.anlEmail }}</td>
-                            <td>{% if abontnews.anlDteActif %}{{ abontnews.anlDteActif|date('d-m-Y') }}{% endif %}</td>
-                            <td>{% if abontnews.anlDteDesact and not abontnews.anlEtat %}
-                                    {{ abontnews.anlDteDesact|date('d-m-Y') }}
-                                    {% else %} &nbsp;
-                                {% endif %}</td>
-                            <td>{% if abontnews.anlLocale %}{{ abontnews.anlLocale }}{% else %}**{% endif %}</td>
-                            <td>
-                                <ul class="nopuce">
-                                    <li>
-                                        <a class="btn btn-primary" id="place-btn" href="{{ path('abontnews_show', { 'id': abontnews.id }) }}">
-                                            <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
-                                        <a class="btn btn-primary" id="place-btn" href="{{ path('abontnews_edit', { 'id': abontnews.id }) }}">
-                                            <i class="glyphicon glyphicon-edit"></i>Modifier</a>
-                                        {% if abontnews.anlEmail != 'luciedesaint@gmail.com' %}
-                                            <a class="btn btn-primary" id="place-btn" href="{{ path('abontnews_delete', { 'id': abontnews.id }) }}" onclick="return confirm('Confirmez-vous ?')">
-                                                <i class="glyphicon glyphicon-trash"></i> Supprimer</a>
-                                        {% endif %}
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+    {% for abontnewsByEtat in abontnews %}
 
+        {#{{ dump(abontnewsByEtat) }}#}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-11">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-11 text-center">
+                    <h2>{{ abontnewsByEtat.Abonnements|length }} abonnement(s) {{ abontnewsByEtat.Etat }}(s)</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-11">
+                    &nbsp;
+                </div>
             </div>
         </div>
-    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            {#<th>Id</th>#}
+                            <th>Etat</th>
+                            <th>Adresse email</th>
+                            <th>Création</th>
+                            <th>Désactivation</th>
+                            <th>Langue</th>
+                            <th> </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for abonnement in abontnewsByEtat.Abonnements %}
+                            <tr>
+                                {#<td><a href="{{ path('abontnews_show', { 'id': abonnement.id }) }}">{{ abonnement.id }}</a></td>#}
+                                <td>{% if abonnement.anlEtat %}Actif{% else %}Inactif{% endif %}</td>
+                                <td>{{ abonnement.anlEmail }}</td>
+                                <td>{% if abonnement.anlDteActif %}{{ abonnement.anlDteActif|date('d-m-Y') }}{% endif %}</td>
+                                <td>{% if abonnement.anlDteDesact and not abonnement.anlEtat %}
+                                        {{ abonnement.anlDteDesact|date('d-m-Y') }}
+                                        {% else %} &nbsp;
+                                    {% endif %}</td>
+                                <td>{% if abonnement.anlLocale %}{{ abonnement.anlLocale }}{% else %}**{% endif %}</td>
+                                <td>
+                                    <ul class="nopuce">
+                                        <li>
+                                            <a class="btn btn-primary" id="place-btn" href="{{ path('abontnews_show', { 'id': abonnement.id }) }}">
+                                                <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
+                                            <a class="btn btn-primary" id="place-btn" href="{{ path('abontnews_edit', { 'id': abonnement.id }) }}">
+                                                <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                            {% if abonnement.anlEmail != 'luciedesaint@gmail.com' %}
+                                                <a class="btn btn-primary" id="place-btn" href="{{ path('abontnews_delete', { 'id': abonnement.id }) }}" onclick="return confirm('Confirmez-vous ?')">
+                                                    <i class="glyphicon glyphicon-trash"></i> Supprimer</a>
+                                            {% endif %}
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 
 {% endblock %}

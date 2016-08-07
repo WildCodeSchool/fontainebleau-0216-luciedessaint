@@ -23,36 +23,88 @@ class CommandeController extends Controller
      * Lists all Commande entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $commandes = $em->getRepository('EcommerceBundle:Commande')->findAll();
+        $session = $request->getSession();
 
-        foreach ($commandes as $idx_c => $commande) {
-            $etatcom = $commande->getComEtat();
-            switch ($etatcom) {
-                case 1:
-                    $etatcomlib = "Confirmée"; break;
-                case 2:
-                    $etatcomlib = "En préparation"; break;
-                case 3:
-                    $etatcomlib = "Expédiée"; break;
-                case 4:
-                    $etatcomlib = "Reçue"; break;
-                case 5:
-                    $etatcomlib = "Close"; break;
-                case 9:
-                    $etatcomlib = "Annulée"; break;
-                default:
-                    $etatcomlib = "Saisie";
+        if ($session->get('triAdminComm') == null)
+            $session->set('triAdminComm', 'etat');
+
+        $tri = $session->get('triAdminComm');
+
+        //$commandes = $em->getRepository('EcommerceBundle:Commande')->findAll();
+        if ($tri != "etat") {
+            $etatsComm = "";
+            $commandes = $em->getRepository('EcommerceBundle:Commande')->getCommandesByDateVente();
+            $libTri1 = "Etat";
+            $libTri2 = "etat";
+            foreach ($commandes as $idx_c => $commande) {
+                $etatcom = $commande->getComEtat();
+                switch ($etatcom) {
+                    case 1:
+                        $etatcomlib = "Confirmée"; break;
+                    case 2:
+                        $etatcomlib = "En préparation"; break;
+                    case 3:
+                        $etatcomlib = "Expédiée"; break;
+                    case 4:
+                        $etatcomlib = "Reçue"; break;
+                    case 5:
+                        $etatcomlib = "Close"; break;
+                    case 9:
+                        $etatcomlib = "Annulée"; break;
+                    default:
+                        $etatcomlib = "Saisie";
+                }
+                $commande->etatCom = $etatcomlib;
             }
-            $commande->etatCom = $etatcomlib;
         }
+        else {
+            $etatsComm = $em->getRepository('EcommerceBundle:Commande')->getEtatsCommandesByEtat();
+            $commandes = $em->getRepository('EcommerceBundle:Commande')->getCommandesByEtat();
+            $libTri1 = "Date de vente";
+            $libTri2 = "date";
+            //var_dump($etatsComm);
+            foreach ($etatsComm as $idx_e => $etat) {
+                $etatcom = $etat["comEtat"];
+                switch ($etatcom) {
+                    case 1:
+                        $etatcomlib = "Confirmée"; break;
+                    case 2:
+                        $etatcomlib = "En préparation"; break;
+                    case 3:
+                        $etatcomlib = "Expédiée"; break;
+                    case 4:
+                        $etatcomlib = "Reçue"; break;
+                    case 5:
+                        $etatcomlib = "Close"; break;
+                    case 9:
+                        $etatcomlib = "Annulée"; break;
+                    default:
+                        $etatcomlib = "Saisie";
+                }
+                $etatsComm[$idx_e]["Lib"] = $etatcomlib;
+            }
+        }
+        //var_dump($etatsComm);
+        //var_dump($commandes);
 
         return $this->render('EcommerceBundle:commande:index.html.twig', array(
+            'tri' => $tri,
+            'libTri1' => $libTri1,
+            'libTri2' => $libTri2,
+            'etatsComm'=> $etatsComm,
             'commandes' => $commandes,
         ));
+    }
+
+    public function triCommandesAction(Request $request, $id)
+    {
+        $session = $request->getSession();
+        $session->set('triAdminComm', $id);
+        return $this->redirectToRoute('commande_index');
     }
 
     /**

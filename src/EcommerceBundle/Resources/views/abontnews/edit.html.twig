@@ -40,8 +40,11 @@
                         <p class="text-right lib_champs">Langue</p>
                     </div>
                     <div class="col-md-9">
-                        {{ form_errors(edit_form.anlLocale) }}
-                        {{ form_widget(edit_form.anlLocale, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Langue' }}) }}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            {{ form_errors(edit_form.anlLocale) }}
+                            {{ form_widget(edit_form.anlLocale, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Langue' }}) }}
+                        </div>
                     </div>
                 </div>
 
