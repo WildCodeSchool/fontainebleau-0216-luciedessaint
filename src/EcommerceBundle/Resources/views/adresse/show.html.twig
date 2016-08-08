@@ -112,11 +112,11 @@
                         </tr>
                         <tr>
                             <th>Société</th>
-                            <td>{% if app.session.get('adresseArray1').adrSoc %}{{ app.session.get('adresseArray1').adrPrenom }}
+                            <td>{% if app.session.get('adresseArray1').adrSoc %}{{ app.session.get('adresseArray1').adrSoc }}
                                 {% else %}null
                                 {% endif %}
                             </td>
-                            <td>{% if app.session.get('adresseArray2').adrSoc %}{{ app.session.get('adresseArray2').adrPrenom }}
+                            <td>{% if app.session.get('adresseArray2').adrSoc %}{{ app.session.get('adresseArray2').adrSoc }}
                                 {% else %}null
                                 {% endif %}
                             </td>

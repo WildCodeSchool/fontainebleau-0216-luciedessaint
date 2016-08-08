@@ -97,12 +97,10 @@ class NewsletterController extends Controller
         ));
     }
 
-/*    public function download(Request $request, $id)
-    {
-        $session = $request->getSession();
-        $session->set('triTableaux', $id);
-        return $this->redirectToRoute('ecommerce_tableau');
-    }*/
+    /**
+     * Download de la newsletter coté Administration
+     *
+     */
     public function downloadAction($id)
     {
 
@@ -122,6 +120,170 @@ class NewsletterController extends Controller
         return $response;
 
     }
+
+    /**
+     * Récupération de la liste des emails des abonnés actifs 
+     * 
+     *    Toutes langues (xx)  --ou--  Selon langue paramétrée dans la newsletter
+     */
+    public function recupDestinatairesAction($id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $newsletter = $em->getRepository('EcommerceBundle:Newsletter')->find($id);
+        $langue = $newsletter->getNwlLocale();
+        
+        if ($langue == "xx")
+            $abonnements = $em->getRepository('EcommerceBundle:Abontnews')->findAbontnewsActifs();
+        else 
+            $abonnements = $em->getRepository('EcommerceBundle:Abontnews')->findAbontnewsActifs4Lang($langue);
+
+        if (!$abonnements) {
+            if ($langue == "xx") {
+                $this->get('session')->getFlashBag()->add(
+                    'mesModifs',
+                    'ERREUR : Aucun abonnement actif'
+                    );
+            }
+            else {
+                $this->get('session')->getFlashBag()->add(
+                    'mesModifs',
+                    'ERREUR : Aucun abonnement actif pour cette langue'
+                    );
+            }
+            return $this->redirectToRoute('newsletter_show', array('id' => $newsletter->getId()));
+        }
+
+        $destinataires = "";
+
+        foreach ($abonnements as $idx_a => $abonnement) {
+            $email = $abonnement->getAnlEmail();
+            var_dump($email);
+
+            if ($email) {
+                if ($destinataires == "")
+                    $destinataires = $email;
+                else
+                    $destinataires .= ", ".$email;
+            }
+        }
+
+        $newsletter->setNwlMailDests($destinataires);
+        
+        $em->persist($newsletter);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'mesModifs',
+            'Récupération emails effectuée'
+        );
+
+        return $this->redirectToRoute('newsletter_show', array('id' => $newsletter->getId()));
+
+    }
+
+    /**
+     * Envoi de la newsletter
+     *
+     */
+    public function envoiNewsletterAction($id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $newsletter = $em->getRepository('EcommerceBundle:Newsletter')->find($id);
+
+        $destinataires = $newsletter->getNwlMailDests();
+
+        $dests = explode(", ", $destinataires);
+        var_dump($dests);
+
+        $objet = $newsletter->getNwlMailObjet();
+        $texte = $newsletter->getNwlMailTexte();
+        $PJ = $newsletter->getNwlMailPj();
+        $lienDesabont = "Desabonnement";
+        $texteDesabont = "<br/><br/>Pour vous désabonner; cliquez sur ce <a href='" . $lienDesabont . "'>lien</a>";
+        $de = "luciedesaint@gmail.com";
+
+        //
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        if ($PJ) {
+            //
+            //   Envoi de la newsletter avec pj
+            //
+            $message = \Swift_Message::newInstance()
+                ->setSubject($objet)
+                ->setFrom('q.dutrevis@gmail.com', 'Quentin')
+                //->setTo("")
+                //->setBcc($destinataires)
+                //->setBcc(array([$dests]))
+                ->setBcc($dests)
+                ->setBody($texte . $texteDesabont, 'text/html')
+/*              ->setBody(
+                    $this->renderView('@Ecommerce/facture/confirmation.html.twig', array(
+                        'texte' => $texte,
+                        'texte2' => $texteDesabont,
+
+                    )),
+                    'text/html'
+                )*/
+                ->attach(\Swift_Attachment::fromPath('uploads/newsletters/' . $PJ));
+            ;
+            /*        $message->attach(
+                        \Swift_Attachment::fromPath('/path/to/image.jpg')->setDisposition('inline')
+                    );*/
+        }
+        else {
+        //
+        //   Envoi de la newsletter sans pj
+        //
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject($objet)
+                ->setFrom('q.dutrevis@gmail.com', 'Quentin')
+                //->setTo("")
+                ->setBcc($dests)
+                ->setBody($texte.$texteDesabont, 'text/html')
+    /*            ->setBody(
+                    $this->renderView('@Ecommerce/facture/confirmation.html.twig', array(
+                        'texte' => $texte,
+                        'texte2' => $texteDesabont,
+
+                    )),
+                    'text/html'
+                )*/
+            ;
+        }
+        //
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //
+
+        $this->get('mailer')->send($message);
+
+        //
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        //   MAJ de la newsletter
+        //
+
+        $currentDte = new \DateTime();
+        $newsletter->setNwlDateEnvoi($currentDte);
+        $newsletter->setNwlEnvoyee(true);
+
+        $em->persist($newsletter);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'mesModifs',
+            'Envoi Newsletter effectué. Voir mail reçu avec liste des destinataires.'
+        );
+
+        return $this->redirectToRoute('newsletter_show', array('id' => $newsletter->getId()));
+
+    }
+
     /**
      * Displays a form to edit an existing Newsletter entity.
      *

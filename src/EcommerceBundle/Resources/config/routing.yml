@@ -3,6 +3,16 @@ download_nwl:
     defaults: { _controller: EcommerceBundle:Newsletter:download }
     methods:  GET
 
+destinataires_nwl:
+    path:     /{id}/recupDestinataires
+    defaults: { _controller: EcommerceBundle:Newsletter:recupDestinataires }
+    methods:  GET
+
+envoi_nwl:
+    path:     /{id}/envoiNewsletter
+    defaults: { _controller: EcommerceBundle:Newsletter:envoiNewsletter }
+    methods:  GET
+
 ecommerce_lang:
     resource: "@EcommerceBundle/Resources/config/routing/lang.yml"
     prefix:   /admin/lng

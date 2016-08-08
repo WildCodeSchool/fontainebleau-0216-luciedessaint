@@ -12,4 +12,42 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommandeRepository extends EntityRepository
 {
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  Etats des Commandes
+    //
+    public function getEtatsCommandesByEtat()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p.comEtat 
+                            FROM EcommerceBundle:Commande p 
+                            GROUP BY p.comEtat 
+                            ORDER BY p.comEtat ASC')
+            ->getResult();
+    }
+
+    //
+    //  Commandes par Etat puis Date de vente
+    //
+    public function getCommandesByEtat()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p 
+                            FROM EcommerceBundle:Commande p 
+                            ORDER BY p.comEtat ASC,  p.comVenteDte DESC')
+            ->getResult();
+    }
+
+    //
+    //  Commandes par Date de vente
+    //
+    public function getCommandesByDateVente()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p 
+                            FROM EcommerceBundle:Commande p 
+                            ORDER BY p.comVenteDte DESC')
+            ->getResult();
+    }
 }
