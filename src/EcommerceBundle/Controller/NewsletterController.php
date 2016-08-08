@@ -195,6 +195,10 @@ class NewsletterController extends Controller
         $newsletter = $em->getRepository('EcommerceBundle:Newsletter')->find($id);
 
         $destinataires = $newsletter->getNwlMailDests();
+
+        $dests = explode(", ", $destinataires);
+        var_dump($dests);
+
         $objet = $newsletter->getNwlMailObjet();
         $texte = $newsletter->getNwlMailTexte();
         $PJ = $newsletter->getNwlMailPj();
@@ -213,8 +217,10 @@ class NewsletterController extends Controller
                 ->setSubject($objet)
                 ->setFrom('q.dutrevis@gmail.com', 'Quentin')
                 //->setTo("")
-                ->setBcc($destinataires)
-                ->setBody($texte . $texteDesabont)
+                //->setBcc($destinataires)
+                //->setBcc(array([$dests]))
+                ->setBcc($dests)
+                ->setBody($texte . $texteDesabont, 'text/html')
 /*              ->setBody(
                     $this->renderView('@Ecommerce/facture/confirmation.html.twig', array(
                         'texte' => $texte,
@@ -238,8 +244,8 @@ class NewsletterController extends Controller
                 ->setSubject($objet)
                 ->setFrom('q.dutrevis@gmail.com', 'Quentin')
                 //->setTo("")
-                ->setBcc($destinataires)
-                ->setBody($texte.$texteDesabont)
+                ->setBcc($dests)
+                ->setBody($texte.$texteDesabont, 'text/html')
     /*            ->setBody(
                     $this->renderView('@Ecommerce/facture/confirmation.html.twig', array(
                         'texte' => $texte,
