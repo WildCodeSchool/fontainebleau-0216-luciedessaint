@@ -64,7 +64,7 @@ ecommerce_adresse:
 ecommerce_adresse_show:
     path:     /adresse/show
     defaults: { _controller: "EcommerceBundle:Adresse:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 ecommerce_adresse_new:
     path:     /adresse/new
