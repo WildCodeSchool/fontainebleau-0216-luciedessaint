@@ -337,13 +337,41 @@ class CommandeController extends Controller
 
         $commande->nbProduits = $nbProduits;
         $commande->produits = $produits;
+
+        //'uploads/pdf/' . $commande->getComFact() . '.pdf'
+        
+        $iconePDF = "icone-PDF.ico";
+        
+        $downloadfile = $commande->getComFact().'.pdf';
+        //var_dump($downloadfile);
+
         //
         /////////////////////////////////////////////////////////////////////////////////////////////
 
         return $this->render('EcommerceBundle:commande:show.html.twig', array(
+            'iconePDF' => $iconePDF,
+            'downloadfile' => $downloadfile,
             'commande' => $commande,
 //            'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Download de la facture coté Administration
+     *
+     */
+    public function downloadAction($id)
+    {
+
+        //$path = "/var/www/html/symfony/Ecommerce/web/uploads/pdf/";
+        //$path = "/../../../web/uploads/pdf/";
+        $path = __DIR__.'/../../../web/uploads/pdf/';
+        $filename = $id;
+
+        $response = $this->container->get('download.pdf')->downloadPDF($path, $filename);
+
+        return $response;
+
     }
 
     /**

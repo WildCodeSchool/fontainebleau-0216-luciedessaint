@@ -67,8 +67,13 @@
                             <td>{{ commande.comAnnulLib }}</td>
                         </tr>
                         <tr>
-                            <th>Nro facture</th>
-                            <td>{{ commande.comFact }}</td>
+                            <th>Facture</th>
+                            <td>
+                                {{ commande.comFact }} &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="{{ path('download_fact', { 'id': downloadfile }) }}">
+                                    <img class="center-block img-responsive icode_pdf" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                </a>
+                            </td>
                         </tr>
                         <tr>
                             <th>Date facture</th>

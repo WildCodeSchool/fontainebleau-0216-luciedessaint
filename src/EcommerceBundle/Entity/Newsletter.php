@@ -102,7 +102,7 @@ class Newsletter
     //
 
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -134,10 +134,10 @@ class Newsletter
     /**
      * @var \DateTime
      */
-    private $nwlDateEnvoi;
+    private $nwlDatePrev;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $nwlEnvoyee;
 
@@ -146,11 +146,16 @@ class Newsletter
      */
     private $nwlEnvDate;
 
+    /**
+     * @var string
+     */
+    private $nwlMailDests;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -161,6 +166,7 @@ class Newsletter
      * Set nwlLib
      *
      * @param string $nwlLib
+     *
      * @return Newsletter
      */
     public function setNwlLib($nwlLib)
@@ -173,7 +179,7 @@ class Newsletter
     /**
      * Get nwlLib
      *
-     * @return string 
+     * @return string
      */
     public function getNwlLib()
     {
@@ -184,6 +190,7 @@ class Newsletter
      * Set nwlLocale
      *
      * @param string $nwlLocale
+     *
      * @return Newsletter
      */
     public function setNwlLocale($nwlLocale)
@@ -196,7 +203,7 @@ class Newsletter
     /**
      * Get nwlLocale
      *
-     * @return string 
+     * @return string
      */
     public function getNwlLocale()
     {
@@ -207,6 +214,7 @@ class Newsletter
      * Set nwlMailObjet
      *
      * @param string $nwlMailObjet
+     *
      * @return Newsletter
      */
     public function setNwlMailObjet($nwlMailObjet)
@@ -219,7 +227,7 @@ class Newsletter
     /**
      * Get nwlMailObjet
      *
-     * @return string 
+     * @return string
      */
     public function getNwlMailObjet()
     {
@@ -230,6 +238,7 @@ class Newsletter
      * Set nwlMailTexte
      *
      * @param string $nwlMailTexte
+     *
      * @return Newsletter
      */
     public function setNwlMailTexte($nwlMailTexte)
@@ -242,7 +251,7 @@ class Newsletter
     /**
      * Get nwlMailTexte
      *
-     * @return string 
+     * @return string
      */
     public function getNwlMailTexte()
     {
@@ -253,6 +262,7 @@ class Newsletter
      * Set nwlMailPj
      *
      * @param string $nwlMailPj
+     *
      * @return Newsletter
      */
     public function setNwlMailPj($nwlMailPj)
@@ -265,7 +275,7 @@ class Newsletter
     /**
      * Get nwlMailPj
      *
-     * @return string 
+     * @return string
      */
     public function getNwlMailPj()
     {
@@ -273,111 +283,10 @@ class Newsletter
     }
 
     /**
-     * Set nwlDateEnvoi
-     *
-     * @param \DateTime $nwlDateEnvoi
-     * @return Newsletter
-     */
-    public function setNwlDateEnvoi($nwlDateEnvoi)
-    {
-        $this->nwlDateEnvoi = $nwlDateEnvoi;
-
-        return $this;
-    }
-
-    /**
-     * Get nwlDateEnvoi
-     *
-     * @return \DateTime 
-     */
-    public function getNwlDateEnvoi()
-    {
-        return $this->nwlDateEnvoi;
-    }
-
-    /**
-     * Set nwlEnvoyee
-     *
-     * @param boolean $nwlEnvoyee
-     * @return Newsletter
-     */
-    public function setNwlEnvoyee($nwlEnvoyee)
-    {
-        $this->nwlEnvoyee = $nwlEnvoyee;
-
-        return $this;
-    }
-
-    /**
-     * Get nwlEnvoyee
-     *
-     * @return boolean 
-     */
-    public function getNwlEnvoyee()
-    {
-        return $this->nwlEnvoyee;
-    }
-
-    /**
-     * Set nwlEnvDate
-     *
-     * @param \DateTime $nwlEnvDate
-     * @return Newsletter
-     */
-    public function setNwlEnvDate($nwlEnvDate)
-    {
-        $this->nwlEnvDate = $nwlEnvDate;
-
-        return $this;
-    }
-
-    /**
-     * Get nwlEnvDate
-     *
-     * @return \DateTime 
-     */
-    public function getNwlEnvDate()
-    {
-        return $this->nwlEnvDate;
-    }
-    /**
-     * @var string
-     */
-    private $nwlMailDests;
-
-
-    /**
-     * Set nwlMailDests
-     *
-     * @param string $nwlMailDests
-     * @return Newsletter
-     */
-    public function setNwlMailDests($nwlMailDests)
-    {
-        $this->nwlMailDests = $nwlMailDests;
-
-        return $this;
-    }
-
-    /**
-     * Get nwlMailDests
-     *
-     * @return string 
-     */
-    public function getNwlMailDests()
-    {
-        return $this->nwlMailDests;
-    }
-    /**
-     * @var \DateTime
-     */
-    private $nwlDatePrev;
-
-
-    /**
      * Set nwlDatePrev
      *
      * @param \DateTime $nwlDatePrev
+     *
      * @return Newsletter
      */
     public function setNwlDatePrev($nwlDatePrev)
@@ -390,10 +299,82 @@ class Newsletter
     /**
      * Get nwlDatePrev
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getNwlDatePrev()
     {
         return $this->nwlDatePrev;
+    }
+
+    /**
+     * Set nwlEnvoyee
+     *
+     * @param boolean $nwlEnvoyee
+     *
+     * @return Newsletter
+     */
+    public function setNwlEnvoyee($nwlEnvoyee)
+    {
+        $this->nwlEnvoyee = $nwlEnvoyee;
+
+        return $this;
+    }
+
+    /**
+     * Get nwlEnvoyee
+     *
+     * @return boolean
+     */
+    public function getNwlEnvoyee()
+    {
+        return $this->nwlEnvoyee;
+    }
+
+    /**
+     * Set nwlEnvDate
+     *
+     * @param \DateTime $nwlEnvDate
+     *
+     * @return Newsletter
+     */
+    public function setNwlEnvDate($nwlEnvDate)
+    {
+        $this->nwlEnvDate = $nwlEnvDate;
+
+        return $this;
+    }
+
+    /**
+     * Get nwlEnvDate
+     *
+     * @return \DateTime
+     */
+    public function getNwlEnvDate()
+    {
+        return $this->nwlEnvDate;
+    }
+
+    /**
+     * Set nwlMailDests
+     *
+     * @param string $nwlMailDests
+     *
+     * @return Newsletter
+     */
+    public function setNwlMailDests($nwlMailDests)
+    {
+        $this->nwlMailDests = $nwlMailDests;
+
+        return $this;
+    }
+
+    /**
+     * Get nwlMailDests
+     *
+     * @return string
+     */
+    public function getNwlMailDests()
+    {
+        return $this->nwlMailDests;
     }
 }

@@ -1,3 +1,18 @@
+abonnement:
+    path:     /creatAbont
+    defaults: { _controller: EcommerceBundle:GestAbonnement:creatAbont }
+    methods:  [GET, POST]
+
+desabonnement:
+    path:     /desabonnement
+    defaults: { _controller: EcommerceBundle:Desabonnement:new }
+    methods:  [GET, POST]
+
+download_fact:
+    path:     /{id}/download
+    defaults: { _controller: EcommerceBundle:Commande:download }
+    methods:  GET
+
 download_nwl:
     path:     /{id}/download
     defaults: { _controller: EcommerceBundle:Newsletter:download }

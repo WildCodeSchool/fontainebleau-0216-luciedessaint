@@ -18,7 +18,7 @@ class AbontnewsController extends Controller
      * Lists all Abontnews entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -123,7 +123,7 @@ class AbontnewsController extends Controller
      * Finds and displays a Abontnews entity.
      *
      */
-    public function showAction(Abontnews $abontnews)
+    public function showAction(Abontnews $abontnews, Request $request)
     {
         $deleteForm = $this->createDeleteForm($abontnews);
 
