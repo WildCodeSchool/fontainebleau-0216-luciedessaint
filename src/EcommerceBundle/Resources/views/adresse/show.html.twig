@@ -85,7 +85,13 @@
                         </tbody>
                     </table>
                     <a class="btn btn-success" href="{{ path('ecommerce_adresse_edit') }}">Modifier</a>
-                    <a class="btn btn-primary floatright" href="{{ path('commande_new') }}"></i>plop</a>
+                    {{ form_start(form) }}
+                        <label> {{ form_widget(form.cgv) }} J'accepte les conditions générales de vente.</label>
+                        {{ form_errors(form.cgv) }}
+                        <input id="hide_continuer_commande" style="display: none;" class="btn btn-primary text-center" type="submit" value="Plop" />
+                    {{ form_end(form) }}
+
+
                 </div>
             </div>
         </div>
@@ -155,9 +161,30 @@
                         </tbody>
                     </table>
                     <a class="btn btn-success" href="{{ path('ecommerce_adresse_edit') }}"></i>Modifier</a>
-                    <a class="btn btn-primary floatright" href="{{ path('commande_new') }}"></i>plop</a>
+                    {{ form_start(form) }}
+                    <label> {{ form_widget(form.cgv) }} J'accepte les conditions générales de vente.</label>
+                    <a style="display: none;" class="btn btn-primary" id="hide_continuer_commande"></i>plop</a>
+                    {{ form_errors(form.cgv) }}
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#form_cgv").click(function(){
+                if(document.getElementById("form_cgv").checked == true){
+                    $("#hide_continuer_commande").show();
+                }
+                else {
+                    $("#hide_continuer_commande").hide();
+                }
+            });
+        });
+    </script>
 {% endblock %}
