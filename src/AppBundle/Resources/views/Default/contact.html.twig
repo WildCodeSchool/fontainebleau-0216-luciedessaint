@@ -1,5 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <header>
+        <div class="container-fluid"><!-- Top Bar noir -->
+            <div class="row">
+                <div class="col-md-6 rowblack text-center textwhite"><h1>Nous contacter</h1></div>
+            </div>
+        </div><!-- Fin top bar noir -->
+    </header>
+    {{ form_start(form) }}
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Adresse email</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(form.mail) }}
+                            {{ form_widget(form.mail, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Adresse mail' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Sujet</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(form.sujet) }}
+                            {{ form_widget(form.sujet, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Sujet' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs">Message</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form_errors(form.message) }}
+                            {{ form_widget(form.message, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Message' }}) }}
+                        </div>
+                    </div>
+                </div>
+                <input class="btn btn-success" type="submit" value="envoyer" />
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

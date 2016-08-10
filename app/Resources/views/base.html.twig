@@ -38,7 +38,7 @@
                         <li><a class="hvr-underline-from-left" href={{ path('ecommerce_bijou') }}>Bijoux KIFA</a></li>
                         <li><a class="hvr-underline-from-left" href={{ path('app_lucieactu') }}>Artiste</a></li>
                         <li><a class="hvr-underline-from-left" href={{ path('ecommerce_panier') }}>Panier {% if paniers!=null %}({{ paniers|length }}){% else %}{% endif %}</a></li>
-                        <li><a class="hvr-underline-from-left" href="#">Contact</a></li>
+                        <li><a class="hvr-underline-from-left" href={{ path('app_contact') }}>Contact</a></li>
                         {% if langues.nblangs > 1 %}
                             {#<ul class="nav navbar-nav navbar-right">#}
                                 <li class="dropdown">
@@ -96,11 +96,12 @@
         <script src="{{ asset('bundles/app/js/AnimOnScroll.js') }}"></script>
     <footer class="site-footer">
         <p class="text-footer">
-            Conditions générale de vente
+            <a class="text-footer" href="#">Conditions générales de vente</a>
             <span class="floatright"><a href="#"><img class="footerimg" src="http://vignette1.wikia.nocookie.net/logopedia/images/f/fb/Facebook_icon_2013.svg/revision/latest?cb=20130501121248"></a>
         <a href="#"><img class="footerimg" src="https://5a5a57ff32a328601212-ee0df397c56b146e91fe14be42fa361d.ssl.cf1.rackcdn.com/icon/instagram_logos_app_icon/YyepHGHDvkl1wFkUHw8Y/Instagram-v051916_200.png"></a></span>
         </p>
-        <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
+        <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 text-center">
+            <p class="text-footer">S'abonner aux newsletters</p>
             <form action="{{ path("abonnement") }}" method="post">
                 <input type="email" name="email" placeholder="Saisir l'adresse mail" required="required" />
                 <input style="display: none;" name="route" value="{{ app.request.attributes.get('_route') }}"/>
