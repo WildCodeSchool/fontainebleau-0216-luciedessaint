@@ -251,17 +251,9 @@ class CommandeController extends Controller
             ->setTo($mailcommande)
             ->setBcc('q.dutrevis@gmail.com')
             ->setBody(
-                $this->renderView('@Ecommerce/facture/confirmation.html.twig', array(
-                        'produits' => $produits,
-                        'adresses' => $adresses,
-                        'commande' => $commande,
-                        'langues' => $langues,
-                        'paniers' => $panier,
-
-                )),
-                'text/html'
+                'Votre commande a bien était validée.'
             )
-            //->attach(\Swift_Attachment::fromPath('uploads/pdf/'.$commande->getComFact().'.pdf'));
+            ->attach(\Swift_Attachment::fromPath('uploads/pdf/' . $commande->getComFact() . '.pdf'));
         ;
 /*        $message->attach(
             \Swift_Attachment::fromPath('/path/to/image.jpg')->setDisposition('inline')
