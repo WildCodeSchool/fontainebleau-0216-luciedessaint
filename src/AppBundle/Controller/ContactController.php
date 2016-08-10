@@ -29,6 +29,17 @@ class ContactController extends Controller
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Kiffa - Contact'.$form->getViewData()['sujet'])
+                ->setFrom($form->getViewData()['mail'])
+                ->setTo('q.dutrevis@gmail.com')
+                ->setBcc($form->getViewData()['mail'])
+                ->setBody(
+                    $form->getViewData().', '.$form->getViewData()['message'].','.$form->getViewData()['message']
+                )
+            ;
+
+            $this->get('mailer')->send($message);
 
             return $this->redirectToRoute('app_contact');
         }

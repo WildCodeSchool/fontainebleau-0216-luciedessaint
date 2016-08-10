@@ -45,7 +45,10 @@
                         <li><a class="hvr-underline-from-left" href={{ path('ecommerce_tableau') }}>Art</a></li>
                         <li><a class="hvr-underline-from-left" href={{ path('ecommerce_bijou') }}>Bijoux KIFA</a></li>
                         <li><a class="hvr-underline-from-left" href={{ path('app_lucieactu') }}>Artiste</a></li>
-                        <li><a class="hvr-underline-from-left" href={{ path('ecommerce_panier') }}>Panier {% if paniers!=null %}({{ paniers|length }}){% else %}{% endif %}</a></li>
+                        {% if paniers!=null %}
+                            <li><a class="hvr-underline-from-left" href={{ path('ecommerce_panier') }}>Panier ({{ paniers|length }})</a></li>
+                        {% else %}
+                        {% endif %}
                         <li><a class="hvr-underline-from-left" href={{ path('app_contact') }}>Contact</a></li>
                         {% if langues.nblangs > 1 %}
                             {#<ul class="nav navbar-nav navbar-right">#}
