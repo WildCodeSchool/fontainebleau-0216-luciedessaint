@@ -8,16 +8,16 @@
             </div>
         </div><!-- Fin top bar noir -->
     </header>
+    <div class="space"></div>
+    <div class="space"></div>
     {{ form_start(form) }}
 
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-8">
                 <div class="row">
-                    <div class="col-md-3">
-                        <p class="text-right lib_champs">Adresse email</p>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-md-offset-3 col-md-6">
+                        <p class="lib_champs text-center">Adresse email</p>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                             {{ form_errors(form.mail) }}
@@ -25,11 +25,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="space"></div>
                 <div class="row">
-                    <div class="col-md-3">
-                        <p class="text-right lib_champs">Sujet</p>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-md-offset-3 col-md-6">
+                        <p class="text-center lib_champs">Sujet</p>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                             {{ form_errors(form.sujet) }}
@@ -37,11 +36,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="space"></div>
                 <div class="row">
-                    <div class="col-md-3">
-                        <p class="text-right lib_champs">Message</p>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-md-offset-3 col-md-6">
+                        <p class="text-center lib_champs">Message</p>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                             {{ form_errors(form.message) }}
@@ -49,7 +47,12 @@
                         </div>
                     </div>
                 </div>
-                <input class="btn btn-success" type="submit" value="envoyer" />
+                <div class="space"></div>
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-6 text-center">
+                        <input class="btn btn-success" type="submit" value="envoyer" />
+                    </div>
+                </div>
                 {{ form_end(form) }}
             </div>
         </div>
