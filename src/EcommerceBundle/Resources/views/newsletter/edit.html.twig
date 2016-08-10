@@ -13,7 +13,7 @@
     {{ form_start(edit_form) }}
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-8">
+            <div class="col-md-offset-1 col-md-10">
                 <div class="row">
                     <div class="col-md-3">
                         <p class="text-right lib_champs">Libellé</p>
@@ -46,17 +46,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Texte du mail</p>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            {{ form_widget(edit_form.nwlMailTexte, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Texte du mail' }}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
                         <p class="text-right lib_champs">Date d'envoi prévue</p>
                     </div>
                     <div class="col-md-9">
@@ -65,11 +54,33 @@
                         </div>
                     </div>
                 </div>
+{#
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-right lib_champs">Fichier PDF</p>
+                        <p class="text-right lib_champs">Texte du mail</p>
                     </div>
                     <div class="col-md-9">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                {{ form_widget(edit_form.nwlMailTexte, { 'attr': {'class': 'form-control Libelle', 'placeholder': 'Texte du mail' }}) }}
+                        </div>
+                    </div>
+                </div>
+#}
+{#
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="text-right lib_champs"> </p>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+#}
+                {{ tinymce_init() }}
+
+                <div class="row">
+                    <div class="col-md-12">
                         {{ form_end(edit_form) }}
                     </div>
                 </div>
@@ -94,3 +105,20 @@
 #}
 
 {% endblock %}
+
+{#
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function() {
+            $('.js-datepicker').datepicker({
+                format: 'dd-mm-yyyy'
+            });
+        });
+    </script>
+
+{% endblock %}
+#}

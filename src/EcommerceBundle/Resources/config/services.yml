@@ -4,6 +4,11 @@ services:
 #        arguments: ["@service_id", "plain_value", %parameter%]
 #
 #        arguments => @doctrine  ==>  Pour permettre l'accès aux données de la bdd
+
+    abont.newsletters:
+        class: EcommerceBundle\Abonnement\Abonnement
+        arguments: [@doctrine.orm.entity_manager]
+
     recup.langues:
         class: EcommerceBundle\Langues\Langues
         arguments: [@doctrine.orm.entity_manager]
@@ -11,4 +16,3 @@ services:
     download.pdf:
         class: EcommerceBundle\Downloads\Pdf
 
-#        arguments: [@doctrine.orm.entity_manager]
