@@ -3,6 +3,7 @@
 namespace EcommerceBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -35,10 +36,24 @@ class NewsletterType extends AbstractType
                 )
             ))
             ->add('nwlMailObjet')
-            ->add('nwlMailTexte')
+            //->add('nwlMailTexte')
+            ->add('nwlMailTexte', 'textarea', array(
+                    'label' => 'Texte du mail',
+                    'attr' => array(
+                        'class' => 'tinymce',
+                        //'data-theme' => 'bbcode' // Skip it if you want to use default theme
+                    )
+            ))
             //->add('nwlMailPj')
-            ->add('maPJ', 'file', array('label' => 'Pièce jointe', 'required' => false))
+            ->add('maPJ', 'file', array('label' => 'Newsletter en pièce jointe', 'required' => false))
             ->add('nwlDatePrev', 'date')
+/*            ->add('nwlDatePrev', DateType::class, array(
+                'widget' => 'single_text',
+                // do not render as type="date", to avoid HTML5 date pickers
+                'html5' => false,
+                // add a class that can be selected in JavaScript
+                'attr' => ['class' => 'js-datepicker'],
+            ))*/
             ->add('nwlEnvoyee')
             ->add('nwlEnvDate', 'datetime')
             ->add('nwlMailDests')

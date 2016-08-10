@@ -14,7 +14,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-8">
+            <div class="col-md-offset-1 col-md-10">
                 <div class="row">
                     <div class="col-md-3">
                         <p class="text-right lib_champs">Libellé</p>
@@ -52,6 +52,18 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
+                        <p class="text-right lib_champs">Date d'envoi prévue</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            {{ form_errors(form.nwlDatePrev) }}
+                            {{ form_widget(form.nwlDatePrev) }}
+                        </div>
+                    </div>
+                </div>
+{#
+                <div class="row">
+                    <div class="col-md-3">
                         <p class="text-right lib_champs">Texte du mail</p>
                     </div>
                     <div class="col-md-9">
@@ -62,22 +74,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <p class="text-right lib_champs">Date d'envoi prévue</p>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            {{ form_errors(form.nwlDatePrev) }}
-                            {{ form_widget(form.nwlDatePrev) }}
-                        </div>
-                    </div>
-                </div>
+#}
+{#
                 <div class="row">
                     <div class="col-md-3">
                         <p class="text-right lib_champs">Fichier PDF</p>
                     </div>
                     <div class="col-md-9">
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+#}
+                {{ tinymce_init() }}
+                <div class="row">
+                    <div class="col-md-12">
                         {{ form_end(form) }}
                     </div>
                 </div>

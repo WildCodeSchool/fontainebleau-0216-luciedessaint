@@ -126,12 +126,14 @@ class NewsletterController extends Controller
      * 
      *    Toutes langues (xx)  --ou--  Selon langue paramétrée dans la newsletter
      */
-    public function recupDestinatairesAction($id)
+    public function recupDestinatairesAction(Newsletter $newsletter)
     {
 
         $em = $this->getDoctrine()->getManager();
+        //$newsletter = $em->getRepository('EcommerceBundle:Newsletter')->find($id);
 
-        $newsletter = $em->getRepository('EcommerceBundle:Newsletter')->find($id);
+        //var_dump($newsletter);
+
         $langue = $newsletter->getNwlLocale();
         
         if ($langue == "xx")
@@ -159,7 +161,7 @@ class NewsletterController extends Controller
 
         foreach ($abonnements as $idx_a => $abonnement) {
             $email = $abonnement->getAnlEmail();
-            var_dump($email);
+            //var_dump($email);
 
             if ($email) {
                 if ($destinataires == "")
@@ -187,23 +189,22 @@ class NewsletterController extends Controller
      * Envoi de la newsletter
      *
      */
-    public function envoiNewsletterAction($id)
+    public function envoiNewsletterAction(Newsletter $newsletter)
     {
 
-        $em = $this->getDoctrine()->getManager();
-
-        $newsletter = $em->getRepository('EcommerceBundle:Newsletter')->find($id);
+        //$newsletter = $em->getRepository('EcommerceBundle:Newsletter')->find($id);
 
         $destinataires = $newsletter->getNwlMailDests();
 
         $dests = explode(", ", $destinataires);
-        var_dump($dests);
+        //var_dump($dests);
 
         $objet = $newsletter->getNwlMailObjet();
         $texte = $newsletter->getNwlMailTexte();
         $PJ = $newsletter->getNwlMailPj();
-        $lienDesabont = "Desabonnement";
-        $texteDesabont = "<br/><br/>Pour vous désabonner; cliquez sur ce <a href='" . $lienDesabont . "'>lien</a>";
+        $lienDesabont = "/var/www/html/symfony/Ecommerce/web/app_dev.php/eco/desabonnement";
+        $lienDesabont = "http://localhost/symfony/Ecommerce/web/app_dev.php/eco/desabonnement";
+        $texteDesabont = "<br/><br/>Si vous souhaitez ne plus recevoir notre newsletter, cliquez sur ce <a href='" . $lienDesabont . "'>lien</a>";
         $de = "luciedesaint@gmail.com";
 
         //
@@ -246,14 +247,6 @@ class NewsletterController extends Controller
                 //->setTo("")
                 ->setBcc($dests)
                 ->setBody($texte.$texteDesabont, 'text/html')
-    /*            ->setBody(
-                    $this->renderView('@Ecommerce/facture/confirmation.html.twig', array(
-                        'texte' => $texte,
-                        'texte2' => $texteDesabont,
-
-                    )),
-                    'text/html'
-                )*/
             ;
         }
         //
@@ -268,8 +261,10 @@ class NewsletterController extends Controller
         //   MAJ de la newsletter
         //
 
+        $em = $this->getDoctrine()->getManager();
+
         $currentDte = new \DateTime();
-        $newsletter->setNwlDateEnvoi($currentDte);
+        $newsletter->setNwlEnvDate($currentDte);
         $newsletter->setNwlEnvoyee(true);
 
         $em->persist($newsletter);

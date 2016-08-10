@@ -3,10 +3,19 @@
 {% block body %}
     <div id="header" class="jumbotron text-center">
         <h1>Liste des abonnés aux newsletters</h1>
-        <a class="btn btn-success btn-lg" href="{{ path('abontnews_new') }}">
-            <i class="glyphicon glyphicon-plus"></i>
-            Créer une nouvelle entrée
-        </a>
+    </div>
+    {#{{ dump(app.request.attributes.get('_route')) }}#}
+    <div class="row">
+        <div class="col-md-offset-1 col-md-2">
+            Générer un nouvel abonnement :
+        </div>
+        <div class="col-md-9">
+            <form action="{{ path("abonnement") }}" method="post">
+                <input type="email" name="email" placeholder="Saisir l'adresse mail" required="required" />
+                <input style="display: none;" name="route" value="{{ app.request.attributes.get('_route') }}"/>
+                <input type="submit" value="Valider" />
+            </form>
+        </div>
     </div>
 
     {% for flashMessage in app.session.flashbag.get('mesModifs') %}
@@ -87,5 +96,20 @@
             </div>
         </div>
     {% endfor %}
+
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+            &nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+            <a class="btn btn-success" href="{{ path('abontnews_new') }}">
+                <i class="glyphicon glyphicon-plus"></i>
+                Créer une nouvelle entrée
+            </a>
+        </div>
+    </div>
+
 
 {% endblock %}
