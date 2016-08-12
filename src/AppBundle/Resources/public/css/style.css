@@ -32,7 +32,9 @@ h2 {
     height: 50px;
     border-radius: 50%;
 }
-/* ------------------ Nav bar ------------------ */
+/* --------------------------------------------- *\
+                       Nav bar
+\* --------------------------------------------- */
 .navbar {
     margin-bottom: 0px;
 }
@@ -62,7 +64,10 @@ a:hover, .navbar-default .navbar-nav > li > a:focus {
 .navbar-default .navbar-brand{
     margin-left: 10px;
 }
-/* ------------------ HomePage ------------------ */
+/* --------------------------------------------- *\
+                       HomePage
+\* --------------------------------------------- */
+
 .container-fluid {
     margin: auto;
     padding: 0px;
@@ -122,8 +127,8 @@ a:hover, .navbar-default .navbar-nav > li > a:focus {
     display: none;
     /*position: relative;*/
     top: 45%;
-    z-index: 2;
     position: absolute;
+    z-index: 9;
 }
 .textlefthp, .textmiddlehp, .textrighthp {
     background-color: white;
