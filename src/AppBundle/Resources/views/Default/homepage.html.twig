@@ -50,36 +50,43 @@
 
     <div class="container imgnav"><!-- Image navigation -->
         <div class="row">
-            <div class="col-md-offset-1 col-md-4 col-sm-12 col-xs-12 divimgleft">
-                <a href={{ path('ecommerce_tableau') }}>
-                    {% if alea_art %}
-                        <img class="img-responsive imgleft hvr-grow-shadow center-block" src="{{ asset('uploads/aleatoire/') }}{{ alea_art }}">
-                    {% else %}
-                        <img class="img-responsive imgleft hvr-grow-shadow center-block" src="{{ asset('bundles/app/img/homepage/lefthp.png') }}">
-                    {% endif %}
-                    <p class="textlefthp center-block">Entrer dans l' univers de l'Art</p>
-                </a>
+            <div class="hvr-grow-shadow">
+                <div class="col-md-offset-1 col-md-4 col-sm-12 col-xs-12 divimgleft">
+                    <a href={{ path('ecommerce_tableau') }}>
+                        {% if alea_art %}
+                            <img class="img-responsive imgleft center-block" src="{{ asset('uploads/aleatoire/') }}{{ alea_art }}">
+                        {% else %}
+                            <img class="img-responsive imgleft center-block" src="{{ asset('bundles/app/img/homepage/lefthp.png') }}">
+                        {% endif %}
+                    </a>
+                    <a href="{{ path('ecommerce_tableau') }}"><p class="textlefthp center-block">Entrer dans l' univers de l'Art</p></a>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-12 col-xs-12 divimgmiddle">
-                <a href={{ path('ecommerce_bijou') }}>
-                    {% if alea_kifa %}
-                        <img class="img-responsive imgmiddle hvr-grow-shadow center-block" src="{{ asset('uploads/aleatoire/') }}{{ alea_kifa }}">
-                    {% else %}
-                        <img class="img-responsive imgmiddle hvr-grow-shadow center-block" src="{{ asset('bundles/app/img/homepage/middlehp.png') }}">
-                    {% endif %}
-                    <p class="textmiddlehp center-block">Entrer dans l'univers des Bijoux</p>
-                </a>
+            <div class="hvr-grow-shadow">
+                <div class="col-md-4 col-sm-12 col-xs-12 divimgmiddle">
+                    <a href={{ path('ecommerce_bijou') }}>
+                        {% if alea_kifa %}
+                            <img class="img-responsive imgmiddle center-block" src="{{ asset('uploads/aleatoire/') }}{{ alea_kifa }}">
+                        {% else %}
+                            <img class="img-responsive imgmiddle center-block" src="{{ asset('bundles/app/img/homepage/middlehp.png') }}">
+                        {% endif %}
+                    </a>
+                    <a href="{{ path('ecommerce_bijou') }}"><p class="textmiddlehp center-block ">Entrer dans l'univers des Bijoux</p></a>
+                </div>
             </div>
-            <div class="col-md-2 col-sm-12 col-xs-12 divimgright">
-                <a href={{ path('app_lucieactu') }}>
-                    {% if lucie %}
-                        <img class="img-responsive imgright hvr-grow-shadow center-block" src="{{ asset('uploads/aleatoire/') }}{{ lucie }}">
-                    {% else %}
-                        <img class="img-responsive imgright hvr-grow-shadow center-block" src="{{ asset('bundles/app/img/homepage/righthp.png') }}">
-                    {% endif %}
-                    <p class="textrighthp center-block">Lucie DE SAINT</p>
-                </a>
+            <div class="hvr-grow-shadow">
+                <div class="col-md-2 col-sm-12 col-xs-12 divimgright">
+                    <a href={{ path('app_lucieactu') }}>
+                        {% if lucie %}
+                            <img class="img-responsive imgright center-block" src="{{ asset('uploads/aleatoire/') }}{{ lucie }}">
+                        {% else %}
+                            <img class="img-responsive imgright center-block" src="{{ asset('bundles/app/img/homepage/righthp.png') }}">
+                        {% endif %}
+                    </a>
+                    <a href="{{ path('app_lucieactu') }}"><p class="textrighthp center-block">Lucie DE SAINT</p></a>
+                </div>
             </div>
+
         </div>
     </div> <!-- Fin image navigation -->
 

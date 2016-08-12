@@ -207,7 +207,7 @@ class CommandeController extends Controller
                     $compdt->setCxpIdcom($commande);
                     $compdt->setCxpIdpdt($produit_commande[0]);
                     $compdt->setCxpNbpdt(1);
-                    $produit_commande[0]->setPdtEtat(false);
+                    $produit_commande[0]->setPdtAvendre(false);
                     $em->persist($compdt);
                     $em->flush();
                 }
