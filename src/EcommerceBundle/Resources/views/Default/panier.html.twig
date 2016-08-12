@@ -20,9 +20,6 @@
                         <th class="text-center">Nom - Référence</th>
                         <th class="text-center">Prix TTC</th>
                     </tr>
-                    {{ dump(app.session.getmetadataBag()) }}
-                    {{ dump(app.session) }}
-                    {{ dump(app.session.get('cartArray')) }}
 
                     {% for panier in paniers %}
                     <tr>
