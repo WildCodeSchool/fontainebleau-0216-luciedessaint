@@ -122,6 +122,34 @@ class NewsletterController extends Controller
     }
 
     /**
+     * Suppression de la pièce jointe (pdf)
+     */
+    public function suppPdfAction(Newsletter $newsletter)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        //$newsletter = $em->getRepository('EcommerceBundle:Newsletter')->find($id);
+        //var_dump($newsletter);
+
+        $fichier = $newsletter->getNwlMailPj();
+        $newsletter->setNwlMailPj(null);
+        $newsletter->preUpload();
+
+        $em->persist($newsletter);
+        $em->flush();
+
+        unlink(__DIR__.'/../../../web/uploads/newsletters/'.$fichier);
+
+        $this->get('session')->getFlashBag()->add(
+            'mesModifs',
+            'Suppression Pdf associé effectuée'
+        );
+
+        return $this->redirectToRoute('newsletter_show', array('id' => $newsletter->getId()));
+
+    }
+
+    /**
      * Récupération de la liste des emails des abonnés actifs 
      * 
      *    Toutes langues (xx)  --ou--  Selon langue paramétrée dans la newsletter

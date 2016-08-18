@@ -24,7 +24,7 @@ class CategorieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('EcommerceBundle:Categorie')->findAll();
+        $categories = $em->getRepository('EcommerceBundle:Categorie')->getCategorieByLibAdmin();
 
         return $this->render('EcommerceBundle:categorie:index.html.twig', array(
             'categories' => $categories,
@@ -127,6 +127,32 @@ class CategorieController extends Controller
             'categorie' => $categorie,
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Suppression du bandeau associé à la catégorie
+     */
+    public function suppImgAction(Categorie $categorie)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $fichier = $categorie->getCatPhoto();
+        $categorie->setCatPhoto(null);
+        $categorie->preUpload();
+
+        $em->persist($categorie);
+        $em->flush();
+
+        unlink(__DIR__.'/../../../web/uploads/categ/'.$fichier);
+
+        $this->get('session')->getFlashBag()->add(
+            'mesModifs',
+            'Suppression bandeau associé effectuée'
+        );
+
+        return $this->redirectToRoute('categorie_show', array('id' => $categorie->getId()));
+
     }
 
     /**

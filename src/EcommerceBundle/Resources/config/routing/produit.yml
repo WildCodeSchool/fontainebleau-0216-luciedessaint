@@ -3,6 +3,16 @@ produit_index:
     defaults: { _controller: "EcommerceBundle:Produit:index" }
     methods:  GET
 
+produit_bijoux:
+    path:     /{id}/Bijoux
+    defaults: { _controller: "EcommerceBundle:Produit:indexBijoux" }
+    methods:  GET
+
+produit_tableaux:
+    path:     /{id}/Tableaux
+    defaults: { _controller: "EcommerceBundle:Produit:indexTableaux" }
+    methods:  GET
+
 produit_show:
     path:     /{id}/show
     defaults: { _controller: "EcommerceBundle:Produit:show" }

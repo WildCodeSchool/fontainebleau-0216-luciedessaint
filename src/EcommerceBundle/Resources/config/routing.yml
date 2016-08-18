@@ -13,6 +13,16 @@ download_fact:
     defaults: { _controller: EcommerceBundle:Commande:download }
     methods:  GET
 
+supp_img_categ:
+    path:     /{id}/suppImg
+    defaults: { _controller: EcommerceBundle:Categorie:suppImg }
+    methods:  GET
+
+supp_pdf_nwl:
+    path:     /{id}/suppPdf
+    defaults: { _controller: EcommerceBundle:Newsletter:suppPdf }
+    methods:  GET
+
 download_nwl:
     path:     /{id}/download
     defaults: { _controller: EcommerceBundle:Newsletter:download }

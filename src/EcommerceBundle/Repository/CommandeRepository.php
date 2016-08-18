@@ -13,7 +13,6 @@ use Doctrine\ORM\EntityRepository;
 class CommandeRepository extends EntityRepository
 {
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////
     //
     //  Etats des Commandes
     //

@@ -1,0 +1,189 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 rowblack text-center textwhite"><h1>B I J O U X</h1></div>
+                <div class="col-md-6 text-center">
+                    <a class="btn btn-success btn" href="{{ path('produit_bijoux', { 'id': libTri2 }) }}">
+                        <i class="glyphicon glyphicon-sort-by-attributes"></i>
+                        &nbsp;&nbsp;Trier par&nbsp;&nbsp;' {{ libTri1 }} '
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="space"></div>
+
+    {% if tri != 'etat' %}
+
+        {#                         T R I    P A R   C A T E G O R I E                       #}
+
+        <div class="container">
+            {% for categorie in produits.Cats %}
+                {#{{ dump(etatproduit) }}#}
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="text-center"><h1>&nbsp;</h1></span>
+                    </div>
+                    <div class="col-md-12 txt_admin_pdt_cat">
+                        {#<span class="text-center">{{ categorie.catLibAdmin }}</span>#}
+                        {% set varStack = categorie.catLibAdmin|split('/') %}
+                        <span class="text-center">
+                            {{ varStack.1 }}{% if varStack|length > 2 %} / {{ varStack.2 }}{% endif %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {% for produit in produits.Pdts %}
+                            {#{{ dump(produit) }}#}
+                            {% if categorie.catLibAdmin == produit.pdtIdcat.catLibAdmin %}
+                                <div class="col-md-2 text-center tabprodt_ecart">
+                                    <div class="col-md-12 tab_adresses">
+                                        <div class="row">
+                                            {% if produit.pdtEtat %}
+                                                <div class="col-md-6 etat_ok tab_adresses">ACTIF</div>
+                                            {% else %}
+                                                <div class="col-md-6 etat_nok tab_adresses">INACTIF</div>
+                                            {% endif %}
+                                            {% if produit.pdtAvendre %}
+                                                <div class="col-md-6 etat_ok tab_adresses">A VENDRE</div>
+                                            {% else %}
+                                                <div class="col-md-6 etat_nok tab_adresses">VENDU</div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="row tab_adresses">
+                                            <a href="{{ path('produit_show', { 'id': produit.id }) }}"><h4>{{ produit.pdtNom }}</h4></a>
+                                        </div>
+                                        <div class="row tab_adresses">
+                                            {{ produit.pdtRef }}
+                                        </div>
+                                        <div class="row tab_adresses">
+                                            <a href="{{ path('produit_show', { 'id': produit.id }) }}">
+                                                <img class="center-block img-responsive imgprodt_index" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}>
+                                            </a>
+                                        </div>
+                                        <div class="row tab_adresses">
+                                            <div class="col-md-4">
+                                                <a href="{{ path('produit_show', { 'id': produit.id }) }}">
+                                                    <img class="center-block img-responsive imgprodt_action" src="{{ asset('bundles/app/img/admin/action_voir.png') }}">
+                                                </a>
+                                            </div>
+                                            <div class="col-md-4 text-center txtprodt_prix">
+                                                {{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }}€
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="{{ path('produit_edit', { 'id': produit.id }) }}">
+                                                    <img class="center-block img-responsive imgprodt_action" src="{{ asset('bundles/app/img/admin/action_maj.png') }}">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {#{{ dump(produit.Commandes) }}#}
+                                        {% if produit.Commandes != NULL %}
+                                            <div class="row tab_adresses">
+                                                Commande(s) :
+                                                {% for commande in produit.Commandes %}
+                                                    {#{{ dump(commande) }}#}
+                                                    <br /><a href="{{ path('commande_show', { 'id': commande.cxpIdcom.id }) }}" target="_blank">{{ commande.cxpIdcom.comCode }}</a>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+
+        {#                            T R I    P A R   E T A T                          #}
+
+        <div class="container">
+            {% for etatproduit in produits %}
+                {#{{ dump(etatproduit) }}#}
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="text-center"><h1>&nbsp;</h1></span>
+                    </div>
+                    <div class="col-md-12 txt_admin_pdt_cat">
+                        <span class="text-center">{{ etatproduit.Etat }}</span>
+                    </div>
+                </div>
+                {% for categorie in etatproduit.Cats %}
+                    {#{{ dump(categorie) }}#}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="text-center"><h4>&nbsp;</h4></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-8 txt_admin_pdt_cat2">
+                            {#<span class="text-center">{{ categorie.catLibAdmin }}</span>#}
+                            {% set varStack = categorie.catLibAdmin|split('/') %}
+                            <span class="text-center">
+                                {{ varStack.1 }}{% if varStack|length > 2 %} / {{ varStack.2 }}{% endif %}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for produit in etatproduit.Pdts %}
+                                {#{{ dump(produit) }}#}
+                                {% if categorie.catLibAdmin == produit.pdtIdcat.catLibAdmin %}
+                                    <div class="col-md-2 text-center tabprodt_ecart">
+                                        <div class="col-md-12 tab_adresses">
+                                            <div class="row tab_adresses">
+                                                <a href="{{ path('produit_show', { 'id': produit.id }) }}"><h4>{{ produit.pdtNom }}</h4></a>
+                                            </div>
+                                            <div class="row tab_adresses">
+                                                {{ produit.pdtRef }}
+                                            </div>
+                                            <div class="row tab_adresses">
+                                                <a href="{{ path('produit_show', { 'id': produit.id }) }}">
+                                                    <img class="center-block img-responsive imgprodt_index" src={{ asset('uploads/produits/') }}{{ produit.pdtPhoto }}>
+                                                </a>
+                                            </div>
+                                            <div class="row tab_adresses">
+                                                <div class="col-md-4">
+                                                    <a href="{{ path('produit_show', { 'id': produit.id }) }}">
+                                                        <img class="center-block img-responsive imgprodt_action" src="{{ asset('bundles/app/img/admin/action_voir.png') }}">
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-4 text-center txtprodt_prix">
+                                                    {{ produit.pdtPrixUnitTtc|number_format(2, ',', ' ') }}€
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <a href="{{ path('produit_edit', { 'id': produit.id }) }}">
+                                                        <img class="center-block img-responsive imgprodt_action" src="{{ asset('bundles/app/img/admin/action_maj.png') }}">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            {#{{ dump(produit.Commandes) }}#}
+                                            {% if produit.Commandes != NULL %}
+                                                <div class="row tab_adresses">
+                                                    Commande(s) :
+                                                    {% for commande in produit.Commandes %}
+                                                        {#{{ dump(commande) }}#}
+                                                        <br /><a href="{{ path('commande_show', { 'id': commande.cxpIdcom.id }) }}" target="_blank">{{ commande.cxpIdcom.comCode }}</a>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+    {% endif %}
+
+{% endblock %}

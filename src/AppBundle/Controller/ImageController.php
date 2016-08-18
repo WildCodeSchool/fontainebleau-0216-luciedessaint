@@ -22,9 +22,24 @@ class ImageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $images = $em->getRepository('AppBundle:Image')->findAll();
+        //$images = $em->getRepository('AppBundle:Image')->findAll();
+
+        $catimg = $em->getRepository('AppBundle:Image')->getCategsImagesByCateg();
+        $images = $em->getRepository('AppBundle:Image')->getImagesByCateg();
+
+        foreach ($catimg as $idx_c => $categ) {
+            $cat = $categ["imgCat"];
+            switch ($cat) {
+                case "Kifa":
+                    $categlib = "Bijoux"; break;
+                default:
+                    $categlib = "Tableaux";
+            }
+            $catimg[$idx_c]["Lib"] = $categlib;
+        }
 
         return $this->render('AppBundle:image:index.html.twig', array(
+            'catimg' => $catimg,
             'images' => $images,
         ));
     }

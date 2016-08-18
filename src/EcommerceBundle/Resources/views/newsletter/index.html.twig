@@ -28,7 +28,7 @@
                         <th>Langue</th>
                         <th>Objet mail</th>
                         {#<th>Mail / Texte</th>#}
-                        <th>Pièce jointe (O/N)</th>
+                        <th>Pdf associé</th>
                         <th>Date envoi prévue</th>
                         <th>Envoyée (O/N)</th>
                         <th>Envoyée le</th>
@@ -46,7 +46,7 @@
                             {#<td>{{ newsletter.nwlMailTexte }}</td>#}
                             {#<td>{{ newsletter.nwlMailPj }}</td>#}
                             <td>{% if newsletter.nwlMailPj %}
-                                    <img class="center-block img-responsive icode_pdf" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                    <img class="center-block img-responsive icone_pdf" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
                                 {% endif %}</td>
                             <td>{% if newsletter.nwlDatePrev %}{{ newsletter.nwlDatePrev|date('d-m-Y') }}{% endif %}</td>
                             <td>{% if newsletter.nwlEnvoyee %}Oui{% else %}Non{% endif %}</td>

@@ -68,11 +68,21 @@
                         </tr>
 #}
                         <tr>
-                            <th>Pièce jointe (pdf)</th>
+                            <th>Pdf associé
+                                {% if newsletter.nwlMailPj %}
+                                    <a href="{{ path('supp_pdf_nwl', { 'id': newsletter.id }) }}" onclick="return confirm('Confirmez-vous la suppression du Pdf ?')">
+                                        <img class="center-block img-responsive imgsupp_action" src="{{ asset('bundles/app/img/admin/action_supp.png') }}">
+                                    </a>
+                                {% endif %}
+                            </th>
                             <td>
-                                <a href="{{ path('download_nwl', { 'id': downloadfile }) }}">
-                                    <img class="center-block img-responsive icode_pdf_show" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
-                                </a>
+                                {% if newsletter.nwlMailPj %}
+                                    <a href="{{ path('download_nwl', { 'id': downloadfile }) }}">
+                                        <img class="center-block img-responsive icone_pdf_show" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                    </a>
+                                {% else %}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;--néant--
+                                {% endif %}
                             </td>
                         </tr>
                     </tbody>
