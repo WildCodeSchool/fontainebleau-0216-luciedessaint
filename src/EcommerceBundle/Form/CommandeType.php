@@ -34,7 +34,7 @@ class CommandeType extends AbstractType
             ->add('comCdebank')
 //            ->add('comVenteDte', 'datetime')
             ->add('comExpedDte', 'datetime')
-            ->add('comExpedDte', DateType::class, array(
+/*            ->add('comExpedDte', DateType::class, array(
                 'widget' => 'single_text',
 
                 // do not render as type="date", to avoid HTML5 date pickers
@@ -42,7 +42,7 @@ class CommandeType extends AbstractType
 
                 // add a class that can be selected in JavaScript
                 'attr' => ['class' => 'js-datepicker'],
-            ))
+            ))*/
 /*            ->add('comExpedDte','date',array(
                     'label' => 'Date expédition',
                     'widget' => 'single_text',

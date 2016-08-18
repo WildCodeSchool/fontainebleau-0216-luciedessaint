@@ -3,9 +3,20 @@
 {% block body %}
     <div id="header" class="jumbotron text-center">
         <h1>Liste des produits</h1>
+        {#<a class="btn btn-success btn" href="{{ path('produit_bij_etat') }}">#}
+        <a class="btn btn-success btn" href="{{ path('produit_bijoux', { 'id': 'etat' }) }}">
+            <i class="glyphicon glyphicon-eye-open"></i>
+            Voir les Bijoux
+        </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a class="btn btn-success btn-lg" href="{{ path('produit_new') }}">
             <i class="glyphicon glyphicon-plus"></i>
-            Créer une nouvelle entrée
+            Créer un nouveau produit
+        </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-success btn" href="{{ path('produit_tableaux', { 'id': 'etat' }) }}">
+            <i class="glyphicon glyphicon-book"></i>
+            Voir les Tableaux
         </a>
     </div>
 
@@ -63,79 +74,5 @@
             </div>
         </div>
     </div>
- {#   <h1>Produit list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Pdtetat</th>
-                <th>Pdtavendre</th>
-                <th>Pdtaffnostock</th>
-                <th>Pdtaffprix</th>
-                <th>Pdtnom</th>
-                <th>Pdtref</th>
-                <th>Pdtprixunitht</th>
-                <th>Pdtprixunitttc</th>
-                <th>Pdtpromopct</th>
-                <th>Pdtpromoht</th>
-                <th>Pdtpromottc</th>
-                <th>Pdtphoto</th>
-                <th>Pdtphoto2</th>
-                <th>Pdtphoto3</th>
-                <th>Pdtphoto4</th>
-                <th>Pdtphoto5</th>
-                <th>Pdtpoids</th>
-                <th>Pdtdim</th>
-                <th>Pdtembpoids</th>
-                <th>Pdtembdim</th>
-                <th>Pdtpckgphoto</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for produit in produits %}
-            <tr>
-                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
-                <td>{% if produit.pdtEtat %}Yes{% else %}No{% endif %}</td>
-                <td>{% if produit.pdtAvendre %}Yes{% else %}No{% endif %}</td>
-                <td>{% if produit.pdtAffNostock %}Yes{% else %}No{% endif %}</td>
-                <td>{% if produit.pdtAffPrix %}Yes{% else %}No{% endif %}</td>
-                <td>{{ produit.pdtNom }}</td>
-                <td>{{ produit.pdtRef }}</td>
-                <td>{{ produit.pdtPrixUnitHt }}</td>
-                <td>{{ produit.pdtPrixUnitTtc }}</td>
-                <td>{{ produit.pdtPromoPct }}</td>
-                <td>{{ produit.pdtPromoHt }}</td>
-                <td>{{ produit.pdtPromoTtc }}</td>
-                <td>{{ produit.pdtPhoto }}</td>
-                <td>{{ produit.pdtPhoto2 }}</td>
-                <td>{{ produit.pdtPhoto3 }}</td>
-                <td>{{ produit.pdtPhoto4 }}</td>
-                <td>{{ produit.pdtPhoto5 }}</td>
-                <td>{{ produit.pdtPoids }}</td>
-                <td>{{ produit.pdtDim }}</td>
-                <td>{{ produit.pdtEmbPoids }}</td>
-                <td>{{ produit.pdtEmbDim }}</td>
-                <td>{{ produit.pdtPckgPhoto }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('produit_show', { 'id': produit.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('produit_new') }}">Create a new entry</a>
-        </li>
-    </ul>#}
 {% endblock %}

@@ -38,7 +38,7 @@
                         {% for categorie in categories %}
                             <tr>
                                 {#<td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>#}
-                                <td>{{ categorie.catLibAdmin }}</td>
+                                <td>{% if categorie.catNiv == 1 %}<p class="txt_categ_niv1">{{ categorie.catLibAdmin }}</p>{% else %}{{ categorie.catLibAdmin }}{% endif %}</td>
                                 <td>{{ categorie.catNiv|number_format(0, ',', ' ') }}</td>
                                 <td>{% if categorie.catAvendre %}Oui{% else %}Non{% endif %}</td>
                                 <td>{% if categorie.catAffPrix %}Oui{% else %}Non{% endif %}</td>

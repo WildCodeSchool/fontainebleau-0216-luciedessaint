@@ -212,9 +212,13 @@ a div p {
 }
 .img_bij_cat {
     width: 100%;
-    height: 40px;
+    height: 50px;
 }
 .txt_bij_cat {
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    color: ghostwhite;
+    font-size: 35px;
     background-color: grey;
 }
 img.image_produit {
@@ -238,9 +242,13 @@ img.imgchariot {
 }
 .img_tab_cat {
     width: 100%;
-    height: 40px;
+    height: 50px;
 }
 .txt_tab_cat {
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    color: ghostwhite;
+    font-size: 35px;
     background-color: grey;
 }
 /* -------------------------------------------- *\

@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategorieRepository extends EntityRepository
 {
+    //
+    //  Catégories de produit par Libellé d'administration
+    //
+    public function getCategorieByLibAdmin()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p 
+                            FROM EcommerceBundle:Categorie p 
+                            ORDER BY p.catLibAdmin ASC')
+            ->getResult();
+    }
 }

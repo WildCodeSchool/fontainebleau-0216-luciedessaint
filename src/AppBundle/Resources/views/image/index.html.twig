@@ -18,95 +18,59 @@
     {% endfor %}
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            {#<th>Id</th>#}
-                            <th>Catégorie</th>
-                            <th>Image</th>
-                            <th> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for image in images %}
-                            <tr>
-                                {#<td><a href="{{ path('images_show', { 'id': image.id }) }}">{{ image.id }}</a></td>#}
-                                <td>{{ image.imgCat }}</td>
-                                {#<td>{{ image.imgTitre }} </td>#}
-                                <td><img class="image_lang" src="{{ asset('uploads/aleatoire/')}}{{ image.imgTitre }}"></td>
-                                <td>
-                                    <ul class="nopuce">
-                                        <li>
-                                            <a class="btn btn-primary" id="place-btn" href="{{ path('images_show', { 'id': image.id }) }}">
-                                                <i class="glyphicon glyphicon-eye-open"></i>Voir</a>
-                                            <a class="btn btn-primary" id="place-btn" href="{{ path('images_edit', { 'id': image.id }) }}">
-                                                <i class="glyphicon glyphicon-edit"></i>Modifier</a>
-                                            <a class="btn btn-primary" id="place-btn" href="{{ path('images_delete', { 'id': image.id }) }}" onclick="return confirm('Confirmez-vous ?')">
-                                                <i class="glyphicon glyphicon-trash"></i> Supprimer</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
+        {% for categorie in catimg %}
+            <div class="row col-md-12">
+                <div class="row col-md-12">
+                    <span class="text-center"><h1>&nbsp;</h1></span>
+                </div>
+                <div class="row col-md-12 txt_aleat_cat">
+                    <div class="row col-md-12">
+                        <span class="text-center"><h2>{{ categorie.Lib }}</h2></span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-
-{#
-    <table>
-        <thead>
-            <tr>
-                #}
-{#<th>Id</th>#}{#
-
-                <th>Image</th>
-                <th>Catégorie</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for image in images %}
-            <tr>
-                #}
-{#<td><a href="{{ path('images_show', { 'id': image.id }) }}">{{ image.id }}</a></td>#}{#
-
-                <td>{{ image.imgTitre }}</td>
-                <td>{{ image.imgCat }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('images_show', { 'id': image.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('images_edit', { 'id': image.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <div class="row col-md-12">
+                <span class="text-center"><h4>&nbsp;</h4></span>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    {% for image in images %}
+                        {% if categorie.imgCat == image.imgCat %}
+                            <div class="col-md-3 text-center">
+                                <div class="row">
+                                    <a href="{{ path('images_show', { 'id': image.id }) }}">
+                                        <img class="center-block img-responsive imgaleat" src="{{ asset('uploads/aleatoire/')}}{{ image.imgTitre }}">
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <span class="text-center">&nbsp;</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a href="{{ path('images_show', { 'id': image.id }) }}">
+                                            <img class="center-block img-responsive imgaleat_action" src="{{ asset('bundles/app/img/admin/action_voir.png') }}">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="{{ path('images_edit', { 'id': image.id }) }}">
+                                            <img class="center-block img-responsive imgaleat_action" src="{{ asset('bundles/app/img/admin/action_maj_img.png') }}">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="{{ path('images_delete', { 'id': image.id }) }}" onclick="return confirm('Confirmez-vous ?')">
+                                            <img class="center-block img-responsive imgaleat_action" src="{{ asset('bundles/app/img/admin/action_supp.png') }}">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <span class="text-center"><h5>&nbsp;</h5></span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
-#}
-
-{#
-    <ul>
-        <li>
-            <a href="{{ path('images_new') }}">Create a new entry</a>
-        </li>
-    </ul>
-#}
-
-{% endblock %}
-
-{% block javascripts %}
-
-    <script>
-        $('[data-toggle="confirmation-popout"]').confirmation(options)
-    </script>
+    </div>
 
 {% endblock %}

@@ -21,8 +21,8 @@ class ImageType extends AbstractType
             ->add("imgCat", "choice", array(
                 "label" => "Catégorie :",
                 "choices" => array(
-                    "Art" => "Art",
-                    "Kifa" => "Kifa"
+                    "Art" => "Tableaux",
+                    "Kifa" => "Bijoux"
                 )
             ))
         ;

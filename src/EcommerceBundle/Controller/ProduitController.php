@@ -4,11 +4,14 @@ namespace EcommerceBundle\Controller;
 
 use EcommerceBundle\Entity\Prodlib;
 use EcommerceBundle\Entity\Catlib;
+use EcommerceBundle\Entity\Commande;
+use EcommerceBundle\Entity\Compdt;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use EcommerceBundle\Entity\Produit;
 use EcommerceBundle\Form\ProduitType;
+
 
 /**
  * Produit controller.
@@ -27,6 +30,154 @@ class ProduitController extends Controller
         $produits = $em->getRepository('EcommerceBundle:Produit')->findAll();
 
         return $this->render('EcommerceBundle:produit:index.html.twig', array(
+            'produits' => $produits,
+        ));
+    }
+
+    /**
+     * Lists all BIJOUX in Produit entities
+     *
+     */
+    public function indexBijouxAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $tri = $id;
+
+        if ($tri == "etat") {
+
+            $produits = "";
+            $catproduits_4VENTE = $em->getRepository('EcommerceBundle:Produit')->getCatBijoux_4VENTE_ByCat();
+            if ($catproduits_4VENTE) {
+                $produits["VENTE"]["Etat"] = "En vente";
+                $produits["VENTE"]["Cats"] = $catproduits_4VENTE;
+                //$produits["VENTE"]["Pdts"] = $em->getRepository('EcommerceBundle:Produit')->getBijoux_4VENTE_ByCat();
+                $produits_4VENTE = $em->getRepository('EcommerceBundle:Produit')->getBijoux_4VENTE_ByCat();
+                foreach ($produits_4VENTE as $idx_p => $ce_pdt) {
+                    $id_pdt = $ce_pdt->getId();
+                    $commandes = $em->getRepository('EcommerceBundle:Compdt')->getCommandes4Produit($id_pdt);
+                    if ($commandes)
+                        $ce_pdt->Commandes = $commandes;
+                    else $ce_pdt->Commandes = null;
+                }
+                $produits["VENTE"]["Pdts"] = $produits_4VENTE;
+            }
+            $catproduits_4VENDUS = $em->getRepository('EcommerceBundle:Produit')->getCatBijoux_4VENDUS_ByCat();
+            if ($catproduits_4VENDUS) {
+                $produits["VENDUS"]["Etat"] = "Vendus";
+                $produits["VENDUS"]["Cats"] = $catproduits_4VENDUS;
+                //$produits["VENDUS"]["Pdts"] = $em->getRepository('EcommerceBundle:Produit')->getBijoux_4VENDUS_ByCat();
+                $produits_4VENDUS = $em->getRepository('EcommerceBundle:Produit')->getBijoux_4VENDUS_ByCat();
+                foreach ($produits_4VENDUS as $idx_p => $ce_pdt) {
+                    $id_pdt = $ce_pdt->getId();
+                    $commandes = $em->getRepository('EcommerceBundle:Compdt')->getCommandes4Produit($id_pdt);
+                    if ($commandes)
+                        $ce_pdt->Commandes = $commandes;
+                    else $ce_pdt->Commandes = null;
+                }
+                $produits["VENDUS"]["Pdts"] = $produits_4VENDUS;
+            }
+            $catproduits_4Inactifs = $em->getRepository('EcommerceBundle:Produit')->getCatBijoux_4Inactifs_ByCat();
+            if ($catproduits_4Inactifs) {
+                $produits["INACT"]["Etat"] = "Inactifs";
+                $produits["INACT"]["Cats"] = $catproduits_4Inactifs;
+                //$produits["INACT"]["Pdts"] = $em->getRepository('EcommerceBundle:Produit')->getBijoux_4Inactifs_ByCat();
+                $produits_4Inactifs = $em->getRepository('EcommerceBundle:Produit')->getBijoux_4Inactifs_ByCat();
+                foreach ($produits_4Inactifs as $idx_p => $ce_pdt) {
+                    $id_pdt = $ce_pdt->getId();
+                    $commandes = $em->getRepository('EcommerceBundle:Compdt')->getCommandes4Produit($id_pdt);
+                    if ($commandes)
+                        $ce_pdt->Commandes = $commandes;
+                    else $ce_pdt->Commandes = null;
+                }
+                $produits["INACT"]["Pdts"] = $produits_4Inactifs;
+            }
+            $libTri1 = "Catégorie";
+            $libTri2 = "cat";
+            
+            //var_dump($produits);
+            //var_dump($produits["VENTE"]["Cats"]);
+            //var_dump($produits["VENTE"]["Pdts"]);
+        }
+        else {
+            $produits["Cats"] = $em->getRepository('EcommerceBundle:Produit')->getCatBijoux_ByCat();
+            //$produits["Pdts"] = $em->getRepository('EcommerceBundle:Produit')->getBijoux_ByCat();
+            $produits_ByCat = $em->getRepository('EcommerceBundle:Produit')->getBijoux_ByCat();
+            foreach ($produits_ByCat as $idx_p => $ce_pdt) {
+                $id_pdt = $ce_pdt->getId();
+                $commandes = $em->getRepository('EcommerceBundle:Compdt')->getCommandes4Produit($id_pdt);
+                if ($commandes)
+                    $ce_pdt->Commandes = $commandes;
+                else $ce_pdt->Commandes = null;
+            }
+            $produits["Pdts"] = $produits_ByCat;
+
+            $libTri1 = "Etat";
+            $libTri2 = "etat";
+
+            //var_dump($produits);
+            //var_dump($produits["Cats"]);
+            //var_dump($produits["Pdts"]);
+        }
+        
+
+        return $this->render('EcommerceBundle:produit:index_bijoux.html.twig', array(
+            'tri' => $tri,
+            'libTri1' => $libTri1,
+            'libTri2' => $libTri2,
+            'produits' => $produits,
+        ));
+    }
+
+    /**
+     * Lists all TABLEAUX in Produit entities
+     *
+     */
+    public function indexTableauxAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $tri = $id;
+
+        if ($tri == "etat") {
+
+            $produits = "";
+            $catproduits_4ACTIFS = $em->getRepository('EcommerceBundle:Produit')->getCatTableaux_4ETAT_ByCat(true);
+            if ($catproduits_4ACTIFS) {
+                $produits["ACTIF"]["Etat"] = "Actifs";
+                $produits["ACTIF"]["Cats"] = $catproduits_4ACTIFS;
+                $produits["ACTIF"]["Pdts"] = $em->getRepository('EcommerceBundle:Produit')->getTableaux_4ETAT_ByCat(true);
+            }
+            $catproduits_4Inactifs = $em->getRepository('EcommerceBundle:Produit')->getCatTableaux_4ETAT_ByCat(false);
+            if ($catproduits_4Inactifs) {
+                $produits["INACT"]["Etat"] = "Inactifs";
+                $produits["INACT"]["Cats"] = $catproduits_4Inactifs;
+                $produits["INACT"]["Pdts"] = $em->getRepository('EcommerceBundle:Produit')->getTableaux_4ETAT_ByCat(false);
+            }
+            $libTri1 = "Catégorie";
+            $libTri2 = "cat";
+            
+            //var_dump($produits);
+            //var_dump($produits["ACTIF"]["Cats"]);
+            //var_dump($produits["ACTIF"]["Pdts"]);
+        }
+        else {
+            $produits["Cats"] = $em->getRepository('EcommerceBundle:Produit')->getCatTableaux_ByCat();
+            $produits["Pdts"] = $em->getRepository('EcommerceBundle:Produit')->getTableaux_ByCat();
+
+            $libTri1 = "Etat";
+            $libTri2 = "etat";
+
+            //var_dump($produits);
+            //var_dump($produits["Cats"]);
+            //var_dump($produits["Pdts"]);
+        }
+        
+
+        return $this->render('EcommerceBundle:produit:index_tableaux.html.twig', array(
+            'tri' => $tri,
+            'libTri1' => $libTri1,
+            'libTri2' => $libTri2,
             'produits' => $produits,
         ));
     }
@@ -137,7 +288,7 @@ class ProduitController extends Controller
                         $prodlib->setPdlInfoLib9($Catlib4Lang[0]->getCtlInfoLib9());
                     }
                     else {
-                        $prodlib->setPdlCat("Pas de libellé catégorie trouvé avec code langue ".$CodeLang);
+                        $prodlib->setPdlCat("Libellé catégorie non trouvé avec code langue ".$CodeLang);
                         $prodlib->setPdlType("?");
                         $prodlib->setPdlItem("?");
                         $prodlib->setPdlLib("?");
@@ -160,14 +311,43 @@ class ProduitController extends Controller
                     $langue->LibProd = $Prodlib4Lang[0];
                 }
             }
-
             //var_dump($langs);
             $produit->prodlibs = $langs;
+            $produit->nbprodlibs = count($langs);
+            //var_dump(count($langs));
+        }
+        //var_dump($produit->prodlibs);
 
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Récupération des commandes associées
+        //
+        $commandes = $em->getRepository('EcommerceBundle:Compdt')->getCommandes4Produit($id);
+        //var_dump($commandes);
+        foreach ($commandes as $idx_c => $commande) {
+            $etatcom = $commande->getCxpIdcom()->getComEtat();
+            switch ($etatcom) {
+                case 1:
+                    $etatcomlib = "Confirmée"; break;
+                case 2:
+                    $etatcomlib = "En préparation"; break;
+                case 3:
+                    $etatcomlib = "Expédiée"; break;
+                case 4:
+                    $etatcomlib = "Reçue"; break;
+                case 5:
+                    $etatcomlib = "Close"; break;
+                case 9:
+                    $etatcomlib = "Annulée"; break;
+                default:
+                    $etatcomlib = "Saisie";
+            }
+            $commande->etatCom = $etatcomlib;
         }
 
         return $this->render('EcommerceBundle:produit:show.html.twig', array(
             'produit' => $produit,
+            'commandes' => $commandes,
             'delete_form' => $deleteForm->createView(),
         ));
     }
