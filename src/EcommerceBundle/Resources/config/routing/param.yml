@@ -4,7 +4,7 @@ param_index:
     methods:  GET
 
 param_show:
-    path:     /{id}/show
+    path:     /show
     defaults: { _controller: "EcommerceBundle:Param:show" }
     methods:  GET
 
