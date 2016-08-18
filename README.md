@@ -13,10 +13,14 @@ Composer ==> https://getcomposer.org/doc/00-intro.md
 4. php app/console doctrine:database:create
 5. php app/console doctrine:schema:update --force
 6. Installer la version correspondant au système de 'wkhtmltopdf' ==> http://wkhtmltopdf.org/
-6. Créer un enregistrement "Paramètres généraux" ==> à detailler
+7. Créer un enregistrement "Paramètres généraux" ==> à detailler
+8. mkdir -p web/uploads/aleatoire web/uploads/categ web/uploads/drapeaux web/uploads/param web/uploads/pdf web/uploads/produits web/uploads/newsletters
+9. chmod -R 777 web/uploads/ app/cache/ app/logs/
 
 
 ## Une fois projet installé, étapes de mise en place
+1. Créer repertoires uploads/aleatoire + uploads/categ + uploads/drapeaux + uploads/param + uploads/pdf + uploads/produits
+2. 
 1. Créer une langue
 2. Créer des taux de TVA
 3. Créer des catégories de produit 
