@@ -76,6 +76,7 @@
         </div>
     </div>
 
+{#
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
@@ -94,16 +95,22 @@
                                     <th>Restrictions de livraison</th>
                                     <td>{{ paramlib.LibParam.prlLivRestrict }}</td>
                                 </tr>
+#}
 {#
                                 <tr>
                                     <th>Délai de fabrication</th>
                                     <td>{{ paramlib.LibParam.prlFabDelai }}</td>
                                 </tr>
-#}
+#}{#
+
                                 <tr>
                                     <th>Page produits - Photo</th>
                                     <td>
-                                        <img class="image_param" src="{{ asset('uploads/param/') }}{{ paramlib.LibParam.prlArtPhoto }}">
+                                        {% if paramlib.LibParam.prlArtPhoto %}
+                                            <img class="image_param" src="{{ asset('uploads/param/') }}{{ paramlib.LibParam.prlArtPhoto }}">
+                                        {% else %}
+                                            <h3> </h3>
+                                        {% endif %}
                                     </td>
                                 </tr>
 
@@ -119,7 +126,11 @@
                                 <tr>
                                     <th>Panier - Photo</th>
                                     <td>
-                                        <img class="image_param" src="{{ asset('uploads/param/') }}{{ paramlib.LibParam.prlPanPhoto }}">
+                                        {% if paramlib.LibParam.prlPanPhoto %}
+                                            <img class="image_param" src="{{ asset('uploads/param/') }}{{ paramlib.LibParam.prlPanPhoto }}">
+                                        {% else %}
+                                            <h3> </h3>
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 <tr>
@@ -174,5 +185,6 @@
             </div>
         </div>
     </div>
+#}
 
 {% endblock %}

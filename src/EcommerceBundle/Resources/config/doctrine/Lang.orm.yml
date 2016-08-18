@@ -28,8 +28,8 @@ EcommerceBundle\Entity\Lang:
             unique: true
             column: lng_flag
     lifecycleCallbacks:
-        prePersist: [ preUpload, setCreatedAtValue, setExpiresAtValue ]
-        preUpdate: [ preUpload, setUpdatedAtValue ]
+        prePersist: [ preUpload ]
+        preUpdate: [ preUpload ]
         postPersist: [ upload ]
         postUpdate: [ upload ]
         postRemove: [ removeUpload ]

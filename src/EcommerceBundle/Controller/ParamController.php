@@ -58,7 +58,7 @@ class ParamController extends Controller
      * Finds and displays a Param entity.
      *
      */
-    public function showAction(Param $param)
+    public function showAction()
     {
         $em = $this->getDoctrine()->getManager();
 

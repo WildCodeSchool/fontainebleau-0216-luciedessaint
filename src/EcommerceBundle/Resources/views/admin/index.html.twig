@@ -110,6 +110,7 @@
                     </div>
                     <div class="col-md-7">
                         <p><a href="{{ path('tva_index') }}"></br><h4>Taux de TVA</h4></a></p>
+                        {#<p><a href="{{ path('tva_show', { 'id': 1 }) }}"></br><h4>Taux de TVA</h4></a></p>#}
                     </div>
                 </div>
                 <div class="row">
@@ -135,7 +136,8 @@
                         <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_param.png') }}">
                     </div>
                     <div class="col-md-7">
-                        <p><a href="{{ path('param_show', { 'id': 1 }) }}"></br><h4>Paramètres généraux</h4></a></p>
+                        {#<p><a href="{{ path('param_show', { 'id': 1 }) }}"></br><h4>Paramètres généraux</h4></a></p>#}
+                        <p><a href="{{ path('param_show') }}"></br><h4>Paramètres généraux</h4></a></p>
                     </div>
                 </div>
             </div>

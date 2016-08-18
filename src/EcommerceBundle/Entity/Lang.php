@@ -46,31 +46,7 @@ class Lang
             $this->lngFlag = 'Flag_' . $this->getLngCode() . '.' . $this->file->guessExtension();
         }
     }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setExpiresAtValue()
-    {
-        // Add your code here
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        // Add your code here
-    }
-
+    
     /**
      * @ORM\PostPersist
      */
