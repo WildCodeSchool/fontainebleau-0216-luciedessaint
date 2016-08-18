@@ -87,7 +87,7 @@
                     {{ form_start(form) }}
                         <label> {{ form_widget(form.cgv) }} J'accepte les conditions générales de vente.</label>
                         {{ form_errors(form.cgv) }}
-                        <input id="hide_continuer_commande" style="display: none;" class="btn btn-primary text-center" type="submit" value="Plop" />
+                        <input id="hide_continuer_commande" style="display: none;" class="btn btn-primary text-center" type="submit" value="Paiement" />
                     {{ form_end(form) }}
 
 
@@ -162,8 +162,8 @@
                     <a class="btn btn-success" href="{{ path('ecommerce_adresse_edit') }}"></i>Modifier</a>
                     {{ form_start(form) }}
                     <label> {{ form_widget(form.cgv) }} J'accepte les conditions générales de vente.</label>
-                    <a style="display: none;" class="btn btn-primary" id="hide_continuer_commande"></i>plop</a>
                     {{ form_errors(form.cgv) }}
+                    <input id="hide_continuer_commande" style="display: none;" class="btn btn-primary text-center" type="submit" value="Paiement" />
                     {{ form_end(form) }}
                 </div>
             </div>
