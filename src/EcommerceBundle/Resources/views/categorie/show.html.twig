@@ -60,13 +60,18 @@
                             <td>{{ categorie.catIdtva }}</td>
                         </tr>
                         <tr>
-                            <th>Photo illustration</th>
-                            {#<td>{{ categorie.catPhoto }}</td>#}
+                            <th>Bandeau illustration
+                                {% if categorie.catPhoto %}
+                                    <a href="{{ path('supp_img_categ', { 'id': categorie.id }) }}" onclick="return confirm('Confirmez-vous la suppression du bandeau ?')">
+                                        <img class="center-block img-responsive imgsupp_action" src="{{ asset('bundles/app/img/admin/action_supp.png') }}">
+                                    </a>
+                                {% endif %}
+                            </th>
                             <td>
                                 {% if categorie.catPhoto %}
                                     <img class="image_cat" width="600" src="{{ asset('uploads/categ/') }}{{ categorie.catPhoto }}"/>
                                 {% else %}
-                                    Aucune image
+                                    &nbsp;&nbsp;&nbsp;&nbsp;--néant--
                                 {% endif %}
                             </td>
                         </tr>

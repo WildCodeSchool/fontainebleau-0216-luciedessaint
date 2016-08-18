@@ -7,50 +7,186 @@
                 <p class="text-center"></p><br />
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-12">
-                <p class="text-left"><h1>E-Commerce</h1></p><br />
+            <div class="col-md-1">
+                <img class="center-block img-responsive img_admin_titre1" src="{{ asset('bundles/app/img/admin/menu_ecommerce.png') }}">
+            </div>
+            <div class="col-md-11">
+                <p class="text-left"><h1>e-Commerce</h1></p><br />
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-offset-2 col-md-4">
-                <p class="text-center">Commandes :</p><br />
-                <p><a href="{{ path('commande_index') }}">Liste des commandes</a></p>
-            </div>
-            <div class="col-md-4">
-                <p class="text-center">Produits :</p><br />
-                <p><a href="{{ path('produit_index') }}">Listes des produits</a></p>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-md-offset-2 col-md-4">
-                <p class="text-center">Newsletter :</p><br />
-                <p><a href="{{ path('abontnews_index') }}">Liste des abonnés aux newsletters</a></p>
-                <p>Uploader une newsletter</p>
-                <p>Envoyer la newsletter</p>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-11 txt_admin_titre2">
+                        <p class="text-center"><h3>Commandes :</h3></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <p><a href="{{ path('commande_index') }}"></br><h4>Liste des commandes</h4></a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_commande.png') }}">
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <p class="text-center">Paramètres :</p><br />
-                <p><a href="{{ path('categorie_index') }}">Liste des catégories de produit</a></p>
-                <p><a href="{{ path('tva_index') }}">Liste des taux de TVA</a></p>
-                <p><a href="{{ path('lang_index') }}">Liste des langues gérées</a></p>
-                <p>
-                    <a href="{{ path('param_show', { 'id': 1 }) }}">Paramètres généraux</a>
-                </p>
+            <div class="col-md-offset-2 col-md-4">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-11 txt_admin_titre2">
+                        <p class="text-center"><h3>Produits :</h3></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <p><a href="{{ path('produit_index') }}"></br><h4>Listes des produits</h4></a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_produit.png') }}">
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <p class="text-center"></p><br />
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-12">
-                <p class="text-left"><h1>Images :</h1></p><br />
+            <div class="col-md-offset-2 col-md-4">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-11 txt_admin_titre2">
+                        <p class="text-center"><h3>Newsletters :</h3></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <p><a href="{{ path('newsletter_index') }}"></br><h4>Listes des newsletters</h4></a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_newsletter.png') }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-center"> </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_abonne.png') }}">
+                    </div>
+                    <div class="col-md-7">
+                        <p><a href="{{ path('abontnews_index') }}"></br><h4>Listes des abonnés</h4></a></p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-offset-2 col-md-10">
-                <p><a href="{{ path('images_index') }}">Liste des images</a></p>
+            <div class="col-md-offset-2 col-md-4">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-11 txt_admin_titre2">
+                        <p class="text-center"><h3>Paramétrage :</h3></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <p><a href="{{ path('categorie_index') }}"></br><h4>Catégories de produit</h4></a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_categorie.png') }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-center"> </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_taux.png') }}">
+                    </div>
+                    <div class="col-md-7">
+                        <p><a href="{{ path('tva_index') }}"></br><h4>Taux de TVA</h4></a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-center"> </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <p><a href="{{ path('lang_index') }}"></br><h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Langues</h4></a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_langue.jpeg') }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-center"> </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_param.png') }}">
+                    </div>
+                    <div class="col-md-7">
+                        <p><a href="{{ path('param_show', { 'id': 1 }) }}"></br><h4>Paramètres généraux</h4></a></p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center"></p><br />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <img class="center-block img-responsive img_admin_titre1" src="{{ asset('bundles/app/img/admin/menu_cms.png') }}">
+            </div>
+            <div class="col-md-11">
+                <p class="text-left"><h1>CMS</h1></p><br />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-11 txt_admin_titre2">
+                        <p class="text-center"><h3>Accueil :</h3></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <p><a href="{{ path('images_index') }}"></br><h4>Images aléatoires</h4></a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="center-block img-responsive img_admin_titre2" src="{{ asset('bundles/app/img/admin/menu_image.png') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-offset-2 col-md-4">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-11 txt_admin_titre2">
+                        <p class="text-center"><h3> </h3></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <p> </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 {% endblock %}

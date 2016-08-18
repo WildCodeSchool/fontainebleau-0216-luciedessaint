@@ -1,0 +1,104 @@
+<?php
+
+namespace EcommerceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Newsletter
+ */
+class Newsletter
+{
+
+    // Code écrit
+
+    public function __toString()
+    {
+        return $this->getNwlLib();
+    }
+
+    public $maPJ;
+
+    protected function getUploadDir()
+    {
+        return 'uploads/newsletters';
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->nwlMailPj ? null : $this->getUploadDir().'/'.$this->nwlMailPj;
+    }
+    public function getAbsolutePath()
+    {
+        return null === $this->nwlMailPj ? null : $this->getUploadRootDir().'/'.$this->nwlMailPj;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function preUpload()
+    {
+        if (null !== $this->maPJ) {
+            // do whatever you want to generate a unique name
+            $this->nwlMailPj = 'PJ_'.uniqid().'.'.$this->maPJ->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setExpiresAtValue()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+    }
+
+    /**
+     * @ORM\PostPersist
+     */
+    public function upload()
+    {
+        if (null !== $this->maPJ) {
+            // if there is an error when moving the file, an exception will
+            // be automatically thrown by move(). This will properly prevent
+            // the entity from being persisted to the database on error
+
+            $this->maPJ->move($this->getUploadRootDir(), $this->nwlMailPj);
+
+            unset($this->maPJ);
+        }
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        if ($maPJ = $this->getAbsolutePath()) {
+            unlink($maPJ);
+        }
+    }
+
+    ///////////////////////
+    // GENERATED CODE
+    //
+
+}

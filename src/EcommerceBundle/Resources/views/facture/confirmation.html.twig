@@ -1,8 +1,8 @@
-{% extends 'baseadmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
 
     <p>Commande valider</p>
-    <a href="{{ asset('uploads/pdf/') }}{{ commande.comFact }}.pdf">Voir ma facture</a>
+    <a href="{{ asset('uploads/pdf/') }}{{ commande.comFact }}.pdf">Télécharger ma facture</a>
 
 {% endblock %}

@@ -2,8 +2,11 @@
 
 namespace EcommerceBundle\Controller;
 
+use Doctrine\DBAL\Types\BooleanType;
 use EcommerceBundle\Entity\AdresseModele;
 use EcommerceBundle\Form\AdresseClientType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -98,6 +101,7 @@ class AdresseController extends Controller
 //        $deleteForm = $this->createDeleteForm($adresse);
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
+        $session->set('cgv', false);
 
         // creation d'un form pour le submit new commande
         $commande = $this->createFormBuilder()->getForm();
@@ -108,13 +112,28 @@ class AdresseController extends Controller
         $sessionadresse1 = $session->get('adresseArray1');
         $sessionadresse2 = $session->get('adresseArray2');
 
+        $form = $this->createFormBuilder()
+            ->add('cgv', CheckboxType::class)
+            ->getForm();
 
+        $form->handleRequest($request);
+
+        $plop=0;
+
+        if ($form->isSubmitted() && $form->getViewData()['cgv'] == true)
+        {
+            $session->set('cgv', $form->getViewData()['cgv']);
+
+            return $this->redirectToRoute('commande_new');
+        }
+        
         return $this->render('EcommerceBundle:adresse:show.html.twig', array(
             'commande' => $commande->createView(),
             'paniers' => $panieruser,
             'langues' => $langues,
             'sessionadr1' => $sessionadresse1,
-            'sessionadr2' => $sessionadresse2
+            'sessionadr2' => $sessionadresse2,
+            'form' => $form->createView()
         ));
     }
 

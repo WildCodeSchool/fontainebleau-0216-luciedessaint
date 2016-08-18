@@ -8,233 +8,165 @@
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour à la liste
         </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-success btn-lg" href="{{ path('commande_edit', { 'id': commande.id }) }}">
+            <i class="glyphicon glyphicon-edit"></i>Modifier les caractéristiques générales</a>
     </div>
 
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-offset-1 col-md-offset-1 col-lg-9 col-md-9">
-                    <a class="btn btn-success" href="{{ path('commande_edit', { 'id': commande.id }) }}">
-                        <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
-                <table class="table table-hover">
-                    <tbody>
-                        {#<tr>#}
-                            {#<th>Id</th>#}
-                            {#<td>{{ commande.id }}</td>#}
-                        {#</tr>#}
-                        {#<tr>#}
-                            {#<th>Code commande</th>#}
-                            {#<td>{{ commande.comCode }}</td>#}
-                        {#</tr>#}
-                        <tr>
-                            <th>Etat</th>
-                            <td>{{ commande.etatCom }}</td>
-                        </tr>
-                        <tr>
-                            <th>Code bank</th>
-                            <td>{{ commande.comCdebank }}</td>
-                        </tr>
-                        <tr>
-                            <th>Date de la vente</th>
-                            <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('d-m-Y H:i:s') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Date d'expédition</th>
-                            <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('d-m-Y H:i:s') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Date de dernière maj</th>
-                            <td>{% if commande.comMajDte %}{{ commande.comMajDte|date('d-m-Y H:i:s') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Auteur dernière maj</th>
-                            <td>{{ commande.comMajWho }}</td>
-                        </tr>
-                        <tr>
-                            <th>Libellé dernière maj</th>
-                            <td>{{ commande.comMajLib }}</td>
-                        </tr>
-                        <tr>
-                            <th>Date d'annulation</th>
-                            <td>{% if commande.comAnnulDte %}{{ commande.comAnnulDte|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Auteur annulation</th>
-                            <td>{{ commande.comAnnulWho }}</td>
-                        </tr>
-                        <tr>
-                            <th>Libellé annulation</th>
-                            <td>{{ commande.comAnnulLib }}</td>
-                        </tr>
-                        <tr>
-                            <th>Nro facture</th>
-                            <td>{{ commande.comFact }}</td>
-                        </tr>
-                        <tr>
-                            <th>Date facture</th>
-                            <td>{% if commande.comFactDte %}{{ commande.comFactDte|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Auteur facture</th>
-                            <td>{{ commande.comFactWho }}</td>
-                        </tr>
-                        <tr>
-                            <th>Nbre d'article(s)</th>
-                            <td>{{ commande.comNbArts }} &nbsp;&nbsp;&nbsp;&nbsp;(trouvés: {{ commande.nbProduits }})</td>
-                        </tr>
-                        <tr>
-                            <th>TVA unique (O/N)</th>
-                            <td>{% if commande.comTvaUnique %}Oui{% else %}Non{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Prix total HT</th>
-                            <td>{{ commande.comPrixTotHt|number_format(2, ',', ' ') }} €</td>
-                        </tr>
-                        <tr>
-                            <th>Prix total TTC</th>
-                            <td>{{ commande.comPrixTotTtc|number_format(2, ',', ' ') }} €</td>
-                        </tr>
-                        <tr>
-                            <th>Poids total</th>
-                            <td>{{ commande.comEmbPoids }}</td>
-                        </tr>
-                        <tr>
-                            <th>Dimensions totales</th>
-                            <td>{{ commande.comEmbDim }}</td>
-                        </tr>
-                        <tr>
-                            <th>Délai de livraison</th>
-                            <td>{{ commande.comLivDelai }}</td>
-                        </tr>
-                        <tr>
-                            <th>Commentaires</th>
-                            <td>{{ commande.comComments }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
         </div>
-    </div>
-
-{#
-    <ul>
-        <li>
-            <a href="{{ path('commande_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('commande_edit', { 'id': commande.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-#}
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-11">
-                &nbsp;
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-offset-1 col-md-11">
-                <h2>{{ commande.nbAdresses }} adresse(s) associée(s)</h2>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                {% if commande.adresses %}
-                    {% for adresse in commande.adresses %}
-                        <h3>Adresse de {{ adresse.adrTypeName }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a class="btn btn-success" href="{{ path('adresse_edit', { 'id': adresse.id }) }}">
-                                <i class="glyphicon glyphicon-edit"></i>Modifier</a></h3>
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <th>Nom</th>
-                                    <td>{{ adresse.adrNom }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Prénom</th>
-                                    <td>{{ adresse.adrPrenom }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Société</th>
-                                    <td>{{ adresse.adrSoc }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td>{{ adresse.adrEmail }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Téléphone</th>
-                                    <td>{{ adresse.adrTel }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Adresse</th>
-                                    <td>{{ adresse.adrAdr }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Code postal</th>
-                                    <td>{{ adresse.adrCp }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Ville</th>
-                                    <td>{{ adresse.adrVille }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="row">
-                            <div class="col-md-offset-1 col-md-11">
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-offset-1 col-md-11">
-                                &nbsp;
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <h1>Aucune adresse trouvée</h1>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-11">
-                &nbsp;
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-offset-1 col-md-11">
-                <h2>{{ commande.nbProduits }} produit(s) commandé(s)</h2>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
+            <div class="col-md-4">
+                <div class="col-md-offset-1 col-md-11">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Etat</th>
+                                <td>{{ commande.etatCom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code accord banque</th>
+                                <td>{{ commande.comCdebank }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de la vente</th>
+                                <td>{% if commande.comVenteDte %}{{ commande.comVenteDte|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Date d'expédition</th>
+                                <td>{% if commande.comExpedDte %}{{ commande.comExpedDte|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Date d'annulation</th>
+                                <td>{% if commande.comAnnulDte %}{{ commande.comAnnulDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Auteur annulation</th>
+                                <td>{{ commande.comAnnulWho }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé annulation</th>
+                                <td>{{ commande.comAnnulLib }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-offset-1 col-md-11">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Nbre d'article(s)</th>
+                                <td>{{ commande.comNbArts }} &nbsp;&nbsp;&nbsp;&nbsp;(trouvés: {{ commande.nbProduits }})</td>
+                            </tr>
+                            <tr>
+                                <th>Facture</th>
+                                <td>{{ commande.comFact }}&nbsp;&nbsp;
+                                    <a href="{{ path('download_fact', { 'id': downloadfile }) }}">
+                                        <img class="center-block img-responsive icone_pdf" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Date facture</th>
+                                <td>{% if commande.comFactDte %}{{ commande.comFactDte|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Auteur facture</th>
+                                <td>{{ commande.comFactWho }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de dernière maj</th>
+                                <td>{% if commande.comMajDte %}{{ commande.comMajDte|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Auteur dernière maj</th>
+                                <td>{{ commande.comMajWho }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libellé dernière maj</th>
+                                <td>{{ commande.comMajLib }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-offset-1 col-md-11">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Prix total HT</th>
+                                <td>{{ commande.comPrixTotHt|number_format(2, ',', ' ') }} €</td>
+                            </tr>
+                            <tr>
+                                <th>Prix total TTC</th>
+                                <td>{{ commande.comPrixTotTtc|number_format(2, ',', ' ') }} €</td>
+                            </tr>
+                            <tr>
+                                <th>TVA unique (O/N)</th>
+                                <td>{% if commande.comTvaUnique %}Oui{% else %}Non{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Poids total</th>
+                                <td>{{ commande.comEmbPoids }}</td>
+                            </tr>
+                            <tr>
+                                <th>Dimensions totales</th>
+                                <td>{{ commande.comEmbDim }}</td>
+                            </tr>
+                            <tr>
+                                <th>Délai de livraison</th>
+                                <td>{{ commande.comLivDelai }}</td>
+                            </tr>
+                            <tr>
+                                <th>Commentaires</th>
+                                <td>{{ commande.comComments }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                <h1>&nbsp;</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center tab_adresses">
+                <h3>{{ commande.nbProduits }}&nbsp;&nbsp;produit(s) commandé(s)</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 tab_adresses">
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         {#<th>Id</th>#}
-                        <th>Etat<br />(Actif/Inactif)</th>
+                        <th>Etat</th>
                         <th>Catégorisation</th>
-                        <th>A vendre (O/N)</th>
+                        <th>A<br/>vendre</th>
                         <th>Nom</th>
                         <th>Référence</th>
                         <th>Prix TTC</th>
-                        <th>Photo</th>
+                        <th> </th>
                         <th> </th>
                     </tr>
                     </thead>
@@ -267,6 +199,156 @@
 
             </div>
         </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                <h1>&nbsp;</h1>
+            </div>
+        </div>
+    </div>
+{#
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11 text-center">
+                <h2>{{ commande.nbAdresses }} adresse(s) associée(s)</h2>
+            </div>
+        </div>
+#}
+    </div>
+
+    {% if commande.adresses %}
+        {#{% if app.session.get('adresseArray1').adrTypeName == 'livraison' %}#}
+        {% if commande.nbAdresses == 1 %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8 tab_adresses">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th></th>
+                                <th>Adresse</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ commande.adresses[0].adrNom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ commande.adresses[0].adrPrenom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Société</th>
+                                <td>{{ commande.adresses[0].adrSoc }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ commande.adresses[0].adrEmail }}</td>
+                            </tr>
+                            <tr>
+                                <th>Téléphone</th>
+                                <td>{{ commande.adresses[0].adrTel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ commande.adresses[0].adrAdr }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code postal</th>
+                                <td>{{ commande.adresses[0].adrCp }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ville</th>
+                                <td>{{ commande.adresses[0].adrVille }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 tab_adresses">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th> </th>
+                                <th>Adresse de {{ commande.adresses[0].adrTypeName }}</th>
+                                <th>Adresse de {{ commande.adresses[1].adrTypeName }}</th>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ commande.adresses[0].adrNom }}</td>
+                                <td>{{ commande.adresses[1].adrNom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>{{ commande.adresses[0].adrPrenom }}</td>
+                                <td>{{ commande.adresses[1].adrPrenom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Société</th>
+                                <td>{{ commande.adresses[0].adrSoc }}</td>
+                                <td>{{ commande.adresses[1].adrSoc }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ commande.adresses[0].adrEmail }}</td>
+                                <td>{{ commande.adresses[1].adrEmail }}</td>
+                            </tr>
+                            <tr>
+                                <th>Téléphone</th>
+                                <td>{{ commande.adresses[0].adrTel }}</td>
+                                <td>{{ commande.adresses[1].adrTel }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ commande.adresses[0].adrAdr }}</td>
+                                <td>{{ commande.adresses[1].adrAdr }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code postal</th>
+                                <td>{{ commande.adresses[0].adrCp }}</td>
+                                <td>{{ commande.adresses[1].adrCp }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ville</th>
+                                <td>{{ commande.adresses[0].adrVille }}</td>
+                                <td>{{ commande.adresses[1].adrVille }}</td>
+                            </tr>
+                            <tr>
+                                <th> </th>
+                                <th>
+                                    <a class="btn btn-success" href="{{ path('adresse_edit', { 'id': commande.adresses[0].id }) }}">
+                                        <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                </th>
+                                <th>
+                                    <a class="btn btn-success" href="{{ path('adresse_edit', { 'id': commande.adresses[1].id }) }}">
+                                        <i class="glyphicon glyphicon-edit"></i>Modifier</a>
+                                </th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                &nbsp;
+            </div>
+        </div>
+        {% if commande.nbAdresses < 1 or commande.nbAdresses > 2 %}
+            <div class="row">
+                <div class="col-md-offset-1 col-md-11 text-center">
+                    <h2 class="alerte_vendu">Nombre d'adresse(s) trouvée(s) : {{ commande.nbAdresses }} !!!</h2>
+                </div>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}

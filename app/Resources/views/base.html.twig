@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/slider.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/animate.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/style.css') }}"/>
-
+        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     </head>
     <body>
     <!-- Début menu -->
@@ -30,12 +30,26 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+                                <div class="alert alert-success">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    {{ flashMessage }}
+                                </div>
+                            {% endfor %}
+                        </a></li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="hvr-underline-from-left" href={{ path('ecommerce_tableau') }}>Art</a></li>
                         <li><a class="hvr-underline-from-left" href={{ path('ecommerce_bijou') }}>Bijoux KIFA</a></li>
                         <li><a class="hvr-underline-from-left" href={{ path('app_lucieactu') }}>Artiste</a></li>
-                        <li><a class="hvr-underline-from-left" href={{ path('ecommerce_panier') }}>Panier {% if paniers!=null %}({{ paniers|length }}){% else %}{% endif %}</a></li>
-                        <li><a class="hvr-underline-from-left" href="#">Contact</a></li>
+                        {% if paniers!=null %}
+                            <li><a class="hvr-underline-from-left" href={{ path('ecommerce_panier') }}>Panier ({{ paniers|length }})</a></li>
+                        {% else %}
+                        {% endif %}
+                        <li><a class="hvr-underline-from-left" href={{ path('app_contact') }}>Contact</a></li>
                         {% if langues.nblangs > 1 %}
                             {#<ul class="nav navbar-nav navbar-right">#}
                                 <li class="dropdown">
@@ -91,14 +105,20 @@
         <script src="{{ asset('bundles/app/js/imagesloaded.js') }}"></script>
         <script src="{{ asset('bundles/app/js/classie.js') }}"></script>
         <script src="{{ asset('bundles/app/js/AnimOnScroll.js') }}"></script>
-        <footer>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="footerbck">
-                        <p> Ceci est le pied de page !</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    <footer class="site-footer">
+        <p class="text-footer">
+            <a class="text-footer" href="#">Conditions générales de vente</a>
+            <span class="floatright"><a href="#"><img class="footerimg" src="http://vignette1.wikia.nocookie.net/logopedia/images/f/fb/Facebook_icon_2013.svg/revision/latest?cb=20130501121248"></a>
+        <a href="#"><img class="footerimg" src="https://5a5a57ff32a328601212-ee0df397c56b146e91fe14be42fa361d.ssl.cf1.rackcdn.com/icon/instagram_logos_app_icon/YyepHGHDvkl1wFkUHw8Y/Instagram-v051916_200.png"></a></span>
+        </p>
+        <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 text-center">
+            <p class="text-footer">S'abonner aux newsletters</p>
+            <form action="{{ path("abonnement") }}" method="post">
+                <input type="email" name="email" placeholder="Saisir l'adresse mail" required="required" />
+                <input style="display: none;" name="route" value="{{ app.request.attributes.get('_route') }}"/>
+                <input type="submit" value="Valider" />
+            </form>
+        </div>
+    </footer>
     </body>
 </html>

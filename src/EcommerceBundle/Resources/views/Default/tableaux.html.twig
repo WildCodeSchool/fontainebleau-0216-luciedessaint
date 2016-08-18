@@ -38,16 +38,6 @@
                                     {% endif %}
                                 </h4>
                             </div>
-{#
-                            <div class="row">
-                                <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}">
-                                    <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
-                                </a>
-                            </div>
-                            <div class="row">
-                                <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
-                            </div>
-#}
                             <div class="row">
                                 <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}" href="#">
                                     <img class="center-block img-responsive imgtableau" src="{{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}">
@@ -60,13 +50,6 @@
                                 <div class="col-md-6">
                                     <p><h5>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</h5></p>
                                 </div>
-{#
-                                <div class="col-md-6">
-                                    <a href="{{ path('ecommerce_add_panier', { 'id': produit.pdlIdpdt.id }) }}">
-                                        <img class="center-block img-responsive imgchariot" src={{ asset('uploads/param/') }}{{ chariot }}>
-                                    </a>
-                                </div>
-#}
                                 <div class="row col-md-6">
                                     <p><h5>{{ produit.pdlIdpdt.pdtDim }}</h5></p>
                                 </div>
@@ -214,21 +197,19 @@
 
         <div class="container" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
             {% for catproduit in catproduits %}
-                <div class="row col-md-12">
-                    <div class="row col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
                         <span class="text-center"><h1>&nbsp;</h1></span>
                     </div>
-                    <div class="row col-md-12 txt_bij_cat">
-                        <div class="row col-md-12">
-                            {% if catproduit.catPhoto %}
-                                <img class="center-block img-responsive img_tab_cat txt_tab_cat" src="{{ asset('uploads/categ/') }}{{ catproduit.catPhoto }}">
-                            {% endif %}
+                    {% if catproduit.catPhoto %}
+                        <div class="col-md-12">
+                            <img class="center-block img-responsive img_tab_cat txt_tab_cat" src='{{ asset('uploads/categ/') }}{{ catproduit.catPhoto }}'/>
                         </div>
-                        <div class="row col-md-12">
-                            <span class="text-center"><h2>{{ catproduit.pdlLib }}</h2></span>
-                            {#<span class="text-center"><h1>{{ catproduit.pdlCat }} / {{ catproduit.pdlType }}{% if catproduit.pdlItem != null %} / {{ catproduit.pdlItem }}{% endif %}</h1></span>#}
+                    {% else %}
+                        <div class="col-md-12 txt_tab_cat">
+                            <span class="text-center">{{ catproduit.pdlLib }}</span>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
                 <div class="row col-md-12">
                     <span class="text-center"><h1> </h1></span>
@@ -240,30 +221,18 @@
                             {% if catproduit.catLibAdmin == produit.pdlIdpdt.pdtIdcat.catLibAdmin %}
                                 <div class="col-md-3 text-center">
                                     <div class="row">
-{#
-                                        <a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}">
-                                            <img class="center-block img-responsive imgtableau" src={{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}>
-                                        </a>
-#}
+                                        {#<a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>#}
+                                        <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
+                                    </div>
+                                    <div class="row">
                                         <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}" href="#">
                                             <img class="center-block img-responsive imgtableau" src="{{ asset('uploads/produits/') }}{{ produit.pdlIdpdt.pdtPhoto }}">
                                         </a>
                                     </div>
                                     <div class="row">
-                                        {#<a href="{{ path('ecommerce_detail_produit', { 'id': produit.pdlIdpdt.id }) }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>#}
-                                        <a data-toggle="modal" data-target="#myModal{{ produit.pdlIdpdt.id }}"><h4>{{ produit.pdlIdpdt.pdtNom }}</h4></a>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-6">
                                             <p><h5>{{ produit.pdlIdpdt.pdtPrixUnitTtc|number_format(2, ',', ' ') }} €</h5></p>
                                         </div>
-{#
-                                        <div class="col-md-6">
-                                            <a href="{{ path('ecommerce_add_panier', { 'id': produit.pdlIdpdt.id }) }}">
-                                                <img class="center-block img-responsive imgchariot" src={{ asset('uploads/param/') }}{{ chariot }}>
-                                            </a>
-                                        </div>
-#}
                                         <div class="row col-md-6">
                                             <p><h5>{{ produit.pdlIdpdt.pdtDim }}</h5></p>
                                         </div>

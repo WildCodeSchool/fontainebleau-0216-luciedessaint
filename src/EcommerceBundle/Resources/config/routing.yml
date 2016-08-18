@@ -1,3 +1,43 @@
+abonnement:
+    path:     /creatAbont
+    defaults: { _controller: EcommerceBundle:GestAbonnement:creatAbont }
+    methods:  [GET, POST]
+
+desabonnement:
+    path:     /desabonnement
+    defaults: { _controller: EcommerceBundle:Desabonnement:new }
+    methods:  [GET, POST]
+
+download_fact:
+    path:     /{id}/download
+    defaults: { _controller: EcommerceBundle:Commande:download }
+    methods:  GET
+
+supp_img_categ:
+    path:     /{id}/suppImg
+    defaults: { _controller: EcommerceBundle:Categorie:suppImg }
+    methods:  GET
+
+supp_pdf_nwl:
+    path:     /{id}/suppPdf
+    defaults: { _controller: EcommerceBundle:Newsletter:suppPdf }
+    methods:  GET
+
+download_nwl:
+    path:     /{id}/download
+    defaults: { _controller: EcommerceBundle:Newsletter:download }
+    methods:  GET
+
+destinataires_nwl:
+    path:     /{id}/recupDestinataires
+    defaults: { _controller: EcommerceBundle:Newsletter:recupDestinataires }
+    methods:  GET
+
+envoi_nwl:
+    path:     /{id}/envoiNewsletter
+    defaults: { _controller: EcommerceBundle:Newsletter:envoiNewsletter }
+    methods:  GET
+
 ecommerce_lang:
     resource: "@EcommerceBundle/Resources/config/routing/lang.yml"
     prefix:   /admin/lng
@@ -9,6 +49,10 @@ ecommerce_tva:
 ecommerce_abontnews:
     resource: "@EcommerceBundle/Resources/config/routing/abontnews.yml"
     prefix:   /admin/abontnews
+
+ecommerce_newsletter:
+    resource: "@EcommerceBundle/Resources/config/routing/newsletter.yml"
+    prefix:   /admin/newsletter
 
 ecommerce_param:
     resource: "@EcommerceBundle/Resources/config/routing/param.yml"
@@ -45,7 +89,7 @@ ecommerce_adresse:
 ecommerce_adresse_show:
     path:     /adresse/show
     defaults: { _controller: "EcommerceBundle:Adresse:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 ecommerce_adresse_new:
     path:     /adresse/new

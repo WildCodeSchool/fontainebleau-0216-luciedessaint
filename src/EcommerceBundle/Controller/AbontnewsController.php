@@ -18,12 +18,35 @@ class AbontnewsController extends Controller
      * Lists all Abontnews entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $abontnews = $em->getRepository('EcommerceBundle:Abontnews')->findAll();
+        //$abontnews = $em->getRepository('EcommerceBundle:Abontnews')->findAll();
 
+        $abontnewsActifs = $em->getRepository('EcommerceBundle:Abontnews')->findAbontnewsActifs();
+        $abontnewsInactifs = $em->getRepository('EcommerceBundle:Abontnews')->findAbontnewsInactifs();
+
+        $nbEtats = -1;
+        
+        if ($abontnewsActifs) {
+            $nbEtats++;
+            //$abontnews[$nbEtats]->Etat = "actif";
+            //$abontnews[$nbEtats]->Abonnements = $abontnewsActifs;
+            $abontnews[$nbEtats]["Etat"] = "actif";
+            $abontnews[$nbEtats]["Abonnements"] = $abontnewsActifs;
+        }
+        
+        if ($abontnewsInactifs) {
+            $nbEtats++;
+            //$abontnews[$nbEtats]->Etat = "inactif";
+            //$abontnews[$nbEtats]->Abonnements = $abontnewsInactifs;
+            $abontnews[$nbEtats]["Etat"] = "inactif";
+            $abontnews[$nbEtats]["Abonnements"] = $abontnewsInactifs;
+        }
+
+        //var_dump($abontnews);
+        
         return $this->render('EcommerceBundle:abontnews:index.html.twig', array(
             'abontnews' => $abontnews,
         ));
@@ -100,7 +123,7 @@ class AbontnewsController extends Controller
      * Finds and displays a Abontnews entity.
      *
      */
-    public function showAction(Abontnews $abontnews)
+    public function showAction(Abontnews $abontnews, Request $request)
     {
         $deleteForm = $this->createDeleteForm($abontnews);
 

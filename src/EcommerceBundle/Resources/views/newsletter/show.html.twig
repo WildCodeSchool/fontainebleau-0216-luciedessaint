@@ -1,0 +1,105 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+    <div id="header" class="jumbotron text-center">
+        <h1>{{ newsletter.nwlLib }}</h1>
+        <a class="btn btn-success btn-lg" href="{{ path('newsletter_index') }}">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+    {% for flashMessage in app.session.flashbag.get('mesModifs') %}
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Libellé</th>
+                            <td>{{ newsletter.nwlLib }}</td>
+                        </tr>
+                        <tr>
+                            <th>Code langue</th>
+                            <td>{{ newsletter.nwlLocale }}</td>
+                        </tr>
+                        <tr>
+                            <th>Objet mail</th>
+                            <td>{{ newsletter.nwlMailObjet }}</td>
+                        </tr>
+                        <tr>
+                            <th>Texte du mail</th>
+                            <td>{{ newsletter.nwlMailTexte }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date envoi prévue</th>
+                            <td>{% if newsletter.nwlDatePrev %}{{ newsletter.nwlDatePrev|date('d-m-Y') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Newsletter envoyée (O/N)</th>
+                            <td>{% if newsletter.nwlEnvoyee %}Oui{% else %}Non{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Envoyée le</th>
+                            <td>{% if newsletter.nwlEnvDate %}{{ newsletter.nwlEnvDate|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Destinataires</th>
+                            <td>
+                                {{ newsletter.nwlMailDests }}
+                            </td>
+                        </tr>
+{#
+                        <tr>
+                            <th> </th>
+                            <td>
+                                <a class="btn btn-success btn-lg" href="{{ path('destinataires_nwl', { 'id': newsletter.id }) }}">
+                                    <i class="glyphicon glyphicon-chevron-left"></i>
+                                    Maj liste des Destinataires
+                                </a>
+                            </td>
+                        </tr>
+#}
+                        <tr>
+                            <th>Pdf associé
+                                {% if newsletter.nwlMailPj %}
+                                    <a href="{{ path('supp_pdf_nwl', { 'id': newsletter.id }) }}" onclick="return confirm('Confirmez-vous la suppression du Pdf ?')">
+                                        <img class="center-block img-responsive imgsupp_action" src="{{ asset('bundles/app/img/admin/action_supp.png') }}">
+                                    </a>
+                                {% endif %}
+                            </th>
+                            <td>
+                                {% if newsletter.nwlMailPj %}
+                                    <a href="{{ path('download_nwl', { 'id': downloadfile }) }}">
+                                        <img class="center-block img-responsive icone_pdf_show" src="{{ asset('uploads/param/') }}{{ iconePDF }}">
+                                    </a>
+                                {% else %}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;--néant--
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ path('newsletter_edit', { 'id': newsletter.id }) }}">
+                    <i class="glyphicon glyphicon-edit"></i>&nbsp;Modifier Newsletter
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" href="{{ path('destinataires_nwl', { 'id': newsletter.id }) }}">
+                    <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Maj liste des Destinataires
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" href="{{ path('envoi_nwl', { 'id': newsletter.id }) }}">
+                    Envoi Newsletter&nbsp;&nbsp;<i class="glyphicon glyphicon-export"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
