@@ -62,12 +62,36 @@ class ParamController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($param);
+        $param = $em->getRepository('EcommerceBundle:Param')->findAll();
 
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        //
+        if (!$param) {
+            $param = new Param();
+            $param->setPrmNbnivcat(2);
+            $param->setPrmDevise("€");
+            $param->setPrmTvaUnique(false);
+            $param->setPrmNewsletter(false);
+            $param->setPrmFactGen(false);
+            $param->setPrmFactEnv(false);
+            $param->setPrmFactUpload(false);
+            $param->setPrmIdtva(null);
+            //var_dump($param);
+            $em->persist($param);
+            $em->flush();
+
+            $param = $em->getRepository('EcommerceBundle:Param')->findAll();
+        }
+
+        $id = -1;
+
+        foreach ($param as $idx_p => $first) {
+            if ($id == -1) {
+                $id = $first->getId();
+                $param = $em->getRepository('EcommerceBundle:Param')->find($id);
+            }
+        }
+
         $id = $param->getId();
-
+        
         /////////////////////////////////////////////////////////////////////////////////////////////
         //
         // Récupération de la liste des codes 'langue' gérés sur le site
@@ -103,7 +127,7 @@ class ParamController extends Controller
                     $paramlib = new Paramlib();
                     $paramlib->setPrlLocale($CodeLang);
                     $paramlib->setPrlIdprm($param);
-                    //var_dump($catlib);
+                    //var_dump($paramlib);
                     $em->persist($paramlib);
                     $em->flush();
 
@@ -119,7 +143,6 @@ class ParamController extends Controller
 
         return $this->render('EcommerceBundle:param:show.html.twig', array(
             'param' => $param,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

@@ -29,6 +29,7 @@
                             <th>Code devise utilisé</th>
                             <td>{{ param.prmDevise }}</td>
                         </tr>
+{#
                         <tr>
                             <th>Activer la TVA unique</th>
                             <td>{% if param.prmTvaUnique %}Oui{% else %}Non{% endif %}</td>
@@ -53,6 +54,7 @@
                             <th>TVA unique utilisée</th>
                             <td>{{ param.prmIdtva }}</td>
                         </tr>
+#}
                     </tbody>
                 </table>
                 <a class="btn btn-success" href="{{ path('param_edit', { 'id': param.id }) }}">
@@ -173,55 +175,4 @@
         </div>
     </div>
 
-{#
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ param.id }}</td>
-            </tr>
-            <tr>
-                <th>Prmnbnivcat</th>
-                <td>{{ param.prmNbnivcat }}</td>
-            </tr>
-            <tr>
-                <th>Prmdevise</th>
-                <td>{{ param.prmDevise }}</td>
-            </tr>
-            <tr>
-                <th>Prmtvaunique</th>
-                <td>{% if param.prmTvaUnique %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Prmnewsletter</th>
-                <td>{% if param.prmNewsletter %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Prmfactgen</th>
-                <td>{% if param.prmFactGen %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Prmfactenv</th>
-                <td>{% if param.prmFactEnv %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Prmfactupload</th>
-                <td>{% if param.prmFactUpload %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('param_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('param_edit', { 'id': param.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>#}
 {% endblock %}

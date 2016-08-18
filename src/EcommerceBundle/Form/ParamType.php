@@ -17,12 +17,12 @@ class ParamType extends AbstractType
         $builder
             ->add('prmNbnivcat')
             ->add('prmDevise')
-            ->add('prmTvaUnique')
-            ->add('prmNewsletter')
-            ->add('prmFactGen')
-            ->add('prmFactEnv')
-            ->add('prmFactUpload')
-            ->add('prmIdtva')
+//            ->add('prmTvaUnique')
+//            ->add('prmNewsletter')
+//            ->add('prmFactGen')
+//            ->add('prmFactEnv')
+//            ->add('prmFactUpload')
+//            ->add('prmIdtva')
         ;
     }
     
