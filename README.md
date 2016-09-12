@@ -25,6 +25,6 @@ Composer ==> https://getcomposer.org/doc/00-intro.md
 2. Créer des taux de TVA
 3. Créer des catégories de produit 
 4. Paramètres généraux
-5. Créer les catégories // Niveau 1 ==> Sois Tableaux / Bisoux
+5. Créer les catégories // Niveau 1 ==> Sois Tableaux / Bijoux
 
 A Symfony project created on May 24, 2016, 11:25 am.
