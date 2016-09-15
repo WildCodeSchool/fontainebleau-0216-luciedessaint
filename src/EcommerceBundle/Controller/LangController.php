@@ -43,7 +43,6 @@ class LangController extends Controller
         //$form->remove('lngFlag');
         //$form->setData('lngFlag', 'xx');
         $form->handleRequest($request);
-        $lang->setLngEtat(false);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
