@@ -13,6 +13,17 @@ class HomepageController extends Controller
         $session = $request->getSession();
         $panieruser = $session->get('cartArray');
 
+        //$request->setLocale($request->getSession()->get('codeLang'));
+        $langue = $request->getSession()->get('codeLang');
+
+        $session->set('_locale', $langue);
+        $request->setLocale($langue);
+        $request->setDefaultLocale($langue);
+
+        echo '$session->get(\'_locale\'): ' . $session->get('_locale') . "<br>";
+        echo '$request getLocale: ' . $request->getLocale() . "<br>";
+        echo '$request->getSession()->get(\'codeLang\'): ' . $request->getSession()->get('codeLang') . "<br>";
+
         $langues = $this->container->get('recup.langues')->RecupLangues($session);
 
         $file_art = "";
@@ -52,8 +63,12 @@ class HomepageController extends Controller
     public function changtLangueAction(Request $request, $id)
     {
         $session = $request->getSession();
+
         $session->set('codeLang', $id);
-        var_dump($session->get('codeLang'));
+
+        $session->set('_locale', $id);
+        $request->setLocale($id);
+        $request->setDefaultLocale($id);
 
         return $this->redirectToRoute('app_homepage');
     }

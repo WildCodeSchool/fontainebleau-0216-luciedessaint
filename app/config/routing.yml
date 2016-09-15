@@ -1,6 +1,6 @@
 appun:
     resource: "@AppBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
 
 ecommerce:
     resource: "@EcommerceBundle/Resources/config/routing.yml"
